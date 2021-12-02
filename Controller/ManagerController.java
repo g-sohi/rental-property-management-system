@@ -1,4 +1,7 @@
 package Controller;
+import Models.*;
+import GUI.*;
+import Database.*;
 
 public class ManagerController {
     private Manager manager;
