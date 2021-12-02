@@ -9,6 +9,7 @@ public class Address {
     private int aptNo;
 
     public Address(){
+        this.streetName = null;
         
     }
 }
