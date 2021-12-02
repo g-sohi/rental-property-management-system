@@ -8,8 +8,25 @@ public class Address {
     private String quadrant;
     private int aptNo;
 
-    public Address(){
-        this.streetName = null;
-        this.aptNo= 0;
+    public Address(int streetNo, String streetName, String city, String postalCode, String quadrant,int aptNo )
+    {
+        this.streetNo = streetNo;
+        this.streetName = streetName;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.quadrant = quadrant;
+        this.aptNo = aptNo;
+        
     }
+
+    public int getStreetNo()
+    {
+        return this.streetNo;
+    }
+
+    public void setStreetNo(int streetNo)
+    {
+        this.streetNo = streetNo;
+    }
+
 }
