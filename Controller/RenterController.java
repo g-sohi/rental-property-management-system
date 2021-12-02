@@ -1,9 +1,10 @@
 package Controller;
 
-import java.util.ArrayList;
-import java.util.PropertyResourceBundle;
+import Models.*;
+import GUI.*;
+import Database.*;
 
-import Models.Property;
+import java.util.*;
 
 public class RenterController {
     private SelectPropertyView selectProp;
@@ -11,9 +12,8 @@ public class RenterController {
     private Renter renter;
     private Database db;
     private Email Email;
-    private emailView emailv;
+    private EmailView emailv;
     private RenterView RenterView;
-    public Database db;
 
     public RenterController()
     {
