@@ -8,6 +8,9 @@ public class Address {
     private String quadrant;
     private int aptNo;
 
+    /**
+     * Constructor for the Address class
+     */
     public Address(int streetNo, String streetName, String city, String postalCode, String quadrant,int aptNo )
     {
         this.streetNo = streetNo;
@@ -19,60 +22,60 @@ public class Address {
         
     }
 
-    public int getStreetNo()
+    public int getStreetNo()                    //getter method for the streetNo
     {
         return this.streetNo;
     }
 
-    public void setStreetNo(int streetNo)
+    public void setStreetNo(int streetNo)       //setter method for the streetNo
     {
         this.streetNo = streetNo;
     }
 
-    public String getStreetName()
+    public String getStreetName()               //getter method for the streetName
     {
         return this.streetName;
     }
 
-    public void setStreetName(String streetName)
+    public void setStreetName(String streetName)    //setter method for the streetName
     {
         this.streetName = streetName;
     }
 
-    public String getCity()
+    public String getCity()                     //getter method for the city   
     {
         return this.city;
     }
 
-    public void setCity(String city)
+    public void setCity(String city)            //setter method for the city
     {
         this.city = city;
     }
-    public String getPostalCode()
+    public String getPostalCode()               //getter method for the postalCode
     {
         return this.postalCode;
     }
 
-    public void setPostalCode(String postalCode)
+    public void setPostalCode(String postalCode)    //setter method for the postalCode
     {
         this.postalCode = postalCode;
     }
     
-    public String getQuadrant()
+    public String getQuadrant()                 //getter method for the quadrant
     {
         return this.quadrant;
     }
 
-    public void setQuadrant(String quadrant)
+    public void setQuadrant(String quadrant)    //setter method for the quadrant
     {
         this.quadrant = quadrant;
     }
-    public int getAptNo()
+    public int getAptNo()                       //getter method for the aptNo
     {
         return this.aptNo;
     }
 
-    public void setAptNo(int aptNo)
+    public void setAptNo(int aptNo)             //setter method for the aptNo
     {
         this.aptNo = aptNo;
     }
