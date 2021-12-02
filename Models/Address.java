@@ -29,4 +29,52 @@ public class Address {
         this.streetNo = streetNo;
     }
 
+    public String getStreetName()
+    {
+        return this.streetName;
+    }
+
+    public void setStreetName(String streetName)
+    {
+        this.streetName = streetName;
+    }
+
+    public String getCity()
+    {
+        return this.city;
+    }
+
+    public void setCity(String city)
+    {
+        this.city = city;
+    }
+    public String getPostalCode()
+    {
+        return this.postalCode;
+    }
+
+    public void setPostalCode(String postalCode)
+    {
+        this.postalCode = postalCode;
+    }
+    
+    public String getQuadrant()
+    {
+        return this.quadrant;
+    }
+
+    public void setQuadrant(String quadrant)
+    {
+        this.quadrant = quadrant;
+    }
+    public int getAptNo()
+    {
+        return this.aptNo;
+    }
+
+    public void setAptNo(int aptNo)
+    {
+        this.aptNo = aptNo;
+    }
+    
 }
