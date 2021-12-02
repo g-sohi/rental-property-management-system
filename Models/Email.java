@@ -7,7 +7,7 @@ public class Email {
     private String date;
 
     /**
-     * Constructor for the email class
+     * Constructor for the Email class
      */
     public Email(String subject, String message, String recip, String date) 
     {
