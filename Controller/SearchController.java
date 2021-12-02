@@ -1,6 +1,10 @@
 package Controller;
 
 import Models.*;
+import GUI.*;
+import Database.*;
+
+import java.util.*;
 
 public class SearchController {
 
