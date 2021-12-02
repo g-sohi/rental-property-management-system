@@ -1,5 +1,6 @@
 package Controller;
 
+
 public class ManagerController {
     private Manager manager;
     private ManagerView managerv;
