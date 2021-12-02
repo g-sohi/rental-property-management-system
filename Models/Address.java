@@ -10,6 +10,6 @@ public class Address {
 
     public Address(){
         this.streetName = null;
-        
+        this.aptNo= 0;
     }
 }
