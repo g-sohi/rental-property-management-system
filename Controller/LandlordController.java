@@ -1,7 +1,7 @@
 package Controller;
+
 import Models.*;
 import GUI.*;
-import Database.*;
 
 //Landlord Controller
 public class LandlordController {
@@ -36,42 +36,42 @@ public class LandlordController {
     }
 
     //getter for landlord view 
-    public LandlordView getLandlordView(){
+    public LandlordView getLandlordV(){
         return this.landlordV;
     }
     
     //setter for landlord view
-    public void setLandLordView(LandlordView ldView){
+    public void setLandLordV(LandlordView ldView){
         this.landlordV = ldView;
     }
 
     //getter for payment controller
-    public PaymentController getPaymentController(){
+    public PaymentController getPay(){
         return this.pay;
     }
 
     //setter for payment controller
-    public void setPaymentController(PaymentController payC){
+    public void setPay(PaymentController payC){
         this.pay = payC;
     }
 
     //getter for property controller
-    public PropertyController getPropertyController(){
+    public PropertyController getProp(){
         return this.prop;
     }
 
     //setter for property controller
-    public void setPropertyController(PropertyController propC){
+    public void setProp(PropertyController propC){
         this.prop = propC;
     }
 
     //getter for register controller
-    public RegisterController getRegisterController(){
+    public RegisterController getRegProp(){
         return this.regProp;
     }
 
     //setter for register controller
-    public void setRegisterController(RegisterController regC){
+    public void setRegProp(RegisterController regC){
         this.regProp = regC;
     }
 }
