@@ -8,7 +8,8 @@ public class Landlord extends User{
     /**
      * Constructor for the Landlord class
      */
-    public Landlord(Email email){
+    public Landlord(String username,String fName, String lName, int id, String password, String userType, Email email){
+        super(username, fName, lName, id, password, userType);
         this.email = email;
         this.properties = new ArrayList<Property>();
     }
