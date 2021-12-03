@@ -19,7 +19,7 @@ public class RenterController {
     {
 
     }
-    
+
     public void SelectProperty(ArrayList<Property> listings)
     {
         this.listings = listings;
@@ -51,4 +51,61 @@ public class RenterController {
     {
 
     }
+
+    public SelectPropertyView getSelectProp() {
+        return selectProp;
+    }
+
+    public void setSelectProp(SelectPropertyView selectProp) {
+        this.selectProp = selectProp;
+    }
+
+    public ArrayList<Property> getListings() {
+        return listings;
+    }
+
+    public void setListings(ArrayList<Property> listings) {
+        this.listings = listings;
+    }
+
+    public Renter getRenter() {
+        return renter;
+    }
+
+    public void setRenter(Renter renter) {
+        this.renter = renter;
+    }
+
+    public Database getDb() {
+        return db;
+    }
+
+    public void setDb(Database db) {
+        this.db = db;
+    }
+
+    public Email getEmail() {
+        return Email;
+    }
+
+    public void setEmail(Email email) {
+        this.Email = email;
+    }
+
+    public EmailView getEmailv() {
+        return emailv;
+    }
+
+    public void setEmailv(EmailView emailv) {
+        this.emailv = emailv;
+    }
+
+    public RenterView getRenterView() {
+        return RenterView;
+    }
+
+    public void setRenterView(RenterView renterView) {
+        this.RenterView = renterView;
+    }
+    
 }

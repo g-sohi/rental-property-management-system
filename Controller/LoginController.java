@@ -29,22 +29,22 @@ public class LoginController {
     }
 
     //getter for login view
-    public LoginView getLoginView(){
+    public LoginView getView(){
         return this.view;
     }
 
     //setter for login view
-    public void setLoginView(LoginView lv){
+    public void setView(LoginView lv){
         this.view = lv;
     }
 
     //getter for database 
-    public Database getDatabase(){
+    public Database getDb(){
         return this.db;
     }
 
     //setter for database
-    public void setDatabase(Database d){
+    public void setDb(Database d){
         this.db = d;
     }
 
@@ -59,12 +59,12 @@ public class LoginController {
     }
 
     //getter for register view
-    public RegisterView getRegisterView(){
+    public RegisterView getRView(){
         return this.rView;
     }
 
     //setter for register view
-    public void setRegisterView(RegisterView rv){
+    public void setRView(RegisterView rv){
         this.rView = rv;
     }
 }
