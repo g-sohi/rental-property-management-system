@@ -10,3 +10,5 @@ public class EditPropetyView {
     private JButton remove;
     private JTextField idProperty;
 }
+
+//*****IMPORTANT: Correct Class Name from EditPropetyView to EditPropertyView*****
