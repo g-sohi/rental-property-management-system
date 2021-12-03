@@ -6,8 +6,8 @@ public class Manager extends User{
     /**
      * Constructor for the Manager class
      */
-    public Manager(int managerCode){
-
+    public Manager(String username,String fName, String lName, int id, String password, String userType ,int managerCode){
+        super(username, fName, lName, id, password, userType);
         this.managerCode = managerCode;
 
     }

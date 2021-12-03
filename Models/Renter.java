@@ -12,7 +12,8 @@ public class Renter extends User{
      * Constructor for the Renter class
      */
 
-    public Renter(boolean isRegistered, Property preferredProperty, Email email){
+    public Renter(String username,String fName, String lName, int id, String password, String userType ,boolean isRegistered, Property preferredProperty, Email email){
+        super(username, fName, lName, id, password, userType);
         favouriteProperties = new ArrayList<Property>();
         this.isRegistered = isRegistered;
         this.preferredProperty = preferredProperty;
