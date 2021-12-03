@@ -7,10 +7,57 @@ public class Renter extends User{
     private Property preferredProperty;
     private Email email;
 
-    public Renter(){
+    
+  /**
+     * Constructor for the Renter class
+     */
 
+    public Renter(boolean isRegistered, Property preferredProperty, Email email){
+        favouriteProperties = new ArrayList<Property>();
+        this.isRegistered = isRegistered;
+        this.preferredProperty = preferredProperty;
+        this.email = email;
     }
 
+    public boolean getIsRegistered()            //getter method for the isRegistered  
+    {
+        return this.isRegistered;
+    }
+
+    public void setIsRegistered(boolean isRegistered)       //setter method for the isRegistered
+    {
+        this.isRegistered = isRegistered;
+    }
+
+    public void addProperty(Property p)         //add a property
+    {
+        favouriteProperties.add(p);
+    }
+
+    public void removeProperty(Property p)   //remove a property
+    {
+        favouriteProperties.remove(p);
+    }
+
+    public Property getPreferredProperty()      //getter method for the preferredProperty   
+    {
+        return this.preferredProperty;
+    }
+
+    public void setPreferredProperty(Property preferredProperty) //setter method for the preferredProperty
+    {
+        this.preferredProperty = preferredProperty;
+    }
+
+    public Email getEmail()                 //getter method for the email   
+    {
+        return this.email;
+    }
+
+    public void setEmail(Email email)    //setter method for the email
+    {
+        this.email = email;
+    }
     public void updateFavourite(){
 
     }
