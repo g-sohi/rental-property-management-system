@@ -1,9 +1,10 @@
 package Controller;
 
-import java.util.ArrayList;
+import Models.*;
+import Database.*;
+import GUI.*;
 
-import Database.Database;
-import GUI.EditPropetyView;
+import java.util.*;
 
 public class PropertyController {
     //Member variables for class PropertyController
@@ -12,6 +13,10 @@ public class PropertyController {
     private LandlordController landlord;
     private ManagerController manager;
     private Database db;
+
+    public PropertyController(){
+
+    }
 
     public void editProperty(Property p)
     {
@@ -27,4 +32,46 @@ public class PropertyController {
     {
 
     }
+
+    public EditPropetyView getEdit() {
+        return edit;
+    }
+    
+    public void setEdit(EditPropetyView edit) {
+        this.edit = edit;
+    }
+    
+    public ArrayList<Property> getListing() {
+        return listing;
+    }
+
+    public void setListing(ArrayList<Property> listing) {
+        this.listing = listing;
+    }
+
+    public LandlordController getLandlord() {
+        return landlord;
+    }
+
+    public void setLandlord(LandlordController landlord) {
+        this.landlord = landlord;
+    }
+
+    public ManagerController getManager() {
+        return manager;
+    }
+
+    public void setManager(ManagerController manager) {
+        this.manager = manager;
+    }
+
+    public Database getDb() {
+        return db;
+    }
+
+    public void setDb(Database db) {
+        this.db = db;
+    }
+
+
 }

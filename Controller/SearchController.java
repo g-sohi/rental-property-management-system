@@ -42,4 +42,36 @@ public class SearchController {
         
     }
 
+    
+    public SearchView getsView() {
+        return sView;
+    }
+
+    public void setsView(SearchView sView) {
+        this.sView = sView;
+    }
+
+    public User getUsers() {
+        return users;
+    }
+
+    public void setUsers(User users) {
+        this.users = users;
+    }
+
+    public ArrayList<Property> getListings() {
+        return listings;
+    }
+
+    public void setListings(ArrayList<Property> listings) {
+        this.listings = listings;
+    }
+
+    public Database getDb() {
+        return db;
+    }
+
+    public void setDb(Database db) {
+        this.db = db;
+    }
 }
