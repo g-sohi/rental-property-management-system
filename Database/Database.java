@@ -4,7 +4,7 @@ import Controller.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Database {
 
@@ -13,6 +13,8 @@ public class Database {
         private final String DBURL = "jdbc:mysql://localhost/rpms";
     
         private Connection dbConnect; // connection between database and program
+
+        private ResultSet line;
 
         public Database() {
             String username = "root";
@@ -59,6 +61,20 @@ public class Database {
             }
         }
 
+        public void verifyUser(String username, String password){
+            try {
+                String query = String.format("SELECT user.ID FROM user WHERE UserName = ? && Password = ?");
+                PreparedStatement stmt = dbConnect.prepareStatement(query);
+                stmt.setString(1, username);
+                stmt.setString(2, password);
+                line = stmt.executeQuery();
+                line.next();
+                System.out.println(line.getInt("ID"));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
         public void close() {
             try {
                 this.dbConnect.close();
@@ -70,10 +86,7 @@ public class Database {
 
         public static void main(String[] args) {
             Database db = new Database();
-            LoginController s = new LoginController();
-            
-            db.initializeConnection();
+            LoginController s = new LoginController(db);
             //db.addUser();
-            db.close();
         }
 }
