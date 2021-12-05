@@ -61,7 +61,7 @@ public class LoginView extends JFrame implements ActionListener{
     }
     }
 
-    public String getUsrename()
+    public String getUsername()
     {
         return inputUsername.getText();
     }
@@ -70,4 +70,5 @@ public class LoginView extends JFrame implements ActionListener{
     {
         return String.valueOf(inputPassword.getPassword());
     }
+
 }
