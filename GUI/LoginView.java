@@ -36,6 +36,7 @@ public class LoginView extends JFrame implements ActionListener{
       panel.add(message);
         panel.add(submit);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         // Adding the listeners to components..
         submit.addActionListener(this);
         add(panel, BorderLayout.CENTER);
