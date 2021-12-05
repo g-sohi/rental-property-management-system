@@ -60,4 +60,14 @@ public class LoginView extends JFrame implements ActionListener{
         
     }
     }
+
+    public String getUsrename()
+    {
+        return inputUsername.getText();
+    }
+
+    public String getPassword()
+    {
+        return String.valueOf(inputPassword.getPassword());
+    }
 }
