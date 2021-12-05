@@ -3,8 +3,10 @@ import GUI.*;
 import Database.*;
 import Models.*;
 
+import java.awt.event.*;
+
 //Login Controller
-public class LoginController {
+public class LoginController implements ActionListener{
     private LoginView view;
     private Database db;
     private User user;
@@ -16,6 +18,17 @@ public class LoginController {
         this.db = new Database();
         this.user = new User();
         this.rView = new RegisterView();
+
+        this.view.addLoginListener(this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {   
+        String username = view.getUsername();
+        String password = view.getPassword();
+
+        this.setUserInformation(username, password);
     }
     
     //Verify user login credentials and return a boolean indicating its status
@@ -58,10 +71,10 @@ public class LoginController {
         this.user = u;
     }
 
-    public void setUserInformation()
+    public void setUserInformation(String username, String password)
     {
-        user.setUsername(view.getUsername());
-        user.setPassword(view.getPassword());
+        user.setUsername(username);
+        user.setPassword(password);
 
         System.out.println(user.getUsername());
         System.out.println(user.getPassword());
