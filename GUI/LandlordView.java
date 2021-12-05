@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import java.awt.event.*;
 
-public class LandlordView {
+public class LandlordView extends JFrame{
     private JButton registerProperty, updateProperty, payFee, search; //change UML; registerProperties to registerProperty
     private JFrame f;
     public LandlordView()
