@@ -13,9 +13,9 @@ public class LoginController implements ActionListener{
     private RegisterView rView;
 
     //Default constructor to create instances of member variables
-    public LoginController(){
+    public LoginController(Database db){
         this.view = new LoginView();
-        this.db = new Database();
+        this.db = db;
         this.user = new User();
         this.rView = new RegisterView();
 
@@ -78,6 +78,9 @@ public class LoginController implements ActionListener{
 
         System.out.println(user.getUsername());
         System.out.println(user.getPassword());
+        db.initializeConnection();
+        db.verifyUser(user.getUsername(), user.getPassword());
+        db.close();
 
     }
 
