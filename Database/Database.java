@@ -15,7 +15,7 @@ public class Database {
 
         public Database() {
             String username = "root";
-            String password = "";
+            String password = "singh123";
     
             try {
 
