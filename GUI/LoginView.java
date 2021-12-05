@@ -6,8 +6,8 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import java.awt.event.*;
 
-public class LoginView extends JFrame implements ActionListener{
-    private  static JTextField inputUsername; //change UML; InputUserName to inputUsername
+public class LoginView extends JFrame {
+    private static JTextField inputUsername; //change UML; InputUserName to inputUsername
     private static JPasswordField inputPassword;
     private String username; //change UML; userName to username
     private String password;
@@ -37,7 +37,7 @@ public class LoginView extends JFrame implements ActionListener{
         panel.add(submit);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Adding the listeners to components..
-        submit.addActionListener(this);
+        //submit.addActionListener(this);
         add(panel, BorderLayout.CENTER);
         setTitle("User Login Page");
         setSize(450,350);
@@ -45,9 +45,11 @@ public class LoginView extends JFrame implements ActionListener{
     }
 
      
-    
+    public void addLoginListener(ActionListener listenForLogin){
+        submit.addActionListener(listenForLogin);
+    }
 
-    @Override
+    /*@Override
     public void actionPerformed(ActionEvent e) {
         username = inputUsername.getText();
         password = String.valueOf(inputPassword.getPassword());
@@ -56,10 +58,8 @@ public class LoginView extends JFrame implements ActionListener{
             message.setText(" Hello " + username + "");
          } else {
             message.setText(" Invalid user.. ");
-         
-        
     }
-    }
+    }*/
 
     public String getUsername()
     {
