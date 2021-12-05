@@ -24,16 +24,21 @@ public class LoginController implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e)
-    {   
-        String username = view.getUsername();
-        String password = view.getPassword();
+    {
 
-        this.setUserInformation(username, password);
+        this.verifyLogin();
     }
     
     //Verify user login credentials and return a boolean indicating its status
-    public boolean verifyLogin(){
-        return true;
+    public void verifyLogin(){
+        user.setUsername(view.getUsername());
+        user.setPassword(view.getPassword());
+
+        System.out.println(user.getUsername());
+        System.out.println(user.getPassword());
+        db.initializeConnection();
+        db.verifyUser(user.getUsername(), user.getPassword());
+        db.close();
     }
 
     //Register new user
@@ -69,19 +74,6 @@ public class LoginController implements ActionListener{
     //setter for user
     public void setUser(User u){
         this.user = u;
-    }
-
-    public void setUserInformation(String username, String password)
-    {
-        user.setUsername(username);
-        user.setPassword(password);
-
-        System.out.println(user.getUsername());
-        System.out.println(user.getPassword());
-        db.initializeConnection();
-        db.verifyUser(user.getUsername(), user.getPassword());
-        db.close();
-
     }
 
     //getter for register view
