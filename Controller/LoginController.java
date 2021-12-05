@@ -58,6 +58,16 @@ public class LoginController {
         this.user = u;
     }
 
+    public void setUserInformation()
+    {
+        user.setUsername(view.getUsername());
+        user.setPassword(view.getPassword());
+
+        System.out.println(user.getUsername());
+        System.out.println(user.getPassword());
+
+    }
+
     //getter for register view
     public RegisterView getRView(){
         return this.rView;

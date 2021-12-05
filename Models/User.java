@@ -12,6 +12,15 @@ public class User {
     /**
      * Constructor for the User class
      */
+    public User()
+    {
+        this.username = "";
+        this.fName = "arr";
+        this.lName = "ss";
+        this.id = -1222;
+        this.password = "";
+        this.userType = "none";
+    }
     public User(String username,String fName, String lName, int id, String password, String userType ){
         this.username = username;
         this.fName = fName;
