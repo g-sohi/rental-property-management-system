@@ -2,7 +2,7 @@ package GUI;
 
 import javax.swing.*;
 
-public class ManagerView {
+public class ManagerView extends JFrame{
     private JButton generateReport, editFees, updateProperty, viewInformation, search;
     private JFrame f;
 
