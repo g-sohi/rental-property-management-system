@@ -16,7 +16,7 @@ public class Database {
 
         public Database() {
             String username = "root";
-            String password = "singh123";
+            String password = "";
     
             try {
 
@@ -71,8 +71,8 @@ public class Database {
         public static void main(String[] args) {
             Database db = new Database();
             LoginController s = new LoginController();
-            s.setUserInformation();
-            //db.initializeConnection();
+            
+            db.initializeConnection();
             //db.addUser();
             db.close();
         }
