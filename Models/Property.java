@@ -2,7 +2,7 @@ package Models;
 
 public class Property {
     private int id;
-    private Address address;
+    private String address;
     private String type;
     private int numOfBedrooms;
     private int numOfBathrooms;
@@ -14,7 +14,7 @@ public class Property {
     /**
      * Constructor for the Property class
      */
-    public Property(int id, Address address,String type, int numOfBedrooms, int numOfBathrooms, boolean furnished, Fees propertyFees, String propertyStatus)
+    public Property(int id, String address,String type, int numOfBedrooms, int numOfBathrooms, boolean furnished, Fees propertyFees, String propertyStatus)
     {
         this.id =id;
         this.address = address;
@@ -36,12 +36,12 @@ public class Property {
         this.id = id;
     }
 
-    public Address getAddress()                 //getter method for the address  
+    public String getAddress()                 //getter method for the address  
     {
         return this.address;
     }
 
-    public void setAddress(Address address)     //setter method for the address
+    public void setAddress(String address)     //setter method for the address
     {
         this.address = address;
     }

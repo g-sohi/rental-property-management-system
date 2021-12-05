@@ -8,10 +8,10 @@ public class Landlord extends User{
     /**
      * Constructor for the Landlord class
      */
-    public Landlord(String username,String fName, String lName, int id, String password, String userType, Email email){
+    public Landlord(String username,String fName, String lName, int id, String password, String userType, Email email, ArrayList<Property> properties){
         super(username, fName, lName, id, password, userType);
         this.email = email;
-        this.properties = new ArrayList<Property>();
+        this.properties = new ArrayList<Property>(properties);
     }
 
     public Email getEmail()              //getter method for the email  
@@ -22,6 +22,14 @@ public class Landlord extends User{
     public void setEmail(Email email)      //setter method for the email
     {
         this.email = email; 
+    }
+
+    public ArrayList<Property> getProperties(){
+        return this.properties;
+    }
+
+    public void setProperties(ArrayList<Property> props){
+        this.properties = new ArrayList<>(props);
     }
 
     public void addProperty(Property p)         //add a property
