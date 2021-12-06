@@ -1,6 +1,7 @@
 package GUI;
 
 import javax.swing.*;
+import java.awt.event.*;
 
 public class ManagerView extends JFrame{
     private JButton generateReport, editFees, updateProperty, viewInformation, search, logout;
@@ -38,8 +39,13 @@ public class ManagerView extends JFrame{
         new ManagerView();
     }
 
-    public JButton getLog()
+    public JButton getLogout()
     {
         return logout;
     }
+
+    public void addLogoutListener(ActionListener listenForLogout){
+        logout.addActionListener(listenForLogout);
+    }
+
 }
