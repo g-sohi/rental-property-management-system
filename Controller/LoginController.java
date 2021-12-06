@@ -47,7 +47,7 @@ public class LoginController implements ActionListener{
             {
                 ManagerView vw = new ManagerView();
                 vw.setVisible(true);
-                if(e.getSource().equals(vw.getLog()))
+                if(e.getSource().equals(vw.getLogout()))
                 {
                     vw.dispose();
                     view.setVisible(true);
