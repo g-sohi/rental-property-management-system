@@ -1,8 +1,9 @@
 package GUI;
 
 import javax.swing.*;
+import java.awt.event.*;
 
-public class RenterView {
+public class RenterView extends JFrame implements ActionListener{
 
     // variable declaration
     private static JButton search, select, sendEmail;
@@ -32,6 +33,12 @@ public class RenterView {
 
         frame.setVisible(true); // JFrame is set to appear
 
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        
     }
 
     // **for testing purposes**
