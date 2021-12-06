@@ -13,37 +13,33 @@ public class LoginView extends JFrame {
     private String password;
     private JButton submit;
     private JLabel message;
-    private JPanel panel;
+    private JFrame f;
     private JLabel user_label, password_label;
 
     public LoginView()
     {
-        user_label = new JLabel();
-        user_label.setText("User Name :");
+		f=  new JFrame("Manager Page");
+        f.setSize(500, 500);
+		user_label = new JLabel("UserName: ");
+        password_label = new JLabel("Password: ");
         inputUsername = new JTextField();
-        // Password Label
-        password_label = new JLabel();
-        password_label.setText("Password :");
         inputPassword = new JPasswordField();
-        // Submit
-        submit = new JButton("SUBMIT");
-        panel = new JPanel(new GridLayout(3, 1));
-        panel.add(user_label);
-        panel.add(inputUsername);
-        panel.add(password_label);
-        panel.add(inputPassword);
-        message = new JLabel();
-      panel.add(message);
-        panel.add(submit);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        submit = new JButton("Submit");
+        f.add(user_label);
+        f.add(password_label);
+        f.add(inputUsername);
+        f.add(inputPassword);
+        f.add(submit);
+        user_label.setBounds(100,100,150,30);
+        password_label.setBounds(100,150,150,30);
+        inputUsername.setBounds(200,100,130,30);
+        inputPassword.setBounds(200,150,100,30);
+        submit.setBounds(300, 400, 150, 30);
 
-        // Adding the listeners to components..
-        //submit.addActionListener(this);
-        add(panel, BorderLayout.CENTER);
-        setTitle("User Login Page");
-        setSize(450,350);
-        setVisible(true);
+        f.setLayout(null);
+        f.setVisible(true);
     }
+
 
      
     public void addLoginListener(ActionListener listenForLogin){
@@ -87,6 +83,15 @@ public class LoginView extends JFrame {
     {
         return this.submit;
     }
-        
+	
+	public static void main(String[] args)
+	{
+		new LoginView();
+	}
+
+    public void destroyFrame()
+    {
+        f.dispose();
+    }    
 
 }

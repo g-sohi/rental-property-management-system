@@ -1,4 +1,4 @@
-package GUI;
+papackage GUI;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -10,6 +10,8 @@ public class MainPageGUI extends JFrame implements ActionListener{
     private JButton login, guest;
     private JFrame frame;
 
+<<<<<<< HEAD
+=======
     public MainPageGUI() {
 
         // creation of JFrame of certain size
@@ -45,4 +47,5 @@ public class MainPageGUI extends JFrame implements ActionListener{
     public static void main(String [] args) {
         new MainPageGUI();
     }
+>>>>>>> 8ec389809205afc5b367e92adfa65d9e1ff01ea2
 }
