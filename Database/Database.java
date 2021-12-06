@@ -61,6 +61,23 @@ public class Database {
             }
         }
 
+        public String getUserType(String username, String password)
+        {
+            String userTypeVal = "";
+            try {
+                String query = String.format("SELECT user.UserType FROM user WHERE UserName = ? && Password = ?");
+                PreparedStatement stmt = dbConnect.prepareStatement(query);
+                stmt.setString(1, username);
+                stmt.setString(2, password);
+                line = stmt.executeQuery();
+                line.next();
+                userTypeVal = line.getString("UserType");
+                System.out.println(userTypeVal);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return userTypeVal;
+        }
         public void verifyUser(String username, String password){
             try {
                 String query = String.format("SELECT user.ID FROM user WHERE UserName = ? && Password = ?");
@@ -74,8 +91,6 @@ public class Database {
                 e.printStackTrace();
             }
         }
-
-        
 
         public ArrayList<Property> getLandlordProperties(int landLordID) {
             ArrayList<Property> properties = new ArrayList<Property>();
@@ -124,7 +139,7 @@ public class Database {
 
         public static void main(String[] args) {
             Database db = new Database();
-            LoginController ctrl = new LoginController(db);
+            //LoginController ctrl = new LoginController(db);
             int id = 3;
             Landlord land = new Landlord("Robin", "Robin", "Sio", id, "ensf480", "Manager", new Email("null", "null", "null", "null"), db.getLandlordProperties(id));
             System.out.println("Address: " + land.getProperties().get(0).getAddress() + "\nType: " + land.getProperties().get(0).getType());
