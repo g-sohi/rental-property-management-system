@@ -10,6 +10,7 @@ public class GUIController implements ActionListener {
 
 private MainPageGUI mainpage;
 private LoginController login;
+private SearchController search;
 private Database db;
 
 public GUIController()
@@ -17,6 +18,7 @@ public GUIController()
     mainpage = new MainPageGUI();
     this.setDatabase(db);
     this.mainpage.addLoginListener(this);
+    this.mainpage.addGuestListener(this);
 }
 
 public void setDatabase(Database db)
@@ -31,6 +33,12 @@ public void actionPerformed(ActionEvent e) {
         mainpage.setOff();
         login = new LoginController(db);
     }
+    else if(e.getSource().equals(mainpage.getGuest()))
+    {
+        mainpage.setOff();
+        search = new SearchController();
+    }
+
     
 }
 }

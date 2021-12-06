@@ -42,6 +42,11 @@ public class MainPageGUI extends JFrame implements ActionListener{
         actionPerformed();*/
         
     }
+
+    public void addGuestListener(ActionListener listenForGuest)
+    {
+        guest.addActionListener(listenForGuest);
+    }
     @Override // checks if any buttons have been pressed
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
@@ -51,6 +56,11 @@ public class MainPageGUI extends JFrame implements ActionListener{
     public JButton getLog()
     {
         return login;
+    }
+
+    public JButton getGuest()
+    {
+        return guest;
     }
 
     public void setOff()
