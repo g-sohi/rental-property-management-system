@@ -3,7 +3,7 @@ package GUI;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class RenterView extends JFrame implements ActionListener{
+public class RenterView extends JFrame implements ActionListener {
 
     // variable declaration
     private static JButton search, select, sendEmail;
