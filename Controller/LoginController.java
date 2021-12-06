@@ -29,8 +29,9 @@ public class LoginController implements ActionListener{
         if(e.getSource().equals(view.getButton()))
         {
             view.dispose();
-            ManagerView vw = new ManagerView();
+            RenterView vw = new RenterView();
             vw.setVisible(true);
+            
         }
     }
     
