@@ -14,7 +14,7 @@ public class RegisterView extends JFrame {
 
     public RegisterView() {
         // creation of JFrame of certain size
-        f = new JFrame("Register View");
+        f = new JFrame("Register Page");
         f.setSize(500, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
