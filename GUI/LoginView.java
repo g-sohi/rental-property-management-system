@@ -11,8 +11,8 @@ public class LoginView extends JFrame {
     private static JPasswordField inputPassword;
     private String username; //change UML; userName to username
     private String password;
-    private static JButton submit;
-    private static JLabel message;
+    private JButton submit;
+    private JLabel message;
     private JPanel panel;
     private JLabel user_label, password_label;
 
@@ -48,18 +48,29 @@ public class LoginView extends JFrame {
      
     public void addLoginListener(ActionListener listenForLogin){
         submit.addActionListener(listenForLogin);
+        /*this.setVisible(false);
+        ManagerView vw = new ManagerView();
+        vw.setVisible(true);
+        actionPerformed();*/
+        
     }
 
-    /*@Override
-    public void actionPerformed(ActionEvent e) {
-        username = inputUsername.getText();
-        password = String.valueOf(inputPassword.getPassword());
-
+    //public void actionPerformed(ActionEvent e) {
+        // username = inputUsername.getText();
+            //password = String.valueOf(inputPassword.getPassword());
+        /*
         if (username.trim().equals("admin") && password.trim().equals("admin")) {
+            ManagerView vw = new ManagerView();
+        vw.setVisible(true);
+
             message.setText(" Hello " + username + "");
          } else {
             message.setText(" Invalid user.. ");
     }
+        this.setVisible(false);
+        ManagerView vw = new ManagerView();
+        vw.setVisible(true);
+
     }*/
 
     public String getUsername()
@@ -71,5 +82,11 @@ public class LoginView extends JFrame {
     {
         return String.valueOf(inputPassword.getPassword());
     }
+
+    public JButton getButton()
+    {
+        return this.submit;
+    }
+        
 
 }
