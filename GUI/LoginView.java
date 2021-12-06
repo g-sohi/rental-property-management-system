@@ -91,7 +91,14 @@ public class LoginView extends JFrame {
 
     public void destroyFrame()
     {
-        f.dispose();
+        f.setVisible(false);
+    }   
+    
+    public void turnOn()
+    {
+        f.setVisible(true);
+        inputUsername.setText("");
+        inputPassword.setText("");
     }    
 
 }

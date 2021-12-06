@@ -11,7 +11,7 @@ public class LoginController implements ActionListener{
     private Database db;
     private User user;
     private RegisterView rView;
-    private ManagerView mgVw;
+    private ManagerController mgControl;
 
     //Default constructor to create instances of member variables
     public LoginController(Database db){
@@ -46,14 +46,14 @@ public class LoginController implements ActionListener{
             {
                 this.mgVw = new ManagerView();
                 this.mgVw.addLogoutListener(this);
-                mgVw.setVisible(true);
+                mgVw.turnOn();
             }
         }
         if(e.getSource().equals(mgVw.getLogout()))
         {
             System.out.println("hello");
             mgVw.destroyFrame();
-            new LoginView();
+            view.turnOn();
         }
     }
     
@@ -113,5 +113,6 @@ public class LoginController implements ActionListener{
     //setter for register view
     public void setRView(RegisterView rv){
         this.rView = rv;
+
     }
 }
