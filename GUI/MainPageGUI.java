@@ -1,4 +1,4 @@
-papackage GUI;
+package GUI;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -10,8 +10,6 @@ public class MainPageGUI extends JFrame implements ActionListener{
     private JButton login, guest;
     private JFrame frame;
 
-<<<<<<< HEAD
-=======
     public MainPageGUI() {
 
         // creation of JFrame of certain size
@@ -36,16 +34,31 @@ public class MainPageGUI extends JFrame implements ActionListener{
         frame.setVisible(true); // JFrame is set to appear
 
     }
-
+    public void addLoginListener(ActionListener listenForLogin){
+        login.addActionListener(listenForLogin);
+        /*this.setVisible(false);
+        ManagerView vw = new ManagerView();
+        vw.setVisible(true);
+        actionPerformed();*/
+        
+    }
     @Override // checks if any buttons have been pressed
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
         
     }
 
+    public JButton getLog()
+    {
+        return login;
+    }
+
+    public void setOff()
+    {
+        frame.setVisible(false);
+    }
     // **for testing purposes**
     public static void main(String [] args) {
         new MainPageGUI();
     }
->>>>>>> 8ec389809205afc5b367e92adfa65d9e1ff01ea2
 }

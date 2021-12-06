@@ -11,7 +11,7 @@ public class LoginController implements ActionListener{
     private Database db;
     private User user;
     private RegisterView rView;
-    private ManagerController mgControl;
+    private ManagerView mgVw;
 
     //Default constructor to create instances of member variables
     public LoginController(Database db){
