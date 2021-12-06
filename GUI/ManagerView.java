@@ -55,6 +55,11 @@ public class ManagerView extends JFrame{
 
     public void destroyFrame()
     {   
-        f.dispose();
-}
+        f.setVisible(false);
+    }
+
+    public void turnOn()
+    {
+        f.setVisible(true);
+    }    
 }
