@@ -48,4 +48,13 @@ public class ManagerView extends JFrame{
         logout.addActionListener(listenForLogout);
     }
 
+    public JFrame getFrame()
+    {
+        return this.f;
+    }
+
+    public void destroyFrame()
+    {   
+        f.dispose();
+}
 }
