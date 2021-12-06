@@ -139,7 +139,8 @@ public class Database {
 
         public static void main(String[] args) {
             Database db = new Database();
-            LoginController ctrl = new LoginController(db);
+            GUIController ctrl = new GUIController();
+            ctrl.setDatabase(db);
             //SearchController srh = new SearchController();
             int id = 3;
             Landlord land = new Landlord("Robin", "Robin", "Sio", id, "ensf480", "Manager", new Email("null", "null", "null", "null"), db.getLandlordProperties(id));
