@@ -4,13 +4,14 @@ import Database.*;
 import Models.*;
 
 import java.awt.event.*;
-
+ 
 //Login Controller
 public class LoginController implements ActionListener{
     private LoginView view;
     private Database db;
     private User user;
     private RegisterView rView;
+
 
     //Default constructor to create instances of member variables
     public LoginController(Database db){
@@ -26,12 +27,25 @@ public class LoginController implements ActionListener{
     public void actionPerformed(ActionEvent e)
     {
         this.verifyLogin();
+
         if(e.getSource().equals(view.getButton()))
         {
             view.dispose();
-            RenterView vw = new RenterView();
-            vw.setVisible(true);
-            
+            if(user.getUserType() == "Renter")
+            {
+                RenterView vw = new RenterView();
+                vw.setVisible(true);
+            }
+            else if(user.getUserType() == "Landlord")
+            {
+                LandlordView vw = new LandlordView();
+                vw.setVisible(true);
+            }
+            else if(user.getUserType() == "Manager")
+            {
+                ManagerView vw = new ManagerView();
+                vw.setVisible(true);
+            }
         }
     }
     
@@ -44,6 +58,7 @@ public class LoginController implements ActionListener{
         System.out.println(user.getPassword());
         db.initializeConnection();
         db.verifyUser(user.getUsername(), user.getPassword());
+        user.setUserType(db.getUserType(user.getUsername(), user.getPassword()));
         db.close();
     }
 
