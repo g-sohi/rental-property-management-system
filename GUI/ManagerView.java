@@ -11,7 +11,6 @@ public class ManagerView extends JFrame{
         f=  new JFrame("Manager Page");
         f.setSize(500, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
         generateReport = new JButton("Generate Report");
         editFees = new JButton("Edit Fees");
         updateProperty = new JButton("Update Status");
@@ -37,5 +36,10 @@ public class ManagerView extends JFrame{
     public static void main(String [] args)
     {
         new ManagerView();
+    }
+
+    public JButton getLog()
+    {
+        return logout;
     }
 }
