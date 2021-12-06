@@ -48,7 +48,9 @@ public class RenterView extends JFrame implements ActionListener{
 
     // **for testing purposes**
 
-    // public static void main(String [] args) {
-    //     new RenterView();
-    // }
+    /* 
+    public static void main(String [] args) {
+        new RenterView();
+    }
+    */
 }
