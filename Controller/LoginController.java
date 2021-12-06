@@ -36,6 +36,7 @@ public class LoginController implements ActionListener{
             {
                 RenterView vw = new RenterView();
                 vw.setVisible(true);
+
             }
             else if(user.getUserType().equals("Landlord"))
             {
