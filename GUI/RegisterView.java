@@ -3,7 +3,7 @@ package GUI;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class RegisterView extends JFrame{
+public class RegisterView extends JFrame {
 
     // variable declaration
     private JTextField username, fName, lName, password; // change UML; userrName to username
