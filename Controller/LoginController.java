@@ -25,8 +25,13 @@ public class LoginController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e)
     {
-
         this.verifyLogin();
+        if(e.getSource().equals(view.getButton()))
+        {
+            view.dispose();
+            ManagerView vw = new ManagerView();
+            vw.setVisible(true);
+        }
     }
     
     //Verify user login credentials and return a boolean indicating its status
