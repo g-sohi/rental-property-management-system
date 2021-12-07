@@ -2,8 +2,9 @@ package Controller;
 import Models.*;
 import GUI.*;
 import Database.*;
+import java.awt.event.*;
 
-public class ManagerController {
+public class ManagerController implements ActionListener {
     private Manager manager;
     private ManagerView managerv;
     private SummaryReportView report;
@@ -12,8 +13,23 @@ public class ManagerController {
     private PaymentController pay;
     private Report reportR;
     private Database db;
+    private SearchController search;
 
     public ManagerController(){
+
+        search = new SearchController();
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
+        if(e.getSource().equals(managerv.getSearch()))
+    {
+        managerv.destroyFrame();
+        search.enableView();
+        search.getView().turnOn();
+    }
         
     }
 
@@ -119,4 +135,6 @@ public class ManagerController {
     {
         managerv = new ManagerView();
     }
+
+   
 }
