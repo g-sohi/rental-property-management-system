@@ -197,6 +197,15 @@ public class SearchView extends JFrame{
         return this.search;
     }
 
+    public void destroyFrame()
+    {   
+        setVisible(false);
+    }
+
+    public void turnOn()
+    {
+        setVisible(true);
+    } 
     public void addSearchListener(ActionListener listenForSearch){
         search.addActionListener(listenForSearch);
         /*this.setVisible(false);

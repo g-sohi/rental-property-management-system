@@ -54,6 +54,7 @@ public class LoginController implements ActionListener{
                 mgCtrl.enableView();
                 mgCtrl.getView().turnOn();
                 this.mgCtrl.getView().addLogoutListener(this);
+                this.mgCtrl.getView().addSearchListener(this);
             }
         }
         if(rtCtrl.getRenterView() != null)

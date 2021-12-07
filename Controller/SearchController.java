@@ -28,11 +28,19 @@ public class SearchController implements ActionListener{
 
     public SearchController() 
     {
-        sView = new SearchView(); 
-        this.sView.addSearchListener(this);
 
     }
 
+
+    public void enableView()
+    {
+        sView = new SearchView(); 
+    }
+
+    public void addSearchListener()
+    {
+        this.sView.addSearchListener(this);
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
@@ -133,9 +141,10 @@ public class SearchController implements ActionListener{
     {
         
     }
+    
 
     
-    public SearchView getsView() {
+    public SearchView getView() {
         return sView;
     }
 

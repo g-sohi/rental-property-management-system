@@ -44,6 +44,16 @@ public class ManagerView extends JFrame{
         logout.addActionListener(listenForLogout);
     }
 
+    public void addSearchListener(ActionListener listenForLogout){
+        search.addActionListener(listenForLogout);
+    }
+
+    public JButton getSearch()
+    {
+        return search;
+    }
+
+    
     public JFrame getFrame()
     {
         return this.f;
