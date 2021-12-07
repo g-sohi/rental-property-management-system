@@ -18,7 +18,7 @@ public class Database {
 
         public Database() {
             String username = "root";
-            String password = "";
+            String password = "singh123";
     
             try {
 
@@ -32,6 +32,7 @@ public class Database {
             this.DBPASS = password;
     
             this.initializeConnection();
+            System.out.println("test");
         }
     
         /**
@@ -215,14 +216,14 @@ public class Database {
 
         public static void main(String[] args) {
             Database db = new Database();
-            ArrayList<Property> props = new ArrayList<Property>(db.getSearchProperties(new Property(0,"null", "Detached", -1, -1, "null", new Fees(50.00, 0, "null", "null"), "Available")));
-            /*GUIController ctrl = new GUIController();
-            ctrl.setDatabase(db);
+            ArrayList<Property> props = new ArrayList<Property>(db.getSearchProperties(new Property(0,"null", "Detached", 4, -1, "null", new Fees(50.00, 0, "null", "null"), "Available")));
+            GUIController ctrl = new GUIController(db);
+            //ctrl.setDatabase(db);
             //SearchController srh = new SearchController();
-            int id = 3;
+            /*int id = 3;
             Landlord land = new Landlord("Robin", "Robin", "Sio", id, "ensf480", "Manager", new Email("null", "null", "null", "null"), db.getLandlordProperties(id));
             */
-            System.out.println("Address: " + props.get(0).getAddress() + "\nType: " + props.get(0).getType());
+            /*System.out.println("Address: " + props.get(0).getAddress() + "\nType: " + props.get(0).getType());*/
             //db.addUser();
             
         }

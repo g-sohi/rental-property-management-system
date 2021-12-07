@@ -34,10 +34,6 @@ public class ManagerView extends JFrame{
         f.setLayout(null);
         f.setVisible(false);
     }
-    public static void main(String [] args)
-    {
-        new ManagerView();
-    }
 
     public JButton getLogout()
     {
