@@ -250,5 +250,9 @@ public class SearchView extends JFrame{
         actionPerformed();*/   
     }
 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 0f5f7380b97adc6330af75a0b85fdca0c646f039
 }
 
