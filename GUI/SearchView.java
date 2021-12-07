@@ -143,6 +143,11 @@ public class SearchView extends JFrame{
 
     //Getter functions to get the users inputted value from the text fields
     //This method returns the number of beds the user inputted
+    public void turnOn()
+    {
+        setVisible(true);
+
+    }
     public int getBedsInput()
     {
         return Integer.valueOf(noBeds.getText());
