@@ -4,6 +4,8 @@ import Database.*;
 import Models.*;
 
 import java.awt.event.*;
+
+import javax.sound.midi.MidiSystem;
  
 //Login Controller
 public class LoginController implements ActionListener{
@@ -19,18 +21,19 @@ public class LoginController implements ActionListener{
         this.user = new User();
         mgCtrl = new ManagerController();
         
+        
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        addListener();
+        //addListener();
         this.verifyLogin();
 
         if(e.getSource().equals(view.getButton()))
         {
-            view.destroyFrame();
+            //view.destroyFrame();
             System.out.println("userType in user is: " + user.getUserType());
             if(user.getUserType().equals("Renter"))
             {
@@ -46,6 +49,7 @@ public class LoginController implements ActionListener{
             {
                 mgCtrl.enableView();
                 mgCtrl.getView().turnOn();
+                this.mgCtrl.getView().addLogoutListener(this);
             }
         }
         /*if(e.getSource().equals(rtCtrl.getRenterView().getLogout()))
@@ -56,7 +60,7 @@ public class LoginController implements ActionListener{
         }*/
         if(e.getSource().equals(mgCtrl.getView().getLogout()))
         {
-            this.mgCtrl.getView().addLogoutListener(this);
+            System.out.println("done");
             mgCtrl.getView().destroyFrame();
             view.turnOn();
         }
