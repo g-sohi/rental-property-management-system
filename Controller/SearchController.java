@@ -28,9 +28,6 @@ public class SearchController implements ActionListener{
     public SearchController(Database db) 
     {
         this.db = db;
-        sView = new SearchView(); 
-        this.sView.addSearchListener(this);
-        this.sView.addResetListener(this);
     }
 
     @Override
@@ -50,7 +47,7 @@ public class SearchController implements ActionListener{
         {
             System.out.println("StreeNo is: " + sView.getStreetNoInput() + " and StreetAddress is: " + sView.getStreetNameInput());
             String complete_Address = sView.getStreetNoInput() + ", " + sView.getStreetNameInput();
-            Property requestedPropertyType = new Property(1, "240 ENGZ, University of Calgary", "Detached", -1, -1, null, null, "Available");
+            Property requestedPropertyType = new Property(1, "240 ENGZ, University of Calgary", "Detached", -1, -1, "yes", null, "Available");
             ArrayList<Property> input = db.getSearchProperties(requestedPropertyType);
             String[] columnNames = { "Property ID: #", "Address", "Furnished", "Fees"};
             String results[][] = displayProperty(input, columnNames);
@@ -161,7 +158,7 @@ public class SearchController implements ActionListener{
     }
 
     
-    public SearchView getsView() {
+    public SearchView getView() {
         return sView;
     }
 
@@ -191,6 +188,13 @@ public class SearchController implements ActionListener{
 
     public void setDb(Database db) {
         this.db = db;
+    }
+
+    public void enableView()
+    {
+        sView = new SearchView(); 
+        this.sView.addSearchListener(this);
+        this.sView.addResetListener(this);
     }
 }
 
