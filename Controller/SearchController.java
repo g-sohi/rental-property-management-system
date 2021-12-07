@@ -28,9 +28,6 @@ public class SearchController implements ActionListener{
     public SearchController(Database db) 
     {
         this.db = db;
-        sView = new SearchView(); 
-        this.sView.addSearchListener(this);
-        this.sView.addResetListener(this);
     }
 
     @Override
@@ -191,6 +188,12 @@ public class SearchController implements ActionListener{
 
     public void setDb(Database db) {
         this.db = db;
+    }
+
+    public void enableView() {
+        sView = new SearchView(); 
+        this.sView.addSearchListener(this);
+        this.sView.addResetListener(this);
     }
 }
 

@@ -1,13 +1,5 @@
 package GUI;
 
-<<<<<<< HEAD
-import javax.swing.JButton;
-import javax.swing.JTextField;
-
-public class FeesView {
-    private JTextField changeFeeAmount, changePeriod, payFee, creditCard;
-    private JButton submit, payFees;
-=======
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -138,5 +130,4 @@ public class FeesView extends JFrame {
         new FeesView(false);
     }
 
->>>>>>> 0f5f7380b97adc6330af75a0b85fdca0c646f039
 }

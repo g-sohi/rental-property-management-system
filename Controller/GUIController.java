@@ -41,7 +41,7 @@ public void actionPerformed(ActionEvent e) {
     {
         mainpage.setOff();
         search.enableView();
-        search.getView().turnOn();
+        search.getsView().turnOn();
         
     }
 
