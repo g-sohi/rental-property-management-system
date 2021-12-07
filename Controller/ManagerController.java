@@ -48,14 +48,15 @@ public class ManagerController implements ActionListener {
         report.turnOn();
         report.addCloseListener(this);
     }
-    if(e.getSource().equals(managerv.getEditFeeButton()))
+    if(e.getSource().equals(managerv.getViewDataButton()))
     {
         System.out.println("COMPLETE");
         //managerv.destroyFrame();
-        payment.enableView(true);
-        payment.getFees().turnOnForManager();
+        viewInfo = new ViewDataPage();
+        viewInfo.turnOn();
 
     }
+    if(e.getSource().equals(managerv.getEditFeeButton()))
     if(this.report != null)
     {
     if(e.getSource().equals(report.getCloseButton()))
@@ -172,6 +173,7 @@ public class ManagerController implements ActionListener {
         this.managerv.addUpdateListener(this);
         this.managerv.addReportListener(this);
         this.managerv.addFeesListener(this);
+        this.managerv.addViewListener(this);
         }
 
    
