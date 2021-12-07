@@ -32,6 +32,7 @@ public class Database {
             this.DBPASS = password;
     
             this.initializeConnection();
+            System.out.println("test");
         }
     
         /**
@@ -92,6 +93,86 @@ public class Database {
             }
         }
 
+        public ArrayList<Property> getSearchProperties(Property p) {
+            ArrayList<Property> properties = new ArrayList<Property>();
+            List<String> inputs = new ArrayList<String>();
+
+            try {
+                String unformattedQuery = "SELECT * FROM property WHERE ";
+
+                if(!p.getType().equals("null")){
+                    unformattedQuery += "Type = ?" + " AND ";
+                    inputs.add(p.getType());
+                }
+                else{
+                    unformattedQuery += "Type = Type" + " AND ";
+                }
+
+                if(p.getNumOfBedrooms() != -1){
+                    unformattedQuery += "NoOfBedrooms = ?" + " AND ";
+                    inputs.add(String.valueOf(p.getNumOfBedrooms()));
+                }
+                else{
+                    unformattedQuery += "NoOfBedrooms = NoOfBedrooms" + " AND ";
+                }
+
+                if(p.getNumOfBathrooms() != -1){
+                    unformattedQuery += "NoOfBathrooms = ?" + " AND ";
+                    inputs.add(String.valueOf(p.getNumOfBathrooms()));
+                }
+                else{
+                    unformattedQuery += "NoOfBathrooms = NoOfBathrooms" + " AND ";
+                }
+
+                if(p.getFurnished().equalsIgnoreCase("yes")){
+                    unformattedQuery += "Furnished = ?" + " AND ";
+                    inputs.add(p.getFurnished());
+                }
+                else{
+                    unformattedQuery += "Furnished = Furnished" + " AND ";
+                }
+
+                unformattedQuery += "Status = ?";
+                inputs.add("Available");
+                System.out.println(unformattedQuery);
+
+                String query = String.format(unformattedQuery);
+                PreparedStatement stmt = dbConnect.prepareStatement(query);
+                for(int i = 0; i < inputs.size(); i++){
+                    if(Character.isDigit(inputs.get(i).charAt(0))){
+                        System.out.println(Integer.parseInt(inputs.get(i)));
+                        stmt.setInt(i+1, Integer.parseInt(inputs.get(i)));
+                    }
+                    else{
+                        System.out.println(inputs.get(i));
+                        stmt.setString(i+1, inputs.get(i));
+                    }
+                }
+                System.out.println(stmt.toString());
+                line = stmt.executeQuery();
+                while (line.next()) {
+                    int ID = line.getInt("Property_ID");
+                    String address = line.getString("Address");
+                    String type = line.getString("Type");
+                    int numOfBedrooms = line.getInt("NoOfBedrooms");
+                    int numOfBathrooms = line.getInt("NoOfBathrooms");
+                    String furnished = line.getString("Furnished");
+                    String status = line.getString("Status");
+
+                    Property prop = new Property(ID, address, type, numOfBedrooms, numOfBathrooms, furnished, new Fees(50.00, 0, "null", "null"), status);
+                    properties.add(prop);
+                }
+                stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Error.Exiting program.");
+                System.exit(1);
+            }
+            return properties;
+        }
+
+
+
         public ArrayList<Property> getLandlordProperties(int landLordID) {
             ArrayList<Property> properties = new ArrayList<Property>();
             try {
@@ -108,13 +189,9 @@ public class Database {
                     int numOfBedrooms = line.getInt("NoOfBedrooms");
                     int numOfBathrooms = line.getInt("NoOfBathrooms");
                     String furnished = line.getString("Furnished");
-                    boolean isFurnished = false;
-                    if(furnished.equalsIgnoreCase("yes")){
-                        isFurnished = true;
-                    }
                     String status = line.getString("Status");
 
-                    Property prop = new Property(ID, address, type, numOfBedrooms, numOfBathrooms, isFurnished, new Fees(50.00, 0, "null", "null"), status);
+                    Property prop = new Property(ID, address, type, numOfBedrooms, numOfBathrooms, furnished, new Fees(50.00, 0, "null", "null"), status);
                     properties.add(prop);
                 }
                 stmt.close();
@@ -139,12 +216,15 @@ public class Database {
 
         public static void main(String[] args) {
             Database db = new Database();
-            GUIController ctrl = new GUIController();
-            ctrl.setDatabase(db);
+            ArrayList<Property> props = new ArrayList<Property>(db.getSearchProperties(new Property(0,"null", "Detached", 4, -1, "null", new Fees(50.00, 0, "null", "null"), "Available")));
+            GUIController ctrl = new GUIController(db);
+            //ctrl.setDatabase(db);
             //SearchController srh = new SearchController();
-            int id = 3;
+            /*int id = 3;
             Landlord land = new Landlord("Robin", "Robin", "Sio", id, "ensf480", "Manager", new Email("null", "null", "null", "null"), db.getLandlordProperties(id));
-            System.out.println("Address: " + land.getProperties().get(0).getAddress() + "\nType: " + land.getProperties().get(0).getType());
+            */
+            /*System.out.println("Address: " + props.get(0).getAddress() + "\nType: " + props.get(0).getType());*/
             //db.addUser();
+            
         }
 }

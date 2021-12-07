@@ -13,10 +13,11 @@ private LoginController login;
 private SearchController search;
 private Database db;
 
-public GUIController()
+public GUIController(Database db)
 {
     mainpage = new MainPageGUI();
     this.setDatabase(db);
+    login = new LoginController(this.db);
     this.mainpage.addLoginListener(this);
     this.mainpage.addGuestListener(this);
 }
@@ -31,7 +32,9 @@ public void actionPerformed(ActionEvent e) {
     if(e.getSource().equals(mainpage.getLog()))
     {
         mainpage.setOff();
-        login = new LoginController(db);
+        login.enableView();
+        login.getView().turnOn();
+        login.addListener();
     }
     else if(e.getSource().equals(mainpage.getGuest()))
     {

@@ -37,8 +37,9 @@ public class LoginView extends JFrame {
         submit.setBounds(300, 400, 150, 30);
 
         f.setLayout(null);
-        f.setVisible(true);
+        f.setVisible(false);
     }
+
 
 
      
