@@ -134,12 +134,9 @@ public class LoginController implements ActionListener{
     public void enableView()
     {
         view = new LoginView();
+        this.view.addLoginListener(this);
         
     }
 
-    public void addListener()
-    {
-        this.view.addLoginListener(this);
-    }
     //getter for register view
 }

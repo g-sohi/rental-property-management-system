@@ -96,11 +96,6 @@ public class LoginView extends JFrame {
     {
         return this.goBack;
     }
-	public static void main(String[] args)
-	{
-		new LoginView();
-	}
-
     public void destroyFrame()
     {
         f.setVisible(false);
