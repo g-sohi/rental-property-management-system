@@ -26,16 +26,16 @@ public class SearchController implements ActionListener{
     private ArrayList<Property> listings;
     private Database db;
 
-    public SearchController() 
+    public SearchController(Database db) 
     {
-
+        this.setDb(db);
     }
 
 
-    public void enableView(ActionListener searchListener)
+    public void enableView()
     {
         this.sView = new SearchView(); 
-        this.sView.addSearchListener(searchListener);
+        this.sView.addSearchListener(this);
     }
 
     @Override
@@ -46,9 +46,12 @@ public class SearchController implements ActionListener{
             System.out.println("COMPLETED");
             Property prop1 = new Property(17, "5 Street NW", "Home", 3, 2, "Yes", null, "Active");
             Property prop2 = new Property(17, "100 Heights SW", "Condo", 2, 1, "No", null, "Active");
-            Property input[] = {prop1, prop2};
+            Property prop3 = new Property(0,"null", "Detached", 4, 2, "yes", null, "Available");
+            //Property input[] = {prop1, prop2};
+            db.initializeConnection();
+            listings = new ArrayList<Property>(db.getSearchProperties(prop3));
             String[] columnNames = { "Property ID: #", "Address", "Furnished", "Fees"};
-            String results[][] = displayProperty(input, columnNames);
+            String results[][] = displayProperty(listings, columnNames);
             //sView.setPropertiesList(input);
             // JList<String> test2 = new JList<String>(results);
             // test2.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -82,25 +85,25 @@ public class SearchController implements ActionListener{
     //     ArrayList<Property> filteredProperties = filterAll();
     //     displayAll(filteredProperties);
     // }
-    public String[][] displayProperty(Property obj[], String headers[])
+    public String[][] displayProperty(ArrayList<Property> obj, String headers[])
     {
         
-        String displayMessages[][] = new String[obj.length][headers.length];
+        String displayMessages[][] = new String[obj.size()][headers.length];
         for(int i = 0; i < displayMessages.length; i++)
         {
             for(int j = 0; j < displayMessages[i].length; j++)
             {
                 if(headers[j].equals("Property ID: #"))
                 {
-                    displayMessages[i][j] = String.valueOf(obj[i].getID());
+                    displayMessages[i][j] = String.valueOf(obj.get(i).getID());
                 }
                 else if(headers[j].equals("Address"))
                 {
-                    displayMessages[i][j] = obj[i].getAddress() + "\n";
+                    displayMessages[i][j] = obj.get(i).getAddress() + "\n";
                 }
                 else if(headers[j].equals("Furnished"))
                 {
-                    if(obj[i].getFurnished() == "Yes")
+                    if(obj.get(i).getFurnished() == "Yes")
                     {
                         displayMessages[i][j] = "Yes" + "\n";
                     }
@@ -111,7 +114,7 @@ public class SearchController implements ActionListener{
                 }
                 else if(headers[j].equals("Fees"))
                 {
-                    if(obj[i].getPropertyFees() == null)
+                    if(obj.get(i).getPropertyFees() == null)
                     {
                         displayMessages[i][j] = "N/A Property Fees" + "\n";
                     }
