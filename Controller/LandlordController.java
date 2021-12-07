@@ -24,7 +24,25 @@ public class LandlordController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e)
     {
+        if(e.getSource().equals(landlordV.getSearch()))
+        {
+            System.out.println("Search");
+        }
 
+        if(e.getSource().equals(landlordV.getRegister()))
+        {
+            System.out.println("Register");
+        }
+
+        if(e.getSource().equals(landlordV.getUpdate()))
+        {
+            System.out.println("Update");
+        }
+
+        if(e.getSource().equals(landlordV.getPay()))
+        {
+            System.out.println("Pay");
+        }
     }
 
     //update 
@@ -86,5 +104,9 @@ public class LandlordController implements ActionListener{
     {
         landlordV = new LandlordView();
         this.getLandlordView().addLogoutListener(logoutListener);
+        this.getLandlordView().addRegisterPropertyListener(this);
+        this.getLandlordView().addUpdatePropertyListener(this);
+        this.getLandlordView().addPayFeeListener(this);
+        this.getLandlordView().addSearchListener(this);
     }
 }

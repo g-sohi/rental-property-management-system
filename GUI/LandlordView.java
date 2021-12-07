@@ -40,6 +40,23 @@ public class LandlordView extends JFrame{
     {
         return logout;
     }
+
+    public JButton getRegister(){
+        return registerProperty;
+    }
+
+    public JButton getUpdate(){
+        return updateProperty;
+    }
+
+    public JButton getPay(){
+        return payFee;
+    }
+
+    public JButton getSearch(){
+        return search;
+    }
+
     public void destroyFrame()
     {   
         f.setVisible(false);
@@ -53,6 +70,24 @@ public class LandlordView extends JFrame{
     public void addLogoutListener(ActionListener listenForLogout){
         logout.addActionListener(listenForLogout);
     }
+
+    public void addRegisterPropertyListener(ActionListener listenForRegister){
+        registerProperty.addActionListener(listenForRegister);
+    }
+
+    public void addUpdatePropertyListener(ActionListener listenForUpdate){
+        updateProperty.addActionListener(listenForUpdate);
+    }
+
+    public void addPayFeeListener(ActionListener listenForPay){
+        payFee.addActionListener(listenForPay);
+    }
+
+    public void addSearchListener(ActionListener listenForSearch){
+        search.addActionListener(listenForSearch);
+    }
+
+    
 
 }
 

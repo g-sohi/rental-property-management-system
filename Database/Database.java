@@ -19,7 +19,7 @@ public class Database {
 
         public Database() {
             String username = "root";
-            String password = "singh123";
+            String password = "";
     
             try {
 
@@ -80,6 +80,7 @@ public class Database {
             }
             return userTypeVal;
         }
+
         public void verifyUser(String username, String password){
             try {
                 String query = String.format("SELECT user.ID FROM user WHERE UserName = ? && Password = ?");
@@ -89,6 +90,39 @@ public class Database {
                 line = stmt.executeQuery();
                 line.next();
                 System.out.println(line.getInt("ID"));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public void addProperty(int id, String address, String type, int numBedrooms, int numBathrooms, String furnished, double fees, String status, int landID, String startD, String endD){
+            try {
+                String query = "INSERT INTO property(Property_ID, Address, Type, NoOfBedrooms, NoOfBathrooms, Furnished, Fees, Status, Landlord_ID, StartDate, EndDate) ";
+                query += "VALUES (%d, '%s', '%s', %d, %d, '%s', %f, '%s', %d, '%s', '%s')";
+                query = String.format(query, id, address, type, numBedrooms, numBathrooms, furnished, fees, status, landID, startD, endD);
+                System.out.println(query);
+                Statement stmt = dbConnect.createStatement();
+                stmt.executeUpdate(query);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public void removeProperty(int id){
+            try {
+                String query = String.format("DELETE FROM property WHERE Property_ID = %d", id);
+                Statement stmt = dbConnect.createStatement();
+                stmt.executeUpdate(query);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public void updateProperty(int id, String status){
+            try {
+                String query = String.format("UPDATE property SET Status = '%s' Where Property_ID = %d", status, id);
+                Statement stmt = dbConnect.createStatement();
+                stmt.executeUpdate(query);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -172,8 +206,6 @@ public class Database {
             return properties;
         }
 
-
-
         public ArrayList<Property> getLandlordProperties(int landLordID) {
             ArrayList<Property> properties = new ArrayList<Property>();
             try {
@@ -217,9 +249,14 @@ public class Database {
 
         public static void main(String[] args) throws IOException {
             Database db = new Database();
-            ArrayList<Property> props = new ArrayList<Property>(db.getSearchProperties(new Property(0,"null", "Detached", 4, -1, "null", new Fees(50.00, 0, "null", "null"), "Available")));
+            
+            /*db.addProperty(2, "333 VansRoad, Calgary", "Townhouse", 2, 1, "No", 101.1, "Available", 4, "21 Aug, 2021", "23 Dec, 2021");
+            db.removeProperty(2);*/
+
+
+            //ArrayList<Property> props = new ArrayList<Property>(db.getSearchProperties(new Property(0,"null", "Detached", 4, -1, "null", new Fees(50.00, 0, "null", "null"), "Available")));
             GUIController ctrl = new GUIController(db);
-            //ctrl.setDatabase(db);
+            ctrl.setDatabase(db);
             //SearchController srh = new SearchController();
             /*int id = 3;
             Landlord land = new Landlord("Robin", "Robin", "Sio", id, "ensf480", "Manager", new Email("null", "null", "null", "null"), db.getLandlordProperties(id));
