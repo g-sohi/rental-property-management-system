@@ -36,16 +36,24 @@ public void actionPerformed(ActionEvent e) {
         mainpage.setOff();
         login.enableView();
         login.getView().turnOn();
-        login.addListener();
+        login.getView().addGoBackListener(this);
     }
     else if(e.getSource().equals(mainpage.getGuest()))
     {
         mainpage.setOff();
         search.enableView();
         search.getView().turnOn();
-        
+    }
+    if(login.getView() != null)
+    {
+     if(e.getSource().equals(login.getView().getGoBackButton()))   
+    {
+        login.getView().destroyFrame();
+        mainpage.turnOn();
+
     }
 
     
+}
 }
 }

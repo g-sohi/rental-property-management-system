@@ -12,6 +12,7 @@ public class LoginView extends JFrame {
     private String username; //change UML; userName to username
     private String password;
     private JButton submit;
+    private JButton goBack;
     private JLabel message;
     private JFrame f;
     private JLabel user_label, password_label;
@@ -25,17 +26,19 @@ public class LoginView extends JFrame {
         inputUsername = new JTextField();
         inputPassword = new JPasswordField();
         submit = new JButton("Submit");
+        goBack = new JButton("Go Back to Main");
         f.add(user_label);
         f.add(password_label);
         f.add(inputUsername);
         f.add(inputPassword);
         f.add(submit);
+        f.add(goBack);
         user_label.setBounds(100,100,150,30);
         password_label.setBounds(100,150,150,30);
         inputUsername.setBounds(200,100,130,30);
         inputPassword.setBounds(200,150,100,30);
         submit.setBounds(300, 400, 150, 30);
-
+        goBack.setBounds(300, 30, 180, 30);
         f.setLayout(null);
         f.setVisible(false);
     }
@@ -49,6 +52,11 @@ public class LoginView extends JFrame {
         ManagerView vw = new ManagerView();
         vw.setVisible(true);
         actionPerformed();*/
+        
+    }
+
+    public void addGoBackListener(ActionListener listenForLogin){
+        goBack.addActionListener(listenForLogin);
         
     }
 
@@ -84,7 +92,10 @@ public class LoginView extends JFrame {
     {
         return this.submit;
     }
-	
+	public JButton getGoBackButton()
+    {
+        return this.goBack;
+    }
 	public static void main(String[] args)
 	{
 		new LoginView();

@@ -94,5 +94,10 @@ public class MainPageGUI extends JFrame implements ActionListener {
     {
         frame.setVisible(false);
     }
+
+    public void turnOn()
+    {
+        frame.setVisible(true);
+    }
     // **for testing purposes**
 }
