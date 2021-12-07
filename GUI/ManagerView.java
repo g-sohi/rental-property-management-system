@@ -50,12 +50,20 @@ public class ManagerView extends JFrame{
         this.search.addActionListener(listenForSearch);
     }
 
+    public void addUpdateListener(ActionListener listenForUpdate){
+        System.out.println("DONE");
+        this.updateProperty.addActionListener(listenForUpdate);
+    }
     public JButton getSearch()
     {
         return this.search;
     }
 
-    
+    public JButton getUpdateButton()
+    {
+        return this.updateProperty;
+    }
+
     public JFrame getFrame()
     {
         return this.f;
