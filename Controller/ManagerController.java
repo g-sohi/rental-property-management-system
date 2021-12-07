@@ -15,9 +15,9 @@ public class ManagerController implements ActionListener {
     private Database db;
     private SearchController search;
 
-    public ManagerController(){
+    public ManagerController(Database db){
 
-        search = new SearchController();
+        search = new SearchController(db);
 
     }
 
@@ -27,7 +27,7 @@ public class ManagerController implements ActionListener {
     {
         System.out.println("COMPLETE");
         managerv.destroyFrame();
-        search.enableView(this);
+        search.enableView();
         search.getView().turnOn();
     }
         
