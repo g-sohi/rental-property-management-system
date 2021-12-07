@@ -6,7 +6,8 @@ import java.awt.event.*;
 public class EmailView extends JFrame {
     
     // variable declaration
-    private JTextField subject, from, to, body;
+    private JTextField subject, from, to;
+    private JTextArea body; // change UML; JTextField to JTextArea
     private JButton send;
 
     public EmailView() {
@@ -26,14 +27,14 @@ public class EmailView extends JFrame {
         JLabel toLabel = new JLabel("To:");
         toLabel.setBounds(50, 50, 100, 40);
         
-        // creation of JTextFields of certain size and position
+        // creation of JTextFields and JTextArea of certain size and position
         subject = new JTextField();
         subject.setBounds(140, 110, 310, 20);
         from = new JTextField();
         from.setBounds(140, 35, 310, 20);
         to = new JTextField();
         to.setBounds(140, 60, 310, 20);
-        body = new JTextField();
+        body = new JTextArea();
         body.setBounds(50, 160, 400, 200);
 
         // creation of JButton of certain size and position

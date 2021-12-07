@@ -2,6 +2,7 @@ package Controller;
 
 import Models.*;
 import GUI.*;
+import Database.Database;
 
 import java.awt.event.*;
 
@@ -32,11 +33,14 @@ public class LandlordController implements ActionListener{
         if(e.getSource().equals(landlordV.getRegister()))
         {
             System.out.println("Register");
+            regProp.enableView();
         }
 
         if(e.getSource().equals(landlordV.getUpdate()))
         {
             System.out.println("Update");
+            prop.enableView();
+            prop.getEditView().turnOn();
         }
 
         if(e.getSource().equals(landlordV.getPay()))

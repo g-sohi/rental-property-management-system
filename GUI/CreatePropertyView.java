@@ -6,7 +6,7 @@ import javax.swing.JTextField;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.JComboBox;
-public class CreatePropertyView extends JFrame implements ActionListener {
+public class CreatePropertyView extends JFrame{
     private String types[] = {"Detached", "Semi-Detached", "TownHouse", "Condo"};
     private String quadrants[] = {"NE", "NW", "SE", "SW"};
     private String fur[] = {"Yes", "No"};
@@ -136,17 +136,13 @@ public class CreatePropertyView extends JFrame implements ActionListener {
         register.setLocation(400, 600);
 		ctr.add(register);
 		setVisible(true);
-
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        
+    public JButton getRegister(){
+        return this.register;
     }
 
-    public static void main(String[] args)
-    {
-        new CreatePropertyView();
+    public void addRegisterPropertyListener(ActionListener listenForRegister){
+        this.register.addActionListener(listenForRegister);
     }
 }
