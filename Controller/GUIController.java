@@ -17,6 +17,7 @@ public GUIController()
 {
     mainpage = new MainPageGUI();
     this.setDatabase(db);
+    login = new LoginController(db);
     this.mainpage.addLoginListener(this);
     this.mainpage.addGuestListener(this);
 }
@@ -31,7 +32,8 @@ public void actionPerformed(ActionEvent e) {
     if(e.getSource().equals(mainpage.getLog()))
     {
         mainpage.setOff();
-        login = new LoginController(db);
+        login.enableView();
+        login.getView().turnOn();
     }
     else if(e.getSource().equals(mainpage.getGuest()))
     {
