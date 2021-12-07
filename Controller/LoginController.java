@@ -20,7 +20,7 @@ public class LoginController implements ActionListener{
         this.db = db;
         this.user = new User();
         mgCtrl = new ManagerController();
-        
+        rtCtrl = new RenterController();
         
     }
 
@@ -33,12 +33,13 @@ public class LoginController implements ActionListener{
 
         if(e.getSource().equals(view.getButton()))
         {
-            //view.destroyFrame();
+            view.destroyFrame();
             System.out.println("userType in user is: " + user.getUserType());
             if(user.getUserType().equals("Renter"))
             {
-                rtCtrl = new RenterController();
+                rtCtrl.enableView();
                 rtCtrl.getRenterView().turnOn();
+                rtCtrl.getRenterView().addLogoutListener(this);
             }
             else if(user.getUserType().equals("Landlord"))
             {
@@ -52,13 +53,13 @@ public class LoginController implements ActionListener{
                 this.mgCtrl.getView().addLogoutListener(this);
             }
         }
-        /*if(e.getSource().equals(rtCtrl.getRenterView().getLogout()))
+        if(e.getSource().equals(rtCtrl.getRenterView().getLogout()))
         {
             System.out.println("hello");
             rtCtrl.getRenterView().destroyFrame();
             view.turnOn();
-        }*/
-        if(e.getSource().equals(mgCtrl.getView().getLogout()))
+        }
+        else if(e.getSource().equals(mgCtrl.getView().getLogout()))
         {
             System.out.println("done");
             mgCtrl.getView().destroyFrame();
