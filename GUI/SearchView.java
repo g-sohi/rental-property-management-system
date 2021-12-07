@@ -206,8 +206,9 @@ public class SearchView extends JFrame{
     {
         setVisible(true);
     } 
+
     public void addSearchListener(ActionListener listenForSearch){
-        search.addActionListener(listenForSearch);
+        this.search.addActionListener(listenForSearch);
         /*this.setVisible(false);
         ManagerView vw = new ManagerView();
         vw.setVisible(true);

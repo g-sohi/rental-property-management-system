@@ -39,22 +39,18 @@ public class LoginController implements ActionListener{
             System.out.println("userType in user is: " + user.getUserType());
             if(user.getUserType().equals("Renter"))
             {
-                rtCtrl.enableView();
+                rtCtrl.enableView(this);
                 rtCtrl.getRenterView().turnOn();
-                rtCtrl.getRenterView().addLogoutListener(this);
             }
             else if(user.getUserType().equals("Landlord"))
             {
-                ldCtrl.enableView();
+                ldCtrl.enableView(this);
                 ldCtrl.getLandlordView().turnOn();
-                ldCtrl.getLandlordView().addLogoutListener(this);
             }
             else if(user.getUserType().equals("Manager"))
             {
-                mgCtrl.enableView();
+                mgCtrl.enableView(this);
                 mgCtrl.getView().turnOn();
-                this.mgCtrl.getView().addLogoutListener(this);
-                this.mgCtrl.getView().addSearchListener(this);
             }
         }
         if(rtCtrl.getRenterView() != null)
