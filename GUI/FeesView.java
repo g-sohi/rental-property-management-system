@@ -10,15 +10,17 @@ public class FeesView extends JFrame {
     // variable declaration
     private JTextField changeFeeAmount, changePeriod, payFee, creditCard;
     private JButton save, payFees; //change UML; submit to save
+    private JFrame fMgr;
+    private JFrame fLlrd;
 
     public FeesView(boolean isMgrPlaceholder) {
 
         // creation of JFrames of certain size for Manager and Landlord User Types
-        JFrame fMgr = new JFrame("Fees Management Page");
-        JFrame fLlrd = new JFrame("Fees Payment Page");
+        fMgr = new JFrame("Fees Management Page");
+        fLlrd = new JFrame("Fees Payment Page");
 
         fMgr.setSize(500, 500); fLlrd.setSize(500, 500);
-        //fMgr.setDefaultCloseOperation(EXIT_ON_CLOSE); fLlrd.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        fMgr.setDefaultCloseOperation(EXIT_ON_CLOSE); fLlrd.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         fMgr.setLayout(null); fLlrd.setLayout(null);// layout set to null
 
@@ -96,8 +98,8 @@ public class FeesView extends JFrame {
 
             fMgr.add(save);
 
-            fLlrd.setVisible(false);
-            fMgr.setVisible(true);
+            //fLlrd.setVisible(false);
+            //fMgr.setVisible(true);
         }
 
         else {
@@ -119,22 +121,19 @@ public class FeesView extends JFrame {
 
             fLlrd.add(payFees);
 
-            fMgr.setVisible(false);
-            fLlrd.setVisible(true);
+            //fMgr.setVisible(false);
+            //fLlrd.setVisible(true);
 
         }
     }
 
-    public void destroyFrame()
-    {   
-        setVisible(false);
-    }
-
-    public void turnOn()
+    public void turnOnForLanLord()
     {
-        setVisible(true);
-    } 
+        fLlrd.setVisible(true);
+    }   
 
-    // **for testing purposes**
-
+    public void turnOnForManager()
+    {
+        fMgr.setVisible(true);
+    }  
 }

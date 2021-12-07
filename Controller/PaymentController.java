@@ -55,8 +55,7 @@ public class PaymentController {
         this.manager = manager;
     }
 
-    public FeesView getView()
-    {
-        return fees;
+    public void enableView(boolean isMgrPlaceholder) {
+        fees = new FeesView(isMgrPlaceholder); 
     }
 }
