@@ -32,20 +32,18 @@ public class SearchController implements ActionListener{
     }
 
 
-    public void enableView()
+    public void enableView(ActionListener searchListener)
     {
-        sView = new SearchView(); 
+        this.sView = new SearchView(); 
+        this.sView.addSearchListener(searchListener);
     }
 
-    public void addSearchListener()
-    {
-        this.sView.addSearchListener(this);
-    }
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
         if(e.getSource().equals(sView.getSearchButton()))
         {
+            System.out.println("COMPLETED");
             Property prop1 = new Property(17, "5 Street NW", "Home", 3, 2, "Yes", null, "Active");
             Property prop2 = new Property(17, "100 Heights SW", "Condo", 2, 1, "No", null, "Active");
             Property input[] = {prop1, prop2};

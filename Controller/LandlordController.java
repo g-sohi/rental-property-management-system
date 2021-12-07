@@ -3,8 +3,10 @@ package Controller;
 import Models.*;
 import GUI.*;
 
+import java.awt.event.*;
+
 //Landlord Controller
-public class LandlordController {
+public class LandlordController implements ActionListener{
     private Landlord landlord;
     private LandlordView landlordV;
     private PaymentController pay;
@@ -17,6 +19,12 @@ public class LandlordController {
         this.pay = new PaymentController();
         this.prop = new PropertyController();
         this.regProp = new RegisterController();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+
     }
 
     //update 
@@ -74,8 +82,9 @@ public class LandlordController {
         this.regProp = regC;
     }
 
-    public void enableView()
+    public void enableView(ActionListener logoutListener)
     {
         landlordV = new LandlordView();
+        this.getLandlordView().addLogoutListener(logoutListener);
     }
 }

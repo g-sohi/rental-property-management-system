@@ -23,11 +23,11 @@ public class ManagerController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-        if(e.getSource().equals(managerv.getSearch()))
+    if(e.getSource().equals(managerv.getSearch()))
     {
+        System.out.println("COMPLETE");
         managerv.destroyFrame();
-        search.enableView();
+        search.enableView(this);
         search.getView().turnOn();
     }
         
@@ -131,9 +131,11 @@ public class ManagerController implements ActionListener {
         return managerv;
     }
 
-    public void enableView()
+    public void enableView(ActionListener logoutListener)
     {
         managerv = new ManagerView();
+        this.managerv.addLogoutListener(logoutListener);
+        this.managerv.addSearchListener(this);
     }
 
    

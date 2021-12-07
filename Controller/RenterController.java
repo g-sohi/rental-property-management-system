@@ -7,7 +7,7 @@ import Database.*;
 import java.util.*;
 import java.awt.event.*;
 
-public class RenterController{
+public class RenterController implements ActionListener{
     private SelectPropertyView selectProp;
     private ArrayList<Property> listings;
     private Renter renter;
@@ -18,6 +18,11 @@ public class RenterController{
 
     public RenterController()
     {
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
     }
 
@@ -109,9 +114,10 @@ public class RenterController{
         this.RenterView = renterView;
     }
 
-    public void enableView()
+    public void enableView(ActionListener logoutListener)
     {
         RenterView = new RenterView();
+        this.getRenterView().addLogoutListener(logoutListener);
     }
 
     
