@@ -126,8 +126,5 @@ public class FeesView extends JFrame {
     }
 
     // **for testing purposes**
-    public static void main(String [] args) {
-        new FeesView(false);
-    }
 
 }
