@@ -45,10 +45,10 @@ public class ManagerController implements ActionListener {
         report= new SummaryReportView();
         report.turnOn();
         report.addCloseListener(this);
-        if(e.getSource().equals(report.getCloseButton()))
-        {
-            report.destroyFrame();
-        }
+    }
+    if(e.getSource().equals(report.getCloseButton()))
+    {
+        report.destroyFrame();
     }
         
     }
