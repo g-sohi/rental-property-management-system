@@ -4,9 +4,11 @@ import Models.*;
 import Database.*;
 import GUI.*;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.*;
 
-public class PropertyController {
+public class PropertyController implements ActionListener {
     //Member variables for class PropertyController
     private EditPropertyView edit;
     private ArrayList<Property> listing;
@@ -76,10 +78,22 @@ public class PropertyController {
     public void enableView()
     {
         edit = new EditPropertyView();
+        this.edit.addSaveListener(this);
+        this.edit.addRemoveListener(this);
+
 
     }
 
-    
-
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(this.edit!= null)
+        {
+        if(e.getSource().equals(edit.getSaveButton()) || e.getSource().equals(edit.getRemoveButton()))
+        {
+            edit.destroyFrame();
+        }
+        
+          }
+        }
 
 }

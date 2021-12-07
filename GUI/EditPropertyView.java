@@ -90,6 +90,24 @@ public class EditPropertyView extends JFrame{
         setVisible(true);
     } 
 
+    public JButton getSaveButton()
+    {
+        return save;
+    }
+
+    public JButton getRemoveButton()
+    {
+        return remove;
+    }
+    public void addSaveListener(ActionListener listenForSave){
+        System.out.println("DONE");
+        this.save.addActionListener(listenForSave);
+    }
+
+    public void addRemoveListener(ActionListener listenForRemove){
+        System.out.println("DONE");
+        this.remove.addActionListener(listenForRemove);
+    }
 
 }
 

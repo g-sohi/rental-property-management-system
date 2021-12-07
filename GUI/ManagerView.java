@@ -59,6 +59,13 @@ public class ManagerView extends JFrame{
         System.out.println("DONE");
         this.generateReport.addActionListener(listenForReport);
     }
+
+    public void addFeesListener(ActionListener listenForReport){
+        System.out.println("DONE");
+        this.editFees.addActionListener(listenForReport);
+    }
+
+
     public JButton getSearch()
     {
         return this.search;
@@ -72,6 +79,11 @@ public class ManagerView extends JFrame{
     public JButton getReportButton()
     {
         return this.generateReport;
+    }
+
+    public JButton getEditFeeButton()
+    {
+        return this.editFees;
     }
 
     public JFrame getFrame()

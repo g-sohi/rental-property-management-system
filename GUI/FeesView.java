@@ -125,6 +125,16 @@ public class FeesView extends JFrame {
         }
     }
 
+    public void destroyFrame()
+    {   
+        setVisible(false);
+    }
+
+    public void turnOn()
+    {
+        setVisible(true);
+    } 
+
     // **for testing purposes**
 
 }

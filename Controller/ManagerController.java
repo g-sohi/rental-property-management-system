@@ -14,11 +14,13 @@ public class ManagerController implements ActionListener {
     private Report reportR;
     private Database db;
     private SearchController search;
+    private PaymentController payment;
 
     public ManagerController(Database db){
 
         prop = new PropertyController();
         search = new SearchController(db);
+        payment = new PaymentController();
 
     }
 
@@ -45,6 +47,14 @@ public class ManagerController implements ActionListener {
         report= new SummaryReportView();
         report.turnOn();
         report.addCloseListener(this);
+    }
+    if(e.getSource().equals(managerv.getEditFeeButton()))
+    {
+        System.out.println("COMPLETE");
+        //managerv.destroyFrame();
+        payment.enableView();
+        payment.getView().turnOn();
+
     }
     if(this.report != null)
     {
@@ -161,6 +171,7 @@ public class ManagerController implements ActionListener {
         this.managerv.addSearchListener(this);
         this.managerv.addUpdateListener(this);
         this.managerv.addReportListener(this);
+        this.managerv.addFeesListener(this);
         }
 
    
