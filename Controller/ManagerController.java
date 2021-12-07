@@ -15,9 +15,14 @@ public class ManagerController implements ActionListener {
     private Database db;
     private SearchController search;
 
-    public ManagerController(){
+    public ManagerController(Database db){
 
+<<<<<<< HEAD
         search = new SearchController();
+        prop = new PropertyController();
+=======
+        search = new SearchController(db);
+>>>>>>> 11f8f57170a35c0398e6ea04fd331a8f13e4ae62
 
     }
 
@@ -26,9 +31,21 @@ public class ManagerController implements ActionListener {
     if(e.getSource().equals(managerv.getSearch()))
     {
         System.out.println("COMPLETE");
-        managerv.destroyFrame();
+<<<<<<< HEAD
+        //managerv.destroyFrame();
         search.enableView(this);
+=======
+        managerv.destroyFrame();
+        search.enableView();
+>>>>>>> 11f8f57170a35c0398e6ea04fd331a8f13e4ae62
         search.getView().turnOn();
+    }
+    if(e.getSource().equals(managerv.getUpdateButton()))
+    {
+        System.out.println("COMPLETE");
+        //managerv.destroyFrame();
+        prop.enableView();
+        prop.getEditView().turnOn();
     }
         
     }
@@ -136,6 +153,7 @@ public class ManagerController implements ActionListener {
         managerv = new ManagerView();
         this.managerv.addLogoutListener(logoutListener);
         this.managerv.addSearchListener(this);
+        this.managerv.addUpdateListener(this);
     }
 
    

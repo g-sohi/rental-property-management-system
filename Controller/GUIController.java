@@ -39,7 +39,7 @@ public void actionPerformed(ActionEvent e) {
     else if(e.getSource().equals(mainpage.getGuest()))
     {
         mainpage.setOff();
-        search = new SearchController();
+        search = new SearchController(this.db);
     }
 
     
