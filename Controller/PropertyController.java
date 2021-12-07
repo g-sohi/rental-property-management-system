@@ -33,7 +33,7 @@ public class PropertyController {
 
     }
 
-    public EditPropertyView getEdit() {
+    public EditPropertyView getEditView() {
         return edit;
     }
     
@@ -72,6 +72,14 @@ public class PropertyController {
     public void setDb(Database db) {
         this.db = db;
     }
+
+    public void enableView()
+    {
+        edit = new EditPropertyView();
+
+    }
+
+    
 
 
 }
