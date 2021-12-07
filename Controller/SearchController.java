@@ -190,8 +190,12 @@ public class SearchController implements ActionListener{
         this.db = db;
     }
 
+<<<<<<< HEAD
     public void enableView()
     {
+=======
+    public void enableView() {
+>>>>>>> 1defee2f51082ea8574b3d95abbc3448f2dd1943
         sView = new SearchView(); 
         this.sView.addSearchListener(this);
         this.sView.addResetListener(this);

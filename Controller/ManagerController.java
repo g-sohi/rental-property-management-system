@@ -29,7 +29,7 @@ public class ManagerController implements ActionListener {
         System.out.println("COMPLETE");
         //managerv.destroyFrame();
         search.enableView();
-        search.getView().turnOn();
+        search.getsView().turnOn();
     }
     if(e.getSource().equals(managerv.getUpdateButton()))
     {
