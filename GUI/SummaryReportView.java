@@ -2,6 +2,7 @@ package GUI;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
+import java.awt.event.*;
 
 public class SummaryReportView extends JFrame {
     
@@ -24,13 +25,28 @@ public class SummaryReportView extends JFrame {
 
         frame.add(close);
 
+        frame.setVisible(false);
+
+    }
+    public void addCloseListener(ActionListener listenForReport){
+        System.out.println("DONE");
+        this.close.addActionListener(listenForReport);
+    }
+
+    public JButton getCloseButton()
+    {
+        return close;
+    }
+
+    public void turnOn()
+    {
         frame.setVisible(true);
+    } 
 
+    public void destroyFrame()
+    {   
+        frame.setVisible(false);
     }
 
-    // **for testing purposes**
-    public static void main(String [] args) {
-        new SummaryReportView();
-    }
-
+    // **for testing purposes*
 }
