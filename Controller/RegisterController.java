@@ -5,8 +5,9 @@ import GUI.*;
 import Models.*;
 
 import java.util.*;
+import java.awt.event.*;
 
-public class RegisterController {
+public class RegisterController implements ActionListener{
     
     private CreatePropertyView createProp;
     private ArrayList<Property> listings;
@@ -51,5 +52,11 @@ public class RegisterController {
 
     public void setLandLord(LandlordController landLord) {
         this.landLord = landLord;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        
     }
 }

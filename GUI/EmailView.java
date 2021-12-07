@@ -3,7 +3,7 @@ package GUI;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class EmailView extends JFrame{
+public class EmailView extends JFrame {
     
     // variable declaration
     private JTextField subject, from, to, body;

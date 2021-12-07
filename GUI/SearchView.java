@@ -3,36 +3,51 @@ package GUI;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.ListModel;
+import javax.swing.ListSelectionModel;
+
+import Models.Property;
+
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import java.awt.*;
+import java.awt.event.*;
+import java.beans.beancontext.BeanContextServiceRevokedListener;
+import java.util.ArrayList;
+import java.util.Properties;
+import java.util.Vector;
 
-public class SearchView {
+public class SearchView extends JFrame{
     private String type[], quadrant[];
     private JComboBox typeBox, quadrantBox, furnished; //change UML; type to typeBox; quadrant to quadrantBox
     private JTextField noBeds, noBaths, streetNo, streetName, city, postalCode, landlordName;
     private JButton register;
     //added in private members
-    private JFrame searchFrame;
     private JButton search;
+    JList propertiesView;
 
     public SearchView()
-    {
-        searchFrame =  new JFrame("SearchView Page");
-        searchFrame.setSize(500, 500);
+    {   
+        setSize(500, 500);
 
         //Make a JPanel for the search boxes
         JPanel searchPanel1 = new JPanel();  
         searchPanel1.setBounds(50, 90, 400, 210);     //set the x, y coordinates for the panel as well as the width the height 
         searchPanel1.setBackground(Color.LIGHT_GRAY); //set the background color to light gray
+
         JPanel searchPanel2 = new JPanel();  
         searchPanel2.setBounds(45, 95, 400, 210);     //set the x, y coordinates for the panel as well as the width the height 
         searchPanel2.setBackground(Color.GRAY); //set the background color to light gray
 
+
         JPanel results = new JPanel();
         results.setBounds(20, 315, 460, 135);     //set the x, y coordinates for the panel as well as the width the height 
         results.setBackground(Color.LIGHT_GRAY);
+
+        //propertiesView = new JList();
 
         //Set up the GUI components of the Search Frame, including textfields, buttons, and panels
         JLabel noBedsLabel = new JLabel("Beds: ");
@@ -63,33 +78,36 @@ public class SearchView {
         reset.setForeground(Color.GRAY);
 
         //Add all the GUI components created above to the JFrame called searchFrame
-        searchFrame.add(noBedsLabel);
-        searchFrame.add(noBeds);
+        //add(propertiesView);
 
-        searchFrame.add(noBathsLabel);
-        searchFrame.add(noBaths);
+        add(noBedsLabel);
+        add(noBeds);
 
-        searchFrame.add(streetNoLabel);
-        searchFrame.add(streetNo);
+        add(noBathsLabel);
+        add(noBaths);
 
-        searchFrame.add(streetNameLabel);
-        searchFrame.add(streetName);
+        add(streetNoLabel);
+        add(streetNo);
 
-        searchFrame.add(cityLabel);
-        searchFrame.add(city);
+        add(streetNameLabel);
+        add(streetName);
 
-        searchFrame.add(postalCodeLabel);
-        searchFrame.add(postalCode);
+        add(cityLabel);
+        add(city);
 
-        searchFrame.add(landlordLabel);
-        searchFrame.add(landlordName);
+        add(postalCodeLabel);
+        add(postalCode);
 
-        searchFrame.add(search);
-        searchFrame.add(reset);
+        add(landlordLabel);
+        add(landlordName);
 
-        searchFrame.add(searchPanel1);
-        searchFrame.add(searchPanel2);
-        searchFrame.add(results);
+        add(search);
+        add(reset);
+
+        add(searchPanel1);
+        add(searchPanel2);
+        add(results);
+
         
         //set the coordinates of the GUI components in the JFrame
         streetNoLabel.setBounds(70, 100, 240, 30);
@@ -112,8 +130,8 @@ public class SearchView {
 
         search.setBackground(new Color(99, 182, 255));
 
-        searchFrame.setLayout(null);
-        searchFrame.setVisible(true);
+        setLayout(null);
+        setVisible(true);
     }
 
     //Getter functions to get the users inputted value from the text fields
@@ -158,8 +176,45 @@ public class SearchView {
     {
         return landlordName.getText();
     }
-    public static void main(String [] args)
+
+    // public JList getPropertiesList()
+    // {
+    //     return propertiesView;
+    // }
+
+    // public void setPropertiesList(Property databaseProperties[])
+    // {
+    //     JList<Property> propertiesView = new JList<Property>(databaseProperties);
+    //     propertiesView.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+    //     propertiesView.setLayoutOrientation(JList.VERTICAL);
+    //     propertiesView.setVisibleRowCount(-1);
+    //     add(propertiesView);
+    //     //JList<Property> propertiesView = new JList<Property>(databaseProperties.toArray(new Property[databaseProperties.size()]));
+    // }
+
+    public JButton getSearchButton()
     {
-        new SearchView();
+        return this.search;
     }
+
+    public void addSearchListener(ActionListener listenForSearch){
+        search.addActionListener(listenForSearch);
+        /*this.setVisible(false);
+        ManagerView vw = new ManagerView();
+        vw.setVisible(true);
+        actionPerformed();*/   
+    }
+
+    // @Override
+    // public void actionPerformed(ActionEvent e) {
+    //     // TODO Auto-generated method stub
+        
+    // // }
+    // public static void main(String [] args)
+    // {
+    //     Property test = new Property(17, "5 Street NW", "Home", 3, 2, true, null, "Active");
+    //     SearchView testView = new SearchView();
+    //     Property input[] = {test};
+    //     testView.setPropertiesList(input);
+    // }
 }
