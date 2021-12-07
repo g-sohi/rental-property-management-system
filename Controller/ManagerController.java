@@ -14,7 +14,6 @@ public class ManagerController {
     private Database db;
 
     public ManagerController(){
-
     }
 
     public void update()
@@ -109,5 +108,14 @@ public class ManagerController {
     public void setDb(Database db) {
         this.db = db;
     }
-  
+    
+    public ManagerView getView()
+    {
+        return managerv;
+    }
+
+    public void enableView()
+    {
+        managerv = new ManagerView();
+    }
 }

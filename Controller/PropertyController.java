@@ -8,7 +8,7 @@ import java.util.*;
 
 public class PropertyController {
     //Member variables for class PropertyController
-    private EditPropetyView edit;
+    private EditPropertyView edit;
     private ArrayList<Property> listing;
     private LandlordController landlord;
     private ManagerController manager;
@@ -33,11 +33,11 @@ public class PropertyController {
 
     }
 
-    public EditPropetyView getEdit() {
+    public EditPropertyView getEdit() {
         return edit;
     }
     
-    public void setEdit(EditPropetyView edit) {
+    public void setEdit(EditPropertyView edit) {
         this.edit = edit;
     }
     

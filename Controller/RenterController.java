@@ -5,8 +5,9 @@ import GUI.*;
 import Database.*;
 
 import java.util.*;
+import java.awt.event.*;
 
-public class RenterController {
+public class RenterController{
     private SelectPropertyView selectProp;
     private ArrayList<Property> listings;
     private Renter renter;
@@ -17,6 +18,8 @@ public class RenterController {
 
     public RenterController()
     {
+        RenterView = new RenterView();
+        //RenterView.addLogoutListener(this);
 
     }
 
@@ -107,5 +110,6 @@ public class RenterController {
     public void setRenterView(RenterView renterView) {
         this.RenterView = renterView;
     }
+
     
 }
