@@ -6,7 +6,7 @@ public class Property {
     private String type;
     private int numOfBedrooms;
     private int numOfBathrooms;
-    private boolean furnished;
+    private String furnished;
     private Fees propertyFees;
     private String propertyStatus;
 
@@ -14,7 +14,7 @@ public class Property {
     /**
      * Constructor for the Property class
      */
-    public Property(int id, String address,String type, int numOfBedrooms, int numOfBathrooms, boolean furnished, Fees propertyFees, String propertyStatus)
+    public Property(int id, String address,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus)
     {
         this.id =id;
         this.address = address;
@@ -76,12 +76,12 @@ public class Property {
         this.numOfBathrooms = numOfBathrooms;
     }
 
-    public boolean getFurnished()               //getter method for the furnished  
+    public String getFurnished()               //getter method for the furnished  
     {
         return this.furnished;
     }
 
-    public void setFurnished(boolean furnished) //setter method for the furnished
+    public void setFurnished(String furnished) //setter method for the furnished
     {
         this.furnished = furnished;
     }

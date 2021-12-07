@@ -4,7 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.awt.event.*;
 
-public class MainPageGUI extends JFrame implements ActionListener{
+public class MainPageGUI extends JFrame implements ActionListener {
     
     // variable declaration
     private JButton login, guest;

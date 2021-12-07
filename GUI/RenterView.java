@@ -3,7 +3,7 @@ package GUI;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class RenterView extends JFrame{
+public class RenterView extends JFrame {
 
     // variable declaration
     private static JButton search, select, sendEmail;
