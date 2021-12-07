@@ -46,9 +46,12 @@ public class ManagerController implements ActionListener {
         report.turnOn();
         report.addCloseListener(this);
     }
+    if(this.report != null)
+    {
     if(e.getSource().equals(report.getCloseButton()))
     {
         report.destroyFrame();
+    }
     }
         
     }
