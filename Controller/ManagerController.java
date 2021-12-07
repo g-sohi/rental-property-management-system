@@ -52,8 +52,8 @@ public class ManagerController implements ActionListener {
     {
         System.out.println("COMPLETE");
         //managerv.destroyFrame();
-        payment.enableView();
-        payment.getView().turnOn();
+        payment.enableView(true);
+        payment.getFees().turnOnForManager();
 
     }
     if(this.report != null)

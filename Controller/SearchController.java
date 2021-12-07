@@ -37,18 +37,14 @@ public class SearchController implements ActionListener{
         {
             sView.setBedsInput("");
             sView.setBathsInput("");
-            sView.setStreetNoInput("");
-            sView.setStreetNameInput("");
-            sView.setCityInput("");
-            sView.setPostalCodeInput("");
-            sView.setLandlordInput("");
+            sView.getQuadrants().setSelectedIndex(0);
+            sView.getTypes().setSelectedIndex(0);
+            sView.getGroup().clearSelection();
         }
         if(e.getSource().equals(sView.getSearchButton()))
-        {
+        { 
             db.initializeConnection();
-            System.out.println("StreeNo is: " + sView.getStreetNoInput() + " and StreetAddress is: " + sView.getStreetNameInput());
-            String complete_Address = sView.getStreetNoInput() + ", " + sView.getStreetNameInput();
-            Property requestedPropertyType = new Property(1, "240 ENGZ, University of Calgary", "Detached", sView.getBedsInput(), sView.getBathsInput(), "yes", null, "Available");
+            Property requestedPropertyType = new Property(1, null, sView.getTypeInput(), sView.getBedsInput(), sView.getBathsInput(), sView.getFurnishedInput(), null, "Available");
             ArrayList<Property> input = db.getSearchProperties(requestedPropertyType);
             String[] columnNames = { "Property ID: #", "Address", "Furnished", "Fees"};
             String results[][] = displayProperty(input, columnNames);

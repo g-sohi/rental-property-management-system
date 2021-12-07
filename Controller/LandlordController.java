@@ -42,6 +42,8 @@ public class LandlordController implements ActionListener{
         if(e.getSource().equals(landlordV.getPay()))
         {
             System.out.println("Pay");
+            pay.enableView(false);
+            pay.getFees().turnOnForLanLord();
         }
     }
 
