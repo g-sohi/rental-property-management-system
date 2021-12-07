@@ -18,7 +18,7 @@ public class FeesView extends JFrame {
         JFrame fLlrd = new JFrame("Fees Payment Page");
 
         fMgr.setSize(500, 500); fLlrd.setSize(500, 500);
-        fMgr.setDefaultCloseOperation(EXIT_ON_CLOSE); fLlrd.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        //fMgr.setDefaultCloseOperation(EXIT_ON_CLOSE); fLlrd.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         fMgr.setLayout(null); fLlrd.setLayout(null);// layout set to null
 

@@ -44,6 +44,10 @@ public class RenterView extends JFrame {
         logout.addActionListener(listenForLogout);
     }
 
+    public void addSearchListener(ActionListener listenForLogout){
+        search.addActionListener(listenForLogout);
+    }
+
     
 
     public void destroyFrame()
@@ -59,6 +63,10 @@ public class RenterView extends JFrame {
     public JButton getLogout()
     {
         return logout;
+    }
+    public JButton getSearch()
+    {
+        return search;
     }
 
     // **for testing purposes**

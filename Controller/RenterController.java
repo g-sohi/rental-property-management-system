@@ -15,15 +15,20 @@ public class RenterController implements ActionListener{
     private Email Email;
     private EmailView emailv;
     private RenterView RenterView;
+    private SearchController search;
 
-    public RenterController()
+    public RenterController(Database db)
     {
-
+        search = new SearchController(db);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if(e.getSource().equals(RenterView.getSearch()))
+        {
+            search.enableView();
+            search.getView().turnOn();
+        }
     }
 
     public void SelectProperty(ArrayList<Property> listings)
@@ -117,7 +122,8 @@ public class RenterController implements ActionListener{
     public void enableView(ActionListener logoutListener)
     {
         RenterView = new RenterView();
-        this.getRenterView().addLogoutListener(logoutListener);
+        RenterView.addLogoutListener(logoutListener);
+        RenterView.addSearchListener(this);
     }
 
     
