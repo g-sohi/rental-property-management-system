@@ -59,13 +59,4 @@ public class PaymentController {
     {
         return fees;
     }
-
-
-    public void enableView()
-    {
-        fees  = new FeesView(true);
-    }
-
-  
-
 }
