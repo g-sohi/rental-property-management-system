@@ -1,3 +1,4 @@
+
 package GUI;
 
 import javax.swing.JComboBox;
@@ -27,6 +28,7 @@ public class SearchView extends JFrame{
     private JButton register;
     //added in private members
     private JButton search;
+    private JButton reset;
     JList propertiesView;
 
     public SearchView()
@@ -35,13 +37,12 @@ public class SearchView extends JFrame{
 
         //Make a JPanel for the search boxes
         JPanel searchPanel1 = new JPanel();  
-        searchPanel1.setBounds(50, 90, 400, 210);     //set the x, y coordinates for the panel as well as the width the height 
+        searchPanel1.setBounds(50, 30, 400, 260);     //set the x, y coordinates for the panel as well as the width the height 
         searchPanel1.setBackground(Color.LIGHT_GRAY); //set the background color to light gray
 
         JPanel searchPanel2 = new JPanel();  
-        searchPanel2.setBounds(45, 95, 400, 210);     //set the x, y coordinates for the panel as well as the width the height 
+        searchPanel2.setBounds(45, 35, 400, 260);     //set the x, y coordinates for the panel as well as the width the height 
         searchPanel2.setBackground(Color.GRAY); //set the background color to light gray
-
 
         JPanel results = new JPanel();
         results.setBounds(20, 315, 460, 135);     //set the x, y coordinates for the panel as well as the width the height 
@@ -74,7 +75,7 @@ public class SearchView extends JFrame{
         search = new JButton("Search");
 
         //search.setForeground(Color.BLACK);
-        JButton reset = new JButton("Reset");
+        reset = new JButton("Reset");
         reset.setForeground(Color.GRAY);
 
         //Add all the GUI components created above to the JFrame called searchFrame
@@ -110,6 +111,12 @@ public class SearchView extends JFrame{
 
         
         //set the coordinates of the GUI components in the JFrame
+        noBedsLabel.setBounds(70, 40, 240, 30);
+        noBeds.setBounds(190, 40, 240, 30);
+
+        noBathsLabel.setBounds(70, 70, 240, 30);
+        noBaths.setBounds(190, 70, 240, 30);
+
         streetNoLabel.setBounds(70, 100, 240, 30);
         streetNo.setBounds(190, 100, 240, 30);
 
@@ -125,8 +132,8 @@ public class SearchView extends JFrame{
         landlordLabel.setBounds(70, 220, 240, 30);
         landlordName.setBounds(190, 220, 240, 30);
 
-        search.setBounds(370, 270, 80, 30);
-        reset.setBounds(300, 270, 80, 30);
+        search.setBounds(370, 260, 80, 30);
+        reset.setBounds(300, 260, 80, 30);
 
         search.setBackground(new Color(99, 182, 255));
 
@@ -136,15 +143,25 @@ public class SearchView extends JFrame{
 
     //Getter functions to get the users inputted value from the text fields
     //This method returns the number of beds the user inputted
-    public String getBedsInput()
+    public int getBedsInput()
     {
-        return noBeds.getText();
+        return Integer.valueOf(noBeds.getText());
+    }
+
+    public void setBedsInput(String value)
+    {
+        noBeds.setText(value);
     }
 
     //This method returns the number of baths the user inputted
-    public String getBathInput()
+    public int getBathsInput()
     {
-        return noBaths.getText();
+        return Integer.valueOf(noBaths.getText());
+    }
+
+    public void setBathsInput(String value)
+    {
+        noBaths.setText(value);
     }
 
     //This method returns the Street Number the user inputted
@@ -153,10 +170,20 @@ public class SearchView extends JFrame{
         return streetNo.getText();
     }
 
+    public void setStreetNoInput(String value)
+    {
+        streetNo.setText(value);
+    }
+
     //This method returns the Street Name the user inputted
     public String getStreetNameInput()
     {
         return streetName.getText();
+    }
+
+    public void setStreetNameInput(String value)
+    {
+        streetName.setText(value);
     }
 
     //This method returns the City the user inputted
@@ -165,10 +192,20 @@ public class SearchView extends JFrame{
         return city.getText();
     }
 
+    public void setCityInput(String value)
+    {
+        city.setText(value);
+    }
+
     //This method returns the PostalCode the user inputted
     public String getPostalCodeInput()
     {
         return postalCode.getText();
+    }
+
+    public void setPostalCodeInput(String value)
+    {
+        postalCode.setText(value);
     }
 
     //This methods returns the landlord name the user inputted
@@ -177,54 +214,36 @@ public class SearchView extends JFrame{
         return landlordName.getText();
     }
 
-    // public JList getPropertiesList()
-    // {
-    //     return propertiesView;
-    // }
-
-    // public void setPropertiesList(Property databaseProperties[])
-    // {
-    //     JList<Property> propertiesView = new JList<Property>(databaseProperties);
-    //     propertiesView.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-    //     propertiesView.setLayoutOrientation(JList.VERTICAL);
-    //     propertiesView.setVisibleRowCount(-1);
-    //     add(propertiesView);
-    //     //JList<Property> propertiesView = new JList<Property>(databaseProperties.toArray(new Property[databaseProperties.size()]));
-    // }
+    public void setLandlordInput(String value)
+    {
+        landlordName.setText(value);
+    }
 
     public JButton getSearchButton()
     {
-        return this.search;
+        return this.search; 
     }
 
-    public void destroyFrame()
-    {   
-        setVisible(false);
-    }
-
-    public void turnOn()
+    public JButton getResetButton()
     {
-        setVisible(true);
-    } 
+        return this.reset;
+    }
 
-    public void addSearchListener(ActionListener listenForSearch){
-        this.search.addActionListener(listenForSearch);
+    public void addResetListener(ActionListener listenForReset){
+        reset.addActionListener(listenForReset);
         /*this.setVisible(false);
         ManagerView vw = new ManagerView();
         vw.setVisible(true);
         actionPerformed();*/   
     }
 
-    // @Override
-    // public void actionPerformed(ActionEvent e) {
-    //     // TODO Auto-generated method stub
-        
-    // // }
-    // public static void main(String [] args)
-    // {
-    //     Property test = new Property(17, "5 Street NW", "Home", 3, 2, true, null, "Active");
-    //     SearchView testView = new SearchView();
-    //     Property input[] = {test};
-    //     testView.setPropertiesList(input);
-    // }
+    public void addSearchListener(ActionListener listenForSearch){
+        search.addActionListener(listenForSearch);
+        /*this.setVisible(false);
+        ManagerView vw = new ManagerView();
+        vw.setVisible(true);
+        actionPerformed();*/   
+    }
+
 }
+
