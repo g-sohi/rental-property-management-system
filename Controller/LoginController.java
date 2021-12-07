@@ -4,38 +4,41 @@ import Database.*;
 import Models.*;
 
 import java.awt.event.*;
+
+import javax.sound.midi.MidiSystem;
  
 //Login Controller
 public class LoginController implements ActionListener{
     private LoginView view;
     private Database db;
     private User user;
-    private RegisterView rView;
-    private ManagerView mgVw;
+    private RenterController rtCtrl;
+    private ManagerController mgCtrl;
 
     //Default constructor to create instances of member variables
     public LoginController(Database db){
-        this.view = new LoginView();
         this.db = db;
         this.user = new User();
-        this.rView = new RegisterView();
-
-        this.view.addLoginListener(this);
+        mgCtrl = new ManagerController();
+        
+        
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e)
     {
+        //addListener();
         this.verifyLogin();
 
         if(e.getSource().equals(view.getButton()))
         {
-            view.destroyFrame();
+            //view.destroyFrame();
             System.out.println("userType in user is: " + user.getUserType());
             if(user.getUserType().equals("Renter"))
             {
-                RenterView vw = new RenterView();
-                vw.setVisible(true);
+                rtCtrl = new RenterController();
+                rtCtrl.getRenterView().turnOn();
             }
             else if(user.getUserType().equals("Landlord"))
             {
@@ -44,15 +47,21 @@ public class LoginController implements ActionListener{
             }
             else if(user.getUserType().equals("Manager"))
             {
-                this.mgVw = new ManagerView();
-                this.mgVw.addLogoutListener(this);
-                mgVw.turnOn();
+                mgCtrl.enableView();
+                mgCtrl.getView().turnOn();
+                this.mgCtrl.getView().addLogoutListener(this);
             }
         }
-        if(e.getSource().equals(mgVw.getLogout()))
+        /*if(e.getSource().equals(rtCtrl.getRenterView().getLogout()))
         {
             System.out.println("hello");
-            mgVw.destroyFrame();
+            rtCtrl.getRenterView().destroyFrame();
+            view.turnOn();
+        }*/
+        if(e.getSource().equals(mgCtrl.getView().getLogout()))
+        {
+            System.out.println("done");
+            mgCtrl.getView().destroyFrame();
             view.turnOn();
         }
     }
@@ -104,15 +113,15 @@ public class LoginController implements ActionListener{
     public void setUser(User u){
         this.user = u;
     }
+    public void enableView()
+    {
+        view = new LoginView();
+        
+    }
 
+    public void addListener()
+    {
+        this.view.addLoginListener(this);
+    }
     //getter for register view
-    public RegisterView getRView(){
-        return this.rView;
-    }
-
-    //setter for register view
-    public void setRView(RegisterView rv){
-        this.rView = rv;
-
-    }
 }

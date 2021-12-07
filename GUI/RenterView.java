@@ -3,7 +3,7 @@ package GUI;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class RenterView extends JFrame implements ActionListener {
+public class RenterView extends JFrame {
 
     // variable declaration
     private static JButton search, select, sendEmail;
@@ -40,10 +40,25 @@ public class RenterView extends JFrame implements ActionListener {
 
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        
+    public void addLogoutListener(ActionListener listenForLogout){
+        logout.addActionListener(listenForLogout);
+    }
+
+    
+
+    public void destroyFrame()
+    {   
+        frame.setVisible(false);
+    }
+
+    public void turnOn()
+    {
+        frame.setVisible(true);
+    } 
+
+    public JButton getLogout()
+    {
+        return logout;
     }
 
     // **for testing purposes**

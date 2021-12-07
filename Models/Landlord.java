@@ -14,6 +14,9 @@ public class Landlord extends User{
         this.properties = new ArrayList<Property>(properties);
     }
 
+    public Landlord() {
+    }
+
     public Email getEmail()              //getter method for the email  
     {
         return email;
