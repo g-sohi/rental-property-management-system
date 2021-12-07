@@ -23,7 +23,6 @@ public class LoginController implements ActionListener{
         mgCtrl = new ManagerController(db);
         rtCtrl = new RenterController();
         ldCtrl = new LandlordController();
-        
     }
 
 
