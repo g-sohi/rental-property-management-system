@@ -18,8 +18,6 @@ public class RenterController{
 
     public RenterController()
     {
-        RenterView = new RenterView();
-        //RenterView.addLogoutListener(this);
 
     }
 
@@ -109,6 +107,11 @@ public class RenterController{
 
     public void setRenterView(RenterView renterView) {
         this.RenterView = renterView;
+    }
+
+    public void enableView()
+    {
+        RenterView = new RenterView();
     }
 
     
