@@ -20,7 +20,7 @@ public class LoginController implements ActionListener{
     public LoginController(Database db){
         this.db = db;
         this.user = new User();
-        mgCtrl = new ManagerController();
+        mgCtrl = new ManagerController(db);
         rtCtrl = new RenterController();
         ldCtrl = new LandlordController();
         
