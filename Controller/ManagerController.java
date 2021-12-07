@@ -14,6 +14,7 @@ public class ManagerController {
     private Database db;
 
     public ManagerController(){
+        
     }
 
     public void update()
