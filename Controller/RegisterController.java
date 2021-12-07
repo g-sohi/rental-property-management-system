@@ -7,6 +7,7 @@ import Models.*;
 import java.util.*;
 import java.awt.event.*;
 
+
 public class RegisterController implements ActionListener{
     
     private CreatePropertyView createProp;
@@ -18,12 +19,23 @@ public class RegisterController implements ActionListener{
         
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+        if(e.getSource().equals(createProp.getRegister())){
+            System.out.println("Register Property");
+            //this.add(p);
+        }
+    }
+
     public CreatePropertyView getCreateProp() {
         return createProp;
     }
 
     public void add(Property p) {
-
+        //db.initializeConnection();
+        //db.addProperty(id, address, type, numBedrooms, numBathrooms, furnished, fees, status, landID, startD, endD);
+        //db.close();
     }
 
     public void setCreateProp(CreatePropertyView createProp) {
@@ -54,9 +66,8 @@ public class RegisterController implements ActionListener{
         this.landLord = landLord;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        
+    public void enableView(){
+        createProp = new CreatePropertyView();
+        this.getCreateProp().addRegisterPropertyListener(this);
     }
 }
