@@ -145,4 +145,53 @@ public class CreatePropertyView extends JFrame{
     public void addRegisterPropertyListener(ActionListener listenForRegister){
         this.register.addActionListener(listenForRegister);
     }
+
+    public String getTypeInput()
+    {
+        return type.getSelectedItem().toString();
+    }
+
+    public String getQuadrantInput()
+    {
+        return quadrant.getSelectedItem().toString();
+    }
+
+    public int getNoOfBedInput()
+    {
+        return Integer.valueOf(noBeds.getSelectedItem().toString());
+    }
+    public int getNoOfBathInput()
+    {
+        return Integer.valueOf(noBaths.getSelectedItem().toString());
+    }
+    public int getStreetNoInput()
+    {
+        return Integer.valueOf(streetNo.getText());
+    }
+
+    public String getStreetNameInput()
+    {
+        return streetName.getText();
+    }
+
+    public String getCityInput()
+    {
+        return city.getText();
+    }
+
+    public String getPostalCodeInput()
+    {
+        return postalCode.getText();
+    }
+
+    public String getFurnishedInput()
+    {
+        return furnished.getSelectedItem().toString();
+    }
+
+    public String getLandlordInput()
+    {
+        return landlordName.getText();
+    }
+
 }
