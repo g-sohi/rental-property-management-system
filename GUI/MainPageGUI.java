@@ -95,4 +95,7 @@ public class MainPageGUI extends JFrame implements ActionListener {
         frame.setVisible(false);
     }
     // **for testing purposes**
+    public static void main(String [] args) throws IOException {
+        new MainPageGUI();
+    }
 }

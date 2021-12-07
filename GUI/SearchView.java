@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
@@ -13,6 +14,7 @@ import javax.swing.ListSelectionModel;
 import Models.Property;
 
 import javax.swing.BorderFactory;
+import javax.swing.*;
 import javax.swing.JButton;
 import java.awt.*;
 import java.awt.event.*;
@@ -22,14 +24,17 @@ import java.util.Properties;
 import java.util.Vector;
 
 public class SearchView extends JFrame{
-    private String type[], quadrant[];
     private JComboBox typeBox, quadrantBox, furnished; //change UML; type to typeBox; quadrant to quadrantBox
     private JTextField noBeds, noBaths, streetNo, streetName, city, postalCode, landlordName;
     private JButton register;
     //added in private members
     private JButton search;
     private JButton reset;
-    JList propertiesView;
+    private ButtonGroup group;
+    JRadioButton furnishedYesButton;
+    JRadioButton furnishedNoButton;
+    JComboBox type;
+    JComboBox quadrant;
 
     public SearchView()
     {   
@@ -57,20 +62,25 @@ public class SearchView extends JFrame{
         JLabel noBathsLabel = new JLabel("Baths: ");
         noBaths = new JTextField("Enter number of baths...");
 
-        JLabel streetNoLabel = new JLabel("Street Number: ");
-        streetNo = new JTextField("Enter Street Number...");
+        JLabel typeLabel = new JLabel("Type: ");
+        String type_dropdown[] = {"", "Detached", "Attached", "Townhouse", "Apartment"};
+        type = new JComboBox<>(type_dropdown);
 
-        JLabel streetNameLabel = new JLabel("Street Name: ");
-        streetName = new JTextField("Enter Street Name...");
+        JLabel furnishedLabel = new JLabel("Furnished: ");
+        // Initialization of object of "JRadioButton" class.
+        furnishedYesButton = new JRadioButton("Yes");
+        furnishedYesButton.setActionCommand("yes");
+        furnishedNoButton = new JRadioButton("No");
+        furnishedNoButton.setActionCommand("no");
 
-        JLabel cityLabel = new JLabel("City: ");
-        city = new JTextField("Enter City...");
+        group = new ButtonGroup();
+        group.add(furnishedYesButton);
+        group.add(furnishedNoButton);
 
-        JLabel postalCodeLabel = new JLabel("Postal Code: ");
-        postalCode = new JTextField("Enter Postal Code if applicable...");
 
-        JLabel landlordLabel = new JLabel("Landlord: ");
-        landlordName = new JTextField("Enter landlord name if applicable...");
+        JLabel quadrantLabel = new JLabel("Quadrant: ");
+        String quadrant_dropdown[] = {"", "NW", "NE", "SW", "SE"};
+        quadrant = new JComboBox<>(quadrant_dropdown);
 
         search = new JButton("Search");
 
@@ -87,20 +97,15 @@ public class SearchView extends JFrame{
         add(noBathsLabel);
         add(noBaths);
 
-        add(streetNoLabel);
-        add(streetNo);
+        add(furnishedLabel);
+        add(furnishedYesButton);
+        add(furnishedNoButton);
 
-        add(streetNameLabel);
-        add(streetName);
+        add(typeLabel);
+        add(type);
 
-        add(cityLabel);
-        add(city);
-
-        add(postalCodeLabel);
-        add(postalCode);
-
-        add(landlordLabel);
-        add(landlordName);
+        add(quadrantLabel);
+        add(quadrant);
 
         add(search);
         add(reset);
@@ -117,20 +122,15 @@ public class SearchView extends JFrame{
         noBathsLabel.setBounds(70, 70, 240, 30);
         noBaths.setBounds(190, 70, 240, 30);
 
-        streetNoLabel.setBounds(70, 100, 240, 30);
-        streetNo.setBounds(190, 100, 240, 30);
+        furnishedLabel.setBounds(70, 100, 240, 30);
+        furnishedYesButton.setBounds(190, 100, 240, 30);
+        furnishedNoButton.setBounds(190, 130, 240, 30);
 
-        streetNameLabel.setBounds(70, 130, 240, 30);
-        streetName.setBounds(190, 130, 240, 30);
+        quadrantLabel.setBounds(70, 160, 240, 30);
+        quadrant.setBounds(190, 160, 240, 30);
 
-        cityLabel.setBounds(70, 160, 240, 30);
-        city.setBounds(190, 160, 240, 30);
-
-        postalCodeLabel.setBounds(70, 190, 240, 30);
-        postalCode.setBounds(190, 190, 240, 30);
-
-        landlordLabel.setBounds(70, 220, 240, 30);
-        landlordName.setBounds(190, 220, 240, 30);
+        typeLabel.setBounds(70, 190, 240, 30);
+        type.setBounds(190, 190, 240, 30);
 
         search.setBounds(370, 260, 80, 30);
         reset.setBounds(300, 260, 80, 30);
@@ -140,7 +140,17 @@ public class SearchView extends JFrame{
         setLayout(null);
         setVisible(true);
     }
+    
+    public static void main(String [] args)
+    {
 
+        SearchView testView = new SearchView();
+        while(true)
+        {
+            testView.getFurnishedInput();
+        }
+        
+    }
     //Getter functions to get the users inputted value from the text fields
     //This method returns the number of beds the user inputted
     public void turnOn()
@@ -169,59 +179,40 @@ public class SearchView extends JFrame{
         noBaths.setText(value);
     }
 
-    //This method returns the Street Number the user inputted
-    public String getStreetNoInput()
+    public String getFurnishedInput()
     {
-        return streetNo.getText();
+        System.out.println("button choice selected is: " + group.getSelection().getActionCommand());
+        if(group.getSelection().getActionCommand() != null)
+        {
+            String buttonChoice = group.getSelection().getActionCommand();
+            return buttonChoice;
+        }
+        return null;
     }
 
-    public void setStreetNoInput(String value)
+    public JComboBox getQuadrants()
     {
-        streetNo.setText(value);
+        return this.quadrant;
     }
 
-    //This method returns the Street Name the user inputted
-    public String getStreetNameInput()
+    public JComboBox getTypes()
     {
-        return streetName.getText();
+        return this.type;
     }
 
-    public void setStreetNameInput(String value)
+    public String getQuadrantInput()
     {
-        streetName.setText(value);
+        return getQuadrants().getSelectedItem().toString();
     }
 
-    //This method returns the City the user inputted
-    public String getCityInput()
+    public String getTypeInput()
     {
-        return city.getText();
+        return getTypes().getSelectedItem().toString();
     }
 
-    public void setCityInput(String value)
+    public ButtonGroup getGroup()
     {
-        city.setText(value);
-    }
-
-    //This method returns the PostalCode the user inputted
-    public String getPostalCodeInput()
-    {
-        return postalCode.getText();
-    }
-
-    public void setPostalCodeInput(String value)
-    {
-        postalCode.setText(value);
-    }
-
-    //This methods returns the landlord name the user inputted
-    public String getLandlordInput()
-    {
-        return landlordName.getText();
-    }
-
-    public void setLandlordInput(String value)
-    {
-        landlordName.setText(value);
+        return this.group;
     }
 
     public JButton getSearchButton()
@@ -249,6 +240,7 @@ public class SearchView extends JFrame{
         vw.setVisible(true);
         actionPerformed();*/   
     }
+
 
     
 }
