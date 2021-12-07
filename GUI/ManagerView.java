@@ -54,6 +54,11 @@ public class ManagerView extends JFrame{
         System.out.println("DONE");
         this.updateProperty.addActionListener(listenForUpdate);
     }
+
+    public void addReportListener(ActionListener listenForReport){
+        System.out.println("DONE");
+        this.generateReport.addActionListener(listenForReport);
+    }
     public JButton getSearch()
     {
         return this.search;
@@ -62,6 +67,11 @@ public class ManagerView extends JFrame{
     public JButton getUpdateButton()
     {
         return this.updateProperty;
+    }
+
+    public JButton getReportButton()
+    {
+        return this.generateReport;
     }
 
     public JFrame getFrame()
