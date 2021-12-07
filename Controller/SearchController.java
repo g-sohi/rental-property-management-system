@@ -38,8 +38,8 @@ public class SearchController implements ActionListener{
         // TODO Auto-generated method stub
         if(e.getSource().equals(sView.getSearchButton()))
         {
-            Property prop1 = new Property(17, "5 Street NW", "Home", 3, 2, true, null, "Active");
-            Property prop2 = new Property(17, "100 Heights SW", "Condo", 2, 1, false, null, "Active");
+            Property prop1 = new Property(17, "5 Street NW", "Home", 3, 2, "Yes", null, "Active");
+            Property prop2 = new Property(17, "100 Heights SW", "Condo", 2, 1, "No", null, "Active");
             Property input[] = {prop1, prop2};
             String[] columnNames = { "Property ID: #", "Address", "Furnished", "Fees"};
             String results[][] = displayProperty(input, columnNames);
@@ -70,11 +70,6 @@ public class SearchController implements ActionListener{
 
         }
     }
-    public static void main(String [] args)
-    {
-        SearchController testView = new SearchController();
-        
-    }
 
     // public void makeSearch()
     // {
@@ -99,7 +94,7 @@ public class SearchController implements ActionListener{
                 }
                 else if(headers[j].equals("Furnished"))
                 {
-                    if(obj[i].getFurnished() == true)
+                    if(obj[i].getFurnished() == "Yes")
                     {
                         displayMessages[i][j] = "Yes" + "\n";
                     }
