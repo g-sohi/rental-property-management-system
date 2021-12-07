@@ -18,6 +18,7 @@ public class ManagerController implements ActionListener {
     public ManagerController(){
 
         search = new SearchController();
+        prop = new PropertyController();
 
     }
 
@@ -26,9 +27,16 @@ public class ManagerController implements ActionListener {
     if(e.getSource().equals(managerv.getSearch()))
     {
         System.out.println("COMPLETE");
-        managerv.destroyFrame();
+        //managerv.destroyFrame();
         search.enableView(this);
         search.getView().turnOn();
+    }
+    if(e.getSource().equals(managerv.getUpdateButton()))
+    {
+        System.out.println("COMPLETE");
+        //managerv.destroyFrame();
+        prop.enableView();
+        prop.getEditView().turnOn();
     }
         
     }
@@ -136,6 +144,7 @@ public class ManagerController implements ActionListener {
         managerv = new ManagerView();
         this.managerv.addLogoutListener(logoutListener);
         this.managerv.addSearchListener(this);
+        this.managerv.addUpdateListener(this);
     }
 
    

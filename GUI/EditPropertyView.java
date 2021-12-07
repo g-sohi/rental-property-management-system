@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.JComboBox;
 
-public class EditPropertyView extends JFrame implements ActionListener{
+public class EditPropertyView extends JFrame{
     private JComboBox status;
     private String stat_prop[] = {"Active", "Rented", "Cancelled", "Suspended"};
     private JButton save;
@@ -21,7 +21,6 @@ public class EditPropertyView extends JFrame implements ActionListener{
     {
         setTitle("Edit Property");
         setBounds(100, 50, 900, 600);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setSize(500, 500);
         ctr = getContentPane();
@@ -81,16 +80,15 @@ public class EditPropertyView extends JFrame implements ActionListener{
 
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        
+    public void destroyFrame()
+    {   
+        setVisible(false);
     }
 
-    public static void main(String[] args)
+    public void turnOn()
     {
-        new EditPropertyView();
-    }
+        setVisible(true);
+    } 
 
 
 }
