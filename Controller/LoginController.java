@@ -14,6 +14,7 @@ public class LoginController implements ActionListener{
     private User user;
     private RenterController rtCtrl;
     private ManagerController mgCtrl;
+    private LandlordController ldCtrl;
 
     //Default constructor to create instances of member variables
     public LoginController(Database db){
@@ -21,6 +22,7 @@ public class LoginController implements ActionListener{
         this.user = new User();
         mgCtrl = new ManagerController();
         rtCtrl = new RenterController();
+        ldCtrl = new LandlordController();
         
     }
 
@@ -43,8 +45,9 @@ public class LoginController implements ActionListener{
             }
             else if(user.getUserType().equals("Landlord"))
             {
-                LandlordView vw = new LandlordView();
-                vw.setVisible(true);
+                ldCtrl.enableView();
+                ldCtrl.getLandlordView().turnOn();
+                ldCtrl.getLandlordView().addLogoutListener(this);
             }
             else if(user.getUserType().equals("Manager"))
             {
@@ -53,19 +56,37 @@ public class LoginController implements ActionListener{
                 this.mgCtrl.getView().addLogoutListener(this);
             }
         }
+        if(rtCtrl.getRenterView() != null)
+        {
         if(e.getSource().equals(rtCtrl.getRenterView().getLogout()))
         {
             System.out.println("hello");
             rtCtrl.getRenterView().destroyFrame();
             view.turnOn();
         }
-        else if(e.getSource().equals(mgCtrl.getView().getLogout()))
+        }
+        
+        if(ldCtrl.getLandlordView() != null)
+        {
+        if(e.getSource().equals(ldCtrl.getLandlordView().getLogout()))
+        {
+            System.out.println("finish");
+            ldCtrl.getLandlordView().destroyFrame();
+            view.turnOn();
+        }
+        }
+
+        if(mgCtrl.getView() != null)
+        {
+        if(e.getSource().equals(mgCtrl.getView().getLogout()))
         {
             System.out.println("done");
             mgCtrl.getView().destroyFrame();
             view.turnOn();
         }
+        }
     }
+    
     
     //Verify user login credentials and return a boolean indicating its status
     public void verifyLogin(){

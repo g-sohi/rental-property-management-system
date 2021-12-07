@@ -14,7 +14,6 @@ public class LandlordController {
     //Default constructor to create instances of member variables
     LandlordController(){
         this.landlord = new Landlord();
-        this.landlordV = new LandlordView();
         this.pay = new PaymentController();
         this.prop = new PropertyController();
         this.regProp = new RegisterController();
@@ -36,7 +35,7 @@ public class LandlordController {
     }
 
     //getter for landlord view 
-    public LandlordView getLandlordV(){
+    public LandlordView getLandlordView(){
         return this.landlordV;
     }
     
@@ -73,5 +72,10 @@ public class LandlordController {
     //setter for register controller
     public void setRegProp(RegisterController regC){
         this.regProp = regC;
+    }
+
+    public void enableView()
+    {
+        landlordV = new LandlordView();
     }
 }
