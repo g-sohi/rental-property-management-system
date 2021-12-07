@@ -18,6 +18,7 @@ public GUIController(Database db)
     mainpage = new MainPageGUI();
     this.setDatabase(db);
     login = new LoginController(this.db);
+    search = new SearchController(this.db);
     this.mainpage.addLoginListener(this);
     this.mainpage.addGuestListener(this);
 }
@@ -39,7 +40,9 @@ public void actionPerformed(ActionEvent e) {
     else if(e.getSource().equals(mainpage.getGuest()))
     {
         mainpage.setOff();
-        search = new SearchController(this.db);
+        search.enableView();
+        search.getView().turnOn();
+        
     }
 
     
