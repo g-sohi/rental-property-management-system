@@ -45,6 +45,7 @@ public class SearchController implements ActionListener{
         }
         if(e.getSource().equals(sView.getSearchButton()))
         {
+            db.initializeConnection();
             System.out.println("StreeNo is: " + sView.getStreetNoInput() + " and StreetAddress is: " + sView.getStreetNameInput());
             String complete_Address = sView.getStreetNoInput() + ", " + sView.getStreetNameInput();
             Property requestedPropertyType = new Property(1, "240 ENGZ, University of Calgary", "Detached", -1, -1, "yes", null, "Available");
@@ -65,7 +66,7 @@ public class SearchController implements ActionListener{
             System.out.println("PRINTING INPUT: ");
             for(int i = 0; i < input.size(); i++)
             {
-                System.out.print(input.get(i));
+                System.out.print(input.get(i).getAddress());
             }
             //sView.setPropertiesList(input);
             // JList<String> test2 = new JList<String>(results);

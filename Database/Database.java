@@ -3,6 +3,7 @@ package Database;
 import Controller.*;
 import Models.*;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.*;
 
@@ -18,7 +19,7 @@ public class Database {
 
         public Database() {
             String username = "root";
-            String password = "";
+            String password = "singh123";
     
             try {
 
@@ -214,7 +215,7 @@ public class Database {
             }
         }
 
-        public static void main(String[] args) {
+        public static void main(String[] args) throws IOException {
             Database db = new Database();
             ArrayList<Property> props = new ArrayList<Property>(db.getSearchProperties(new Property(0,"null", "Detached", 4, -1, "null", new Fees(50.00, 0, "null", "null"), "Available")));
             GUIController ctrl = new GUIController(db);

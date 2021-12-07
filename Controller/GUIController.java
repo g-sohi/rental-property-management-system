@@ -5,6 +5,7 @@ import Models.*;
 
 
 import java.awt.event.*;
+import java.io.IOException;
 
 public class GUIController implements ActionListener {
 
@@ -13,7 +14,7 @@ private LoginController login;
 private SearchController search;
 private Database db;
 
-public GUIController(Database db)
+public GUIController(Database db) throws IOException
 {
     mainpage = new MainPageGUI();
     this.setDatabase(db);
@@ -41,7 +42,7 @@ public void actionPerformed(ActionEvent e) {
     {
         mainpage.setOff();
         search.enableView();
-        search.getsView().turnOn();
+        search.getView().turnOn();
         
     }
 
