@@ -16,8 +16,8 @@ public class PropertyController implements ActionListener {
     private ManagerController manager;
     private Database db;
 
-    public PropertyController(){
-
+    public PropertyController(Database db){
+        this.setDb(db);
     }
 
     public void editProperty(Property p)
@@ -88,11 +88,18 @@ public class PropertyController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(this.edit!= null)
         {
-        if(e.getSource().equals(edit.getSaveButton()) || e.getSource().equals(edit.getRemoveButton()))
-        {
-            edit.destroyFrame();
-        }
-        
+            db.initializeConnection();
+            if(e.getSource().equals(edit.getSaveButton()))
+            {
+                db.updateProperty(10, "Cancelled");
+                System.out.println("New Information Saved");
+                edit.destroyFrame();
+            }
+            else if(e.getSource().equals(edit.getRemoveButton())){
+                db.removeProperty(10);
+                System.out.println("Property Removed");
+                edit.destroyFrame();
+            }
           }
         }
 

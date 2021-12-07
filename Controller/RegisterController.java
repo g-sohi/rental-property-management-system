@@ -15,8 +15,8 @@ public class RegisterController implements ActionListener{
     private Database db;
     private LandlordController landLord;
 
-    public RegisterController() {
-        
+    public RegisterController(Database db) {
+        this.setDb(db);
     }
 
     @Override
@@ -24,7 +24,8 @@ public class RegisterController implements ActionListener{
     {
         if(e.getSource().equals(createProp.getRegister())){
             System.out.println("Register Property");
-            //this.add(p);
+            Property p = new Property(10, "Test Address", "Detached", 5, 3, "yes", null, "Suspended");
+            this.add(p);
         }
     }
 
@@ -33,9 +34,9 @@ public class RegisterController implements ActionListener{
     }
 
     public void add(Property p) {
-        //db.initializeConnection();
-        //db.addProperty(id, address, type, numBedrooms, numBathrooms, furnished, fees, status, landID, startD, endD);
-        //db.close();
+        db.initializeConnection();
+        db.addProperty(p.getID(), p.getAddress(), p.getType(), p.getNumOfBedrooms(), p.getNumOfBathrooms(), p.getFurnished(), 100.50, p.getPropertyStatus(), 10, "null", "null");
+        db.close();
     }
 
     public void setCreateProp(CreatePropertyView createProp) {

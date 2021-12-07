@@ -18,7 +18,7 @@ public class ManagerController implements ActionListener {
 
     public ManagerController(Database db){
 
-        prop = new PropertyController();
+        prop = new PropertyController(db);
         search = new SearchController(db);
         payment = new PaymentController();
 
@@ -57,6 +57,11 @@ public class ManagerController implements ActionListener {
 
     }
     if(e.getSource().equals(managerv.getEditFeeButton()))
+    {
+        pay.enableView(true);
+        pay.getFees().turnOnForManager();
+    }
+
     if(this.report != null)
     {
     if(e.getSource().equals(report.getCloseButton()))

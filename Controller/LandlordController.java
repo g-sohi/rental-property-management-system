@@ -15,11 +15,11 @@ public class LandlordController implements ActionListener{
     private RegisterController regProp;
 
     //Default constructor to create instances of member variables
-    LandlordController(){
+    LandlordController(Database db){
         this.landlord = new Landlord();
         this.pay = new PaymentController();
-        this.prop = new PropertyController();
-        this.regProp = new RegisterController();
+        this.prop = new PropertyController(db);
+        this.regProp = new RegisterController(db);
     }
 
     @Override
