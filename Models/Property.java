@@ -48,6 +48,16 @@ public class Property {
         this.address = address;
     }
 
+    public String getQuadrant()                     //getter method for the type  
+    {
+        return this.quadrant;
+    }
+
+    public void getQuadrant(String quadrant)                     //getter method for the type  
+    {
+        this.quadrant = quadrant;
+    }
+
     public String getType()                     //getter method for the type  
     {
         return this.type;

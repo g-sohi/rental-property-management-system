@@ -155,11 +155,11 @@ public class Database {
             try {
                 String unformattedQuery = "SELECT * FROM property WHERE ";
                 if(!p.getType().equals("null")){
-                    unformattedQuery += "Type = ?" + " AND ";
-                    inputs.add(p.getType());
+                    unformattedQuery += "quadrant = ?" + " AND ";
+                    inputs.add(p.getQuadarnt());
                 }
                 else{
-                    unformattedQuery += "Type = Type" + " AND ";
+                    unformattedQuery += "quadrant = quadrant" + " AND ";
                 }
 
                 if(!p.getType().equals("null")){
