@@ -6,7 +6,7 @@ import java.awt.event.*;
 public class RenterView extends JFrame {
 
     // variable declaration
-    private static JButton search, select, sendEmail;
+    private static JButton search, select, subscribe;
     private JFrame frame;
     private JButton logout;
 
@@ -21,19 +21,19 @@ public class RenterView extends JFrame {
         // creation of JButtons
         search = new JButton("Search");
         select = new JButton("Select");
-        sendEmail = new JButton("Send Email");
+        subscribe = new JButton("Subsribe");
         logout = new JButton("Logout");
 
         // sets the position and size of JButtons within JFrame
         search.setBounds(100, 100, 100, 40);
         select.setBounds(300, 100, 100, 40);
-        sendEmail.setBounds(200, 200, 100, 40);
+        subscribe.setBounds(200, 200, 100, 40);
         logout.setBounds(200, 400, 100, 40);
 
         // adds JButtons to JFrame
         frame.add(search);
         frame.add(select);
-        frame.add(sendEmail);
+        frame.add(subscribe);
         frame.add(logout);
 
         frame.setVisible(true); // JFrame is set to appear
@@ -46,6 +46,10 @@ public class RenterView extends JFrame {
 
     public void addSearchListener(ActionListener listenForLogout){
         search.addActionListener(listenForLogout);
+    }
+
+    public void addSelectListener(ActionListener listenForLogout){
+        select.addActionListener(listenForLogout);
     }
 
     
@@ -67,6 +71,11 @@ public class RenterView extends JFrame {
     public JButton getSearch()
     {
         return search;
+    }
+
+    public JButton getSelect()
+    {
+        return select;
     }
 
     // **for testing purposes**

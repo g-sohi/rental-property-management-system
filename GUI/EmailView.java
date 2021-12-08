@@ -9,13 +9,14 @@ public class EmailView extends JFrame {
     private JTextField subject, from, to;
     private JTextArea body; // change UML; JTextField to JTextArea
     private JButton send;
+    private JFrame frame;
 
     public EmailView() {
 
         // creation of JFrame of certain size
-        JFrame frame = new JFrame("Email Page");
+        frame = new JFrame("Email Page");
         frame.setSize(500, 500);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         frame.setLayout(null); // layout set to null
 
@@ -46,7 +47,7 @@ public class EmailView extends JFrame {
         frame.add(subject); frame.add(from); frame.add(to); frame.add(body);
         frame.add(send);
 
-        frame.setVisible(true); // JFrame is set to appear
+        frame.setVisible(false); // JFrame is set to appear
 
     }
 
@@ -66,6 +67,15 @@ public class EmailView extends JFrame {
         return body.getText();
     }
 
+    public void turnOn()
+    {
+        frame.setVisible(true);
+    }
+
+    public void destroyFrame()
+    {
+        frame.setVisible(false);
+    }
     // **for testing purposes**
 
     // public static void main(String [] args) {
