@@ -14,11 +14,10 @@ public class RegisterController implements ActionListener{
     private ArrayList<Property> listings;
     private Database db;
     private LandlordController landLord;
-    private static int propID;
+    private static int propID = 5;
 
     public RegisterController(Database db) {
         this.setDb(db);
-        this.propID = 3;
     }
 
     @Override

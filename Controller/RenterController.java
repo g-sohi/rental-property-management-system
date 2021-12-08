@@ -29,6 +29,27 @@ public class RenterController implements ActionListener{
             search.enableView();
             search.getView().turnOn();
         }
+        if(e.getSource().equals(RenterView.getSelect()))
+        {
+            selectProp = new SelectPropertyView();
+            selectProp.turnOn();
+            selectProp.addEmailListener(this);
+            selectProp.addBackListener(this);
+        }
+        if(selectProp != null)
+        {
+        if(e.getSource().equals(selectProp.getEmailButton()))
+        {
+            selectProp.destroyFrame();
+            emailv = new EmailView();
+            emailv.turnOn();
+        }
+        if(e.getSource().equals(selectProp.getCloseButton()))
+        {
+            selectProp.destroyFrame();
+            RenterView.turnOn();
+        }
+    }
     }
 
     public void SelectProperty(ArrayList<Property> listings)
@@ -124,6 +145,8 @@ public class RenterController implements ActionListener{
         RenterView = new RenterView();
         RenterView.addLogoutListener(logoutListener);
         RenterView.addSearchListener(this);
+        RenterView.addSelectListener(this);
+
     }
 
     
