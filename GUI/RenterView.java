@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.event.*;
 
 public class RenterView extends JFrame {
-
     // variable declaration
     private static JButton search, select, subscribe;
     private JFrame frame;
@@ -15,14 +14,13 @@ public class RenterView extends JFrame {
         frame = new JFrame("Renter Page");
         frame.setSize(500, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
         frame.setLayout(null); // layout set to null
 
         // creation of JButtons
         search = new JButton("Search");
         select = new JButton("Select");
-        subscribe = new JButton("Subsribe");
-        logout = new JButton("Logout");
+        subscribe = new JButton("Subscribe");
+        logout = new JButton("Log Out");
 
         // sets the position and size of JButtons within JFrame
         search.setBounds(100, 100, 100, 40);
@@ -40,25 +38,34 @@ public class RenterView extends JFrame {
 
     }
 
-    public void addLogoutListener(ActionListener listenForLogout){
+    // checks if "Log Out" button is pressed
+    public void addLogoutListener(ActionListener listenForLogout) {
         logout.addActionListener(listenForLogout);
     }
 
-    public void addSearchListener(ActionListener listenForLogout){
-        search.addActionListener(listenForLogout);
+    // checks if "Search" button is pressed
+    public void addSearchListener(ActionListener listenForSearch) {
+        search.addActionListener(listenForSearch);
     }
 
-    public void addSelectListener(ActionListener listenForLogout){
-        select.addActionListener(listenForLogout);
+    // checks if "Select" button is pressed
+    public void addSelectListener(ActionListener listenForSelect) {
+        select.addActionListener(listenForSelect);
+    }
+
+    // checks if "Subscribe" button is pressed
+    public void addSubscribeListener(ActionListener listenForSubscribe) {
+        subscribe.addActionListener(listenForSubscribe);
     }
 
     
-
+    // causes frame to not be visible
     public void destroyFrame()
     {   
         frame.setVisible(false);
     }
 
+    // sets frame to appear
     public void turnOn()
     {
         frame.setVisible(true);
@@ -80,9 +87,9 @@ public class RenterView extends JFrame {
 
     // **for testing purposes**
 
-    /* 
+     
     public static void main(String [] args) {
         new RenterView();
     }
-    */
+    
 }
