@@ -44,7 +44,6 @@ public class LoginView extends JFrame {
     }
 
 
-
      
     public void addLoginListener(ActionListener listenForLogin){
         submit.addActionListener(listenForLogin);
