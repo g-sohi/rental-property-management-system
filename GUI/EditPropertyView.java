@@ -109,6 +109,23 @@ public class EditPropertyView extends JFrame{
         this.remove.addActionListener(listenForRemove);
     }
 
+    public String getStatusInput()
+    {
+        return status.getSelectedItem().toString();
+    }
+
+    public int getPropetyIdInput()
+    {
+        return Integer.valueOf(idProperty.getText());
+    }
+
+    public int getPropetyId2Input()
+    {
+        return Integer.valueOf(idProperty2.getText());
+    }
+
+
+
 }
 
 //*****IMPORTANT: Correct Class Name from EditPropetyView to EditPropertyView*****
