@@ -31,6 +31,9 @@ public class LoginController implements ActionListener{
     {
         //addListener();
         this.verifyLogin();
+        db.initializeConnection();
+        this.user = new User(db.getUserInformation(this.user.getUsername()));
+        System.out.println("User Name: " + this.user.getFName());
 
         if(e.getSource().equals(view.getButton()))
         {
