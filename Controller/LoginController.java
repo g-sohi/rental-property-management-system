@@ -41,16 +41,25 @@ public class LoginController implements ActionListener{
             System.out.println("userType in user is: " + user.getUserType());
             if(user.getUserType().equals("Renter"))
             {
+                Renter tempRent = new Renter(this.user);
+                rtCtrl.setRenter(tempRent);
+                System.out.println("Renter Name: " + rtCtrl.getRenter().getFName() + "\nID: " + rtCtrl.getRenter().getId() + "\n");
                 rtCtrl.enableView(this);
                 rtCtrl.getRenterView().turnOn();
             }
             else if(user.getUserType().equals("Landlord"))
             {
+                Landlord tempLand = new Landlord(this.user);
+                ldCtrl.setLandlord(tempLand);
+                System.out.println("Landlord Name: " + ldCtrl.getLandlord().getFName() + "\nID: " + ldCtrl.getLandlord().getId() + "\n");
                 ldCtrl.enableView(this);
                 ldCtrl.getLandlordView().turnOn();
             }
             else if(user.getUserType().equals("Manager"))
             {
+                Manager tempMngr = new Manager(this.user);
+                mgCtrl.setManager(tempMngr);
+                System.out.println("Manager Name: " + mgCtrl.getManager().getFName() + "\nID: " + mgCtrl.getManager().getId() + "\n");
                 mgCtrl.enableView(this);
                 mgCtrl.getView().turnOn();
             }

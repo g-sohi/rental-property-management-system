@@ -12,6 +12,11 @@ public class Manager extends User{
 
     }
 
+    public Manager(User u){
+        super(u);
+        this.managerCode = this.getId();
+    }
+
     public int getManagerCode()                 //getter method for the ManagerCode
     {
         return this.managerCode;

@@ -20,6 +20,15 @@ public class Renter extends User{
         this.email = email;
     }
 
+    public Renter(User u){
+        super(u);
+        favouriteProperties = new ArrayList<Property>();
+        this.isRegistered = true;
+        this.preferredProperty = null;
+        this.email = null;
+        
+    }
+
     public boolean getIsRegistered()            //getter method for the isRegistered  
     {
         return this.isRegistered;

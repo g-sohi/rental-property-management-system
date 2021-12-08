@@ -14,6 +14,12 @@ public class Landlord extends User{
         this.properties = new ArrayList<Property>(properties);
     }
 
+    public Landlord(User u){
+        super(u);
+        this.email = null;
+        this.properties = null;
+    }
+
     public Landlord() {
     }
 
