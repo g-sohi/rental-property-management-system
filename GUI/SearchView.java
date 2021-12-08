@@ -27,7 +27,7 @@ public class SearchView extends JFrame{
     private JComboBox typeBox, quadrantBox, furnished; //change UML; type to typeBox; quadrant to quadrantBox
     private JTextField noBeds, noBaths, streetNo, streetName, city, postalCode, landlordName;
     private JButton register;
-    //added in private members
+    // added in private members
     private JButton search;
     private JButton reset;
     private ButtonGroup group;
@@ -36,37 +36,47 @@ public class SearchView extends JFrame{
     JComboBox type;
     JComboBox quadrant;
 
+    // added here for external use from constructor
+    private JLabel noBedsLabel, noBathsLabel, typeLabel, furnishedLabel, quadrantLabel;
+    private JPanel searchPanel1, searchPanel2, results;
+
+    // mgrF variable declaration
+    private JFrame mgrF, llrdF;
+    private JLabel propStatLabel, resultsLabel;
+    private String propStats[] = {"Active", "Rented", "Cancelled", "Suspended"};
+    private JComboBox propStat;
+
     public SearchView()
     {   
         setSize(500, 500);
 
         //Make a JPanel for the search boxes
-        JPanel searchPanel1 = new JPanel();  
+        searchPanel1 = new JPanel();  
         searchPanel1.setBounds(50, 30, 400, 260);     //set the x, y coordinates for the panel as well as the width the height 
         searchPanel1.setBackground(Color.LIGHT_GRAY); //set the background color to light gray
 
-        JPanel searchPanel2 = new JPanel();  
+        searchPanel2 = new JPanel();  
         searchPanel2.setBounds(45, 35, 400, 260);     //set the x, y coordinates for the panel as well as the width the height 
         searchPanel2.setBackground(Color.GRAY); //set the background color to light gray
 
-        JPanel results = new JPanel();
+        results = new JPanel();
         results.setBounds(20, 315, 460, 135);     //set the x, y coordinates for the panel as well as the width the height 
         results.setBackground(Color.LIGHT_GRAY);
 
         //propertiesView = new JList();
 
         //Set up the GUI components of the Search Frame, including textfields, buttons, and panels
-        JLabel noBedsLabel = new JLabel("Beds: ");
+        noBedsLabel = new JLabel("Beds: ");
         noBeds = new JTextField("Enter number of beds...");
 
-        JLabel noBathsLabel = new JLabel("Baths: ");
+        noBathsLabel = new JLabel("Baths: ");
         noBaths = new JTextField("Enter number of baths...");
 
-        JLabel typeLabel = new JLabel("Type: ");
+        typeLabel = new JLabel("Type: ");
         String type_dropdown[] = {"", "Detached", "Attached", "Townhouse", "Apartment"};
         type = new JComboBox<>(type_dropdown);
 
-        JLabel furnishedLabel = new JLabel("Furnished: ");
+        furnishedLabel = new JLabel("Furnished: ");
         // Initialization of object of "JRadioButton" class.
         furnishedYesButton = new JRadioButton("Yes");
         furnishedYesButton.setActionCommand("yes");
@@ -78,7 +88,7 @@ public class SearchView extends JFrame{
         group.add(furnishedNoButton);
 
 
-        JLabel quadrantLabel = new JLabel("Quadrant: ");
+        quadrantLabel = new JLabel("Quadrant: ");
         String quadrant_dropdown[] = {"", "NW", "NE", "SW", "SE"};
         quadrant = new JComboBox<>(quadrant_dropdown);
 
@@ -141,10 +151,85 @@ public class SearchView extends JFrame{
         setVisible(true);
     }
     
+    // function for showing the search view for managers
+    public void mgr() {
+        // mgr() before using a new JFrame:
+        // remove(noBedsLabel); remove(noBeds);
+        // remove(noBathsLabel); remove(noBaths);
+        // remove(furnishedLabel); remove(furnishedYesButton); remove(furnishedNoButton);
+        // remove(typeLabel); remove(type);
+        // remove(quadrantLabel); remove(quadrant);
+        // remove(searchPanel1); remove(searchPanel2); // panels were blocking components being added.  did not know how to bring it backwards.
+        
+        setVisible(false); // existing frame no longer visible
+
+        // JFrame creation of certain size for Manager User Type
+        mgrF = new JFrame("Manager Search Page"); 
+        mgrF.setSize(500,500);
+        mgrF.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        mgrF.setLayout(null);
+
+        // JLabel creation for property status input
+        propStatLabel = new JLabel("Property Status:");
+        propStatLabel.setBounds(50, 40, 150, 40);
+        mgrF.add(propStatLabel);
+
+        // JComboBox creation for property status input
+        propStat = new JComboBox(propStats);
+        propStat.setBounds(175, 50, 275, 20);
+        mgrF.add(propStat);
+
+        // resize of search button and addition to Manager frame
+        search.setBounds(350, 75, 100, 20);
+        mgrF.add(search);
+
+        // JLabel creation for search results
+        resultsLabel = new JLabel("Search Results:");
+        resultsLabel.setBounds(50, 115, 100, 40);
+        mgrF.add(resultsLabel);
+
+        // resize of results panel and addition to Manager frame
+        results.setBounds(50, 150, 400, 275);
+        mgrF.add(results);
+
+        mgrF.setVisible(true); // Manager frame set to appear
+
+    }
+
+    // function for showing search view for landlords
+    public void llrd() {
+    
+        setVisible(false); // existing frame no longer visible
+
+        // JFrame creation of certain size for Landlord User Type
+        llrdF = new JFrame("Landlord Search Page"); 
+        llrdF.setSize(500,500);
+        llrdF.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        llrdF.setLayout(null);
+
+        // resize of search button and addition to Landlord frame
+        search.setBounds(165, 50, 170, 40);
+        search.setText("Get Owned Properties");
+        llrdF.add(search);
+
+        // JLabel creation for search results
+        resultsLabel = new JLabel("Search Results:");
+        resultsLabel.setBounds(50, 115, 100, 40);
+        llrdF.add(resultsLabel);
+
+        // resize of results panel and addition to Landlord frame
+        results.setBounds(50, 150, 400, 275);
+        llrdF.add(results);
+
+        llrdF.setVisible(true); // Landlord frame set to appear
+
+    }
+
     public static void main(String [] args)
     {
 
         SearchView testView = new SearchView();
+        testView.llrd();
         while(true)
         {
             testView.getFurnishedInput();
@@ -242,6 +327,10 @@ public class SearchView extends JFrame{
     public JButton getResetButton()
     {
         return this.reset;
+    }
+
+    public String getPropStat() {
+        return propStat.getSelectedItem().toString();
     }
 
     public void addResetListener(ActionListener listenForReset){
