@@ -189,7 +189,7 @@ public class SearchView extends JFrame{
 
     public String getFurnishedInput()
     {
-        System.out.println("button choice selected is: " + group.getSelection().getActionCommand());
+        //System.out.println("button choice selected is: " + group.getSelection().getActionCommand());
         if(group.getSelection() != null)
         {
         if(group.getSelection().getActionCommand() != null)

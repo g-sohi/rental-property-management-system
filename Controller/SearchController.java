@@ -41,6 +41,8 @@ public class SearchController implements ActionListener{
             sView.getTypes().setSelectedIndex(0);
             sView.getGroup().clearSelection();
         }
+        if(sView.getSearchButton() != null)
+        {
         if(e.getSource().equals(sView.getSearchButton()))
         { 
             db.initializeConnection();
@@ -90,6 +92,7 @@ public class SearchController implements ActionListener{
             sView.add(scrollPane);
 
         }
+    }
     }
     // public static void main(String [] args)
     // {

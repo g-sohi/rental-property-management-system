@@ -154,7 +154,7 @@ public class Database {
 
             try {
                 String unformattedQuery = "SELECT * FROM property WHERE ";
-                if(!p.getType().equals("null")){
+                if(p.getQuadarnt() != null){
                     unformattedQuery += "quadrant = ?" + " AND ";
                     inputs.add(p.getQuadarnt());
                 }
@@ -162,7 +162,7 @@ public class Database {
                     unformattedQuery += "quadrant = quadrant" + " AND ";
                 }
 
-                if(!p.getType().equals("null")){
+                if(p.getType() != null){
                     unformattedQuery += "Type = ?" + " AND ";
                     inputs.add(p.getType());
                 }
@@ -185,11 +185,13 @@ public class Database {
                 else{
                     unformattedQuery += "NoOfBathrooms = NoOfBathrooms" + " AND ";
                 }
-
+                if(p.getFurnished() != null)
+                {
                 if(p.getFurnished().equalsIgnoreCase("yes")){
                     unformattedQuery += "Furnished = ?" + " AND ";
                     inputs.add(p.getFurnished());
                 }
+            }
                 else{
                     unformattedQuery += "Furnished = Furnished" + " AND ";
                 }
