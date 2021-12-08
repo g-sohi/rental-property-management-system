@@ -49,6 +49,10 @@ public class SubscribeView extends JFrame {
 
     }
 
+    public String getSubStatus() {
+        return subscribe.getSelectedItem().toString();
+    }
+
     // **for testing purposes**
     // public static void main(String [] args) {
     //     new SubscribeView();

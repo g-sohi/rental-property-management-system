@@ -10,6 +10,8 @@ public class SelectPropertyView extends JFrame {
     private int streetNo, noBeds, noBaths; //change UML; noOfBedroon to noBeds; noOfBathroom to noBaths
     private boolean furnished; //change UML; Furnished to furnished
 
+    private JTextField pID;
+
     public SelectPropertyView() {
 
         // creation of JFrame of certain size
@@ -33,7 +35,7 @@ public class SelectPropertyView extends JFrame {
         back.setBounds(275, 410, 150, 40);
 
         // creation of JTextField and JTextArea of certain size and position
-        JTextField pID = new JTextField();
+        pID = new JTextField();
         pID.setBounds(140, 35, 310, 20);
         JTextArea pDetails = new JTextArea();
         pDetails.setBounds(50, 160, 400, 240);
@@ -50,6 +52,10 @@ public class SelectPropertyView extends JFrame {
 
         frame.setVisible(true); // JFrame is set to appear
 
+    }
+
+    public String getPropertyID() {
+        return pID.getText();
     }
 
     // **for testing purposes**
