@@ -27,7 +27,7 @@ public class PaymentController {
     public ManagerController getManager() {
         return manager;
     }
-    public FeesView getFees() {
+    public FeesView getFeesView() {
         return fees;
     }
     public void setFees(FeesView fees) {

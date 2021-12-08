@@ -14,13 +14,12 @@ public class ManagerController implements ActionListener {
     private Report reportR;
     private Database db;
     private SearchController search;
-    private PaymentController payment;
 
     public ManagerController(Database db){
 
         prop = new PropertyController(db);
         search = new SearchController(db);
-        payment = new PaymentController();
+        pay = new PaymentController();
 
     }
 
@@ -59,7 +58,7 @@ public class ManagerController implements ActionListener {
     if(e.getSource().equals(managerv.getEditFeeButton()))
     {
         pay.enableView(true);
-        pay.getFees().turnOnForManager();
+        pay.getFeesView().turnOnForManager();
     }
 
     if(this.report != null)

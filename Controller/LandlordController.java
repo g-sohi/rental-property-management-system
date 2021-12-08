@@ -47,7 +47,7 @@ public class LandlordController implements ActionListener{
         {
             System.out.println("Pay");
             pay.enableView(false);
-            pay.getFees().turnOnForLanLord();
+            pay.getFeesView().turnOnForLanLord();
         }
     }
 

@@ -31,7 +31,7 @@ public class CreatePropertyView extends JFrame{
         setBounds(250, 90, 900, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
-        setSize(1000, 1000);
+        setSize(1000, 800);
         ctr = getContentPane();
         ctr.setLayout(null);
         getContentPane().setBackground(new Color(200, 200, 250));
@@ -120,7 +120,7 @@ public class CreatePropertyView extends JFrame{
 		furnished.setSize(150, 40);
         furnished.setLocation(480, 480);
 		ctr.add(furnished); 
-		JLabel lName = new JLabel("Landlord Name: ");
+		JLabel lName = new JLabel("Landlord ID: ");
 		lName.setFont(new Font("Arial", Font.PLAIN, 15));
 		lName.setSize(200, 40);
         lName.setLocation(300, 530);
@@ -189,9 +189,9 @@ public class CreatePropertyView extends JFrame{
         return furnished.getSelectedItem().toString();
     }
 
-    public String getLandlordInput()
+    public int getLandlordInput()
     {
-        return landlordName.getText();
+        return Integer.valueOf(landlordName.getText());
     }
 
 }
