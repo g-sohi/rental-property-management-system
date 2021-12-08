@@ -160,7 +160,7 @@ public class SearchView extends JFrame{
     }
     public int getBedsInput()
     {
-        if(!noBeds.getText().equals(null))
+        if(!noBeds.getText().equals(""))
         {
             return Integer.valueOf(noBeds.getText());
         }
@@ -175,7 +175,7 @@ public class SearchView extends JFrame{
     //This method returns the number of baths the user inputted
     public int getBathsInput()
     {
-        if(!noBaths.getText().equals(null))
+        if(!noBaths.getText().equals(""))
         {
             return Integer.valueOf(noBaths.getText());
         }
@@ -190,11 +190,14 @@ public class SearchView extends JFrame{
     public String getFurnishedInput()
     {
         System.out.println("button choice selected is: " + group.getSelection().getActionCommand());
+        if(group.getSelection() != null)
+        {
         if(group.getSelection().getActionCommand() != null)
         {
             String buttonChoice = group.getSelection().getActionCommand();
             return buttonChoice;
         }
+    }
         return null;
     }
 
