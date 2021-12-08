@@ -202,12 +202,20 @@ public class SearchView extends JFrame{
 
     public String getQuadrantInput()
     {
-        return getQuadrants().getSelectedItem().toString();
+        if(!getQuadrants().getSelectedItem().toString().equals(""))
+        {
+            return getQuadrants().getSelectedItem().toString();
+        }
+        return null;
     }
 
     public String getTypeInput()
     {
-        return getTypes().getSelectedItem().toString();
+        if(!getTypes().getSelectedItem().toString().equals(""))
+        {
+            return getTypes().getSelectedItem().toString();
+        }
+        return null;
     }
 
     public ButtonGroup getGroup()

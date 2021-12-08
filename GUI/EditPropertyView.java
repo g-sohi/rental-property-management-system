@@ -124,6 +124,10 @@ public class EditPropertyView extends JFrame{
         return Integer.valueOf(idProperty2.getText());
     }
 
+    public static void main(String [] args) {
+        new EditPropertyView();
+    }
+
 
 
 }
