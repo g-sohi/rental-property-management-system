@@ -50,6 +50,22 @@ public class EmailView extends JFrame {
 
     }
 
+    public String getSub() {
+        return subject.getText();
+    }
+
+    public String getFrom() {
+        return from.getText();
+    }
+
+    public String getTo() {
+        return to.getText();
+    }
+
+    public String getBody() {
+        return body.getText();
+    }
+
     // **for testing purposes**
 
     // public static void main(String [] args) {

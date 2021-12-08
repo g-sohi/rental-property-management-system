@@ -68,10 +68,30 @@ public class RegisterView extends JFrame {
 
     }
 
+    public String getUsername() {
+        return username.getText();
+    }
+
+    public String getPassword() {
+        return password.getText();
+    }
+
+    public String getFName() {
+        return fName.getText();
+    }
+
+    public String getLName() {
+        return lName.getText();
+    }
+
+    public String getUserType() {
+        return type.getSelectedItem().toString();
+    }
+
     // **for testing purposes**
 
-    // public static void main(String [] args) {
-    //     new RegisterView();
-    // }
+    public static void main(String [] args) {
+        new RegisterView();
+    }
 
 }

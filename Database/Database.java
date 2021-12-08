@@ -19,7 +19,7 @@ public class Database {
 
         public Database() {
             String username = "root";
-            String password = "singh123";
+            String password = "";
     
             try {
 
@@ -61,6 +61,26 @@ public class Database {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+
+        public User getUserInformation(String username){
+            User use = new User();
+            try {
+                String query = String.format("SELECT * FROM user WHERE UserName = ?");
+                PreparedStatement stmt = dbConnect.prepareStatement(query);
+                stmt.setString(1, username);
+                line = stmt.executeQuery();
+                line.next();
+                String fName = line.getString("FName");
+                String lName = line.getString("LName");
+                String password = line.getString("Password");
+                int id = line.getInt("ID");
+                String userType = line.getString("UserType");
+                use = new User(username, fName, lName, id, password, userType);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return use;
         }
 
         public String getUserType(String username, String password)
@@ -134,6 +154,13 @@ public class Database {
 
             try {
                 String unformattedQuery = "SELECT * FROM property WHERE ";
+                if(!p.getType().equals("null")){
+                    unformattedQuery += "Type = ?" + " AND ";
+                    inputs.add(p.getType());
+                }
+                else{
+                    unformattedQuery += "Type = Type" + " AND ";
+                }
 
                 if(!p.getType().equals("null")){
                     unformattedQuery += "Type = ?" + " AND ";

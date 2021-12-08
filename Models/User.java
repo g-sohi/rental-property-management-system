@@ -30,6 +30,15 @@ public class User {
         this.userType = userType;
     }
 
+    public User(User u){
+        this.username = u.username;
+        this.fName = u.fName;
+        this.lName = u.lName;
+        this.id = u.id;
+        this.password = u.password;
+        this.userType = u.userType;
+    }
+
     public String getUsername()                     //getter method for the username   
     {
         return this.username;
