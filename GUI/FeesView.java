@@ -8,7 +8,7 @@ import Models.*;
 public class FeesView extends JFrame {
     
     // variable declaration
-    private JTextField changeFeeAmount, changePeriod, pID, fName, lName, country, postalCode, ccn, mmExp, yyExp, cvv;
+    private JTextField changeFeeAmount, startDate, endDate, pID, fName, lName, country, postalCode, ccn, mmExp, yyExp, cvv;
     private JButton save, payFees; //change UML; submit to save
     private JFrame fMgr;
     private JFrame fLlrd;
@@ -31,8 +31,8 @@ public class FeesView extends JFrame {
         feeLabel.setBounds(50, 50, 100, 40);
         JLabel periodLabel = new JLabel("Listing Period:");
         periodLabel.setBounds(50, 75, 100, 40);
-        JLabel daysText = new JLabel("days", SwingConstants.RIGHT);
-        daysText.setBounds(50, 75, 395, 40);
+        JLabel dateLabel = new JLabel("To");
+        dateLabel.setBounds(285, 75, 395, 40);
 
         JLabel billingTitle = new JLabel("BILLING INFORMATION");
         billingTitle.setBounds(50, 125, 150, 40);
@@ -62,8 +62,10 @@ public class FeesView extends JFrame {
         pID.setBounds(140, 35, 310, 20);
         changeFeeAmount = new JTextField();
         changeFeeAmount.setBounds(140, 60, 310, 20);
-        changePeriod = new JTextField();
-        changePeriod.setBounds(360, 85, 50, 20);
+        startDate = new JTextField();
+        startDate.setBounds(140, 85, 135, 20);
+        endDate = new JTextField();
+        endDate.setBounds(315, 85, 135, 20);
 
         fName = new JTextField();
         fName.setBounds(140, 160, 85, 20);
@@ -93,8 +95,8 @@ public class FeesView extends JFrame {
         if(isMgrPlaceholder) {
             fMgr.add(pIDLabel); fMgr.add(pID);
             fMgr.add(feeLabel); fMgr.add(changeFeeAmount);
-            fMgr.add(periodLabel); fMgr.add(changePeriod);
-            fMgr.add(daysText);
+            fMgr.add(periodLabel); fMgr.add(startDate); fMgr.add(endDate);
+            fMgr.add(dateLabel);
 
             fMgr.add(save);
 
@@ -105,8 +107,8 @@ public class FeesView extends JFrame {
         else {
             fLlrd.add(pIDLabel); fLlrd.add(pID);
             fLlrd.add(feeLabel); fLlrd.add(changeFeeAmount);
-            fLlrd.add(periodLabel); fLlrd.add(changePeriod);
-            fLlrd.add(daysText);
+            fLlrd.add(periodLabel); fLlrd.add(startDate); fLlrd.add(endDate);
+            fLlrd.add(dateLabel);
 
             fLlrd.add(billingTitle);
             fLlrd.add(fNLabel); fLlrd.add(fName);
@@ -127,6 +129,13 @@ public class FeesView extends JFrame {
         }
     }
 
+    // public static void main(String [] args)
+    // {
+
+    //     new FeesView(false).turnOnForLanLord();
+        
+    // }
+
     public void turnOnForLanLord()
     {
         fLlrd.setVisible(true);
@@ -145,8 +154,12 @@ public class FeesView extends JFrame {
         return changeFeeAmount.getText();
     }
 
-    public String getPeriod() {
-        return changePeriod.getText();
+    public String getStart() {
+        return startDate.getText();
+    }
+
+    public String getEnd() {
+        return endDate.getText();
     }
 
     public String getFName() {
