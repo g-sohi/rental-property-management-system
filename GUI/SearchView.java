@@ -160,7 +160,11 @@ public class SearchView extends JFrame{
     }
     public int getBedsInput()
     {
-        return Integer.valueOf(noBeds.getText());
+        if(!noBeds.getText().equals(null))
+        {
+            return Integer.valueOf(noBeds.getText());
+        }
+        return(-1);
     }
 
     public void setBedsInput(String value)
@@ -171,7 +175,11 @@ public class SearchView extends JFrame{
     //This method returns the number of baths the user inputted
     public int getBathsInput()
     {
-        return Integer.valueOf(noBaths.getText());
+        if(!noBaths.getText().equals(null))
+        {
+            return Integer.valueOf(noBaths.getText());
+        }
+        return(-1);
     }
 
     public void setBathsInput(String value)
