@@ -8,7 +8,7 @@ import Models.*;
 public class FeesView extends JFrame {
     
     // variable declaration
-    private JTextField changeFeeAmount, changePeriod, payFee, creditCard;
+    private JTextField changeFeeAmount, changePeriod, pID, fName, lName, country, postalCode, ccn, mmExp, yyExp, cvv;
     private JButton save, payFees; //change UML; submit to save
     private JFrame fMgr;
     private JFrame fLlrd;
@@ -58,29 +58,29 @@ public class FeesView extends JFrame {
         cvvLabel.setBounds(350, 250, 100, 40);
 
         // creation of JTextFields of certain size and position
-        JTextField pID = new JTextField();
+        pID = new JTextField();
         pID.setBounds(140, 35, 310, 20);
         changeFeeAmount = new JTextField();
         changeFeeAmount.setBounds(140, 60, 310, 20);
         changePeriod = new JTextField();
         changePeriod.setBounds(360, 85, 50, 20);
 
-        JTextField fName = new JTextField();
+        fName = new JTextField();
         fName.setBounds(140, 160, 85, 20);
-        JTextField lName = new JTextField();
+        lName = new JTextField();
         lName.setBounds(340, 160, 85, 20);
-        JTextField country = new JTextField();
+        country = new JTextField();
         country.setBounds(140, 185, 85, 20);
-        JTextField postalCode = new JTextField();
+        postalCode = new JTextField();
         postalCode.setBounds(340, 185, 85, 20);
 
-        JTextField ccn = new JTextField();
+        ccn = new JTextField();
         ccn.setBounds(50, 280, 125, 20);
-        JTextField mmExp = new JTextField();
+        mmExp = new JTextField();
         mmExp.setBounds(200, 280, 40, 20);
-        JTextField yyExp = new JTextField();
+        yyExp = new JTextField();
         yyExp.setBounds(265, 280, 40, 20);
-        JTextField cvv = new JTextField();
+        cvv = new JTextField();
         cvv.setBounds(350, 280, 40, 20);
 
         // creation of JButtons of certain size and position
@@ -136,4 +136,48 @@ public class FeesView extends JFrame {
     {
         fMgr.setVisible(true);
     }  
+
+    public String getPID() {
+        return pID.getText();
+    }
+
+    public String getFee() {
+        return changeFeeAmount.getText();
+    }
+
+    public String getPeriod() {
+        return changePeriod.getText();
+    }
+
+    public String getFName() {
+        return fName.getText();
+    }
+
+    public String getLName() {
+        return lName.getText();
+    }
+
+    public String getCountry() {
+        return country.getText();
+    }
+
+    public String getPCode() {
+        return postalCode.getText();
+    }
+
+    public String getCCN() {
+        return ccn.getText();
+    }
+
+    public String getMMExp() {
+        return mmExp.getText();
+    }
+
+    public String getYYExp() {
+        return yyExp.getText();
+    }
+
+    public String getCVV() {
+        return cvv.getText();
+    }
 }
