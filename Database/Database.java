@@ -115,11 +115,11 @@ public class Database {
             }
         }
 
-        public void addProperty(int id, String address, String type, int numBedrooms, int numBathrooms, String furnished, double fees, String status, int landID, String startD, String endD){
+        public void addProperty(int id, String address,String quadrant, String type, int numBedrooms, int numBathrooms, String furnished, double fees, String status, int landID, String startD, String endD){
             try {
-                String query = "INSERT INTO property(Property_ID, Address, Type, NoOfBedrooms, NoOfBathrooms, Furnished, Fees, Status, Landlord_ID, StartDate, EndDate) ";
-                query += "VALUES (%d, '%s', '%s', %d, %d, '%s', %f, '%s', %d, '%s', '%s')";
-                query = String.format(query, id, address, type, numBedrooms, numBathrooms, furnished, fees, status, landID, startD, endD);
+                String query = "INSERT INTO property(Property_ID, Address,quadrant, Type, NoOfBedrooms, NoOfBathrooms, Furnished, Fees, Status, Landlord_ID, StartDate, EndDate) ";
+                query += "VALUES (%d, '%s', '%s','%s', %d, %d, '%s', %f, '%s', %d, '%s', '%s')";
+                query = String.format(query, id, address,quadrant, type, numBedrooms, numBathrooms, furnished, fees, status, landID, startD, endD);
                 System.out.println(query);
                 Statement stmt = dbConnect.createStatement();
                 stmt.executeUpdate(query);
@@ -195,7 +195,7 @@ public class Database {
                 }
 
                 unformattedQuery += "Status = ?";
-                inputs.add("Available");
+                inputs.add("Active");
                 System.out.println(unformattedQuery);
 
                 String query = String.format(unformattedQuery);
@@ -215,13 +215,14 @@ public class Database {
                 while (line.next()) {
                     int ID = line.getInt("Property_ID");
                     String address = line.getString("Address");
+                    String quadrant = line.getString("quadrant");
                     String type = line.getString("Type");
                     int numOfBedrooms = line.getInt("NoOfBedrooms");
                     int numOfBathrooms = line.getInt("NoOfBathrooms");
                     String furnished = line.getString("Furnished");
                     String status = line.getString("Status");
 
-                    Property prop = new Property(ID, address, type, numOfBedrooms, numOfBathrooms, furnished, new Fees(50.00, 0, "null", "null"), status);
+                    Property prop = new Property(ID, address,quadrant, type, numOfBedrooms, numOfBathrooms, furnished, new Fees(50.00, 0, "null", "null"), status);
                     properties.add(prop);
                 }
                 stmt.close();
@@ -245,13 +246,14 @@ public class Database {
                 while (line.next()) {
                     int ID = line.getInt("Property_ID");
                     String address = line.getString("Address");
+                    String quadrant = line.getString("quadrant");
                     String type = line.getString("Type");
                     int numOfBedrooms = line.getInt("NoOfBedrooms");
                     int numOfBathrooms = line.getInt("NoOfBathrooms");
                     String furnished = line.getString("Furnished");
                     String status = line.getString("Status");
 
-                    Property prop = new Property(ID, address, type, numOfBedrooms, numOfBathrooms, furnished, new Fees(50.00, 0, "null", "null"), status);
+                    Property prop = new Property(ID, address,quadrant, type, numOfBedrooms, numOfBathrooms, furnished, new Fees(50.00, 0, "null", "null"), status);
                     properties.add(prop);
                 }
                 stmt.close();

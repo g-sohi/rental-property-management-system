@@ -9,15 +9,17 @@ public class Property {
     private String furnished;
     private Fees propertyFees;
     private String propertyStatus;
+    private String quadrant;
 
     
     /**
      * Constructor for the Property class
      */
-    public Property(int id, String address,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus)
+    public Property(int id, String address, String quadrant,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus)
     {
         this.id =id;
         this.address = address;
+        this.quadrant = quadrant;
         this.type = type;
         this.numOfBathrooms = numOfBathrooms;
         this.numOfBedrooms = numOfBedrooms;
@@ -106,6 +108,16 @@ public class Property {
     {
         this.propertyStatus = propertyStatus;
     }
+    public String getQuadarnt()           //getter method for the quadrant  
+    {
+        return this.quadrant;
+    }
+
+    public void setQuadrant(String quadrant)    //setter method for the quadrant
+    {
+        this.quadrant = quadrant;
+    }
+
 
 
 }

@@ -91,12 +91,12 @@ public class PropertyController implements ActionListener {
             db.initializeConnection();
             if(e.getSource().equals(edit.getSaveButton()))
             {
-                db.updateProperty(1, "Cancelled");
+                db.updateProperty(edit.getPropetyIdInput(), edit.getStatusInput());
                 System.out.println("New Information Saved");
                 edit.destroyFrame();
             }
             else if(e.getSource().equals(edit.getRemoveButton())){
-                db.removeProperty(10);
+                db.removeProperty(edit.getPropetyId2Input());
                 System.out.println("Property Removed");
                 edit.destroyFrame();
             }
