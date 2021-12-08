@@ -88,8 +88,5 @@ public class RenterView extends JFrame {
     // **for testing purposes**
 
      
-    public static void main(String [] args) {
-        new RenterView();
-    }
     
 }

@@ -29,7 +29,6 @@ public class CreatePropertyView extends JFrame{
     {
         setTitle("Create New Property");
         setBounds(250, 90, 900, 600);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setSize(1000, 800);
         ctr = getContentPane();
@@ -125,11 +124,11 @@ public class CreatePropertyView extends JFrame{
 		lName.setSize(200, 40);
         lName.setLocation(300, 530);
 		ctr.add(lName);
-        landlordName = new JTextField();
+        /*landlordName = new JTextField();
 		landlordName.setFont(new Font("Arial", Font.PLAIN, 15));
 		landlordName.setSize(150, 40);
         landlordName.setLocation(480, 530);
-		ctr.add(landlordName);
+		ctr.add(landlordName);*/
         register = new JButton("Submit");
 		register.setFont(new Font("Arial", Font.PLAIN, 15));
 		register.setSize(200, 60);

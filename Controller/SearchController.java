@@ -195,5 +195,11 @@ public class SearchController implements ActionListener{
         this.sView.addSearchListener(this);
         this.sView.addResetListener(this);
     }
+
+    public void enableMGrView()
+    {
+        sView = new SearchView(); 
+        sView.mgr();
+    }
 }
 

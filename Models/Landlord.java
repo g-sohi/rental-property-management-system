@@ -20,8 +20,11 @@ public class Landlord extends User{
         this.properties = null;
     }
 
-    public Landlord() {
+    public Landlord()
+    {
+        
     }
+
 
     public Email getEmail()              //getter method for the email  
     {

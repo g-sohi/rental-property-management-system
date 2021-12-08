@@ -22,6 +22,11 @@ public class LandlordController implements ActionListener{
         this.regProp = new RegisterController(db);
     }
 
+    LandlordController()
+    {
+
+    }
+
     @Override
     public void actionPerformed(ActionEvent e)
     {
@@ -50,7 +55,10 @@ public class LandlordController implements ActionListener{
             pay.getFeesView().turnOnForLanLord();
         }
     }
-
+    public void setRegisterControllerId(int id)
+    {
+        this.regProp.setLandlordID(id);
+    }
     //update 
     public void update(){
 

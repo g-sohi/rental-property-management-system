@@ -148,7 +148,7 @@ public class SearchView extends JFrame{
         search.setBackground(new Color(99, 182, 255));
 
         setLayout(null);
-        setVisible(true);
+        setVisible(false);
     }
     
     // function for showing the search view for managers
@@ -192,7 +192,7 @@ public class SearchView extends JFrame{
         results.setBounds(50, 150, 400, 275);
         mgrF.add(results);
 
-        mgrF.setVisible(true); // Manager frame set to appear
+        mgrF.setVisible(false); // Manager frame set to appear
 
     }
 
@@ -221,7 +221,7 @@ public class SearchView extends JFrame{
         results.setBounds(50, 150, 400, 275);
         llrdF.add(results);
 
-        llrdF.setVisible(true); // Landlord frame set to appear
+        llrdF.setVisible(false); // Landlord frame set to appear
 
     }
 

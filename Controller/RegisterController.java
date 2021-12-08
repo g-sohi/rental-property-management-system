@@ -13,12 +13,28 @@ public class RegisterController implements ActionListener{
     private CreatePropertyView createProp;
     private ArrayList<Property> listings;
     private Database db;
-    private LandlordController landLord;
+    private int landLordID;
     private static int propID = 5;
 
     public RegisterController(Database db) {
         this.setDb(db);
     }
+
+    public RegisterController(Database db, int lordID) {
+        this.setDb(db);
+        this.landLordID = lordID;
+    }
+
+    public int getLandlordID()
+    {
+        return landLordID;
+    }
+
+    public void setLandlordID(int id)
+    {
+        this.landLordID = id;
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent e)
@@ -38,7 +54,7 @@ public class RegisterController implements ActionListener{
 
     public void add(Property p) {
         db.initializeConnection();
-        db.addProperty(p.getID(), p.getAddress(), p.getQuadarnt(), p.getType(), p.getNumOfBedrooms(), p.getNumOfBathrooms(), p.getFurnished(), 100.50, p.getPropertyStatus(), 10, "null", "null");
+        db.addProperty(p.getID(), p.getAddress(), p.getQuadarnt(), p.getType(), p.getNumOfBedrooms(), p.getNumOfBathrooms(), p.getFurnished(), 0, p.getPropertyStatus(), landLordID, "null", "null");
         db.close();
     }
 
@@ -62,13 +78,6 @@ public class RegisterController implements ActionListener{
         this.db = db;
     }
 
-    public LandlordController getLandLord() {
-        return landLord;
-    }
-
-    public void setLandLord(LandlordController landLord) {
-        this.landLord = landLord;
-    }
 
     public void enableView(){
         createProp = new CreatePropertyView();
