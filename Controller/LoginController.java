@@ -6,6 +6,7 @@ import Models.*;
 import java.awt.event.*;
 
 import javax.sound.midi.MidiSystem;
+import javax.swing.JOptionPane;
  
 //Login Controller
 public class LoginController implements ActionListener{
@@ -30,14 +31,17 @@ public class LoginController implements ActionListener{
     public void actionPerformed(ActionEvent e)
     {
         //addListener();
-        this.verifyLogin();
+        boolean loggedIn = this.verifyLogin();
         db.initializeConnection();
         this.user = new User(db.getUserInformation(this.user.getUsername()));
         System.out.println("User Name: " + this.user.getFName());
 
         if(e.getSource().equals(view.getButton()))
         {
-            view.destroyFrame();
+            if(loggedIn == true)
+            {
+                view.destroyFrame();
+                JOptionPane.showMessageDialog(null, "You Have Successfully logged In.");
             System.out.println("userType in user is: " + user.getUserType());
             if(user.getUserType().equals("Renter"))
             {
@@ -65,53 +69,65 @@ public class LoginController implements ActionListener{
                 mgCtrl.enableView(this);
                 mgCtrl.getView().turnOn();
             }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Username and/or Password are Incorrect.");
+                // view.destroyFrame();
+                // view = new LoginView();
+            }
         }
         if(rtCtrl.getRenterView() != null)
         {
-        if(e.getSource().equals(rtCtrl.getRenterView().getLogout()))
-        {
-            System.out.println("hello");
-            rtCtrl.getSearch().resetSearchType();
-            rtCtrl.getRenterView().destroyFrame();
-            view.turnOn();
-        }
+            if(e.getSource().equals(rtCtrl.getRenterView().getLogout()))
+            {
+                System.out.println("hello");
+                rtCtrl.getSearch().resetSearchType();
+                rtCtrl.getRenterView().destroyFrame();
+                view.turnOn();
+            }
         }
         
         if(ldCtrl.getLandlordView() != null)
         {
-        if(e.getSource().equals(ldCtrl.getLandlordView().getLogout()))
-        {
-            System.out.println("finish");
-            ldCtrl.getSearch().resetSearchType();
-            ldCtrl.getLandlordView().destroyFrame();
-            view.turnOn();
-        }
+            if(e.getSource().equals(ldCtrl.getLandlordView().getLogout()))
+            {
+                System.out.println("finish");
+                ldCtrl.getSearch().resetSearchType();
+                ldCtrl.getLandlordView().destroyFrame();
+                view.turnOn();
+            }
         }
 
         if(mgCtrl.getView() != null)
         {
-        if(e.getSource().equals(mgCtrl.getView().getLogout()))
-        {
-            System.out.println("done");
-            mgCtrl.getSearch().resetSearchType();
-            mgCtrl.getView().destroyFrame();
-            view.turnOn();
-        }
+            if(e.getSource().equals(mgCtrl.getView().getLogout()))
+            {
+                System.out.println("done");
+                mgCtrl.getSearch().resetSearchType();
+                mgCtrl.getView().destroyFrame();
+                view.turnOn();
+            }
         }
     }
     
     
     //Verify user login credentials and return a boolean indicating its status
-    public void verifyLogin(){
+    public boolean verifyLogin(){
         user.setUsername(view.getUsername());
         user.setPassword(view.getPassword());
 
         System.out.println(user.getUsername());
         System.out.println(user.getPassword());
         db.initializeConnection();
-        db.verifyUser(user.getUsername(), user.getPassword());
-        user.setUserType(db.getUserType(user.getUsername(), user.getPassword()));
+        boolean loggenIn = db.verifyUser(user.getUsername(), user.getPassword());
+        if(loggenIn == true)
+        {
+            user.setUserType(db.getUserType(user.getUsername(), user.getPassword()));
+            return(true);
+        }
         db.close();
+        return(false);
     }
 
     //Register new user
