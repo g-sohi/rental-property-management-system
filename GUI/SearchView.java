@@ -10,6 +10,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionListener;
 
 import Models.Property;
 
@@ -115,7 +116,7 @@ public class SearchView extends JFrame{
 
         search = new JButton("Search");
         displayButton = new JButton();
-
+        jList2 = new JList<>();
         //search.setForeground(Color.BLACK);
         reset = new JButton("Reset");
         reset.setForeground(Color.GRAY);
@@ -229,7 +230,7 @@ public class SearchView extends JFrame{
         jTable1 = new JTable();
         jPanel1 = new JPanel();
         LandlordPropertyList = new JScrollPane();
-        jList2 = new JList<>();
+        jList2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jPanel2 = new JPanel();
         jScrollPane3 = new JScrollPane();
         DisplayTable1 = new JTable();
@@ -584,6 +585,10 @@ public class SearchView extends JFrame{
         System.out.println("Added display listener");
     }
 
+    public void addSelectListener(ListSelectionListener listenForSelection)
+    {
+        jList2.addListSelectionListener(listenForSelection);
+    }
     /*public static void main(String [] args) {
         SearchView test =  new SearchView();
         test.llrd();

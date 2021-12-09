@@ -11,6 +11,8 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
@@ -18,7 +20,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.beans.BeanDescriptor;
 
-public class SearchController implements ActionListener{
+public class SearchController implements ActionListener, ListSelectionListener{
 
     private SearchView sView;
     private User users;
@@ -42,7 +44,7 @@ public class SearchController implements ActionListener{
         if(e.getSource().equals(sView.getDisplayButton()))
         {
             System.out.println("Display working");
-            ArrayList<Property> landlordProperties = db.getLandlordProperties(1);
+            ArrayList<Property> landlordProperties = db.getLandlordProperties(landlordID);
             String llproperties[] = new String[landlordProperties.size()];
             for(int i = 0; i < landlordProperties.size(); i++)
             {
@@ -250,8 +252,18 @@ public class SearchController implements ActionListener{
         sView = new SearchView();
         this.sView.addDisplayListener(this);
         sView.turnOnForLandlord();
+        this.sView.addSelectListener(this);
         System.out.println("This is the Landlord ID in Search Controller " + this.landlordID);
         //sView.llrd();
+    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        if(e.getSource().equals(this.sView.getJList2()))
+        {
+            System.out.println("item selected");
+        }
+        
     }
 }
 
