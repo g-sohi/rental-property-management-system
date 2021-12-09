@@ -11,8 +11,10 @@ public class RegisterView extends JFrame {
     private String types[] = {"Renter", "Landlord", "Manager"}; // add to UML?
     private JButton register;
     private JFrame f; // add to UML?
+    int check;
 
     public RegisterView() {
+        check = 0;
         // creation of JFrame of certain size
         f = new JFrame("Register Page");
         f.setSize(500, 500);
@@ -70,11 +72,13 @@ public class RegisterView extends JFrame {
     public void turnOn()
     {
         f.setVisible(true);
+        check = 1;
     }
 
     public void destroyFrame()
     {
         f.setVisible(false);
+        check = 0;
     }
 
     public JButton getRegisterButton()
@@ -110,18 +114,19 @@ public class RegisterView extends JFrame {
 
     // **for testing purposes**
 
-    public static void main(String [] args) {
+    /*public static void main(String [] args) {
         new RegisterView();
-    }
+    }*/
 
     public void showDialog()
     {
-        JFrame frame = new JFrame("Registration Done");
-
-    // show a joptionpane dialog using showMessageDialog
-    JOptionPane.showMessageDialog(frame,
-        "Registeration is successful");
-        frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        //JFrame frame = new JFrame("Registration Done");
+        if(check == 1){
+            // show a joptionpane dialog using showMessageDialog
+            JOptionPane.showMessageDialog(f,"Registeration is successful");
+            f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            System.out.println("working");
+        }
     }
 
 }

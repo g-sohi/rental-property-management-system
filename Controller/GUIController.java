@@ -54,7 +54,8 @@ public void actionPerformed(ActionEvent e) {
         rView.turnOn();
         this.rView.addRegisterListener(this);
     }
-     if(e.getSource().equals(rView.getRegisterButton()))   
+
+    if(e.getSource().equals(rView.getRegisterButton()))   
         {
             System.out.print("not vsiisble");
             rView.showDialog();
