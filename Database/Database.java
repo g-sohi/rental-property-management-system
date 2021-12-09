@@ -53,9 +53,12 @@ public class Database {
             }
         }
 
-        public void addUser() {
+        public void addUser(String username, String FName, String LName, String Password, int id, String UserType) {
             try {
-                String query = String.format("INSERT INTO user(UserName, Password, ID) VALUES ('David', 'ensf480', '3')");
+                String query = "INSERT INTO user(UserName, FName,LName, Password, ID, UserType)";
+                query += "VALUES (%s, '%s', '%s','%s', %d, %s)";
+                query = String.format(query, username, FName,LName, Password, id, UserType);
+                System.out.println(query);
                 Statement stmt = dbConnect.createStatement();
                 stmt.executeUpdate(query);
             } catch (SQLException e) {
