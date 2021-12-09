@@ -59,14 +59,14 @@ public class SearchController implements ActionListener, ListSelectionListener{
         if(e.getSource().equals(sView.getDisplayButton()) && managerSearch == true)
         {
             System.out.println("Display working");
-            ArrayList<Property> managerProperties = db.getLandlordProperties();
+            ArrayList<Property> managerProperties = db.getManagerProperties();
             setListings(managerProperties);
             String allProperties[] = new String[managerProperties.size()];
             for(int i = 0; i < 5; i++)
             {
                 allProperties[i] = managerProperties.get(i).getAddress();   //landlordProperties.get(i).getAddress();
             }
-            sView.getJList2().setListData(managerProperties);
+            sView.getJList2().setListData(allProperties);
         }
 
         if(e.getSource().equals(sView.getResetButton()))
