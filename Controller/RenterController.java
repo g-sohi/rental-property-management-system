@@ -150,7 +150,6 @@ public class RenterController implements ActionListener{
         RenterView.addLogoutListener(logoutListener);
         RenterView.addSearchListener(this);
         RenterView.addSelectListener(this);
-
     }
 
     

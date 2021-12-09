@@ -45,55 +45,64 @@ public class SearchController implements ActionListener{
             sView.getTypes().setSelectedIndex(0);
             sView.getGroup().clearSelection();
         }
+
         if(sView.getSearchButton() != null)
         {
-        if(e.getSource().equals(sView.getSearchButton()))
-        { 
-            db.initializeConnection();
-            Property requestedPropertyType = new Property(null,sView.getQuadrantInput(), sView.getTypeInput(), sView.getBedsInput(), sView.getBathsInput(), sView.getFurnishedInput(), null, "Active");
-            ArrayList<Property> input = db.getSearchProperties(requestedPropertyType);
-            String[] columnNames = { "Property ID: #", "Address", "Furnished", "Fees"};
-            String results[][] = displayProperty(input, columnNames);
+            if(e.getSource().equals(sView.getSearchButton()))
+            { 
+                db.initializeConnection();
+                if(rentSearch){
+                Property requestedPropertyType = new Property(null,sView.getQuadrantInput(), sView.getTypeInput(), sView.getBedsInput(), sView.getBathsInput(), sView.getFurnishedInput(), null, "Active");
+                ArrayList<Property> input = db.getSearchProperties(requestedPropertyType);
+                String[] columnNames = { "Property ID: #", "Address", "Furnished", "Fees"};
+                String results[][] = displayProperty(input, columnNames);
 
-            System.out.println("PRINTING RESULTS: ");
-            for(int i = 0; i < results.length; i++)
-            {
-                for(int j = 0; j < results[i].length; j++)
+                System.out.println("PRINTING RESULTS: ");
+                for(int i = 0; i < results.length; i++)
                 {
-                    System.out.print(results[i][j]);
+                    for(int j = 0; j < results[i].length; j++)
+                    {
+                        System.out.print(results[i][j]);
+                    }
+                    System.out.println();
                 }
-                System.out.println();
+
+                System.out.println("PRINTING INPUT: ");
+                for(int i = 0; i < input.size(); i++)
+                {
+                    System.out.print(input.get(i).getAddress());
+                }
+                //sView.setPropertiesList(input);
+                // JList<String> test2 = new JList<String>(results);
+                // test2.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+                // test2.setLayoutOrientation(JList.VERTICAL_WRAP);
+                // test2.setVisibleRowCount(1);
+                // sView.add(test2);
+
+                JTable test2 = new JTable(results, columnNames);
+                // test2.getColumnModel().getColumn(0).setPreferredWidth(10);
+                // test2.getColumnModel().getColumn(1).setPreferredWidth(30);
+                final TableColumnModel columnModel = test2.getColumnModel();
+                columnModel.getColumn(0).setPreferredWidth(7);
+                columnModel.getColumn(1).setPreferredWidth(20);
+                columnModel.getColumn(2).setPreferredWidth(7);
+                columnModel.getColumn(3).setPreferredWidth(20);
+                test2.setRowHeight(25);
+                test2.getTableHeader().setBackground(Color.LIGHT_GRAY);
+                JScrollPane scrollPane = new JScrollPane();
+                scrollPane.setViewportView(test2);
+                scrollPane.setBounds(30, 325, 440, 115);
+                //JButton test2 = new JButton("Something happened");
+                //sView.add(test2);
+                sView.add(scrollPane);
+
             }
-
-            System.out.println("PRINTING INPUT: ");
-            for(int i = 0; i < input.size(); i++)
-            {
-                System.out.print(input.get(i).getAddress());
+            else if(landLordSearch){
+                System.out.println("Landlord search");
             }
-            //sView.setPropertiesList(input);
-            // JList<String> test2 = new JList<String>(results);
-            // test2.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-            // test2.setLayoutOrientation(JList.VERTICAL_WRAP);
-            // test2.setVisibleRowCount(1);
-            // sView.add(test2);
-
-            JTable test2 = new JTable(results, columnNames);
-            // test2.getColumnModel().getColumn(0).setPreferredWidth(10);
-            // test2.getColumnModel().getColumn(1).setPreferredWidth(30);
-            final TableColumnModel columnModel = test2.getColumnModel();
-            columnModel.getColumn(0).setPreferredWidth(7);
-            columnModel.getColumn(1).setPreferredWidth(20);
-            columnModel.getColumn(2).setPreferredWidth(7);
-            columnModel.getColumn(3).setPreferredWidth(20);
-            test2.setRowHeight(25);
-            test2.getTableHeader().setBackground(Color.LIGHT_GRAY);
-            JScrollPane scrollPane = new JScrollPane();
-            scrollPane.setViewportView(test2);
-            scrollPane.setBounds(30, 325, 440, 115);
-            //JButton test2 = new JButton("Something happened");
-            //sView.add(test2);
-            sView.add(scrollPane);
-
+            else if(managerSearch){
+                System.out.println("Manager search");
+            }
         }
     }
     }
@@ -194,6 +203,7 @@ public class SearchController implements ActionListener{
     }
 
     public void enableView() {
+        rentSearch = true;
         sView = new SearchView(); 
         this.sView.addSearchListener(this);
         this.sView.addResetListener(this);
@@ -209,12 +219,14 @@ public class SearchController implements ActionListener{
 
     public void enableMGrView()
     {
+        managerSearch = true;
         sView = new SearchView(); 
         sView.turnOnForManager();
         //sView.mgr();
     }
 
     public void enableLlrdView(){
+        landLordSearch = true;
         sView = new SearchView();
         sView.turnOnForLandlord();
         //sView.llrd();
