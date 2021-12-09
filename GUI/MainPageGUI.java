@@ -15,7 +15,7 @@ import java.awt.*;
 public class MainPageGUI extends JFrame implements ActionListener {
     
     // variable declaration
-    private JButton login, guest;
+    private JButton login, guest, register;
     private JFrame frame;
 
     public MainPageGUI() throws IOException {
@@ -44,16 +44,19 @@ public class MainPageGUI extends JFrame implements ActionListener {
         // creation of JButtons
         login = new JButton("Login");
         guest = new JButton("Continue as Guest");
+        register = new JButton("Create New Login");
 
         // sets the position and size of JButtons within JFrame
         userPNG.setBounds(160, 30, 200, 200);
-        login.setBounds(200, 230, 100, 40);
+        login.setBounds(100, 230, 100, 40);
         guest.setBounds(150, 290, 200, 40);
+        register.setBounds(250, 230, 150, 40);
 
         // adds JButtons to JFrame
         frame.add(userPNG);
         frame.add(login);
         frame.add(guest);
+        frame.add(register);
 
         frame.add(searchPanel1);
         frame.add(searchPanel2);
@@ -74,6 +77,11 @@ public class MainPageGUI extends JFrame implements ActionListener {
     {
         guest.addActionListener(listenForGuest);
     }
+
+    public void addRegisterListener(ActionListener listenForRegister)
+    {
+        register.addActionListener(listenForRegister);
+    }
     @Override // checks if any buttons have been pressed
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
@@ -83,6 +91,11 @@ public class MainPageGUI extends JFrame implements ActionListener {
     public JButton getLog()
     {
         return login;
+    }
+
+    public JButton getRegister()
+    {
+        return register;
     }
 
     public JButton getGuest()

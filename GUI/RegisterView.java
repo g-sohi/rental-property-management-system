@@ -64,9 +64,29 @@ public class RegisterView extends JFrame {
 
         f.add(register);
 
-        f.setVisible(true); // JFrame is set to appear
+        f.setVisible(false); // JFrame is set to appear
 
     }
+    public void turnOn()
+    {
+        f.setVisible(true);
+    }
+
+    public void destroyFrame()
+    {
+        f.setVisible(false);
+    }
+
+    public JButton getRegisterButton()
+    {
+        return register;
+    }
+
+    public void addRegisterListener(ActionListener listenForRegister)
+    {
+        register.addActionListener(listenForRegister);
+    }
+
 
     public String getUsername() {
         return username.getText();
@@ -92,6 +112,16 @@ public class RegisterView extends JFrame {
 
     public static void main(String [] args) {
         new RegisterView();
+    }
+
+    public void showDialog()
+    {
+        JFrame frame = new JFrame("Registration Done");
+
+    // show a joptionpane dialog using showMessageDialog
+    JOptionPane.showMessageDialog(frame,
+        "Registeration is successful");
+        frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
 }
