@@ -41,6 +41,7 @@ public class SearchController implements ActionListener{
 
         if(e.getSource().equals(sView.getDisplayButton()))
         {
+            System.out.println("Display working");
             ArrayList<Property> landlordProperties = db.getLandlordProperties(1);
             String llproperties[] = new String[landlordProperties.size()];
             for(int i = 0; i < landlordProperties.size(); i++)

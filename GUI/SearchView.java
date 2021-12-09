@@ -114,6 +114,7 @@ public class SearchView extends JFrame{
         quadrant = new JComboBox<>(quadrant_dropdown);
 
         search = new JButton("Search");
+        displayButton = new JButton();
 
         //search.setForeground(Color.BLACK);
         reset = new JButton("Reset");
@@ -239,7 +240,6 @@ public class SearchView extends JFrame{
         jScrollPane7 = new JScrollPane();
         DisplayTable4 = new JTable();
         LandlordPropertiesTitle = new JLabel();
-        displayButton = new JButton();
         LandlordLabel = new JLabel();
         LandlordIdLabel = new JLabel();
 
@@ -581,13 +581,14 @@ public class SearchView extends JFrame{
 
     public void addDisplayListener(ActionListener listenForDisplay){
         displayButton.addActionListener(listenForDisplay);  
+        System.out.println("Added display listener");
     }
 
-    public static void main(String [] args) {
+    /*public static void main(String [] args) {
         SearchView test =  new SearchView();
         test.llrd();
         test.turnOnForLandlord();
-    }
+    }*/
 
     
 }
