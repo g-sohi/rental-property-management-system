@@ -38,6 +38,18 @@ public class SearchController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
+
+        if(e.getSource().equals(sView.getDisplayButton()))
+        {
+            ArrayList<Property> landlordProperties = db.getLandlordProperties(1);
+            String llproperties[] = new String[landlordProperties.size()];
+            for(int i = 0; i < landlordProperties.size(); i++)
+            {
+                llproperties[i] = landlordProperties.get(i).getAddress();
+            }
+            sView.getJList2().setListData(llproperties);
+        }
+
         if(e.getSource().equals(sView.getResetButton()))
         {
             sView.setBedsInput("");
@@ -235,7 +247,7 @@ public class SearchController implements ActionListener{
     public void enableLlrdView(){
         landLordSearch = true;
         sView = new SearchView();
-        this.sView.addSearchListener(this);
+        this.sView.addDisplayListener(this);
         sView.turnOnForLandlord();
         System.out.println("This is the Landlord ID in Search Controller " + this.landlordID);
         //sView.llrd();
