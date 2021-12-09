@@ -45,6 +45,7 @@ public void actionPerformed(ActionEvent e) {
         mainpage.setOff();
         search.enableView();
         search.getView().turnOn();
+        search.getView().addBackButtonListener(this);
     }
     else if(e.getSource().equals(mainpage.getRegister()))
     {
@@ -56,12 +57,19 @@ public void actionPerformed(ActionEvent e) {
 
     if(e.getSource().equals(rView.getRegisterButton()))   
         {
+            if(!rView.getUsername().equals("") && !rView.getPassword().equals("") && !rView.getFName().equals("") && !rView.getLName().equals(""))
+            {
             System.out.print("not vsiisble");
             rView.showDialog();
             rView.destroyFrame();
             mainpage.turnOn();
             db.initializeConnection();
             db.addUser(rView.getUsername(), rView.getFName(), rView.getLName(), rView.getPassword(), rView.getUserType());
+            }
+            else
+            {
+                rView.showErrorDialog();
+            }
         }
     
     
@@ -73,7 +81,17 @@ public void actionPerformed(ActionEvent e) {
         login.getView().destroyFrame();
         mainpage.turnOn();
     }
-}
+    }
+
+    if(search.getView() != null)
+    {
+     if(e.getSource().equals(search.getView().getBackButton()))   
+    {
+        System.out.print(" vsiisble");
+        search.getView().destroyFrameRenterGuest();
+        mainpage.turnOn();
+    }
+    }
 
 
 }
