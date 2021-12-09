@@ -193,7 +193,7 @@ public class SearchView extends JFrame{
 
         // JFrame creation of certain size for Manager User Type
         mgrF = new JFrame("Manager Search Page"); 
-        mgrF.setSize(500,500);
+        mgrF.setSize(530,600);
         //mgrF.setLayout(null);
         
         jScrollPane2 = new JScrollPane();
@@ -431,7 +431,7 @@ public class SearchView extends JFrame{
     
         setVisible(false); // existing frame no longer visible
         llrdF = new JFrame("Landlord Frame");
-        llrdF.setSize(500,500);
+        llrdF.setSize(530,600);
         //llrdF.setLayout(null);
         
         jScrollPane2 = new JScrollPane();

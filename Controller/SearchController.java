@@ -260,8 +260,10 @@ public class SearchController implements ActionListener, ListSelectionListener{
     {
         managerSearch = true;
         sView = new SearchView(); 
-        this.sView.addSearchListener(this);
+        this.sView.addDisplayListener(this);
+        System.out.println(managerSearch);
         sView.turnOnForManager();
+        this.sView.addSelectListener(this);
         //sView.mgr();
     }
 
