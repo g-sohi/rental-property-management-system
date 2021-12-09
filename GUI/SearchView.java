@@ -615,6 +615,11 @@ public class SearchView extends JFrame{
         return this.displayTable4Model;
     }
 
+    public JLabel getLandlordIdLabel()
+    {
+        return this.LandlordIdLabel;
+    }
+
     public void addResetListener(ActionListener listenForReset){
         reset.addActionListener(listenForReset);  
     }
@@ -632,11 +637,11 @@ public class SearchView extends JFrame{
     {
         jList2.addListSelectionListener(listenForSelection);
     }
-    /*public static void main(String [] args) {
+    public static void main(String [] args) {
         SearchView test =  new SearchView();
         test.llrd();
         test.turnOnForLandlord();
-    }*/
+    }
 
     
 }

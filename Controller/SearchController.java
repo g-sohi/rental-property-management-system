@@ -54,6 +54,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
                 llproperties[i] = landlordProperties.get(i).getAddress();
                 IDs[i] = landlordProperties.get(i).getID();
             }
+            sView.getLandlordIdLabel().setText(String.valueOf(this.landlordID));
             sView.getJList2().setListData(llproperties);
         }
 
