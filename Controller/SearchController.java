@@ -200,6 +200,13 @@ public class SearchController implements ActionListener{
         sView.turnOn();
     }
 
+    public void resetSearchType(){
+        rentSearch = false;
+        managerSearch = false;
+        landLordSearch = false;
+        System.out.println("Search reset");
+    }
+
     public void enableMGrView()
     {
         sView = new SearchView(); 
