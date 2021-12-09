@@ -225,17 +225,6 @@ public class SearchView extends JFrame{
 
     }
 
-    public static void main(String [] args)
-    {
-
-        SearchView testView = new SearchView();
-        testView.llrd();
-        while(true)
-        {
-            testView.getFurnishedInput();
-        }
-        
-    }
     //Getter functions to get the users inputted value from the text fields
     //This method returns the number of beds the user inputted
     public void turnOn()
@@ -243,6 +232,17 @@ public class SearchView extends JFrame{
         setVisible(true);
 
     }
+
+    public void turnOnForManager(){
+        mgr();
+        mgrF.setVisible(true);
+    }
+
+    public void turnOnForLandlord(){
+        llrd();
+        llrdF.setVisible(true);
+    }
+
     public int getBedsInput()
     {
         if(!noBeds.getText().equals(""))
