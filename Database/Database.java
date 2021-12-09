@@ -66,6 +66,17 @@ public class Database {
             }
         }
 
+        public void updateLastLogin(String username, String lastLogin){
+            try {
+                String query = String.format("UPDATE SET LastLogin = %s WHERE UserName = %s", lastLogin, username);
+                Statement stmt = dbConnect.createStatement();
+                stmt.executeUpdate(query);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
         public User getUserInformation(String username){
             User use = new User();
             try {
@@ -225,7 +236,7 @@ public class Database {
                     unformattedQuery += "Furnished = ?" + " AND ";
                     inputs.add(p.getFurnished());
                 }
-            }
+                }
                 else{
                     unformattedQuery += "Furnished = Furnished" + " AND ";
                 }
@@ -288,8 +299,11 @@ public class Database {
                     int numOfBathrooms = line.getInt("NoOfBathrooms");
                     String furnished = line.getString("Furnished");
                     String status = line.getString("Status");
-
-                    Property prop = new Property(ID, address,quadrant, type, numOfBedrooms, numOfBathrooms, furnished, new Fees(50.00, 0, "null", "null"), status);
+                    String startDate = line.getString("StartDate");
+                    String endDate = line.getString("EndDate");
+                    String rentDate = line.getString("RentDate");
+                    Fees fee = new Fees(line.getDouble("Fees"), line.getInt("FeePeriod"), startDate, endDate);
+                    Property prop = new Property(ID, address,quadrant, type, numOfBedrooms, numOfBathrooms, furnished, fee, status, startDate, endDate, rentDate);
                     properties.add(prop);
                 }
                 stmt.close();
@@ -301,7 +315,67 @@ public class Database {
             return properties;
         }
 
+        public ArrayList<Property> getManagerProperties() {
+            ArrayList<Property> properties = new ArrayList<Property>();
+            try {
+                String query = String.format("SELECT * FROM property");
+                PreparedStatement stmt = dbConnect.prepareStatement(query);
+    
+                line = stmt.executeQuery();
+                while (line.next()) {
+                    int ID = line.getInt("Property_ID");
+                    String address = line.getString("Address");
+                    String quadrant = line.getString("quadrant");
+                    String type = line.getString("Type");
+                    int numOfBedrooms = line.getInt("NoOfBedrooms");
+                    int numOfBathrooms = line.getInt("NoOfBathrooms");
+                    String furnished = line.getString("Furnished");
+                    String status = line.getString("Status");
+                    String startDate = line.getString("StartDate");
+                    String endDate = line.getString("EndDate");
+                    String rentDate = line.getString("RentDate");
+                    Fees fee = new Fees(line.getDouble("Fees"), line.getInt("FeePeriod"), startDate, endDate);
+                    Property prop = new Property(ID, address,quadrant, type, numOfBedrooms, numOfBathrooms, furnished, fee, status, startDate, endDate, rentDate);
+                    properties.add(prop);
+                }
+                stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Error.Exiting program.");
+                System.exit(1);
+            }
+            return properties;
+        }
 
+        public ArrayList<Property> getNewProperties(String lastLogin){
+            ArrayList<Property> properties = new ArrayList<Property>();
+            try {
+                String query = String.format("SELECT * FROM property WHERE startDate > ? AND Status = 'Available'");
+                PreparedStatement stmt = dbConnect.prepareStatement(query);
+    
+                stmt.setString(1, lastLogin);
+    
+                line = stmt.executeQuery();
+                while (line.next()) {
+                    int ID = line.getInt("Property_ID");
+                    String address = line.getString("Address");
+                    String quadrant = line.getString("quadrant");
+                    String type = line.getString("Type");
+                    int numOfBedrooms = line.getInt("NoOfBedrooms");
+                    int numOfBathrooms = line.getInt("NoOfBathrooms");
+                    String furnished = line.getString("Furnished");
+                    String status = line.getString("Status");
+                    Property prop = new Property(ID, address,quadrant, type, numOfBedrooms, numOfBathrooms, furnished, new Fees(0.00, 0, "null", "null"), status);
+                    properties.add(prop);
+                }
+                stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Error.Exiting program.");
+                System.exit(1);
+            }
+            return properties;
+        }
 
         public void close() {
             try {
@@ -314,14 +388,15 @@ public class Database {
 
         public static void main(String[] args) throws IOException {
             Database db = new Database();
+            db.getManagerProperties();
             
             /*db.addProperty(2, "333 VansRoad, Calgary", "Townhouse", 2, 1, "No", 101.1, "Available", 4, "21 Aug, 2021", "23 Dec, 2021");
             db.removeProperty(2);*/
 
 
             //ArrayList<Property> props = new ArrayList<Property>(db.getSearchProperties(new Property(0,"null", "Detached", 4, -1, "null", new Fees(50.00, 0, "null", "null"), "Available")));
-            GUIController ctrl = new GUIController(db);
-            ctrl.setDatabase(db);
+            //GUIController ctrl = new GUIController(db);
+            //ctrl.setDatabase(db);
             //SearchController srh = new SearchController();
             /*int id = 3;
             Landlord land = new Landlord("Robin", "Robin", "Sio", id, "ensf480", "Manager", new Email("null", "null", "null", "null"), db.getLandlordProperties(id));
