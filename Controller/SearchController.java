@@ -323,7 +323,10 @@ public class SearchController implements ActionListener, ListSelectionListener{
                 getListings().get(this.sView.getJList2().getSelectedIndex()).getNumOfBathrooms(), 
                 getListings().get(this.sView.getJList2().getSelectedIndex()).getFurnished(), 
                 getListings().get(this.sView.getJList2().getSelectedIndex()).getPropertyFees(), 
-                getListings().get(this.sView.getJList2().getSelectedIndex()).getPropertyStatus());
+                getListings().get(this.sView.getJList2().getSelectedIndex()).getPropertyStatus(),
+                getListings().get(this.sView.getJList2().getSelectedIndex()).getStartDate(),
+                getListings().get(this.sView.getJList2().getSelectedIndex()).getEndDate(),
+                getListings().get(this.sView.getJList2().getSelectedIndex()).getRentDate());
             displayPropertyInfo(p);
         }       
     }
