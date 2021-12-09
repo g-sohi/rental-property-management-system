@@ -24,9 +24,13 @@ public class SearchController implements ActionListener{
     private User users;
     private ArrayList<Property> listings;
     private Database db;
+    private boolean rentSearch, managerSearch, landLordSearch;
 
     public SearchController(Database db) 
     {
+        rentSearch = false;
+        managerSearch = false;
+        landLordSearch = false;
         this.db = db;
     }
 
@@ -86,7 +90,6 @@ public class SearchController implements ActionListener{
             JScrollPane scrollPane = new JScrollPane();
             scrollPane.setViewportView(test2);
             scrollPane.setBounds(30, 325, 440, 115);
-
             //JButton test2 = new JButton("Something happened");
             //sView.add(test2);
             sView.add(scrollPane);
