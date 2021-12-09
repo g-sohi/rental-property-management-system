@@ -3,7 +3,10 @@ import GUI.*;
 import Database.*;
 import Models.*;
 
+
 import java.awt.event.*;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 import javax.sound.midi.MidiSystem;
 import javax.swing.JOptionPane;
@@ -33,8 +36,12 @@ public class LoginController implements ActionListener{
         //addListener();
         //boolean loggedIn = this.verifyLogin();
         this.verifyLogin();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd HH-mm-ss");
+        LocalDateTime current = LocalDateTime.now();
+        System.out.println(dtf.format(current));
         db.initializeConnection();
         this.user = new User(db.getUserInformation(this.user.getUsername()));
+        db.updateLastLogin(dtf.format(current).toString(), this.user.getId());
         System.out.println("User Name: " + this.user.getFName());
 
         if(e.getSource().equals(view.getButton()))
