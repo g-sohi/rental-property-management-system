@@ -55,6 +55,11 @@ public class EmailView extends JFrame {
         System.out.println("DONE1");
         this.send.addActionListener(listenForSendEmail);
     }
+
+    public JButton getSendButton()
+    {
+        return send;
+    }
     // returns input for Subject JTextfield
     public String getSub() {
         return subject.getText();
@@ -91,5 +96,13 @@ public class EmailView extends JFrame {
     // public static void main(String [] args) {
     //     new EmailView().turnOn();
     // }
+    public void showDialog()
+    {
+        //JFrame frame = new JFrame("Registration Done");
+            // show a joptionpane dialog using showMessageDialog
+            JOptionPane.showMessageDialog(frame,"Email is sent successfully");
+            frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            //System.out.println("working");
+    }
 
 }

@@ -43,13 +43,23 @@ public class RenterController implements ActionListener{
             selectProp.destroyFrame();
             emailv = new EmailView();
             emailv.turnOn();
+            emailv.addSendEmailListener(this);
         }
         if(e.getSource().equals(selectProp.getCloseButton()))
         {
             selectProp.destroyFrame();
             RenterView.turnOn();
         }
-    }
+        }
+        if(emailv != null)
+        {
+            if(e.getSource().equals(emailv.getSendButton()))
+            {
+               emailv.showDialog(); 
+                emailv.destroyFrame();
+                RenterView.turnOn();
+            }
+        }
     }
 
     public void SelectProperty(ArrayList<Property> listings)
