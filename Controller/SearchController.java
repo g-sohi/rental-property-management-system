@@ -301,6 +301,14 @@ public class SearchController implements ActionListener, ListSelectionListener{
         this.sView.getJTableModel3().setRowCount(0);
         this.sView.getJTableModel3().addRow(tableInputs3);
         this.sView.getJTable3().revalidate();
+
+        Vector<String> tableInputs4 = new Vector<String>();
+        tableInputs4.add(p.getStartDate());
+        tableInputs4.add(p.getEndDate());
+        tableInputs4.add(p.getRentDate());
+        this.sView.getJTableModel4().setRowCount(0);
+        this.sView.getJTableModel4().addRow(tableInputs4);
+        this.sView.getJTable4().revalidate();
     }
 
     @Override
