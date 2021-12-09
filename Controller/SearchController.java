@@ -41,11 +41,10 @@ public class SearchController implements ActionListener, ListSelectionListener{
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
 
-        if(e.getSource().equals(sView.getDisplayButton()))
+        if(e.getSource().equals(sView.getDisplayButton()) && landLordSearch == true)
         {
             System.out.println("Display working");
             ArrayList<Property> landlordProperties = db.getLandlordProperties(landlordID);
-            this.listings = landlordProperties;
             setListings(landlordProperties);
             String llproperties[] = new String[landlordProperties.size()];
             int IDs[] = new int[landlordProperties.size()];
@@ -55,6 +54,20 @@ public class SearchController implements ActionListener, ListSelectionListener{
                 IDs[i] = landlordProperties.get(i).getID();
             }
             sView.getLandlordIdLabel().setText(String.valueOf(this.landlordID));
+            sView.getJList2().setListData(llproperties);
+        }
+        if(e.getSource().equals(sView.getDisplayButton()) && managerSearch == true)
+        {
+            System.out.println("Display working");
+            //ArrayList<Property> landlordProperties = db.getLandlordProperties(landlordID);
+            //setListings(landlordProperties);
+            String llproperties[] = new String[5];
+            int IDs[] = new int[5];
+            for(int i = 0; i < 5; i++)
+            {
+                llproperties[i] = "H";   //landlordProperties.get(i).getAddress();
+                IDs[i] = 7;  //landlordProperties.get(i).getID();
+            }
             sView.getJList2().setListData(llproperties);
         }
 
