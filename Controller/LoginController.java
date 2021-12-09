@@ -52,6 +52,7 @@ public class LoginController implements ActionListener{
                 Landlord tempLand = new Landlord(this.user);
                 ldCtrl.setLandlord(tempLand);
                 ldCtrl.setRegisterControllerId(ldCtrl.getLandlord().getId());
+                ldCtrl.setSearchControllerID(ldCtrl.getLandlord().getId());
                 System.out.println("Landlord Name: " + ldCtrl.getLandlord().getFName() + "\nID: " + ldCtrl.getLandlord().getId() + "\n");
                 ldCtrl.enableView(this);
                 ldCtrl.getLandlordView().turnOn();
@@ -70,6 +71,7 @@ public class LoginController implements ActionListener{
         if(e.getSource().equals(rtCtrl.getRenterView().getLogout()))
         {
             System.out.println("hello");
+            rtCtrl.getSearch().resetSearchType();
             rtCtrl.getRenterView().destroyFrame();
             view.turnOn();
         }
@@ -80,6 +82,7 @@ public class LoginController implements ActionListener{
         if(e.getSource().equals(ldCtrl.getLandlordView().getLogout()))
         {
             System.out.println("finish");
+            ldCtrl.getSearch().resetSearchType();
             ldCtrl.getLandlordView().destroyFrame();
             view.turnOn();
         }
@@ -90,6 +93,7 @@ public class LoginController implements ActionListener{
         if(e.getSource().equals(mgCtrl.getView().getLogout()))
         {
             System.out.println("done");
+            mgCtrl.getSearch().resetSearchType();
             mgCtrl.getView().destroyFrame();
             view.turnOn();
         }

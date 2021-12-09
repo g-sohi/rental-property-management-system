@@ -140,13 +140,16 @@ public class RenterController implements ActionListener{
         this.RenterView = renterView;
     }
 
+    public SearchController getSearch(){
+        return this.search;
+    }
+
     public void enableView(ActionListener logoutListener)
     {
         RenterView = new RenterView();
         RenterView.addLogoutListener(logoutListener);
         RenterView.addSearchListener(this);
         RenterView.addSelectListener(this);
-
     }
 
     

@@ -169,6 +169,10 @@ public class ManagerController implements ActionListener {
         return managerv;
     }
 
+    public SearchController getSearch(){
+        return this.search;
+    }
+
     public void enableView(ActionListener logoutListener)
     {
         managerv = new ManagerView();

@@ -91,7 +91,7 @@ public class PropertyController implements ActionListener {
             db.initializeConnection();
             if(e.getSource().equals(edit.getSaveButton()))
             {
-                db.updateProperty(edit.getPropetyIdInput(), edit.getStatusInput());
+                db.updateProperty(edit.getPropetyIdInput(), edit.getStatusInput(), edit.getRentDateInput());
                 System.out.println("New Information Saved");
                 edit.destroyFrame();
             }

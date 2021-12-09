@@ -14,6 +14,7 @@ public class EditPropertyView extends JFrame{
     private JButton save;
     private JButton remove;
     private JTextField idProperty;
+    private JTextField rentDate;
     private Container ctr;
 	private JTextField idProperty2;
 
@@ -51,6 +52,11 @@ public class EditPropertyView extends JFrame{
         status.setSize(100, 20);
         status.setLocation(200, 110);
         ctr.add(status);
+        rentDate = new JTextField("Enter Rent Date...");
+		rentDate.setFont(new Font("Arial", Font.PLAIN, 10));
+        rentDate.setSize(100, 20);
+        rentDate.setLocation(320, 110);
+        ctr.add(rentDate);
 		save = new JButton("Save");
 		save.setFont(new Font("Arial", Font.PLAIN, 15));
         save.setSize(100, 20);
@@ -122,6 +128,11 @@ public class EditPropertyView extends JFrame{
     public int getPropetyId2Input()
     {
         return Integer.valueOf(idProperty2.getText());
+    }
+
+    public String getRentDateInput()
+    {
+        return rentDate.getText();
     }
 
     public static void main(String [] args) {
