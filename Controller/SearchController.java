@@ -179,7 +179,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
                     }
                     else
                     {
-                        displayMessages[i][j] = "Fees: $";
+                        displayMessages[i][j] = String.valueOf(obj.get(i).getPropertyFees().getAmount());
                     }
                 }
             }
