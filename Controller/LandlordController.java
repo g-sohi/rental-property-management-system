@@ -118,6 +118,10 @@ public class LandlordController implements ActionListener{
         this.regProp = regC;
     }
 
+    public SearchController getSearch(){
+        return this.search;
+    }
+
     public void enableView(ActionListener logoutListener)
     {
         landlordV = new LandlordView();
