@@ -106,4 +106,10 @@ public class EmailView extends JFrame {
             //System.out.println("working");
     }
 
+    public void showErrorDialog()
+    {
+        
+            JOptionPane.showMessageDialog(frame,"Fill All fields");
+    }
+
 }
