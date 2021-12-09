@@ -11,8 +11,11 @@ public class EmailView extends JFrame {
     private JLabel subLabel, pIDLabel, fromLabel;
     private JButton send;
     private JFrame frame;
+    private String id;
 
-    public EmailView() {
+    public EmailView(String id) {
+
+        this.id = id;
 
         // creation of JFrame of certain size
         frame = new JFrame("Email Page");
@@ -26,7 +29,7 @@ public class EmailView extends JFrame {
         subLabel.setBounds(50, 100, 100, 40);
         fromLabel = new JLabel("From:");
         fromLabel.setBounds(50, 25, 100, 40);
-        pIDLabel = new JLabel("Property ID:");
+        pIDLabel = new JLabel("Property ID:   " + id);
         pIDLabel.setBounds(50, 50, 100, 40);
         
         // creation of JTextFields and JTextArea of certain size and position
@@ -34,8 +37,6 @@ public class EmailView extends JFrame {
         subject.setBounds(140, 110, 310, 20);
         from = new JTextField();
         from.setBounds(140, 35, 310, 20);
-        pID = new JTextField();
-        pID.setBounds(140, 60, 310, 20);
         body = new JTextArea();
         body.setBounds(50, 160, 400, 225);
 
@@ -45,7 +46,7 @@ public class EmailView extends JFrame {
 
         // addition of components to JFrame
         frame.add(subLabel); frame.add(fromLabel); frame.add(pIDLabel);
-        frame.add(subject); frame.add(from); frame.add(pID); frame.add(body);
+        frame.add(subject); frame.add(from);  frame.add(body);
         frame.add(send);
 
         //frame.setVisible(true); // JFrame is set to appear

@@ -395,8 +395,8 @@ public class Database {
 
 
             //ArrayList<Property> props = new ArrayList<Property>(db.getSearchProperties(new Property(0,"null", "Detached", 4, -1, "null", new Fees(50.00, 0, "null", "null"), "Available")));
-            //GUIController ctrl = new GUIController(db);
-            //ctrl.setDatabase(db);
+            GUIController ctrl = new GUIController(db);
+            ctrl.setDatabase(db);
             //SearchController srh = new SearchController();
             /*int id = 3;
             Landlord land = new Landlord("Robin", "Robin", "Sio", id, "ensf480", "Manager", new Email("null", "null", "null", "null"), db.getLandlordProperties(id));

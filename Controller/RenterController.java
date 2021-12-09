@@ -16,6 +16,7 @@ public class RenterController implements ActionListener{
     private EmailView emailv;
     private RenterView RenterView;
     private SearchController search;
+    private String id;
 
     public RenterController(Database db)
     {
@@ -38,10 +39,14 @@ public class RenterController implements ActionListener{
         }
         if(selectProp != null)
         {
+        if(e.getSource().equals(selectProp.getSelectButton()))
+        {
+                id = selectProp.getPropertyID();
+        }
         if(e.getSource().equals(selectProp.getEmailButton()))
         {
             selectProp.destroyFrame();
-            emailv = new EmailView();
+            emailv = new EmailView(id);
             emailv.turnOn();
             emailv.addSendEmailListener(this);
         }
