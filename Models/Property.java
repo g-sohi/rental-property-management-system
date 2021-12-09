@@ -10,6 +10,9 @@ public class Property {
     private Fees propertyFees;
     private String propertyStatus;
     private String quadrant;
+    private String rentDate;
+    private String startDate;
+    private String endDate;
 
     
     /**
@@ -26,6 +29,21 @@ public class Property {
         this.propertyFees = propertyFees;
         this.propertyStatus = propertyStatus;
     }
+    public Property(int id,String address, String quadrant,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus, String startDate, String endDate, String rentDate)
+    {
+        this.id = id;
+        this.address = address;
+        this.quadrant = quadrant;
+        this.type = type;
+        this.numOfBathrooms = numOfBathrooms;
+        this.numOfBedrooms = numOfBedrooms;
+        this.furnished = furnished;
+        this.propertyFees = propertyFees;
+        this.propertyStatus = propertyStatus;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.rentDate = rentDate;
+    }
     public Property(int id,String address, String quadrant,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus)
     {
         this.id = id;
@@ -38,6 +56,7 @@ public class Property {
         this.propertyFees = propertyFees;
         this.propertyStatus = propertyStatus;
     }
+
 
     public int getID()                          //getter method for the id    
     {
@@ -137,6 +156,36 @@ public class Property {
     public void setQuadrant(String quadrant)    //setter method for the quadrant
     {
         this.quadrant = quadrant;
+    }
+
+    public String getStartDate()           //getter method for the startDate  
+    {
+        return this.startDate;
+    }
+
+    public void setStartDate(String startDate)  //setter method for the startDate
+    {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate()           //getter method for the endDate  
+    {
+        return this.endDate;
+    }
+
+    public void setEndDate(String endDate)  //setter method for the endDate
+    {
+        this.endDate = endDate;
+    }
+    
+    public String getRentDate()           //getter method for the rentDate  
+    {
+        return this.rentDate;
+    }
+
+    public void setRentDate(String rentDate)  //setter method for the rentDate
+    {
+        this.rentDate = rentDate;
     }
 
 

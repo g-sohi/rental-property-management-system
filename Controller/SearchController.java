@@ -267,25 +267,25 @@ public class SearchController implements ActionListener, ListSelectionListener{
         tableInputs.add(String.valueOf(p.getID()));
         tableInputs.add(p.getAddress());
         tableInputs.add(p.getQuadrant());
-        this.sView.getJTableModel1().getDataVector().removeAllElements();
+        this.sView.getJTableModel1().setRowCount(0);
         this.sView.getJTableModel1().addRow(tableInputs);
         this.sView.getJTable1().revalidate();
 
-        tableInputs.clear();
-        tableInputs.add(p.getType());
-        tableInputs.add(String.valueOf(p.getNumOfBedrooms()));
-        tableInputs.add(String.valueOf(p.getNumOfBathrooms()));
-        tableInputs.add(p.getFurnished());
-        this.sView.getJTableModel2().getDataVector().removeAllElements();
-        this.sView.getJTableModel2().addRow(tableInputs);
+        Vector<String> tableInputs2 = new Vector<String>();
+        tableInputs2.add(p.getType());
+        tableInputs2.add(String.valueOf(p.getNumOfBedrooms()));
+        tableInputs2.add(String.valueOf(p.getNumOfBathrooms()));
+        tableInputs2.add(p.getFurnished());
+        this.sView.getJTableModel2().setRowCount(0);
+        this.sView.getJTableModel2().addRow(tableInputs2);
         this.sView.getJTable2().revalidate();
 
-        tableInputs.clear();
-        tableInputs.add(String.valueOf(p.getPropertyFees().getAmount()));
-        tableInputs.add("YES");
-        tableInputs.add(p.getPropertyStatus());
-        this.sView.getJTableModel3().getDataVector().removeAllElements();
-        this.sView.getJTableModel3().addRow(tableInputs);
+        Vector<String> tableInputs3 = new Vector<String>();
+        tableInputs3.add(String.valueOf(p.getPropertyFees().getAmount()));
+        tableInputs3.add("YES");
+        tableInputs3.add(p.getPropertyStatus());
+        this.sView.getJTableModel3().setRowCount(0);
+        this.sView.getJTableModel3().addRow(tableInputs3);
         this.sView.getJTable3().revalidate();
     }
 
