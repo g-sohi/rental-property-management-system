@@ -44,7 +44,7 @@ public class Property {
         this.endDate = endDate;
         this.rentDate = rentDate;
     }
-    public Property(int id,String address, String quadrant,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus, S)
+    public Property(int id,String address, String quadrant,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus)
     {
         this.id = id;
         this.address = address;
