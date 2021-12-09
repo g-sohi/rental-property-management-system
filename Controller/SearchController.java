@@ -59,16 +59,14 @@ public class SearchController implements ActionListener, ListSelectionListener{
         if(e.getSource().equals(sView.getDisplayButton()) && managerSearch == true)
         {
             System.out.println("Display working");
-            //ArrayList<Property> landlordProperties = db.getLandlordProperties(landlordID);
-            //setListings(landlordProperties);
-            String llproperties[] = new String[5];
-            int IDs[] = new int[5];
+            ArrayList<Property> managerProperties = db.getManagerProperties();
+            setListings(managerProperties);
+            String allProperties[] = new String[managerProperties.size()];
             for(int i = 0; i < 5; i++)
             {
-                llproperties[i] = "H";   //landlordProperties.get(i).getAddress();
-                IDs[i] = 7;  //landlordProperties.get(i).getID();
+                allProperties[i] = managerProperties.get(i).getAddress();   //landlordProperties.get(i).getAddress();
             }
-            sView.getJList2().setListData(llproperties);
+            sView.getJList2().setListData(allProperties);
         }
 
         if(e.getSource().equals(sView.getResetButton()))
@@ -319,10 +317,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
                 getListings().get(this.sView.getJList2().getSelectedIndex()).getPropertyFees(), 
                 getListings().get(this.sView.getJList2().getSelectedIndex()).getPropertyStatus());
             displayPropertyInfo(p);
-            //System.out.println("item selected: " + this.sView.getJList2().getSelectedValue());
-            //System.out.println("Bedrroms: " + getListings().get(this.sView.getJList2().getSelectedIndex()).getNumOfBedrooms());
-        }
-        
+        }       
     }
 }
 
