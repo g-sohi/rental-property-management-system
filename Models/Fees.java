@@ -3,16 +3,18 @@ package Models;
 public class Fees {
     private double amount;
     private int feePeriod;
+    private String feesPaid;
     private String feeStartDate;
     private String feeEndDate;
 
     /**
      * Constructor for the Fees class
      */
-    public Fees(double amount,int feePeriod,String feeStartDate,String feeEndDate)
+    public Fees(double amount, int feePeriod, String feesPaid, String feeStartDate,String feeEndDate)
     {
-        this.amount =amount;
+        this.amount = amount;
         this.feePeriod = feePeriod;
+        this.feesPaid = feesPaid;
         this.feeStartDate = feeStartDate;
         this.feeEndDate =feeEndDate;
     }
@@ -35,6 +37,14 @@ public class Fees {
     public void setFeePeriod(int feePeriod)  //setter method for the feePeriod
     {
         this.feePeriod = feePeriod;
+    }
+
+    public String getFeesPaid(){
+        return this.feesPaid;
+    }
+
+    public void setFeesPaid(String paid){
+        this.feesPaid = paid;
     }
 
     public String getFeeStartDate()              //getter method for the feeStartDate

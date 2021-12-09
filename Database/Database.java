@@ -176,14 +176,12 @@ public class Database {
 
         public void updateProperty(int id, String status, String rentDate){
             try {
-                if(status != "Rented")
-                {
-                String query = String.format("UPDATE property SET Status = '%s', RentDate = 'null' Where Property_ID = %d", status, id);
-                Statement stmt = dbConnect.createStatement();
-                stmt.executeUpdate(query);
+                if(!status.equalsIgnoreCase("rented")){
+                    String query = String.format("UPDATE property SET Status = '%s', RentDate = 'null' Where Property_ID = %d", status, id);
+                    Statement stmt = dbConnect.createStatement();
+                    stmt.executeUpdate(query);
                 }
-                else
-                {
+                else{
                     String query = String.format("UPDATE property SET Status = '%s', RentDate = '%s' Where Property_ID = %d", status, rentDate, id);
                     Statement stmt = dbConnect.createStatement();
                     stmt.executeUpdate(query);
@@ -269,7 +267,7 @@ public class Database {
                     String furnished = line.getString("Furnished");
                     String status = line.getString("Status");
 
-                    Property prop = new Property(ID, address,quadrant, type, numOfBedrooms, numOfBathrooms, furnished, new Fees(50.00, 0, "null", "null"), status);
+                    Property prop = new Property(ID, address,quadrant, type, numOfBedrooms, numOfBathrooms, furnished, new Fees(50.00, 0, "No", "N/A", "N/A"), status);
                     properties.add(prop);
                 }
                 stmt.close();
@@ -302,7 +300,7 @@ public class Database {
                     String startDate = line.getString("StartDate");
                     String endDate = line.getString("EndDate");
                     String rentDate = line.getString("RentDate");
-                    Fees fee = new Fees(line.getDouble("Fees"), line.getInt("FeePeriod"), startDate, endDate);
+                    Fees fee = new Fees(line.getDouble("Fees"), line.getInt("FeePeriod"), line.getString("FeesPaid"), startDate, endDate);
                     Property prop = new Property(ID, address,quadrant, type, numOfBedrooms, numOfBathrooms, furnished, fee, status, startDate, endDate, rentDate);
                     properties.add(prop);
                 }
@@ -334,7 +332,7 @@ public class Database {
                     String startDate = line.getString("StartDate");
                     String endDate = line.getString("EndDate");
                     String rentDate = line.getString("RentDate");
-                    Fees fee = new Fees(line.getDouble("Fees"), line.getInt("FeePeriod"), startDate, endDate);
+                    Fees fee = new Fees(line.getDouble("Fees"), line.getInt("FeePeriod"), line.getString("FeesPaid"), startDate, endDate);
                     Property prop = new Property(ID, address,quadrant, type, numOfBedrooms, numOfBathrooms, furnished, fee, status, startDate, endDate, rentDate);
                     properties.add(prop);
                 }
@@ -365,7 +363,7 @@ public class Database {
                     int numOfBathrooms = line.getInt("NoOfBathrooms");
                     String furnished = line.getString("Furnished");
                     String status = line.getString("Status");
-                    Property prop = new Property(ID, address,quadrant, type, numOfBedrooms, numOfBathrooms, furnished, new Fees(0.00, 0, "null", "null"), status);
+                    Property prop = new Property(ID, address,quadrant, type, numOfBedrooms, numOfBathrooms, furnished, new Fees(0.00, 0, "No", "N/A", "N/A"), status);
                     properties.add(prop);
                 }
                 stmt.close();
@@ -375,6 +373,31 @@ public class Database {
                 System.exit(1);
             }
             return properties;
+        }
+
+        public int countListings(String type, String periodStart, String periodEnd){
+            int count = 0;
+            try {
+                String query = "";
+                if(type.equalsIgnoreCase("listed")){
+                    query = String.format("SELECT COUNT(StartDate)) AS result_count FROM property WHERE StartDate between '%s' AND '%s'", periodStart, periodEnd);
+                }
+                else if(type.equalsIgnoreCase("rented")){
+                    query = String.format("SELECT COUNT(RentDate)) AS result_count FROM property WHERE RentDate between '%s' AND '%s'", periodStart, periodEnd);
+                }
+                else if(type.equalsIgnoreCase("active")){
+                    query = String.format("SELECT COUNT(StartDate)) AS result_count active FROM property WHERE StartDate between '%s' AND '%s' AND Status = 'Active'", periodStart, periodEnd);
+
+                }
+                PreparedStatement stmt = dbConnect.prepareStatement(query);
+                line = stmt.executeQuery();
+                if(line.next()){
+                    count = line.getInt("result_count");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return count;
         }
 
         public void close() {
