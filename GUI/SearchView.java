@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 
 import Models.Property;
 
@@ -41,9 +42,13 @@ public class SearchView extends JFrame{
     //Private members for Landlord View
     private JButton displayButton;
     private JTable DisplayTable1;
+    private DefaultTableModel displayTable1Model;
     private JTable DisplayTable2;
+    private DefaultTableModel displayTable2Model;
     private JTable DisplayTable3;
+    private DefaultTableModel displayTable3Model;
     private JTable DisplayTable4;
+    private DefaultTableModel displayTable4Model;
     private JLabel LandlordIdLabel;
     private JLabel LandlordLabel;
     private JLabel LandlordPropertiesTitle;
@@ -244,6 +249,7 @@ public class SearchView extends JFrame{
         LandlordLabel = new JLabel();
         LandlordIdLabel = new JLabel();
 
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -260,7 +266,7 @@ public class SearchView extends JFrame{
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
         jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "", "", "", "", "" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -294,39 +300,36 @@ public class SearchView extends JFrame{
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
 
-        DisplayTable1.setModel(new javax.swing.table.DefaultTableModel(
+        displayTable1Model = new DefaultTableModel(
             new Object [][] {
                 {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
             },
             new String [] {
                 "Property ID", "Address", "Quadrant"
             }
-        ));
+        );
+        DisplayTable1.setModel(displayTable1Model);
         DisplayTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
         jScrollPane3.setViewportView(DisplayTable1);
 
-        DisplayTable2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        DisplayTable2.setModel(new javax.swing.table.DefaultTableModel(
+
+        displayTable2Model = new DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
             },
             new String [] {
                 "Type", "Number of Bedrooms", "Number of Bathrooms", "Furnished"
             }
-        ));
+        );
+        DisplayTable2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        DisplayTable2.setModel(displayTable2Model);
+
         DisplayTable2.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         DisplayTable2.setBounds(new java.awt.Rectangle(0, 0, 500, 500));
         DisplayTable2.setShowGrid(true);
         jScrollPane5.setViewportView(DisplayTable2);
 
-        DisplayTable3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        DisplayTable3.setModel(new javax.swing.table.DefaultTableModel(
+        displayTable3Model = new DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -336,14 +339,16 @@ public class SearchView extends JFrame{
             new String [] {
                 "Fees", "Fees Paid", "Status"
             }
-        ));
+        );
+        DisplayTable3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        DisplayTable3.setModel(displayTable3Model);
+
         DisplayTable3.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         DisplayTable3.setBounds(new java.awt.Rectangle(0, 0, 500, 500));
         DisplayTable3.setShowGrid(true);
         jScrollPane6.setViewportView(DisplayTable3);
 
-        DisplayTable4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        DisplayTable4.setModel(new javax.swing.table.DefaultTableModel(
+        displayTable4Model = new DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -353,7 +358,9 @@ public class SearchView extends JFrame{
             new String [] {
                 "Registration Date", "Listing End Date", "Start Rent Date"
             }
-        ));
+        );
+        DisplayTable4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        DisplayTable4.setModel(displayTable4Model);
         DisplayTable4.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         DisplayTable4.setBounds(new java.awt.Rectangle(0, 0, 500, 500));
         DisplayTable4.setShowGrid(true);
@@ -570,6 +577,42 @@ public class SearchView extends JFrame{
 
     public String getPropStat() {
         return propStat.getSelectedItem().toString();
+    }
+
+    public JTable getJTable1()
+    {
+        return this.DisplayTable1;
+    }
+
+    public JTable getJTable2()
+    {
+        return this.DisplayTable2;
+    }
+    public JTable getJTable3()
+    {
+        return this.DisplayTable3;
+    }
+    public JTable getJTable4()
+    {
+        return this.DisplayTable4;
+    }
+
+    public DefaultTableModel getJTableModel1()
+    {
+        return this.displayTable1Model;
+    }
+
+    public DefaultTableModel getJTableModel2()
+    {
+        return this.displayTable2Model;
+    }
+    public DefaultTableModel getJTableModel3()
+    {
+        return this.displayTable3Model;
+    }
+    public DefaultTableModel getJTableModel4()
+    {
+        return this.displayTable4Model;
     }
 
     public void addResetListener(ActionListener listenForReset){

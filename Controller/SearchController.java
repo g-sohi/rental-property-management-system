@@ -45,6 +45,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
         {
             System.out.println("Display working");
             ArrayList<Property> landlordProperties = db.getLandlordProperties(landlordID);
+            this.listings = landlordProperties;
             setListings(landlordProperties);
             String llproperties[] = new String[landlordProperties.size()];
             int IDs[] = new int[landlordProperties.size()];
@@ -260,13 +261,50 @@ public class SearchController implements ActionListener, ListSelectionListener{
         //sView.llrd();
     }
 
+    public void displayPropertyInfo(Property p)
+    {
+        Vector<String> tableInputs = new Vector<String>();
+        tableInputs.add(String.valueOf(p.getID()));
+        tableInputs.add(p.getAddress());
+        tableInputs.add(p.getQuadrant());
+        this.sView.getJTableModel1().getDataVector().removeAllElements();
+        this.sView.getJTableModel1().addRow(tableInputs);
+        this.sView.getJTable1().revalidate();
+
+        tableInputs.clear();
+        tableInputs.add(p.getType());
+        tableInputs.add(String.valueOf(p.getNumOfBedrooms()));
+        tableInputs.add(String.valueOf(p.getNumOfBathrooms()));
+        tableInputs.add(p.getFurnished());
+        this.sView.getJTableModel2().getDataVector().removeAllElements();
+        this.sView.getJTableModel2().addRow(tableInputs);
+        this.sView.getJTable2().revalidate();
+
+        tableInputs.clear();
+        tableInputs.add(String.valueOf(p.getPropertyFees().getAmount()));
+        tableInputs.add("YES");
+        tableInputs.add(p.getPropertyStatus());
+        this.sView.getJTableModel3().getDataVector().removeAllElements();
+        this.sView.getJTableModel3().addRow(tableInputs);
+        this.sView.getJTable3().revalidate();
+    }
+
     @Override
     public void valueChanged(ListSelectionEvent e) {
         if(e.getSource().equals(this.sView.getJList2()))
         {
-
-            System.out.println("item selected: " + this.sView.getJList2().getSelectedValue());
-            System.out.println("Bedrroms: " + getListings().get(this.sView.getJList2().getSelectedIndex()).getNumOfBedrooms());
+            Property p = new Property(getListings().get(this.sView.getJList2().getSelectedIndex()).getID(), 
+                getListings().get(this.sView.getJList2().getSelectedIndex()).getAddress(), 
+                getListings().get(this.sView.getJList2().getSelectedIndex()).getQuadrant(), 
+                getListings().get(this.sView.getJList2().getSelectedIndex()).getType(), 
+                getListings().get(this.sView.getJList2().getSelectedIndex()).getNumOfBedrooms(), 
+                getListings().get(this.sView.getJList2().getSelectedIndex()).getNumOfBathrooms(), 
+                getListings().get(this.sView.getJList2().getSelectedIndex()).getFurnished(), 
+                getListings().get(this.sView.getJList2().getSelectedIndex()).getPropertyFees(), 
+                getListings().get(this.sView.getJList2().getSelectedIndex()).getPropertyStatus());
+            displayPropertyInfo(p);
+            //System.out.println("item selected: " + this.sView.getJList2().getSelectedValue());
+            //System.out.println("Bedrroms: " + getListings().get(this.sView.getJList2().getSelectedIndex()).getNumOfBedrooms());
         }
         
     }
