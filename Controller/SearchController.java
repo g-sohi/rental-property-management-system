@@ -267,7 +267,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
         tableInputs.add(String.valueOf(p.getID()));
         tableInputs.add(p.getAddress());
         tableInputs.add(p.getQuadrant());
-        //this.sView.getJTableModel1().setRowCount(0);
+        this.sView.getJTableModel1().setRowCount(0);
         this.sView.getJTableModel1().addRow(tableInputs);
         this.sView.getJTable1().revalidate();
 
@@ -276,7 +276,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
         tableInputs2.add(String.valueOf(p.getNumOfBedrooms()));
         tableInputs2.add(String.valueOf(p.getNumOfBathrooms()));
         tableInputs2.add(p.getFurnished());
-        //this.sView.getJTableModel2().setRowCount(0);
+        this.sView.getJTableModel2().setRowCount(0);
         this.sView.getJTableModel2().addRow(tableInputs2);
         this.sView.getJTable2().revalidate();
 
@@ -284,7 +284,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
         tableInputs3.add(String.valueOf(p.getPropertyFees().getAmount()));
         tableInputs3.add("YES");
         tableInputs3.add(p.getPropertyStatus());
-        //this.sView.getJTableModel3().setRowCount(0);
+        this.sView.getJTableModel3().setRowCount(0);
         this.sView.getJTableModel3().addRow(tableInputs3);
         this.sView.getJTable3().revalidate();
     }
