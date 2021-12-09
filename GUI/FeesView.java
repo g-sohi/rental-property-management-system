@@ -94,8 +94,8 @@ public class FeesView extends JFrame {
         // add components to JFrames dependent on User Type
         if(isMgrPlaceholder) {
             fMgr.add(pIDLabel); fMgr.add(pID);
-            fMgr.add(feeLabel); fMgr.add(changeFeeAmount);
-            fMgr.add(periodLabel); fMgr.add(startDate); fMgr.add(endDate);
+            fMgr.add(feeLabel); fMgr.add(changeFeeAmount); changeFeeAmount.setEditable(true);
+            fMgr.add(periodLabel); fMgr.add(startDate); fMgr.add(endDate); startDate.setEditable(true); endDate.setEditable(true);
             fMgr.add(dateLabel);
 
             fMgr.add(save);
@@ -106,8 +106,8 @@ public class FeesView extends JFrame {
 
         else {
             fLlrd.add(pIDLabel); fLlrd.add(pID);
-            fLlrd.add(feeLabel); fLlrd.add(changeFeeAmount);
-            fLlrd.add(periodLabel); fLlrd.add(startDate); fLlrd.add(endDate);
+            fLlrd.add(feeLabel); fLlrd.add(changeFeeAmount); changeFeeAmount.setEditable(false);
+            fLlrd.add(periodLabel); fLlrd.add(startDate); fLlrd.add(endDate); startDate.setEditable(false); endDate.setEditable(false);
             fLlrd.add(dateLabel);
 
             fLlrd.add(billingTitle);
@@ -158,14 +158,29 @@ public class FeesView extends JFrame {
         return changeFeeAmount.getText();
     }
 
+    // sets value for amount owed
+    public void setFee(String amount) {
+        changeFeeAmount.setText(amount);
+    }
+
     // returns input for start date
     public String getStart() {
         return startDate.getText();
     }
 
+    // sets value for start date
+    public void setStart(String sD) {
+        startDate.setText(sD);
+    }
+
     // returns input for end date
     public String getEnd() {
         return endDate.getText();
+    }
+
+    // sets value for end date
+    public void setEnd(String eD) {
+        endDate.setText(eD);
     }
 
     // returns input for first name
