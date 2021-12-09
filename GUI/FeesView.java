@@ -9,9 +9,9 @@ public class FeesView extends JFrame {
     
     // variable declaration
     private JTextField changeFeeAmount, startDate, endDate, pID, fName, lName, country, postalCode, ccn, mmExp, yyExp, cvv;
-    private JButton save, payFees; //change UML; submit to save
-    private JFrame fMgr;
-    private JFrame fLlrd;
+    private JButton save, payFees;
+    private JLabel pIDLabel, feeLabel, periodLabel, dateLabel, billingTitle, fNLabel, lNLabel, cLabel, pcLabel, creditTitle, ccnLabel, expLabel, expDivideLabel, cvvLabel; 
+    private JFrame fMgr, fLlrd;
 
     public FeesView(boolean isMgrPlaceholder) {
 
@@ -25,36 +25,36 @@ public class FeesView extends JFrame {
         fMgr.setLayout(null); fLlrd.setLayout(null);// layout set to null
 
         // creation of JLabels of certain size and position        
-        JLabel pIDLabel = new JLabel("Property ID:");
+        pIDLabel = new JLabel("Property ID:");
         pIDLabel.setBounds(50, 25, 100, 40);
-        JLabel feeLabel = new JLabel("Amount Owed:");
+        feeLabel = new JLabel("Amount Owed:");
         feeLabel.setBounds(50, 50, 100, 40);
-        JLabel periodLabel = new JLabel("Listing Period:");
+        periodLabel = new JLabel("Listing Period:");
         periodLabel.setBounds(50, 75, 100, 40);
-        JLabel dateLabel = new JLabel("To");
+        dateLabel = new JLabel("To");
         dateLabel.setBounds(285, 75, 395, 40);
 
-        JLabel billingTitle = new JLabel("BILLING INFORMATION");
+        billingTitle = new JLabel("BILLING INFORMATION");
         billingTitle.setBounds(50, 125, 150, 40);
-        JLabel fNLabel = new JLabel("First Name:");
+        fNLabel = new JLabel("First Name:");
         fNLabel.setBounds(50, 150, 100, 40);
-        JLabel lNLabel = new JLabel("Last Name:");
+        lNLabel = new JLabel("Last Name:");
         lNLabel.setBounds(250, 150, 100, 40);
-        JLabel cLabel = new JLabel("Country:");
+        cLabel = new JLabel("Country:");
         cLabel.setBounds(50, 175, 100, 40);
-        JLabel pcLabel = new JLabel("Postal Code:");
+        pcLabel = new JLabel("Postal Code:");
         pcLabel.setBounds(250, 175, 100, 40);
 
 
-        JLabel creditTitle = new JLabel("CREDIT CARD INFORMATION");
+        creditTitle = new JLabel("CREDIT CARD INFORMATION");
         creditTitle.setBounds(50, 225, 200, 40);
-        JLabel ccnLabel = new JLabel("CCN:");
+        ccnLabel = new JLabel("CCN:");
         ccnLabel.setBounds(50, 250, 100, 40);
-        JLabel expLabel = new JLabel("Expiry Date (MM/YY):");
+        expLabel = new JLabel("Expiry Date (MM/YY):");
         expLabel.setBounds(200, 250, 150, 40);
-        JLabel expDivideLabel = new JLabel("/");
+        expDivideLabel = new JLabel("/");
         expDivideLabel.setBounds(250, 270, 150, 40);
-        JLabel cvvLabel = new JLabel("CVV:");
+        cvvLabel = new JLabel("CVV:");
         cvvLabel.setBounds(350, 250, 100, 40);
 
         // creation of JTextFields of certain size and position
@@ -94,8 +94,8 @@ public class FeesView extends JFrame {
         // add components to JFrames dependent on User Type
         if(isMgrPlaceholder) {
             fMgr.add(pIDLabel); fMgr.add(pID);
-            fMgr.add(feeLabel); fMgr.add(changeFeeAmount);
-            fMgr.add(periodLabel); fMgr.add(startDate); fMgr.add(endDate);
+            fMgr.add(feeLabel); fMgr.add(changeFeeAmount); changeFeeAmount.setEditable(true);
+            fMgr.add(periodLabel); fMgr.add(startDate); fMgr.add(endDate); startDate.setEditable(true); endDate.setEditable(true);
             fMgr.add(dateLabel);
 
             fMgr.add(save);
@@ -106,8 +106,8 @@ public class FeesView extends JFrame {
 
         else {
             fLlrd.add(pIDLabel); fLlrd.add(pID);
-            fLlrd.add(feeLabel); fLlrd.add(changeFeeAmount);
-            fLlrd.add(periodLabel); fLlrd.add(startDate); fLlrd.add(endDate);
+            fLlrd.add(feeLabel); fLlrd.add(changeFeeAmount); changeFeeAmount.setEditable(false);
+            fLlrd.add(periodLabel); fLlrd.add(startDate); fLlrd.add(endDate); startDate.setEditable(false); endDate.setEditable(false);
             fLlrd.add(dateLabel);
 
             fLlrd.add(billingTitle);
@@ -136,60 +136,89 @@ public class FeesView extends JFrame {
         
     // }
 
-    public void turnOnForLanLord()
+    // sets frame for landlord user type to appear
+    public void turnOnForLandlord()
     {
         fLlrd.setVisible(true);
     }   
 
+    // sets frame for manager user type to appear
     public void turnOnForManager()
     {
         fMgr.setVisible(true);
     }  
 
+    // returns input for property ID
     public String getPID() {
         return pID.getText();
     }
 
+    // returns input for amount owed
     public String getFee() {
         return changeFeeAmount.getText();
     }
 
+    // sets value for amount owed
+    public void setFee(String amount) {
+        changeFeeAmount.setText(amount);
+    }
+
+    // returns input for start date
     public String getStart() {
         return startDate.getText();
     }
 
+    // sets value for start date
+    public void setStart(String sD) {
+        startDate.setText(sD);
+    }
+
+    // returns input for end date
     public String getEnd() {
         return endDate.getText();
     }
 
+    // sets value for end date
+    public void setEnd(String eD) {
+        endDate.setText(eD);
+    }
+
+    // returns input for first name
     public String getFName() {
         return fName.getText();
     }
 
+    // returns input for last name
     public String getLName() {
         return lName.getText();
     }
 
+    // returns input for country
     public String getCountry() {
         return country.getText();
     }
-
+    
+    // returns input for postal code
     public String getPCode() {
         return postalCode.getText();
     }
 
+    // returns input for credit card number
     public String getCCN() {
         return ccn.getText();
     }
 
+    // returns input for month of expiry date
     public String getMMExp() {
         return mmExp.getText();
     }
 
+    // returns input for year of expiry date
     public String getYYExp() {
         return yyExp.getText();
     }
 
+    // returns input for CVV
     public String getCVV() {
         return cvv.getText();
     }

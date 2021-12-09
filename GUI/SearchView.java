@@ -166,7 +166,6 @@ public class SearchView extends JFrame{
         // JFrame creation of certain size for Manager User Type
         mgrF = new JFrame("Manager Search Page"); 
         mgrF.setSize(500,500);
-        mgrF.setDefaultCloseOperation(EXIT_ON_CLOSE);
         mgrF.setLayout(null);
 
         // JLabel creation for property status input
@@ -204,7 +203,6 @@ public class SearchView extends JFrame{
         // JFrame creation of certain size for Landlord User Type
         llrdF = new JFrame("Landlord Search Page"); 
         llrdF.setSize(500,500);
-        llrdF.setDefaultCloseOperation(EXIT_ON_CLOSE);
         llrdF.setLayout(null);
 
         // resize of search button and addition to Landlord frame

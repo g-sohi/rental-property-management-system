@@ -46,7 +46,7 @@ public class SearchController implements ActionListener{
         if(e.getSource().equals(sView.getSearchButton()))
         { 
             db.initializeConnection();
-            Property requestedPropertyType = new Property(-1, null,sView.getQuadrantInput(), sView.getTypeInput(), sView.getBedsInput(), sView.getBathsInput(), sView.getFurnishedInput(), null, "Active");
+            Property requestedPropertyType = new Property(null,sView.getQuadrantInput(), sView.getTypeInput(), sView.getBedsInput(), sView.getBathsInput(), sView.getFurnishedInput(), null, "Active");
             ArrayList<Property> input = db.getSearchProperties(requestedPropertyType);
             String[] columnNames = { "Property ID: #", "Address", "Furnished", "Fees"};
             String results[][] = displayProperty(input, columnNames);

@@ -119,11 +119,11 @@ public class CreatePropertyView extends JFrame{
 		furnished.setSize(150, 40);
         furnished.setLocation(480, 480);
 		ctr.add(furnished); 
-		JLabel lName = new JLabel("Landlord ID: ");
+		/*JLabel lName = new JLabel("Landlord ID: ");
 		lName.setFont(new Font("Arial", Font.PLAIN, 15));
 		lName.setSize(200, 40);
         lName.setLocation(300, 530);
-		ctr.add(lName);
+		ctr.add(lName);*/
         /*landlordName = new JTextField();
 		landlordName.setFont(new Font("Arial", Font.PLAIN, 15));
 		landlordName.setSize(150, 40);
