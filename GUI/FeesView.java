@@ -142,11 +142,26 @@ public class FeesView extends JFrame {
         fLlrd.setVisible(true);
     }   
 
+    public void destroyFrameForLandlord()
+    {
+        fLlrd.setVisible(false);
+    }   
+
     // sets frame for manager user type to appear
     public void turnOnForManager()
     {
         fMgr.setVisible(true);
     }  
+
+    public JButton getPayFeesButton()
+    {
+        return payFees;
+    }
+
+    public void addPayFeeListener(ActionListener listenForLogout){
+        System.out.println("DONE1");
+        this.payFees.addActionListener(listenForLogout);
+    }
 
     // returns input for property ID
     public String getPID() {

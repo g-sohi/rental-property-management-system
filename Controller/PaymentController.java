@@ -3,8 +3,9 @@ package Controller;
 import Models.*;
 import GUI.*;
 import Database.*;
+import java.awt.event.*;
 
-public class PaymentController {
+public class PaymentController implements ActionListener {
     
     private FeesView fees;
     private Fees fee;
@@ -12,7 +13,8 @@ public class PaymentController {
     private LandlordController landlord;
     private ManagerController manager;
 
-    public PaymentController() {
+    public PaymentController(Database db) {
+        this.db =db;
 
     }
 
@@ -57,5 +59,21 @@ public class PaymentController {
 
     public void enableView(boolean isMgrPlaceholder) {
         fees = new FeesView(isMgrPlaceholder); 
+        fees.addPayFeeListener(this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(this.fees != null)
+        {
+            db.initializeConnection();
+        if(e.getSource().equals(fees.getPayFeesButton()))
+            {
+                db.updateFeeStatus(Integer.valueOf(fees.getPID()));
+                System.out.println("New Information Saved");
+                fees.destroyFrameForLandlord();
+            }
+        }
+        
     }
 }

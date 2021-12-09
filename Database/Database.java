@@ -141,6 +141,17 @@ public class Database {
             }
         }
 
+        public void updateFeeStatus(int id)
+        {
+            try {
+                String query = String.format("UPDATE property SET Status = 'Active', FeesPaid = 'yes' Where Property_ID = %d", id);
+                Statement stmt = dbConnect.createStatement();
+                stmt.executeUpdate(query);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
         public void updateProperty(int id, String status){
             try {
                 String query = String.format("UPDATE property SET Status = '%s' Where Property_ID = %d", status, id);

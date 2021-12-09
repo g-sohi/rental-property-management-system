@@ -19,7 +19,7 @@ public class ManagerController implements ActionListener {
 
         prop = new PropertyController(db);
         search = new SearchController(db);
-        pay = new PaymentController();
+        pay = new PaymentController(db);
 
     }
 

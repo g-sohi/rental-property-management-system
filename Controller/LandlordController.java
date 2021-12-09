@@ -18,7 +18,7 @@ public class LandlordController implements ActionListener{
     //Default constructor to create instances of member variables
     LandlordController(Database db){
         this.landlord = new Landlord();
-        this.pay = new PaymentController();
+        this.pay = new PaymentController(db);
         this.prop = new PropertyController(db);
         this.regProp = new RegisterController(db);
         this.search = new SearchController(db);
