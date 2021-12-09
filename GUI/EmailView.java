@@ -51,7 +51,10 @@ public class EmailView extends JFrame {
         //frame.setVisible(true); // JFrame is set to appear
 
     }
-
+    public void addSendEmailListener(ActionListener listenForSendEmail){
+        System.out.println("DONE1");
+        this.send.addActionListener(listenForSendEmail);
+    }
     // returns input for Subject JTextfield
     public String getSub() {
         return subject.getText();
