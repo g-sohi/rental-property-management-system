@@ -33,15 +33,17 @@ public class RenterController implements ActionListener{
         if(e.getSource().equals(RenterView.getSelect()))
         {
             selectProp = new SelectPropertyView();
-            selectProp.turnOn();
+            selectProp.addSelectListener(this);
             selectProp.addEmailListener(this);
             selectProp.addBackListener(this);
+            selectProp.turnOn();
         }
         if(selectProp != null)
         {
         if(e.getSource().equals(selectProp.getSelectButton()))
         {
                 id = selectProp.getPropertyID();
+                System.out.println("ID: " + id);
         }
         if(e.getSource().equals(selectProp.getEmailButton()))
         {
