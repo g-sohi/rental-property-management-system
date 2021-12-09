@@ -24,8 +24,6 @@ public GUIController(Database db) throws IOException
     this.mainpage.addLoginListener(this);
     this.mainpage.addGuestListener(this);
     this.mainpage.addRegisterListener(this);
-    this.rView.addRegisterListener(this);
-
 }
 
 public void setDatabase(Database db)
@@ -53,6 +51,7 @@ public void actionPerformed(ActionEvent e) {
         mainpage.setOff();
         rView.turnOn();
         this.rView.addRegisterListener(this);
+
     }
 
     if(e.getSource().equals(rView.getRegisterButton()))   
@@ -61,6 +60,8 @@ public void actionPerformed(ActionEvent e) {
             rView.showDialog();
             rView.destroyFrame();
             mainpage.turnOn();
+            db.initializeConnection();
+            db.addUser(rView.getUsername(), rView.getFName(), rView.getLName(), rView.getPassword(), rView.getUserType());
         }
     
     
