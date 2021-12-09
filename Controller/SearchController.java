@@ -22,6 +22,7 @@ public class SearchController implements ActionListener{
 
     private SearchView sView;
     private User users;
+    private int landlordID;
     private ArrayList<Property> listings;
     private Database db;
     private boolean rentSearch, managerSearch, landLordSearch;
@@ -99,6 +100,7 @@ public class SearchController implements ActionListener{
             }
             else if(landLordSearch){
                 System.out.println("Landlord search");
+                System.out.println("This is the Landlord ID in Search Controller " + this.landlordID);
             }
             else if(managerSearch){
                 System.out.println("Manager search");
@@ -169,6 +171,10 @@ public class SearchController implements ActionListener{
         
     }
 
+    public void setLandlordID(int id){
+        this.landlordID = id;
+    }
+
     
     public SearchView getView() {
         return sView;
@@ -229,6 +235,7 @@ public class SearchController implements ActionListener{
         landLordSearch = true;
         sView = new SearchView();
         sView.turnOnForLandlord();
+        System.out.println("This is the Landlord ID in Search Controller " + this.landlordID);
         //sView.llrd();
     }
 }

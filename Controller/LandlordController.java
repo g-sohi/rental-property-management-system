@@ -63,6 +63,12 @@ public class LandlordController implements ActionListener{
     {
         this.regProp.setLandlordID(id);
     }
+
+    public void setSearchControllerID(int id)
+    {
+        this.search.setLandlordID(id);
+    }
+    
     //update 
     public void update(){
 

@@ -52,6 +52,7 @@ public class LoginController implements ActionListener{
                 Landlord tempLand = new Landlord(this.user);
                 ldCtrl.setLandlord(tempLand);
                 ldCtrl.setRegisterControllerId(ldCtrl.getLandlord().getId());
+                ldCtrl.setSearchControllerID(ldCtrl.getLandlord().getId());
                 System.out.println("Landlord Name: " + ldCtrl.getLandlord().getFName() + "\nID: " + ldCtrl.getLandlord().getId() + "\n");
                 ldCtrl.enableView(this);
                 ldCtrl.getLandlordView().turnOn();
