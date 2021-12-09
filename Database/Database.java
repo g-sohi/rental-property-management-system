@@ -163,11 +163,20 @@ public class Database {
             }
         }
 
-        public void updateProperty(int id, String status){
+        public void updateProperty(int id, String status, String rentDate){
             try {
-                String query = String.format("UPDATE property SET Status = '%s' Where Property_ID = %d", status, id);
+                if(status != "Rented")
+                {
+                String query = String.format("UPDATE property SET Status = '%s', RentDate = 'null' Where Property_ID = %d", status, id);
                 Statement stmt = dbConnect.createStatement();
                 stmt.executeUpdate(query);
+                }
+                else
+                {
+                    String query = String.format("UPDATE property SET Status = '%s', RentDate = '%s' Where Property_ID = %d", status, rentDate, id);
+                    Statement stmt = dbConnect.createStatement();
+                    stmt.executeUpdate(query);
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
