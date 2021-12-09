@@ -152,6 +152,17 @@ public class Database {
             }
         }
 
+        public void updatePeriodStatus(int id, double amount, String startDate, String endDate)
+        {
+            try {
+                String query = String.format("UPDATE property SET Fees = %f, StartDate = '%s', EndDate = '%s' Where Property_ID = %d", amount,startDate, endDate, id);
+                Statement stmt = dbConnect.createStatement();
+                stmt.executeUpdate(query);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
         public void updateProperty(int id, String status){
             try {
                 String query = String.format("UPDATE property SET Status = '%s' Where Property_ID = %d", status, id);

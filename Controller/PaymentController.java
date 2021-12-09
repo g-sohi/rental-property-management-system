@@ -60,6 +60,7 @@ public class PaymentController implements ActionListener {
     public void enableView(boolean isMgrPlaceholder) {
         fees = new FeesView(isMgrPlaceholder); 
         fees.addPayFeeListener(this);
+        fees.addSaveListener(this);
     }
 
     @Override
@@ -70,10 +71,18 @@ public class PaymentController implements ActionListener {
         if(e.getSource().equals(fees.getPayFeesButton()))
             {
                 db.updateFeeStatus(Integer.valueOf(fees.getPID()));
-                System.out.println("New Information Saved");
+                System.out.println("Payment Done");
                 fees.destroyFrameForLandlord();
             }
+        if(e.getSource().equals(fees.getSaveButton()))
+            {
+                db.updatePeriodStatus(Integer.valueOf(fees.getPID()), Double.valueOf(fees.getFee()), fees.getStart(), fees.getEnd());
+                System.out.println("Fee period updated");
+                fees.destroyFrameForManager();
+            }
+        
         }
+
         
     }
 }

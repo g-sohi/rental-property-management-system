@@ -158,9 +158,24 @@ public class FeesView extends JFrame {
         return payFees;
     }
 
-    public void addPayFeeListener(ActionListener listenForLogout){
+    public void destroyFrameForManager()
+    {
+        fMgr.setVisible(false);
+    }
+
+    public JButton getSaveButton()
+    {
+        return save;
+    }
+
+    public void addPayFeeListener(ActionListener listenForPayFee){
         System.out.println("DONE1");
-        this.payFees.addActionListener(listenForLogout);
+        this.payFees.addActionListener(listenForPayFee);
+    }
+
+    public void addSaveListener(ActionListener listenForSave){
+        System.out.println("DONE1");
+        this.save.addActionListener(listenForSave);
     }
 
     // returns input for property ID
