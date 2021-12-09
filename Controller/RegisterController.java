@@ -14,7 +14,6 @@ public class RegisterController implements ActionListener{
     private ArrayList<Property> listings;
     private Database db;
     private int landLordID;
-    private static int propID = 5;
 
     public RegisterController(Database db) {
         this.setDb(db);
@@ -42,8 +41,7 @@ public class RegisterController implements ActionListener{
         if(e.getSource().equals(createProp.getRegister())){
             System.out.println("Register Property");
             String address = createProp.getStreetNoInput() + createProp.getStreetNameInput() + createProp.getCityInput() +createProp.getPostalCodeInput();
-            this.propID++;
-            Property p = new Property(propID ,address, createProp.getQuadrantInput(), createProp.getTypeInput(), createProp.getNoOfBedInput(), createProp.getNoOfBathInput(), createProp.getFurnishedInput(), null, "Suspended");
+            Property p = new Property(address, createProp.getQuadrantInput(), createProp.getTypeInput(), createProp.getNoOfBedInput(), createProp.getNoOfBathInput(), createProp.getFurnishedInput(), null, "Suspended");
             this.add(p);
         }
     }
@@ -54,7 +52,7 @@ public class RegisterController implements ActionListener{
 
     public void add(Property p) {
         db.initializeConnection();
-        db.addProperty(p.getID(), p.getAddress(), p.getQuadarnt(), p.getType(), p.getNumOfBedrooms(), p.getNumOfBathrooms(), p.getFurnished(), 0, p.getPropertyStatus(), landLordID, "null", "null");
+        db.addProperty(p.getAddress(), p.getQuadarnt(), p.getType(), p.getNumOfBedrooms(), p.getNumOfBathrooms(), p.getFurnished(), 0, p.getPropertyStatus(), landLordID, "null", "null");
         db.close();
     }
 
