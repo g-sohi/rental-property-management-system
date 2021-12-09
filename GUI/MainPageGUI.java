@@ -23,7 +23,7 @@ public class MainPageGUI extends JFrame implements ActionListener {
         // creation of JFrame of certain size
         frame = new JFrame("Main Page");
         frame.setSize(500, 500);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         JPanel searchPanel1 = new JPanel();  
         searchPanel1.setBounds(100, 30, 300, 360);     //set the x, y coordinates for the panel as well as the width the height 
