@@ -30,16 +30,16 @@ public class SearchView extends JFrame{
     private JComboBox typeBox, quadrantBox, furnished; //change UML; type to typeBox; quadrant to quadrantBox
     private JTextField noBeds, noBaths, streetNo, streetName, city, postalCode, landlordName;
     private JButton register;
-    // added in private members
     private JButton search;
     private JButton reset;
     private ButtonGroup group;
-    JRadioButton furnishedYesButton;
-    JRadioButton furnishedNoButton;
-    JComboBox type;
-    JComboBox quadrant;
+    private JRadioButton furnishedYesButton;
+    private JRadioButton furnishedNoButton;
+    private JComboBox type;
+    private JComboBox quadrant;
+    private JButton backButton;
 
-    //Private members for Landlord View
+    //Private members for Landlord/Manager Search View
     private JButton displayButton;
     private JTable DisplayTable1;
     private DefaultTableModel displayTable1Model;
@@ -126,6 +126,8 @@ public class SearchView extends JFrame{
         reset = new JButton("Reset");
         reset.setForeground(Color.GRAY);
 
+        backButton = new JButton("Back");
+
         //Add all the GUI components created above to the JFrame called searchFrame
         //add(propertiesView);
 
@@ -147,6 +149,7 @@ public class SearchView extends JFrame{
 
         add(search);
         add(reset);
+        add(backButton);
 
         add(searchPanel1);
         add(searchPanel2);
@@ -172,6 +175,7 @@ public class SearchView extends JFrame{
 
         search.setBounds(370, 260, 80, 30);
         reset.setBounds(300, 260, 80, 30);
+        backButton.setBounds(5, 5, 60, 20);
 
         search.setBackground(new Color(99, 182, 255));
 
@@ -842,8 +846,8 @@ public class SearchView extends JFrame{
     }
     public static void main(String [] args) {
         SearchView test =  new SearchView();
-        test.mgr();
-        test.turnOnForManager();
+        test.turnOn();;
+        //test.turnOnForManager();
     }
 
     
