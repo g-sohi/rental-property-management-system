@@ -13,6 +13,7 @@ public class LandlordController implements ActionListener{
     private PaymentController pay;
     private PropertyController prop;
     private RegisterController regProp;
+    private SearchController search;
 
     //Default constructor to create instances of member variables
     LandlordController(Database db){
@@ -20,6 +21,7 @@ public class LandlordController implements ActionListener{
         this.pay = new PaymentController();
         this.prop = new PropertyController(db);
         this.regProp = new RegisterController(db);
+        this.search = new SearchController(db);
     }
 
     LandlordController()
@@ -33,6 +35,8 @@ public class LandlordController implements ActionListener{
         if(e.getSource().equals(landlordV.getSearch()))
         {
             System.out.println("Search");
+            search.enableLlrdView();
+            //search.getView().turnOnForLandlord();
         }
 
         if(e.getSource().equals(landlordV.getRegister()))

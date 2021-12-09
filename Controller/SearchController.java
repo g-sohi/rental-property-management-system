@@ -194,12 +194,20 @@ public class SearchController implements ActionListener{
         sView = new SearchView(); 
         this.sView.addSearchListener(this);
         this.sView.addResetListener(this);
+        sView.turnOn();
     }
 
     public void enableMGrView()
     {
         sView = new SearchView(); 
-        sView.mgr();
+        sView.turnOnForManager();
+        //sView.mgr();
+    }
+
+    public void enableLlrdView(){
+        sView = new SearchView();
+        sView.turnOnForLandlord();
+        //sView.llrd();
     }
 }
 
