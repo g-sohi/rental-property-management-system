@@ -45,10 +45,13 @@ public class SearchController implements ActionListener, ListSelectionListener{
         {
             System.out.println("Display working");
             ArrayList<Property> landlordProperties = db.getLandlordProperties(landlordID);
+            setListings(landlordProperties);
             String llproperties[] = new String[landlordProperties.size()];
+            int IDs[] = new int[landlordProperties.size()];
             for(int i = 0; i < landlordProperties.size(); i++)
             {
                 llproperties[i] = landlordProperties.get(i).getAddress();
+                IDs[i] = landlordProperties.get(i).getID();
             }
             sView.getJList2().setListData(llproperties);
         }
@@ -261,7 +264,9 @@ public class SearchController implements ActionListener, ListSelectionListener{
     public void valueChanged(ListSelectionEvent e) {
         if(e.getSource().equals(this.sView.getJList2()))
         {
-            System.out.println("item selected");
+
+            System.out.println("item selected: " + this.sView.getJList2().getSelectedValue());
+            System.out.println("Bedrroms: " + getListings().get(this.sView.getJList2().getSelectedIndex()).getNumOfBedrooms());
         }
         
     }
