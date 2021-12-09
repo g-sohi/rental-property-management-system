@@ -66,9 +66,9 @@ public class Database {
             }
         }
 
-        public void updateLastLogin(String username, String lastLogin){
+        public void updateLastLogin(String lastLogin, int id){
             try {
-                String query = String.format("UPDATE SET LastLogin = %s WHERE UserName = %s", lastLogin, username);
+                String query = String.format("UPDATE user SET LastLogin = '%s' WHERE ID = %d", lastLogin, id);
                 Statement stmt = dbConnect.createStatement();
                 stmt.executeUpdate(query);
 
@@ -388,7 +388,7 @@ public class Database {
 
         public static void main(String[] args) throws IOException {
             Database db = new Database();
-            db.getManagerProperties();
+            db.updateLastLogin("2021-09-09 06:59:59", 1);
             
             /*db.addProperty(2, "333 VansRoad, Calgary", "Townhouse", 2, 1, "No", 101.1, "Available", 4, "21 Aug, 2021", "23 Dec, 2021");
             db.removeProperty(2);*/
@@ -401,7 +401,7 @@ public class Database {
             /*int id = 3;
             Landlord land = new Landlord("Robin", "Robin", "Sio", id, "ensf480", "Manager", new Email("null", "null", "null", "null"), db.getLandlordProperties(id));
             */
-            /*System.out.println("Address: " + props.get(0).getAddress() + "\nType: " + props.get(0).getType());*/
+            //System.out.println("Address: " + props.get(0).getAddress() + "\nType: " + props.get(0).getType());
             //db.addUser();
             
         }
