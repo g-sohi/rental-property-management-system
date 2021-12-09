@@ -7,7 +7,7 @@ public class EmailView extends JFrame {
     
     // variable declaration
     private JTextField subject, from, pID;
-    private JTextArea body; // change UML; JTextField to JTextArea
+    private JTextArea body;
     private JLabel subLabel, pIDLabel, fromLabel;
     private JButton send;
     private JFrame frame;
