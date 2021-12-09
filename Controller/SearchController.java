@@ -227,6 +227,7 @@ public class SearchController implements ActionListener{
     {
         managerSearch = true;
         sView = new SearchView(); 
+        this.sView.addSearchListener(this);
         sView.turnOnForManager();
         //sView.mgr();
     }
@@ -234,6 +235,7 @@ public class SearchController implements ActionListener{
     public void enableLlrdView(){
         landLordSearch = true;
         sView = new SearchView();
+        this.sView.addSearchListener(this);
         sView.turnOnForLandlord();
         System.out.println("This is the Landlord ID in Search Controller " + this.landlordID);
         //sView.llrd();
