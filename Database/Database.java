@@ -53,11 +53,11 @@ public class Database {
             }
         }
 
-        public void addUser(String username, String FName, String LName, String Password, int id, String UserType) {
+        public void addUser(String username, String FName, String LName, String Password, String UserType) {
             try {
-                String query = "INSERT INTO user(UserName, FName,LName, Password, ID, UserType)";
+                String query = "INSERT INTO user(UserName, FName,LName, Password, UserType)";
                 query += "VALUES (%s, '%s', '%s','%s', %d, %s)";
-                query = String.format(query, username, FName,LName, Password, id, UserType);
+                query = String.format(query, username, FName,LName, Password, UserType);
                 System.out.println(query);
                 Statement stmt = dbConnect.createStatement();
                 stmt.executeUpdate(query);
@@ -118,11 +118,11 @@ public class Database {
             }
         }
 
-        public void addProperty(int id, String address,String quadrant, String type, int numBedrooms, int numBathrooms, String furnished, double fees, String status, int landID, String startD, String endD){
+        public void addProperty(String address,String quadrant, String type, int numBedrooms, int numBathrooms, String furnished, double fees, String status, int landID, String startD, String endD){
             try {
-                String query = "INSERT INTO property(Property_ID, Address,quadrant, Type, NoOfBedrooms, NoOfBathrooms, Furnished, Fees, Status, Landlord_ID, StartDate, EndDate) ";
-                query += "VALUES (%d, '%s', '%s','%s', %d, %d, '%s', %f, '%s', %d, '%s', '%s')";
-                query = String.format(query, id, address,quadrant, type, numBedrooms, numBathrooms, furnished, fees, status, landID, startD, endD);
+                String query = "INSERT INTO property(Address,quadrant, Type, NoOfBedrooms, NoOfBathrooms, Furnished, Fees, Status, Landlord_ID, StartDate, EndDate) ";
+                query += "VALUES ('%s', '%s','%s', %d, %d, '%s', %f, '%s', %d, '%s', '%s')";
+                query = String.format(query,address,quadrant, type, numBedrooms, numBathrooms, furnished, fees, status, landID, startD, endD);
                 System.out.println(query);
                 Statement stmt = dbConnect.createStatement();
                 stmt.executeUpdate(query);

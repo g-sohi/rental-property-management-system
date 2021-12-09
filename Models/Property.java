@@ -15,9 +15,20 @@ public class Property {
     /**
      * Constructor for the Property class
      */
-    public Property(int id, String address, String quadrant,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus)
+    public Property(String address, String quadrant,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus)
     {
-        this.id =id;
+        this.address = address;
+        this.quadrant = quadrant;
+        this.type = type;
+        this.numOfBathrooms = numOfBathrooms;
+        this.numOfBedrooms = numOfBedrooms;
+        this.furnished = furnished;
+        this.propertyFees = propertyFees;
+        this.propertyStatus = propertyStatus;
+    }
+    public Property(int id,String address, String quadrant,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus)
+    {
+        this.id = id;
         this.address = address;
         this.quadrant = quadrant;
         this.type = type;
