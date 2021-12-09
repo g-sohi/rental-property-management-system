@@ -62,7 +62,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
             ArrayList<Property> managerProperties = db.getManagerProperties();
             setListings(managerProperties);
             String allProperties[] = new String[managerProperties.size()];
-            for(int i = 0; i < 5; i++)
+            for(int i = 0; i < managerProperties.size(); i++)
             {
                 allProperties[i] = managerProperties.get(i).getAddress();   //landlordProperties.get(i).getAddress();
             }

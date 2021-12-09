@@ -86,6 +86,11 @@ public class SelectPropertyView extends JFrame {
         return select;
     }
 
+    public String getPropertyInput()
+    {
+       return pDetails.getText();
+    }
+
     
     public void addSelectListener(ActionListener listenForLogout){
         select.addActionListener(listenForLogout);
