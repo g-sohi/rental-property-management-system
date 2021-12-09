@@ -194,30 +194,233 @@ public class SearchView extends JFrame{
         // JFrame creation of certain size for Manager User Type
         mgrF = new JFrame("Manager Search Page"); 
         mgrF.setSize(500,500);
-        mgrF.setLayout(null);
+        //mgrF.setLayout(null);
+        
+        jScrollPane2 = new JScrollPane();
+        jTable1 = new JTable();
+        jPanel1 = new JPanel();
+        LandlordPropertyList = new JScrollPane();
+        jList2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        jPanel2 = new JPanel();
+        jScrollPane3 = new JScrollPane();
+        DisplayTable1 = new JTable();
+        jScrollPane5 = new JScrollPane();
+        DisplayTable2 = new JTable();
+        jScrollPane6 = new JScrollPane();
+        DisplayTable3 = new JTable();
+        jScrollPane7 = new JScrollPane();
+        DisplayTable4 = new JTable();
+        LandlordPropertiesTitle = new JLabel();
+        LandlordLabel = new JLabel();
+        LandlordIdLabel = new JLabel();
 
-        // JLabel creation for property status input
-        propStatLabel = new JLabel("Property Status:");
-        propStatLabel.setBounds(50, 40, 150, 40);
-        mgrF.add(propStatLabel);
 
-        // JComboBox creation for property status input
-        propStat = new JComboBox(propStats);
-        propStat.setBounds(175, 50, 275, 20);
-        mgrF.add(propStat);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
 
-        // resize of search button and addition to Manager frame
-        search.setBounds(350, 75, 100, 20);
-        mgrF.add(search);
+        jPanel1.setBackground(new java.awt.Color(153, 0, 153));
 
-        // JLabel creation for search results
-        resultsLabel = new JLabel("Search Results:");
-        resultsLabel.setBounds(50, 115, 100, 40);
-        mgrF.add(resultsLabel);
+        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "", "", "", "", "" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        LandlordPropertyList.setViewportView(jList2);
 
-        // resize of results panel and addition to Manager frame
-        results.setBounds(50, 150, 400, 275);
-        mgrF.add(results);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LandlordPropertyList, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LandlordPropertyList, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        LandlordPropertiesTitle.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        LandlordPropertiesTitle.setText("Manager Properties View");
+
+        displayButton.setText("Display Properties");
+
+        LandlordLabel.setText("Manager");
+
+        //LandlordIdLabel.setText("#");
+
+        jPanel2.setBackground(new java.awt.Color(102, 0, 102));
+
+        displayTable1Model = new DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+            },
+            new String [] {
+                "Property ID", "Address", "Quadrant"
+            }
+        );
+        DisplayTable1.setModel(displayTable1Model);
+        DisplayTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
+        jScrollPane3.setViewportView(DisplayTable1);
+
+
+        displayTable2Model = new DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+            },
+            new String [] {
+                "Type", "Number of Bedrooms", "Number of Bathrooms", "Furnished"
+            }
+        );
+        DisplayTable2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        DisplayTable2.setModel(displayTable2Model);
+
+        DisplayTable2.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        DisplayTable2.setBounds(new java.awt.Rectangle(0, 0, 500, 500));
+        DisplayTable2.setShowGrid(true);
+        jScrollPane5.setViewportView(DisplayTable2);
+
+        displayTable3Model = new DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Fees", "Fees Paid", "Status"
+            }
+        );
+        DisplayTable3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        DisplayTable3.setModel(displayTable3Model);
+
+        DisplayTable3.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        DisplayTable3.setBounds(new java.awt.Rectangle(0, 0, 500, 500));
+        DisplayTable3.setShowGrid(true);
+        jScrollPane6.setViewportView(DisplayTable3);
+
+        displayTable4Model = new DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Registration Date", "Listing End Date", "Start Rent Date"
+            }
+        );
+        DisplayTable4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        DisplayTable4.setModel(displayTable4Model);
+        DisplayTable4.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        DisplayTable4.setBounds(new java.awt.Rectangle(0, 0, 500, 500));
+        DisplayTable4.setShowGrid(true);
+        jScrollPane7.setViewportView(DisplayTable4);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout mgrFLayout = new javax.swing.GroupLayout(mgrF.getContentPane());
+        mgrF.getContentPane().setLayout(mgrFLayout);
+        mgrFLayout.setHorizontalGroup(
+            mgrFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mgrFLayout.createSequentialGroup()
+                .addGroup(mgrFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mgrFLayout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(LandlordPropertiesTitle))
+                    .addGroup(mgrFLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(mgrFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mgrFLayout.createSequentialGroup()
+                                .addComponent(LandlordLabel)
+                                .addGroup(mgrFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(mgrFLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(displayButton)
+                                        .addGap(125, 125, 125))
+                                    .addGroup(mgrFLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(LandlordIdLabel)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        mgrFLayout.setVerticalGroup(
+            mgrFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mgrFLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(LandlordPropertiesTitle)
+                .addGroup(mgrFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mgrFLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(displayButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE))
+                    .addGroup(mgrFLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(mgrFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(LandlordLabel)
+                            .addComponent(LandlordIdLabel))
+                        .addGap(3, 3, 3)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+
+        pack();
 
         mgrF.setVisible(false); // Manager frame set to appear
 
@@ -639,8 +842,8 @@ public class SearchView extends JFrame{
     }
     public static void main(String [] args) {
         SearchView test =  new SearchView();
-        test.llrd();
-        test.turnOnForLandlord();
+        test.mgr();
+        test.turnOnForManager();
     }
 
     
