@@ -16,6 +16,7 @@ public class RenterController implements ActionListener{
     private EmailView emailv;
     private RenterView RenterView;
     private SearchController search;
+    private String id;
 
     public RenterController(Database db)
     {
@@ -26,30 +27,68 @@ public class RenterController implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(RenterView.getSearch()))
         {
+            RenterView.destroyFrame();
             search.enableView();
             search.getView().turnOn();
+            search.getView().addBackButtonListener(this);
+        }
+        if(search.getView() != null)
+        {
+            if(e.getSource().equals(search.getView().getBackButton()))
+            {
+                search.getView().destroyFrameRenterGuest();
+                RenterView.turnOn();
+            }
         }
         if(e.getSource().equals(RenterView.getSelect()))
         {
+            RenterView.destroyFrame();
             selectProp = new SelectPropertyView();
-            selectProp.turnOn();
+            selectProp.addSelectListener(this);
             selectProp.addEmailListener(this);
             selectProp.addBackListener(this);
+            selectProp.turnOn();
         }
         if(selectProp != null)
         {
+        if(e.getSource().equals(selectProp.getSelectButton()))
+        {
+                id = selectProp.getPropertyID();
+                System.out.println("ID: " + id);
+        }
         if(e.getSource().equals(selectProp.getEmailButton()))
         {
             selectProp.destroyFrame();
-            emailv = new EmailView();
+            emailv = new EmailView(id);
             emailv.turnOn();
+            emailv.addSendEmailListener(this);
         }
         if(e.getSource().equals(selectProp.getCloseButton()))
         {
             selectProp.destroyFrame();
             RenterView.turnOn();
         }
-    }
+        }
+        if(emailv != null)
+        {
+            if(e.getSource().equals(emailv.getSendButton()))
+            {
+                System.out.println(emailv.getBody());
+                System.out.println(emailv.getFrom());
+                if(!emailv.getBody().equals("") && !emailv.getFrom().equals("") && !emailv.getSub().equals(""))
+                {
+                emailv.showDialog(); 
+                emailv.destroyFrame();
+                RenterView.turnOn();
+                    
+                }
+                else
+                {
+                    System.out.println("Error");
+                    emailv.showErrorDialog();
+                }
+            }
+        }
     }
 
     public void SelectProperty(ArrayList<Property> listings)

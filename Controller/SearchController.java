@@ -62,7 +62,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
             ArrayList<Property> managerProperties = db.getManagerProperties();
             setListings(managerProperties);
             String allProperties[] = new String[managerProperties.size()];
-            for(int i = 0; i < 5; i++)
+            for(int i = 0; i < managerProperties.size(); i++)
             {
                 allProperties[i] = managerProperties.get(i).getAddress();   //landlordProperties.get(i).getAddress();
             }
@@ -179,7 +179,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
                     }
                     else
                     {
-                        displayMessages[i][j] = "Fees: $";
+                        displayMessages[i][j] = String.valueOf(obj.get(i).getPropertyFees().getAmount());
                     }
                 }
             }
@@ -301,6 +301,14 @@ public class SearchController implements ActionListener, ListSelectionListener{
         this.sView.getJTableModel3().setRowCount(0);
         this.sView.getJTableModel3().addRow(tableInputs3);
         this.sView.getJTable3().revalidate();
+
+        Vector<String> tableInputs4 = new Vector<String>();
+        tableInputs4.add(p.getStartDate());
+        tableInputs4.add(p.getEndDate());
+        tableInputs4.add(p.getRentDate());
+        this.sView.getJTableModel4().setRowCount(0);
+        this.sView.getJTableModel4().addRow(tableInputs4);
+        this.sView.getJTable4().revalidate();
     }
 
     @Override
@@ -315,7 +323,10 @@ public class SearchController implements ActionListener, ListSelectionListener{
                 getListings().get(this.sView.getJList2().getSelectedIndex()).getNumOfBathrooms(), 
                 getListings().get(this.sView.getJList2().getSelectedIndex()).getFurnished(), 
                 getListings().get(this.sView.getJList2().getSelectedIndex()).getPropertyFees(), 
-                getListings().get(this.sView.getJList2().getSelectedIndex()).getPropertyStatus());
+                getListings().get(this.sView.getJList2().getSelectedIndex()).getPropertyStatus(),
+                getListings().get(this.sView.getJList2().getSelectedIndex()).getStartDate(),
+                getListings().get(this.sView.getJList2().getSelectedIndex()).getEndDate(),
+                getListings().get(this.sView.getJList2().getSelectedIndex()).getRentDate());
             displayPropertyInfo(p);
         }       
     }
