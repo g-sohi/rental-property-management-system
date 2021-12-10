@@ -13,6 +13,7 @@ public class EditPropertyView extends JFrame{
     private String stat_prop[] = {"Active", "Rented", "Cancelled", "Suspended"};
     private JButton save;
     private JButton remove;
+    private JButton back;
     private JTextField idProperty;
     private JLabel rentDate;
     private Container ctr;
@@ -46,6 +47,7 @@ public class EditPropertyView extends JFrame{
         stat = new javax.swing.JLabel();
         status = new javax.swing.JComboBox<>();
         save = new javax.swing.JButton();
+        back = new javax.swing.JButton();
         EditPropertyTitle = new javax.swing.JLabel();
         rentDate = new javax.swing.JLabel();
         rentDay = new javax.swing.JComboBox<>();
@@ -95,6 +97,9 @@ public class EditPropertyView extends JFrame{
         save.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         save.setText("Save");
 
+        back.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        back.setText("Back");
+
         EditPropertyTitle.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         EditPropertyTitle.setText("Edit Property");
 
@@ -131,7 +136,8 @@ public class EditPropertyView extends JFrame{
                                 .addComponent(stat))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(174, 174, 174)
-                                .addComponent(save, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(save, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(60, 60, 60)
                                 .addComponent(rentDate)
@@ -174,6 +180,8 @@ public class EditPropertyView extends JFrame{
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(save)
+                .addGap(19, 19, 19)
+                .addComponent(back)
                 .addGap(19, 19, 19))
         );
 
@@ -274,19 +282,19 @@ public class EditPropertyView extends JFrame{
         return save;
     }
 
-    public JButton getRemoveButton()
+    public JButton getBackButton()
     {
-        return remove;
+        return back;
     }
     public void addSaveListener(ActionListener listenForSave){
         System.out.println("DONE");
         this.save.addActionListener(listenForSave);
     }
 
-    /*public void addRemoveListener(ActionListener listenForRemove){
+    public void addBackListener(ActionListener listenForBack){
         System.out.println("DONE");
-        this.remove.addActionListener(listenForRemove);
-    }*/
+        this.back.addActionListener(listenForBack);
+    }
 
     public String getStatusInput()
     {
