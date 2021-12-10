@@ -16,6 +16,7 @@ public class ManagerController implements ActionListener {
     private SearchController search;
 
     public ManagerController(Database db){
+        this.db = db;
 
         prop = new PropertyController(db);
         search = new SearchController(db);
@@ -53,6 +54,10 @@ public class ManagerController implements ActionListener {
         //managerv.destroyFrame();
         viewInfo = new ViewDataPage();
         viewInfo.turnOn();
+        viewInfo.addRenterInfoListener(this);
+        viewInfo.addLandlordInfoListener(this);
+        viewInfo.addPropertyInfoListener(this);
+        viewInfo.addBackListener(this);
 
     }
     if(e.getSource().equals(managerv.getEditFeeButton()))
@@ -67,6 +72,27 @@ public class ManagerController implements ActionListener {
     {
         report.destroyFrame();
     }
+    }
+
+    if(this.viewInfo != null)
+    {
+        if(e.getSource().equals(viewInfo.getRenterInfoButton()))
+        {
+            viewInfo.user(viewInfo.copyRenters(db.getAllRenters()));
+        }
+        else if(e.getSource().equals(viewInfo.getLandlordInfoButton()))
+        {
+            viewInfo.user(viewInfo.copyLandlords(db.getAllLandlords()));
+        }
+        else if(e.getSource().equals(viewInfo.getPropertyInfoButton()))
+        {
+            viewInfo.user(viewInfo.copyProperties(db.getManagerProperties()));
+        }
+        else if(e.getSource().equals(viewInfo.getBackButton()))
+        {
+            viewInfo.destroyFrame();
+            managerv.turnOn();
+        }
     }
         
     }
