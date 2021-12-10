@@ -16,6 +16,7 @@ private LoginController login;
 private SearchController search;
 private Database db;
 private RegisterView rView;
+private EmailView emailV;
 public GUIController(Database db) throws IOException
 {
     mainpage = new MainPageGUI();
@@ -26,6 +27,7 @@ public GUIController(Database db) throws IOException
     this.mainpage.addLoginListener(this);
     this.mainpage.addGuestListener(this);
     this.mainpage.addRegisterListener(this);
+    this.mainpage.addSendEmailListener(this);
 }
 
 public void setDatabase(Database db)
@@ -57,13 +59,44 @@ public void actionPerformed(ActionEvent e) {
         this.rView.addBackListener(this);
 
     }
+    else if(e.getSource().equals(mainpage.getSendEmailButton()))
+    {
+        mainpage.setOff();
+        emailV = new EmailView(true);
+        emailV.turnOn();
+        emailV.addBackListener(this);
+        emailV.addSendEmailListener(this);
+    }
+
+    if(emailV != null)
+    {
+        if(e.getSource().equals(emailV.getSendButton()))
+        {
+            if(!emailV.getSub().equals("") && !emailV.getBody().equals("") && !emailV.getFrom().equals("") && !emailV.getPID().equals(""))
+            {
+            emailV.showDialog();
+            emailV.destroyFrame();
+            mainpage.turnOn();
+            }
+            else{
+                emailV.showErrorDialog();
+            }
+
+        }
+        if(e.getSource().equals(emailV.getBackButton()))
+        {
+            emailV.destroyFrame();
+            mainpage.turnOn();
+        }
+    }
+
 
     if(e.getSource().equals(rView.getRegisterButton()))   
         {
             if(!rView.getUsername().equals("") && !rView.getPassword().equals("") && !rView.getFName().equals("") && !rView.getLName().equals(""))
             {
                 boolean userNameExists = db.usernameExists(rView.getUsername());
-                if(userNameExists == true)
+                if(userNameExists == false)
                 {
                     System.out.print("not vsiisble");
                     rView.showDialog();

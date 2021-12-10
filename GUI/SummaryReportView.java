@@ -21,10 +21,10 @@ public class SummaryReportView extends JFrame {
     private JFrame frame;
     private JLabel period, numListedLabel, numRentedLabel, numActiveLabel, housesRentedLabel;
     private JComboBox periodSelect;
-    private String periods[] = {"09/21", "10/21", "11/21", "12/21"}; // I guess have periods from the date of first period listing to the current date
+    private String periods[] = {"01/21", "02/21", "03/21", "04/21", "05/21", "06/21", "07/21", "08/21","09/21", "10/21", "11/21", "12/21"}; // I guess have periods from the date of first period listing to the current date
     private JTextField numListed, numRented, numActive; // add Curtis's List/Table thing
     private JTable housesRented;
-    private String housesRentedData[][] = {{"Han", "1", "1055 Kensington Place"}, {"Jaba", "2", "23 Tatooine Manor"}, {"Han", "1", "1055 Kensington Place"}, {"Han", "1", "1055 Kensington Place"}, {"Han", "1", "1055 Kensington Place"}, {"Han", "1", "1055 Kensington Place"}, {"Han", "1", "1055 Kensington Place"}, {"Han", "1", "1055 Kensington Place"}, {"Han", "1", "1055 Kensington Place"}, {"Han", "1", "1055 Kensington Place"}}; // temporary; for testing purposes
+    private String housesRentedData[][] = null; //{{"Han", "1", "1055 Kensington Place"}, {"Jaba", "2", "23 Tatooine Manor"}, {"Han", "1", "1055 Kensington Place"}, {"Han", "1", "1055 Kensington Place"}, {"Han", "1", "1055 Kensington Place"}, {"Han", "1", "1055 Kensington Place"}, {"Han", "1", "1055 Kensington Place"}, {"Han", "1", "1055 Kensington Place"}, {"Han", "1", "1055 Kensington Place"}, {"Han", "1", "1055 Kensington Place"}}; // temporary; for testing purposes
     private String columns[] = {"Landlord Name", "Property ID", "Address"};
     private DefaultTableModel hrModel;
     private JScrollPane tableScroll;
@@ -43,6 +43,7 @@ public class SummaryReportView extends JFrame {
         period.setBounds(50, 25, 100, 40);
         frame.add(period);
         periodSelect = new JComboBox(periods);
+        periodSelect.setSelectedIndex(-1);
         periodSelect.setBounds(175, 35, 275, 20);
         frame.add(periodSelect);
 
@@ -52,7 +53,7 @@ public class SummaryReportView extends JFrame {
         frame.add(numListedLabel);
         numListed = new JTextField();
         numListed.setBounds(325, 85, 125, 20);
-        numListed.setEditable(true);
+        numListed.setEditable(false);
         frame.add(numListed);
 
         numRentedLabel = new JLabel("Number of Houses Rented During Period:");
@@ -60,7 +61,7 @@ public class SummaryReportView extends JFrame {
         frame.add(numRentedLabel);
         numRented = new JTextField();
         numRented.setBounds(325, 110, 125, 20);
-        numRented.setEditable(true);
+        numRented.setEditable(false);
         frame.add(numRented);        
 
         numActiveLabel = new JLabel("Number of Active Houses During Period:");
@@ -68,7 +69,7 @@ public class SummaryReportView extends JFrame {
         frame.add(numActiveLabel);
         numActive = new JTextField();
         numActive.setBounds(325, 135, 125, 20);
-        numActive.setEditable(true);
+        numActive.setEditable(false);
         frame.add(numActive);
 
         housesRentedLabel = new JLabel("Houses Rented During Period:");
@@ -107,12 +108,24 @@ public class SummaryReportView extends JFrame {
         return periodSelect.getSelectedItem().toString();
     }
 
+    public JTextField getNumListed() {
+        return numListed;
+    }
+
     public void setNumListed(String out) {
         numListed.setText(out);
     }
 
+    public JTextField getNumRented() {
+        return numRented;
+    }
+
     public void setNumRented(String out) {
         numRented.setText(out);
+    }
+
+    public JTextField getNumActive() {
+        return numActive;
     }
 
     public void setNumActive(String out) {
@@ -143,10 +156,18 @@ public class SummaryReportView extends JFrame {
     }
 
     public void setTableData(String[][] rentedData){
-        housesRented = new JTable(rentedData, columns);
+      hrModel.setRowCount(0);
+      for(int i=0; i<rentedData.length; i++)
+      {
+          hrModel.addRow(rentedData[i]);
+      }
+
+    //housesRented = new JTable(rentedData, columns);
+        housesRented.revalidate();
     }
 
-    public static void main(String[] args) {
+    
+    /*public static void main(String[] args) {
         new SummaryReportView().turnOn();
-    }
+    }*/
 }
