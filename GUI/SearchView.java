@@ -861,7 +861,6 @@ public class SearchView extends JFrame{
         test.turnOn();;
         //test.turnOnForManager();
     }
-
     
 }
 
