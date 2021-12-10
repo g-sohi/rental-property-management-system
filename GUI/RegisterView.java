@@ -127,4 +127,11 @@ public class RegisterView extends JFrame {
             System.out.println("working");
     }
 
+    
+    public void showErrorDialog()
+    {
+        
+            JOptionPane.showMessageDialog(f,"Fill All Fields");
+    }
+
 }

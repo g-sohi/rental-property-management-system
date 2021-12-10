@@ -27,11 +27,22 @@ public class RenterController implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(RenterView.getSearch()))
         {
+            RenterView.destroyFrame();
             search.enableView();
             search.getView().turnOn();
+            search.getView().addBackButtonListener(this);
+        }
+        if(search.getView() != null)
+        {
+            if(e.getSource().equals(search.getView().getBackButton()))
+            {
+                search.getView().destroyFrameRenterGuest();
+                RenterView.turnOn();
+            }
         }
         if(e.getSource().equals(RenterView.getSelect()))
         {
+            RenterView.destroyFrame();
             selectProp = new SelectPropertyView();
             selectProp.addSelectListener(this);
             selectProp.addEmailListener(this);
@@ -62,9 +73,20 @@ public class RenterController implements ActionListener{
         {
             if(e.getSource().equals(emailv.getSendButton()))
             {
-               emailv.showDialog(); 
+                System.out.println(emailv.getBody());
+                System.out.println(emailv.getFrom());
+                if(!emailv.getBody().equals("") && !emailv.getFrom().equals("") && !emailv.getSub().equals(""))
+                {
+                emailv.showDialog(); 
                 emailv.destroyFrame();
                 RenterView.turnOn();
+                    
+                }
+                else
+                {
+                    System.out.println("Error");
+                    emailv.showErrorDialog();
+                }
             }
         }
     }

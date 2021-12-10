@@ -767,6 +767,10 @@ public class SearchView extends JFrame{
         return this.search; 
     }
 
+    public JButton getBackButton()
+    {
+        return backButton;
+    }
     public JButton getResetButton()
     {
         return this.reset;
@@ -826,6 +830,9 @@ public class SearchView extends JFrame{
     {
         return this.LandlordIdLabel;
     }
+    public void addBackButtonListener(ActionListener listenForBackButton){
+        backButton.addActionListener(listenForBackButton);  
+    }
 
     public void addResetListener(ActionListener listenForReset){
         reset.addActionListener(listenForReset);  
@@ -844,11 +851,24 @@ public class SearchView extends JFrame{
     {
         jList2.addListSelectionListener(listenForSelection);
     }
+<<<<<<< HEAD
     // public static void main(String [] args) {
     //     SearchView test =  new SearchView();
     //     test.turnOn();;
     //     //test.turnOnForManager();
     // }
+=======
+
+    public void destroyFrameRenterGuest()
+    {
+        setVisible(false);
+    }
+    public static void main(String [] args) {
+        SearchView test =  new SearchView();
+        test.turnOn();;
+        //test.turnOnForManager();
+    }
+>>>>>>> c9acd197b226081a4af962b2660049fe9382eaef
 
     
 }
