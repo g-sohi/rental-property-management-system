@@ -60,7 +60,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
                 IDs[i] = landlordProperties.get(i).getID();
             }
             sView.getLandlordIdLabel().setText(String.valueOf(this.landlordID));
-            sView.getJList2().setListData(llproperties);
+            sView.getAddressList().setListData(llproperties);
         }
         //Enter statment below if the display button for the searchView frame is triggered and managerSearch boolean equals true
         if(e.getSource().equals(sView.getDisplayButton()) && managerSearch == true)
@@ -73,7 +73,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
             {
                 allProperties[i] = managerProperties.get(i).getAddress();   //landlordProperties.get(i).getAddress();
             }
-            sView.getJList2().setListData(allProperties);
+            sView.getAddressList().setListData(allProperties);
         }
         //Enter statement below if the reset button for the searchView frame is triggered
         if(e.getSource().equals(sView.getResetButton()))
@@ -322,20 +322,20 @@ public class SearchController implements ActionListener, ListSelectionListener{
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
-        if(e.getSource().equals(this.sView.getJList2()))
+        if(e.getSource().equals(this.sView.getAddressList()))
         {
-            Property p = new Property(getListings().get(this.sView.getJList2().getSelectedIndex()).getID(), 
-                getListings().get(this.sView.getJList2().getSelectedIndex()).getAddress(), 
-                getListings().get(this.sView.getJList2().getSelectedIndex()).getQuadrant(), 
-                getListings().get(this.sView.getJList2().getSelectedIndex()).getType(), 
-                getListings().get(this.sView.getJList2().getSelectedIndex()).getNumOfBedrooms(), 
-                getListings().get(this.sView.getJList2().getSelectedIndex()).getNumOfBathrooms(), 
-                getListings().get(this.sView.getJList2().getSelectedIndex()).getFurnished(), 
-                getListings().get(this.sView.getJList2().getSelectedIndex()).getPropertyFees(), 
-                getListings().get(this.sView.getJList2().getSelectedIndex()).getPropertyStatus(),
-                getListings().get(this.sView.getJList2().getSelectedIndex()).getStartDate(),
-                getListings().get(this.sView.getJList2().getSelectedIndex()).getEndDate(),
-                getListings().get(this.sView.getJList2().getSelectedIndex()).getRentDate());
+            Property p = new Property(getListings().get(this.sView.getAddressList().getSelectedIndex()).getID(), 
+                getListings().get(this.sView.getAddressList().getSelectedIndex()).getAddress(), 
+                getListings().get(this.sView.getAddressList().getSelectedIndex()).getQuadrant(), 
+                getListings().get(this.sView.getAddressList().getSelectedIndex()).getType(), 
+                getListings().get(this.sView.getAddressList().getSelectedIndex()).getNumOfBedrooms(), 
+                getListings().get(this.sView.getAddressList().getSelectedIndex()).getNumOfBathrooms(), 
+                getListings().get(this.sView.getAddressList().getSelectedIndex()).getFurnished(), 
+                getListings().get(this.sView.getAddressList().getSelectedIndex()).getPropertyFees(), 
+                getListings().get(this.sView.getAddressList().getSelectedIndex()).getPropertyStatus(),
+                getListings().get(this.sView.getAddressList().getSelectedIndex()).getStartDate(),
+                getListings().get(this.sView.getAddressList().getSelectedIndex()).getEndDate(),
+                getListings().get(this.sView.getAddressList().getSelectedIndex()).getRentDate());
             displayPropertyInfo(p);
         }       
     }
