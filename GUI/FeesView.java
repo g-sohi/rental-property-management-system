@@ -12,12 +12,8 @@ public class FeesView extends JFrame {
     private JButton save, payFees, back;
     private JLabel pIDLabel, feeLabel, periodLabel, dateLabel, billingTitle, fNLabel, lNLabel, cLabel, pcLabel, creditTitle, ccnLabel, expLabel, expDivideLabel, cvvLabel; 
     private JFrame fMgr, fLlrd;
-    private JComboBox startDay;
-    private JComboBox startMonth;
-    private JComboBox startYear;
-    private JComboBox endDay;
-    private JComboBox endMonth;
-    private JComboBox endYear;
+    private JTextField startDay, startMonth, startYear, endDay, endMonth, endYear;
+    private JComboBox periodSelect;
 
     public FeesView(boolean isMgrPlaceholder) {
 
@@ -32,13 +28,17 @@ public class FeesView extends JFrame {
         String days_list[] = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" };
         String months_list[] = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
         String year_list[] = {"2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031" };
-        startDay = new JComboBox<>(days_list);
-        startMonth = new JComboBox<>(months_list);
-        startYear = new JComboBox<>(year_list);
+        String periods[] = {"1 Month", "3 Months", "6 Months", "9 Months", "12 Months"};
+        startDay = new JTextField(); startDay.setEditable(false);
+        startMonth = new JTextField(); startMonth.setEditable(false);
+        startYear = new JTextField(); startYear.setEditable(false);
 
-        endDay = new JComboBox<>(days_list);
-        endMonth = new JComboBox<>(months_list);
-        endYear = new JComboBox<>(year_list);
+        endDay = new JTextField(); endDay.setEditable(false);
+        endMonth = new JTextField(); endMonth.setEditable(false);
+        endYear = new JTextField(); endYear.setEditable(false);
+
+        periodSelect = new JComboBox(periods);
+
         // creation of JLabels of certain size and position        
         pIDLabel = new JLabel("Property ID:");
         pIDLabel.setBounds(50, 25, 100, 40);
@@ -97,6 +97,8 @@ public class FeesView extends JFrame {
         startYear.setBounds(370, 85, 90, 20);
         endYear.setBounds(370, 125, 90, 20);
 
+        periodSelect.setBounds(145, 85, 310, 20);
+
 
         fName = new JTextField();
         fName.setBounds(140, 200, 85, 20);
@@ -130,19 +132,20 @@ public class FeesView extends JFrame {
             fMgr.add(feeLabel); fMgr.add(changeFeeAmount); changeFeeAmount.setEditable(true);
             fMgr.add(periodLabel); 
             
-            fMgr.add(startDay);
-            fMgr.add(endDay); 
-            fMgr.add(startMonth);
-            fMgr.add(endMonth); 
-            fMgr.add(startYear);
-            fMgr.add(endYear); 
+            fMgr.add(periodSelect);
+            // fMgr.add(startDay);
+            // fMgr.add(endDay); 
+            // fMgr.add(startMonth);
+            // fMgr.add(endMonth); 
+            // fMgr.add(startYear);
+            // fMgr.add(endYear); 
 
-            fMgr.add(slash1);
-            fMgr.add(slash2);
-            fMgr.add(slash3);
-            fMgr.add(slash4);
+            //fMgr.add(slash1);
+            //fMgr.add(slash2);
+            //fMgr.add(slash3);
+            //fMgr.add(slash4);
 
-            fMgr.add(dateLabel);
+            //fMgr.add(dateLabel);
 
             fMgr.add(save);
             fMgr.add(back);
@@ -223,6 +226,34 @@ public class FeesView extends JFrame {
         return payFees;
     }
 
+    public String getPeriod() {
+        return periodSelect.getSelectedItem().toString();
+    }
+
+    public void setStartD(String day) {
+        startDay.setText(day);
+    }
+
+    public void setStartM(String month) {
+        startMonth.setText(month);
+    }
+
+    public void setStartY(String year) {
+        startYear.setText(year);
+    }
+
+    public void setEndD(String day) {
+        endDay.setText(day);
+    }
+
+    public void setEndM(String month) {
+        endMonth.setText(month);
+    }
+
+    public void setEndY(String year) {
+        endYear.setText(year);
+    }
+
     public void destroyFrameForManager()
     {
         fMgr.setVisible(false);
@@ -262,32 +293,32 @@ public class FeesView extends JFrame {
         changeFeeAmount.setText(amount);
     }
 
-    public String getStartDayInput()
-    {
-        return startDay.getSelectedItem().toString();
-    }
+    // public String getStartDayInput()
+    // {
+    //     return startDay.getSelectedItem().toString();
+    // }
 
-    public String getStartMonthInput()
-    {
-        return startMonth.getSelectedItem().toString();
-    }
-    public String getStartYearInput()
-    {
-        return startYear.getSelectedItem().toString();
-    }
-    public String getEndDayInput()
-    {
-        return endDay.getSelectedItem().toString();
-    }
+    // public String getStartMonthInput()
+    // {
+    //     return startMonth.getSelectedItem().toString();
+    // }
+    // public String getStartYearInput()
+    // {
+    //     return startYear.getSelectedItem().toString();
+    // }
+    // public String getEndDayInput()
+    // {
+    //     return endDay.getSelectedItem().toString();
+    // }
 
-    public String getEndMonthInput()
-    {
-        return endMonth.getSelectedItem().toString();
-    }
-    public String getEndYearInput()
-    {
-        return endYear.getSelectedItem().toString();
-    }
+    // public String getEndMonthInput()
+    // {
+    //     return endMonth.getSelectedItem().toString();
+    // }
+    // public String getEndYearInput()
+    // {
+    //     return endYear.getSelectedItem().toString();
+    // }
     // // returns input for start date
     // public String getStart() {
     //     return startDate.getText();
