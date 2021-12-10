@@ -199,9 +199,23 @@ public class Database {
                 String status = line.getString("Status");
                 prop = new Property(ID, landlordID, address,quadrant, type, numOfBedrooms, numOfBathrooms, furnished, new Fees(0.00, 0, "No", "NULL", "NULL"), status);
             } catch (SQLException e) {
-                //e.printStackTrace();
+                e.printStackTrace();
             }
             return prop;
+        }
+
+        public int getPeriod(int id){
+            int period = 0;
+            try{
+                String query = String.format("SELECT * FROM property WHERE Property_ID = %d", id);
+                PreparedStatement stmt = dbConnect.prepareStatement(query);
+                line = stmt.executeQuery();
+                line.next();
+                period = line.getInt("FeePeriod");
+            } catch (SQLException e) {
+                //e.printStackTrace();
+            }
+            return period;
         }
 
         public void updateFeeStatus(int id)
@@ -215,10 +229,30 @@ public class Database {
             }
         }
 
-        public void updatePeriodStatus(int id, double amount, String startDate, String endDate)
+        public void updatePeriodStatus(int id, double amount, int period)
         {
             try {
-                String query = String.format("UPDATE property SET Fees = %f, StartDate = '%s', EndDate = '%s' Where Property_ID = %d", amount,startDate, endDate, id);
+                String query = String.format("UPDATE property SET Fees = %f, FeePeriod = %d Where Property_ID = %d", amount, period, id);
+                Statement stmt = dbConnect.createStatement();
+                stmt.executeUpdate(query);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public void updateStartDate(int id, String startDate){
+            try {
+                String query = String.format("UPDATE property SET StartDate = '%s' WHERE Property_ID = %d", startDate, id);
+                Statement stmt = dbConnect.createStatement();
+                stmt.executeUpdate(query);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public void updateEndDate(int id, String endDate){
+            try {
+                String query = String.format("UPDATE property SET EndDate = '%s' WHERE Property_ID = %d", endDate, id);
                 Statement stmt = dbConnect.createStatement();
                 stmt.executeUpdate(query);
             } catch (SQLException e) {
