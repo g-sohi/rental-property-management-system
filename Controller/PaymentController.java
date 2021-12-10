@@ -3,7 +3,10 @@ package Controller;
 import Models.*;
 import GUI.*;
 import Database.*;
+
 import java.awt.event.*;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 public class PaymentController implements ActionListener {
     
@@ -14,7 +17,7 @@ public class PaymentController implements ActionListener {
     private ManagerController manager;
 
     public PaymentController(Database db) {
-        this.db =db;
+        this.db = db;
 
     }
 
@@ -70,7 +73,11 @@ public class PaymentController implements ActionListener {
             db.initializeConnection();
         if(e.getSource().equals(fees.getPayFeesButton()))
             {
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd HH-mm-ss");
+                LocalDateTime current = LocalDateTime.now();
+                db.updatePaidProperty(Integer.valueOf(fees.getPID()), dtf.format(current).toString(), "Null");
                 db.updateFeeStatus(Integer.valueOf(fees.getPID()));
+
                 System.out.println("Payment Done");
                 fees.destroyFrameForLandlord();
             }

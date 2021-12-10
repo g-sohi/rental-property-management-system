@@ -226,10 +226,20 @@ public class Database {
             }
         }
 
+        public void updatePaidProperty(int id, String startDate, String endDate){
+            try {
+                String query = String.format("UPDATE property SET Status = 'Active', StartDate = '%s' Where Property_ID = %d", startDate, id);
+                Statement stmt = dbConnect.createStatement();
+                stmt.executeUpdate(query);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
         public void updateProperty(int id, String status, String rentDate){
             try {
                 if(!status.equalsIgnoreCase("rented")){
-                    String query = String.format("UPDATE property SET Status = '%s', RentDate = 'null' Where Property_ID = %d", status, id);
+                    String query = String.format("UPDATE property SET Status = '%s', RentDate = 'Null' Where Property_ID = %d", status, id);
                     Statement stmt = dbConnect.createStatement();
                     stmt.executeUpdate(query);
                 }
