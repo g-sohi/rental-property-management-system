@@ -1,5 +1,8 @@
 package GUI;
 
+import Models.*;
+
+import java.util.*;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
@@ -79,6 +82,7 @@ public class SummaryReportView extends JFrame {
                 return false;
             }
         };
+
         housesRented = new JTable(housesRentedData, columns);
         housesRented.setBounds(50, 210, 400, 175);
         housesRented.setModel(hrModel);
@@ -136,6 +140,10 @@ public class SummaryReportView extends JFrame {
 
     public JComboBox getPeriodSelect(){
         return this.periodSelect;
+    }
+
+    public void setTableData(String[][] rentedData){
+        housesRented = new JTable(rentedData, columns);
     }
 
     public static void main(String[] args) {

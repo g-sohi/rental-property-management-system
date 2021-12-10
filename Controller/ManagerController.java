@@ -2,6 +2,8 @@ package Controller;
 import Models.*;
 import GUI.*;
 import Database.*;
+
+import java.util.*;
 import java.awt.event.*;
 import java.time.LocalDate;
 
@@ -251,6 +253,16 @@ public class ManagerController implements ActionListener, ItemListener {
         this.managerv.addViewListener(this);
         }
 
+        public String[][] copyProperties(ArrayList<Property> properties){
+            String[][] props = new String[properties.size()][3];
+            for(int i = 0; i < properties.size(); i++){
+                props[i][0] = db.getLandlordName(properties.get(i).getID());
+                props[i][1] = String.valueOf(properties.get(i).getID());
+                props[i][2] = properties.get(i).getAddress();
+            }
+            return props;
+        }
+
     @Override
     public void itemStateChanged(ItemEvent e) {
         if(e.getStateChange() == ItemEvent.SELECTED){
@@ -265,6 +277,7 @@ public class ManagerController implements ActionListener, ItemListener {
                 String end = "20" + year + "-" + month + "-" + String.valueOf(days);
                 System.out.println("Start Date: " + start + " End Date: " + end);
                 db.initializeConnection();
+                report.setTableData(copyProperties(db.getRentedProperties(start, end)));
                 System.out.println("Listed : " + db.countListings("Listed", start, end));
                 System.out.println("Rented Listings: " + db.countListings("Rented", start, end));
                 System.out.println("Active Listings: " + db.countListings("Active", start, end));
