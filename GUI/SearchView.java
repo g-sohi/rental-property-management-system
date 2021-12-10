@@ -894,9 +894,9 @@ public class SearchView extends JFrame{
         llrdF.setVisible(false);
     }
 
-    public static void main(String [] args) {
-        SearchView test =  new SearchView();
-        test.turnOn();
-    }
+    // public static void main(String [] args) {
+    //     SearchView test =  new SearchView();
+    //     test.turnOn();
+    // }
 }
 
