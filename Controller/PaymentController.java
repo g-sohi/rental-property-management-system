@@ -78,21 +78,7 @@ public class PaymentController implements ActionListener {
             {
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm:ss");
                 LocalDateTime current = LocalDateTime.now();
-                String line = current.toString();
-                String day = line.substring(line.indexOf(' ') - 3, line.indexOf(' '));
-                String month = line.substring(line.indexOf('-') + 1, line.indexOf('-') + 3);
-                String year = line.substring(0, line.indexOf('-'));
-                fees.setStartD(day);
-                fees.setStartM(month);
-                fees.setStartY(year);
                 LocalDateTime end = current.plusMonths(db.getPeriod(Integer.valueOf(fees.getPID())));
-                line = end.toString();
-                day = line.substring(line.indexOf(' ') - 3, line.indexOf(' '));
-                month = line.substring(line.indexOf('-') + 1, line.indexOf('-') + 3);
-                year = line.substring(0, line.indexOf('-'));
-                fees.setEndD(day);
-                fees.setEndM(month);
-                fees.setEndY(year);
                 db.updatePaidProperty(Integer.valueOf(fees.getPID()), dtf.format(current).toString(), dtf.format(end).toString());
                 db.updateFeeStatus(Integer.valueOf(fees.getPID()));
 
