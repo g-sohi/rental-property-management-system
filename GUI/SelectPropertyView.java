@@ -64,6 +64,11 @@ public class SelectPropertyView extends JFrame {
     public JTextArea getPropertyInfoTextArea() {
         return pDetails;
     }
+    
+    public JTextField getPropertyIdTextField()
+    {
+        return pID;
+    }
 
     public void turnOn()
     {
