@@ -15,7 +15,7 @@ import java.awt.*;
 public class MainPageGUI extends JFrame implements ActionListener {
     
     // variable declaration
-    private JButton login, guest, register;
+    private JButton login, guest, register, sendEmail;
     private JFrame frame;
 
     public MainPageGUI() throws IOException {
@@ -45,18 +45,21 @@ public class MainPageGUI extends JFrame implements ActionListener {
         login = new JButton("Login");
         guest = new JButton("Continue as Guest");
         register = new JButton("Create New Login");
+        sendEmail = new JButton("Send Email");
 
         // sets the position and size of JButtons within JFrame
         userPNG.setBounds(160, 30, 200, 200);
         login.setBounds(100, 230, 100, 40);
         guest.setBounds(150, 290, 200, 40);
         register.setBounds(250, 230, 150, 40);
+        sendEmail.setBounds(150, 330, 200, 40);
 
         // adds JButtons to JFrame
         frame.add(userPNG);
         frame.add(login);
         frame.add(guest);
         frame.add(register);
+        frame.add(sendEmail);
 
         frame.add(searchPanel1);
         frame.add(searchPanel2);
@@ -66,6 +69,15 @@ public class MainPageGUI extends JFrame implements ActionListener {
     }
     public void addLoginListener(ActionListener listenForLogin){
         login.addActionListener(listenForLogin);
+        /*this.setVisible(false);
+        ManagerView vw = new ManagerView();
+        vw.setVisible(true);
+        actionPerformed();*/
+        
+    }
+
+    public void addSendEmailListener(ActionListener listenForSendEmail){
+        sendEmail.addActionListener(listenForSendEmail);
         /*this.setVisible(false);
         ManagerView vw = new ManagerView();
         vw.setVisible(true);
@@ -94,6 +106,11 @@ public class MainPageGUI extends JFrame implements ActionListener {
     }
 
     public JButton getRegister()
+    {
+        return register;
+    }
+
+    public JButton getSendEmailButton()
     {
         return register;
     }

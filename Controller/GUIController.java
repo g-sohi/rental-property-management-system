@@ -14,16 +14,19 @@ private LoginController login;
 private SearchController search;
 private Database db;
 private RegisterView rView;
+private EmailView emailV;
 public GUIController(Database db) throws IOException
 {
     mainpage = new MainPageGUI();
     this.setDatabase(db);
+    emailV = new EmailView(true);
     login = new LoginController(this.db);
     search = new SearchController(this.db);
     rView = new RegisterView();
     this.mainpage.addLoginListener(this);
     this.mainpage.addGuestListener(this);
     this.mainpage.addRegisterListener(this);
+    this.mainpage.addSendEmailListener(this);
 }
 
 public void setDatabase(Database db)
@@ -54,6 +57,13 @@ public void actionPerformed(ActionEvent e) {
         this.rView.addRegisterListener(this);
         this.rView.addBackListener(this);
 
+    }
+    else if(e.getSource().equals(mainpage.getSendEmailButton()))
+    {
+        mainpage.setOff();
+        emailV.turnOn();
+        emailV.addBackListener(this);
+        emailV.addSendEmailListener(this);
     }
 
     if(e.getSource().equals(rView.getRegisterButton()))   
