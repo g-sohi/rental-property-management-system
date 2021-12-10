@@ -76,7 +76,9 @@ public class PaymentController implements ActionListener {
             }
         if(e.getSource().equals(fees.getSaveButton()))
             {
-                db.updatePeriodStatus(Integer.valueOf(fees.getPID()), Double.valueOf(fees.getFee()), fees.getStart(), fees.getEnd());
+                String startDate = fees.getStartYearInput() + "-"+fees.getStartMonthInput()+"-"+ fees.getStartDayInput();
+                String endDate = fees.getEndYearInput() + "-"+fees.getEndMonthInput()+"-"+ fees.getEndDayInput();
+                db.updatePeriodStatus(Integer.valueOf(fees.getPID()), Double.valueOf(fees.getFee()), startDate, endDate);
                 System.out.println("Fee period updated");
                 fees.destroyFrameForManager();
             }

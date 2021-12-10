@@ -30,7 +30,7 @@ public class FeesView extends JFrame {
 
         fMgr.setLayout(null); fLlrd.setLayout(null);// layout set to null
         String days_list[] = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" };
-        String months_list[] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "December" };
+        String months_list[] = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
         String year_list[] = {"2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031" };
         startDay = new JComboBox<>(days_list);
         startMonth = new JComboBox<>(months_list);
@@ -251,6 +251,32 @@ public class FeesView extends JFrame {
         changeFeeAmount.setText(amount);
     }
 
+    public String getStartDayInput()
+    {
+        return startDay.getSelectedItem().toString();
+    }
+
+    public String getStartMonthInput()
+    {
+        return startMonth.getSelectedItem().toString();
+    }
+    public String getStartYearInput()
+    {
+        return startYear.getSelectedItem().toString();
+    }
+    public String getEndDayInput()
+    {
+        return endDay.getSelectedItem().toString();
+    }
+
+    public String getEndMonthInput()
+    {
+        return endMonth.getSelectedItem().toString();
+    }
+    public String getEndYearInput()
+    {
+        return endYear.getSelectedItem().toString();
+    }
     // // returns input for start date
     // public String getStart() {
     //     return startDate.getText();

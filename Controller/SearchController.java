@@ -40,7 +40,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-
+        db.initializeConnection();
         if(e.getSource().equals(sView.getDisplayButton()) && landLordSearch == true)
         {
             System.out.println("Display working");

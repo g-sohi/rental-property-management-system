@@ -16,8 +16,14 @@ public class PropertyController implements ActionListener {
     private ManagerController manager;
     private Database db;
 
+    /*public PropertyController(Database db, int id){
+        this.setDb(db);
+        this.landLordID = id;
+    }*/
+
     public PropertyController(Database db){
         this.setDb(db);
+    
     }
 
     public void editProperty(Property p)
@@ -95,12 +101,8 @@ public class PropertyController implements ActionListener {
                 System.out.println("New Information Saved");
                 edit.destroyFrame();
             }
-            else if(e.getSource().equals(edit.getRemoveButton())){
-                db.removeProperty(edit.getPropetyId2Input());
-                System.out.println("Property Removed");
-                edit.destroyFrame();
             }
-          }
+          
         }
 
 }
