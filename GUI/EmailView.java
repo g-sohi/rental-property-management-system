@@ -11,7 +11,7 @@ public class EmailView extends JFrame {
     private JLabel subLabel, pIDLabel, fromLabel;
     private JButton send;
     private JFrame frame;
-    private JFrame gFrame;
+    //private JFrame gFrame;
     private String id;
     private JButton back;
 
@@ -61,9 +61,9 @@ public class EmailView extends JFrame {
 
 
         // creation of JFrame of certain size
-        gFrame = new JFrame("Email Page For Guest");
-        gFrame.setSize(500, 500);
-        gFrame.setLayout(null); // layout set to null
+        frame = new JFrame("Email Page For Guest");
+        frame.setSize(500, 500);
+        frame.setLayout(null); // layout set to null
 
         //setDefaultCloseOperation(EXIT_ON_CLOSE);        
 
@@ -92,13 +92,13 @@ public class EmailView extends JFrame {
         back.setBounds(50, 410, 100, 40);
 
         // addition of components to JFrame
-        gFrame.add(subLabel); gFrame.add(fromLabel); gFrame.add(pIDLabel);
-        gFrame.add(subject); gFrame.add(from);  gFrame.add(body);
-        gFrame.add(send); 
-        gFrame.add(pID);
-        gFrame.add(back);
+        frame.add(subLabel); frame.add(fromLabel); frame.add(pIDLabel);
+        frame.add(subject); frame.add(from);  frame.add(body);
+        frame.add(send); 
+        frame.add(pID);
+        frame.add(back);
 
-        gFrame.setVisible(false); // JFrame is set to appear
+        frame.setVisible(false); // JFrame is set to appear
 
     }
 }
@@ -146,18 +146,7 @@ public class EmailView extends JFrame {
     {
         frame.setVisible(true);
     }
-
-    public void turnOnForGuest()
-    {
-        gFrame.setVisible(true);
-    }
-
     // sets frame to not appear
-    public void destroyFrameForGuest()
-    {
-        gFrame.setVisible(false);
-    }
-
     public void destroyFrame()
     {
         frame.setVisible(false);
@@ -172,7 +161,7 @@ public class EmailView extends JFrame {
         //JFrame frame = new JFrame("Registration Done");
             // show a joptionpane dialog using showMessageDialog
             JOptionPane.showMessageDialog(frame,"Email is sent successfully");
-            frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            //frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             //System.out.println("working");
     }
 
