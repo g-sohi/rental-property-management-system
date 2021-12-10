@@ -106,6 +106,11 @@ public class SelectPropertyView extends JFrame {
 
 
     // **for testing purposes**
+    public static void main(String [] args) {
+        SelectPropertyView test =  new SelectPropertyView();
+        test.turnOn();
+        //test.turnOnForManager();
+    }
 
 }
 
