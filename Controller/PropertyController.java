@@ -85,9 +85,6 @@ public class PropertyController implements ActionListener {
     {
         edit = new EditPropertyView();
         this.edit.addSaveListener(this);
-        this.edit.addRemoveListener(this);
-
-
     }
 
     @Override
