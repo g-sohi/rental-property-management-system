@@ -105,6 +105,8 @@ public class PropertyController implements ActionListener {
             String rentDate = edit.getRentYearInput() + "-"+edit.getRentMonthInput()+"-"+ edit.getRentDayInput();
             if(e.getSource().equals(edit.getSaveButton()))
             {
+                if(!edit.getPropertyIDStringInput().equals(""))
+                {
                 if(userType.equals("Landlord"))
                 {
                 System.out.println("Landlord");
@@ -118,6 +120,7 @@ public class PropertyController implements ActionListener {
                 System.out.println("New Information Saved");
                 edit.destroyFrame();
                 }
+            }
             }
             }
         }

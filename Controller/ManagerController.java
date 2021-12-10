@@ -85,8 +85,16 @@ public class ManagerController implements ActionListener, ItemListener {
         }
         if(e.getSource().equals(pay.getFeesView().getSaveButton()))
         {
-            pay.getFeesView().destroyFrameForManager();
-            managerv.turnOn();
+            if(!pay.getFeesView().getPID().equals("") && !pay.getFeesView().getFee().equals(""))
+            {
+                 pay.getFeesView().showDialogManager();
+                pay.getFeesView().destroyFrameForManager();
+                managerv.turnOn();
+            }
+            else
+            {
+                pay.getFeesView().showErrorDialogManager();
+            }
         }
     }
     if(this.report != null)
@@ -279,6 +287,9 @@ public class ManagerController implements ActionListener, ItemListener {
                 String end = "20" + year + "-" + month + "-" + String.valueOf(days);
                 System.out.println("Start Date: " + start + " End Date: " + end);
                 db.initializeConnection();
+                report.setNumListed(String.valueOf(db.countListings("Listed", start, end)));
+                report.setNumActive(String.valueOf(db.countListings("Active", start, end)));
+                report.setNumRented(String.valueOf(db.countListings("Rented", start, end)));
                 report.setTableData(copyProperties(db.getRentedProperties(start, end)));
                 System.out.println("Listed : " + db.countListings("Listed", start, end));
                 System.out.println("Rented Listings: " + db.countListings("Rented", start, end));

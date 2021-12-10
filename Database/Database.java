@@ -235,6 +235,7 @@ public class Database {
                 e.printStackTrace();
             }
         }
+
         public void updatePropertyLandLord(int id, String status, String rentDate, int landID){
             try {
                 if(!status.equalsIgnoreCase("rented")){
@@ -460,7 +461,6 @@ public class Database {
             }
             return renters;
         }
-
 
         public ArrayList<Property> getManagerProperties() {
             ArrayList<Property> properties = new ArrayList<Property>();
