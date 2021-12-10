@@ -851,13 +851,6 @@ public class SearchView extends JFrame{
     {
         jList2.addListSelectionListener(listenForSelection);
     }
-<<<<<<< HEAD
-    // public static void main(String [] args) {
-    //     SearchView test =  new SearchView();
-    //     test.turnOn();;
-    //     //test.turnOnForManager();
-    // }
-=======
 
     public void destroyFrameRenterGuest()
     {
@@ -868,8 +861,6 @@ public class SearchView extends JFrame{
         test.turnOn();;
         //test.turnOnForManager();
     }
->>>>>>> c9acd197b226081a4af962b2660049fe9382eaef
-
     
 }
 
