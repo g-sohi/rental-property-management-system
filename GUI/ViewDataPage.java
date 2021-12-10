@@ -2,6 +2,7 @@ package GUI;
 import Database.Database;
 import javax.swing.JFrame;
 import java.sql.*;
+import java.awt.event.*;
 
 import java.util.ArrayList;
 
@@ -15,7 +16,7 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 
 public class ViewDataPage extends JFrame {
-    private JButton renterInfo, propertyInfo, landlordInfo;
+    private JButton renterInfo, propertyInfo, landlordInfo, back;
     //private JTextArea area;
 
     private JTable dataPage;
@@ -35,17 +36,20 @@ public class ViewDataPage extends JFrame {
         setLayout(null);
         setTitle("View Information");
         renterInfo = new JButton("Renter Info");
-        propertyInfo = new JButton("Landlord Info");
-        landlordInfo = new JButton("Property Info");
+        propertyInfo = new JButton("Property Info");
+        landlordInfo = new JButton("LandLord Info");
+        back = new JButton("Back");
         //area = new JTextArea();
         add(renterInfo);
         add(propertyInfo);
         add(landlordInfo);
+        add(back);
         //add(area);
      
         renterInfo.setBounds(450,10,150,30);
         propertyInfo.setBounds(675,10,150,30);
         landlordInfo.setBounds(900,10,150,30);
+        back.setBounds(40, 10, 80, 30);
         //area.setBounds(5,50,680,600);
 
         setVisible(false);
@@ -85,6 +89,45 @@ public class ViewDataPage extends JFrame {
         add(tableScroll);
         turnOn();
     }
+    public JButton getRenterInfoButton()
+    {
+        return renterInfo;
+    }
+
+    public JButton getLandlordInfoButton()
+    {
+        return landlordInfo;
+    }
+
+    public JButton getPropertyInfoButton()
+    {
+        return propertyInfo;
+    }
+
+    public JButton getBackButton()
+    {
+        return back;
+    }
+
+    public void addBackListener(ActionListener listenForBack){
+        System.out.println("DONE1");
+        this.back.addActionListener(listenForBack);
+    }
+
+    public void addRenterInfoListener(ActionListener listenForRenterInfo){
+        System.out.println("DONE1");
+        this.renterInfo.addActionListener(listenForRenterInfo);
+    }
+
+    public void addLandlordInfoListener(ActionListener listenForRenterInfo){
+        System.out.println("DONE1");
+        this.landlordInfo.addActionListener(listenForRenterInfo);
+    }
+    public void addPropertyInfoListener(ActionListener listenForRenterInfo){
+        System.out.println("DONE1");
+        this.propertyInfo.addActionListener(listenForRenterInfo);
+    }
+
 
     public void turnOn()
     {
