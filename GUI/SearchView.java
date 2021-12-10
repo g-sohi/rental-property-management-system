@@ -26,7 +26,7 @@ import java.util.Properties;
 import java.util.Vector;
 
 public class SearchView extends JFrame{
-    //Private members for Normal View
+    //Private members for Normal Renter/Non-Renter View
     private JComboBox typeBox, quadrantBox, furnished; //change UML; type to typeBox; quadrant to quadrantBox
     private JTextField noBeds, noBaths, streetNo, streetName, city, postalCode, landlordName;
     private JButton register;
@@ -38,37 +38,24 @@ public class SearchView extends JFrame{
     private JComboBox type;
     private JComboBox quadrant;
     private JButton backButton;
+    private JLabel noBedsLabel, noBathsLabel, typeLabel, furnishedLabel, quadrantLabel;
+    private JPanel searchPanel1, searchPanel2, results;
 
     //Private members for Landlord/Manager Search View
     private JButton displayButton;
     private JButton backButton2;
-    private JTable DisplayTable1;
+    private JTable displayTable1;
     private DefaultTableModel displayTable1Model;
-    private JTable DisplayTable2;
+    private JTable displayTable2;
     private DefaultTableModel displayTable2Model;
-    private JTable DisplayTable3;
+    private JTable displayTable3;
     private DefaultTableModel displayTable3Model;
-    private JTable DisplayTable4;
+    private JTable displayTable4;
     private DefaultTableModel displayTable4Model;
     private JLabel LandlordIdLabel;
-    private JLabel LandlordLabel;
-    private JLabel LandlordPropertiesTitle;
-    private JScrollPane LandlordPropertyList;
-    private JList<String> jList2;
-    private JPanel jPanel1;
-    private JPanel jPanel2;
-    private JScrollPane jScrollPane2;
-    private JScrollPane jScrollPane3;
-    private JScrollPane jScrollPane5;
-    private JScrollPane jScrollPane6;
-    private JScrollPane jScrollPane7;
-    private JTable jTable1;
+    private JList<String> addressList;
 
-    // added here for external use from constructor
-    private JLabel noBedsLabel, noBathsLabel, typeLabel, furnishedLabel, quadrantLabel;
-    private JPanel searchPanel1, searchPanel2, results;
-
-    // mgrF variable declaration
+    //Manager and Landlord frame variable declaration
     private JFrame mgrF, llrdF;
     private JLabel propStatLabel, resultsLabel;
     private String propStats[] = {"Active", "Rented", "Cancelled", "Suspended"};
@@ -76,7 +63,7 @@ public class SearchView extends JFrame{
 
     public SearchView()
     {   
-        setSize(500, 500);
+        setSize(500, 500);  //Set the frame size to 500 by 500 pixels
 
         //Make a JPanel for the search boxes
         searchPanel1 = new JPanel();  
@@ -91,47 +78,52 @@ public class SearchView extends JFrame{
         results.setBounds(20, 315, 460, 135);     //set the x, y coordinates for the panel as well as the width the height 
         results.setBackground(Color.LIGHT_GRAY);
 
-        //propertiesView = new JList();
 
         //Set up the GUI components of the Search Frame, including textfields, buttons, and panels
         noBedsLabel = new JLabel("Beds: ");
+        //JTextfield for the Number of beds Input
         noBeds = new JTextField("Enter number of beds...");
 
         noBathsLabel = new JLabel("Baths: ");
+        //JTextfield for the Number of baths Input
         noBaths = new JTextField("Enter number of baths...");
 
         typeLabel = new JLabel("Type: ");
+        //Dropdown values for the Type
         String type_dropdown[] = {"", "Detached", "Attached", "Townhouse", "Apartment"};
         type = new JComboBox<>(type_dropdown);
 
         furnishedLabel = new JLabel("Furnished: ");
-        // Initialization of object of "JRadioButton" class.
+        // Initialization of JRadioButton for Furnished Input: "Yes" and "No"
         furnishedYesButton = new JRadioButton("Yes");
         furnishedYesButton.setActionCommand("yes");
         furnishedNoButton = new JRadioButton("No");
         furnishedNoButton.setActionCommand("no");
 
+        //Add the JardioButtons for "Yes" and "No" to a Button Group
         group = new ButtonGroup();
         group.add(furnishedYesButton);
         group.add(furnishedNoButton);
 
 
         quadrantLabel = new JLabel("Quadrant: ");
+        //Quadrant dropdown values
         String quadrant_dropdown[] = {"", "NW", "NE", "SW", "SE"};
         quadrant = new JComboBox<>(quadrant_dropdown);
 
+        //Button ins the frame include, search, display and back
         search = new JButton("Search");
         displayButton = new JButton();
-        jList2 = new JList<>();
-        //search.setForeground(Color.BLACK);
-        reset = new JButton("Reset");
-        reset.setForeground(Color.GRAY);
-
         backButton = new JButton("Back");
 
-        //Add all the GUI components created above to the JFrame called searchFrame
-        //add(propertiesView);
+        addressList = new JList<>();
+        //search.setForeground(Color.BLACK);
+        reset = new JButton("Reset");
+        //Set the color for the foreground in the back button to grey
+        reset.setForeground(Color.GRAY);
 
+
+        //Add all the GUI components created above to the JFrame which is the object itself
         add(noBedsLabel);
         add(noBeds);
 
@@ -178,69 +170,60 @@ public class SearchView extends JFrame{
         reset.setBounds(300, 260, 80, 30);
         backButton.setBounds(5, 5, 100, 20);
 
+        //Change the background colour of the search button to the RGB code below
         search.setBackground(new Color(99, 182, 255));
 
         setLayout(null);
-        setVisible(false);
+        setVisible(false);  //Set frame to not be visible
     }
     
-    // function for showing the search view for managers
-    public void mgr() {
-        // mgr() before using a new JFrame:
-        // remove(noBedsLabel); remove(noBeds);
-        // remove(noBathsLabel); remove(noBaths);
-        // remove(furnishedLabel); remove(furnishedYesButton); remove(furnishedNoButton);
-        // remove(typeLabel); remove(type);
-        // remove(quadrantLabel); remove(quadrant);
-        // remove(searchPanel1); remove(searchPanel2); // panels were blocking components being added.  did not know how to bring it backwards.
+    //Method for displaying the Manager SearchView frame
+    public void mgr() {    
+        //Initialize the components for the JFrame 
+        JPanel jPanel1;
+        JPanel jPanel2;
+        JScrollPane jScrollPane2;
+        JScrollPane jScrollPane3;
+        JScrollPane jScrollPane5;
+        JScrollPane jScrollPane6;
+        JScrollPane jScrollPane7;
+        JLabel ManagerLabel;
+        JLabel ManagerPropertiesTitle;
+        JScrollPane PropertiesList;
         
         setVisible(false); // existing frame no longer visible
 
         // JFrame creation of certain size for Manager User Type
         mgrF = new JFrame("Manager Search Page"); 
-        mgrF.setSize(530,600);
+        mgrF.setSize(530,600);  //Set the JFrame size to 530 by 600 pixels
         //mgrF.setLayout(null);
-        
+
+        //Create new components for the JFrame
         jScrollPane2 = new JScrollPane();
-        jTable1 = new JTable();
         jPanel1 = new JPanel();
-        LandlordPropertyList = new JScrollPane();
-        jList2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        PropertiesList = new JScrollPane();
+        addressList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jPanel2 = new JPanel();
         jScrollPane3 = new JScrollPane();
-        DisplayTable1 = new JTable();
+        displayTable1 = new JTable();
         jScrollPane5 = new JScrollPane();
-        DisplayTable2 = new JTable();
+        displayTable2 = new JTable();
         jScrollPane6 = new JScrollPane();
-        DisplayTable3 = new JTable();
+        displayTable3 = new JTable();
         jScrollPane7 = new JScrollPane();
-        DisplayTable4 = new JTable();
-        LandlordPropertiesTitle = new JLabel();
-        LandlordLabel = new JLabel();
+        displayTable4 = new JTable();
+        ManagerPropertiesTitle = new JLabel();
+        ManagerLabel = new JLabel();
         LandlordIdLabel = new JLabel();
-
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable1);
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 153));
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+        addressList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "", "", "", "", "" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        LandlordPropertyList.setViewportView(jList2);
+        PropertiesList.setViewportView(addressList);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -248,26 +231,24 @@ public class SearchView extends JFrame{
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(LandlordPropertyList, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
+                .addComponent(PropertiesList, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(LandlordPropertyList, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                .addComponent(PropertiesList, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        LandlordPropertiesTitle.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
-        LandlordPropertiesTitle.setText("Manager Properties View");
+        ManagerPropertiesTitle.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        ManagerPropertiesTitle.setText("Manager Properties View");
 
         displayButton.setText("Display Properties");
         backButton.setText("Back");
 
-        LandlordLabel.setText("Manager");
-
-        //LandlordIdLabel.setText("#");
+        ManagerLabel.setText("Manager");
 
         jPanel2.setBackground(new java.awt.Color(102, 0, 102));
 
@@ -276,12 +257,12 @@ public class SearchView extends JFrame{
                 {null, null, null},
             },
             new String [] {
-                "Property ID", "Address", "Quadrant"
+                "Property ID", "Address", "Quadrant"    //Header for JTable1
             }
         );
-        DisplayTable1.setModel(displayTable1Model);
-        DisplayTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
-        jScrollPane3.setViewportView(DisplayTable1);
+        displayTable1.setModel(displayTable1Model);
+        displayTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
+        jScrollPane3.setViewportView(displayTable1); //Set the displayTable1Model to displayTable1's model
 
 
         displayTable2Model = new DefaultTableModel(
@@ -289,16 +270,16 @@ public class SearchView extends JFrame{
                 {null, null, null, null},
             },
             new String [] {
-                "Type", "Number of Bedrooms", "Number of Bathrooms", "Furnished"
+                "Type", "Number of Bedrooms", "Number of Bathrooms", "Furnished"    //Header for JTable2
             }
         );
-        DisplayTable2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        DisplayTable2.setModel(displayTable2Model);
+        displayTable2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        displayTable2.setModel(displayTable2Model); //Set the displayTable2Model to displayTable2's model
 
-        DisplayTable2.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        DisplayTable2.setBounds(new java.awt.Rectangle(0, 0, 500, 500));
-        DisplayTable2.setShowGrid(true);
-        jScrollPane5.setViewportView(DisplayTable2);
+        displayTable2.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        displayTable2.setBounds(new java.awt.Rectangle(0, 0, 500, 500));
+        displayTable2.setShowGrid(true);
+        jScrollPane5.setViewportView(displayTable2);
 
         displayTable3Model = new DefaultTableModel(
             new Object [][] {
@@ -308,16 +289,16 @@ public class SearchView extends JFrame{
                 {null, null, null}
             },
             new String [] {
-                "Fees", "Fees Paid", "Status"
+                "Fees", "Fees Paid", "Status"   //Header for JTable3
             }
         );
-        DisplayTable3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        DisplayTable3.setModel(displayTable3Model);
+        displayTable3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        displayTable3.setModel(displayTable3Model); //Set the displayTable3Model to displayTable3's model
 
-        DisplayTable3.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        DisplayTable3.setBounds(new java.awt.Rectangle(0, 0, 500, 500));
-        DisplayTable3.setShowGrid(true);
-        jScrollPane6.setViewportView(DisplayTable3);
+        displayTable3.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        displayTable3.setBounds(new java.awt.Rectangle(0, 0, 500, 500));
+        displayTable3.setShowGrid(true);
+        jScrollPane6.setViewportView(displayTable3);
 
         displayTable4Model = new DefaultTableModel(
             new Object [][] {
@@ -327,15 +308,15 @@ public class SearchView extends JFrame{
                 {null, null, null}
             },
             new String [] {
-                "Registration Date", "Listing End Date", "Start Rent Date"
+                "Registration Date", "Listing End Date", "Start Rent Date"  //Header for JTable4
             }
         );
-        DisplayTable4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        DisplayTable4.setModel(displayTable4Model);
-        DisplayTable4.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        DisplayTable4.setBounds(new java.awt.Rectangle(0, 0, 500, 500));
-        DisplayTable4.setShowGrid(true);
-        jScrollPane7.setViewportView(DisplayTable4);
+        displayTable4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        displayTable4.setModel(displayTable4Model); //Set the displayTable4Model to displayTable4's model
+        displayTable4.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        displayTable4.setBounds(new java.awt.Rectangle(0, 0, 500, 500));
+        displayTable4.setShowGrid(true);
+        jScrollPane7.setViewportView(displayTable4);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -372,14 +353,14 @@ public class SearchView extends JFrame{
                 .addGroup(mgrFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mgrFLayout.createSequentialGroup()
                         .addGap(90, 90, 90)
-                        .addComponent(LandlordPropertiesTitle))
+                        .addComponent(ManagerPropertiesTitle))
                     .addGroup(mgrFLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addGroup(mgrFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mgrFLayout.createSequentialGroup()
-                                .addComponent(LandlordLabel)
+                                .addComponent(ManagerLabel)
                                 .addGroup(mgrFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(mgrFLayout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -397,7 +378,7 @@ public class SearchView extends JFrame{
             mgrFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mgrFLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(LandlordPropertiesTitle)
+                .addComponent(ManagerPropertiesTitle)
                 .addGroup(mgrFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mgrFLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -407,7 +388,7 @@ public class SearchView extends JFrame{
                     .addGroup(mgrFLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(mgrFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LandlordLabel)
+                            .addComponent(ManagerLabel)
                             .addComponent(LandlordIdLabel))
                         .addGap(3, 3, 3)))
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -435,54 +416,51 @@ public class SearchView extends JFrame{
 
     }
 
-    // function for showing search view for landlords
+    // Method for showing search view for landlords
     public void llrd() {
-    
+        //Initialize the components for the JFrame 
+        JPanel jPanel1;
+        JPanel jPanel2;
+        JScrollPane jScrollPane2;
+        JScrollPane jScrollPane3;
+        JScrollPane jScrollPane5;
+        JScrollPane jScrollPane6;
+        JScrollPane jScrollPane7;
+        JLabel LandlordLabel;
+        JLabel LandlordPropertiesTitle;
+        JScrollPane LandlordPropertyList;
+
         setVisible(false); // existing frame no longer visible
         llrdF = new JFrame("Landlord Frame");
         llrdF.setSize(530,600);
         //llrdF.setLayout(null);
         
+        //Create new components for the JFrame
         jScrollPane2 = new JScrollPane();
-        jTable1 = new JTable();
         jPanel1 = new JPanel();
         LandlordPropertyList = new JScrollPane();
-        jList2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        addressList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jPanel2 = new JPanel();
         jScrollPane3 = new JScrollPane();
-        DisplayTable1 = new JTable();
+        displayTable1 = new JTable();
         jScrollPane5 = new JScrollPane();
-        DisplayTable2 = new JTable();
+        displayTable2 = new JTable();
         jScrollPane6 = new JScrollPane();
-        DisplayTable3 = new JTable();
+        displayTable3 = new JTable();
         jScrollPane7 = new JScrollPane();
-        DisplayTable4 = new JTable();
+        displayTable4 = new JTable();
         LandlordPropertiesTitle = new JLabel();
         LandlordLabel = new JLabel();
         LandlordIdLabel = new JLabel();
 
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable1);
-
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+        addressList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "", "", "", "", "" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        LandlordPropertyList.setViewportView(jList2);
+        LandlordPropertyList.setViewportView(addressList);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -518,12 +496,12 @@ public class SearchView extends JFrame{
                 {null, null, null},
             },
             new String [] {
-                "Property ID", "Address", "Quadrant"
+                "Property ID", "Address", "Quadrant"    //  Header for the JTable1
             }
         );
-        DisplayTable1.setModel(displayTable1Model);
-        DisplayTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
-        jScrollPane3.setViewportView(DisplayTable1);
+        displayTable1.setModel(displayTable1Model);
+        displayTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
+        jScrollPane3.setViewportView(displayTable1); //Set the displayTable1Model to displayTable1's model
 
 
         displayTable2Model = new DefaultTableModel(
@@ -531,16 +509,16 @@ public class SearchView extends JFrame{
                 {null, null, null, null},
             },
             new String [] {
-                "Type", "Number of Bedrooms", "Number of Bathrooms", "Furnished"
+                "Type", "Number of Bedrooms", "Number of Bathrooms", "Furnished"    //Header for the JTable2
             }
         );
-        DisplayTable2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        DisplayTable2.setModel(displayTable2Model);
+        displayTable2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        displayTable2.setModel(displayTable2Model); //Set the displayTable2Model to displayTable2's model
 
-        DisplayTable2.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        DisplayTable2.setBounds(new java.awt.Rectangle(0, 0, 500, 500));
-        DisplayTable2.setShowGrid(true);
-        jScrollPane5.setViewportView(DisplayTable2);
+        displayTable2.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        displayTable2.setBounds(new java.awt.Rectangle(0, 0, 500, 500));
+        displayTable2.setShowGrid(true);
+        jScrollPane5.setViewportView(displayTable2);
 
         displayTable3Model = new DefaultTableModel(
             new Object [][] {
@@ -550,16 +528,16 @@ public class SearchView extends JFrame{
                 {null, null, null}
             },
             new String [] {
-                "Fees", "Fees Paid", "Status"
+                "Fees", "Fees Paid", "Status"   //Header for the JTable3
             }
         );
-        DisplayTable3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        DisplayTable3.setModel(displayTable3Model);
+        displayTable3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        displayTable3.setModel(displayTable3Model); //Set the displayTable3Model to displayTable3's model
 
-        DisplayTable3.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        DisplayTable3.setBounds(new java.awt.Rectangle(0, 0, 500, 500));
-        DisplayTable3.setShowGrid(true);
-        jScrollPane6.setViewportView(DisplayTable3);
+        displayTable3.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        displayTable3.setBounds(new java.awt.Rectangle(0, 0, 500, 500));
+        displayTable3.setShowGrid(true);
+        jScrollPane6.setViewportView(displayTable3);
 
         displayTable4Model = new DefaultTableModel(
             new Object [][] {
@@ -569,15 +547,15 @@ public class SearchView extends JFrame{
                 {null, null, null}
             },
             new String [] {
-                "Registration Date", "Listing End Date", "Start Rent Date"
+                "Registration Date", "Listing End Date", "Start Rent Date"  //Header for JTable4
             }
         );
-        DisplayTable4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        DisplayTable4.setModel(displayTable4Model);
-        DisplayTable4.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        DisplayTable4.setBounds(new java.awt.Rectangle(0, 0, 500, 500));
-        DisplayTable4.setShowGrid(true);
-        jScrollPane7.setViewportView(DisplayTable4);
+        displayTable4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        displayTable4.setModel(displayTable4Model);
+        displayTable4.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        displayTable4.setBounds(new java.awt.Rectangle(0, 0, 500, 500));
+        displayTable4.setShowGrid(true);
+        jScrollPane7.setViewportView(displayTable4);    //Set the displayTable4Model to displayTable4's model
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -677,24 +655,26 @@ public class SearchView extends JFrame{
 
     }
 
-    //Getter functions to get the users inputted value from the text fields
-    //This method returns the number of beds the user inputted
+    //Method to make the Renter/Non-renter SearchView frame visible
     public void turnOn()
     {
         setVisible(true);
 
     }
 
+    //Method to make the Manager SearchView frame visible
     public void turnOnForManager(){
         mgr();
         mgrF.setVisible(true);
     }
 
+    //Method to make the Landlord SearchView frame visible
     public void turnOnForLandlord(){
         llrd();
         llrdF.setVisible(true);
     }
 
+    //Method to get the users inputted value for the Number of Beds they would like in the JTextField
     public int getBedsInput()
     {
         if(!noBeds.getText().equals(""))
@@ -704,12 +684,13 @@ public class SearchView extends JFrame{
         return(-1);
     }
 
+    //Method to set the text in the JTextField for the Number of Beds
     public void setBedsInput(String value)
     {
         noBeds.setText(value);
     }
 
-    //This method returns the number of baths the user inputted
+    //Method to get the users inputted value for the Number of Baths they would like in the JTextField
     public int getBathsInput()
     {
         if(!noBaths.getText().equals(""))
@@ -719,11 +700,13 @@ public class SearchView extends JFrame{
         return(-1);
     }
 
+    //Method to set the text in the JTextField for the Number of Baths
     public void setBathsInput(String value)
     {
         noBaths.setText(value);
     }
 
+    //Method to get the users selection between "Yes" and "No" for Furnished RadioButtons
     public String getFurnishedInput()
     {
         //System.out.println("button choice selected is: " + group.getSelection().getActionCommand());
@@ -738,16 +721,19 @@ public class SearchView extends JFrame{
         return null;
     }
 
+    //Method to get the JComboBox used for Quadrants [NW, NE, SW, SE]
     public JComboBox getQuadrants()
     {
         return this.quadrant;
     }
 
+    //Method to get the JComboBox used for Types
     public JComboBox getTypes()
     {
         return this.type;
     }
 
+    //Method to get the selection (String) that the user made from the Quadrants dropdown
     public String getQuadrantInput()
     {
         if(!getQuadrants().getSelectedItem().toString().equals(""))
@@ -757,6 +743,7 @@ public class SearchView extends JFrame{
         return null;
     }
 
+    //Method to get the selection (String) that the user made from the Quadrants dropdown
     public String getTypeInput()
     {
         if(!getTypes().getSelectedItem().toString().equals(""))
@@ -766,118 +753,150 @@ public class SearchView extends JFrame{
         return null;
     }
 
+    //Method to get the ButtonGroup of the JRadioButtons for Furnished ["Yes", "No"]
     public ButtonGroup getGroup()
     {
         return this.group;
     }
 
+    //Method to get the JButton for Search button
     public JButton getSearchButton()
     {
         return this.search; 
     }
 
+    //Method to get the JButton for the Back button
     public JButton getBackButton()
     {
         return backButton;
     }
+
+    //Method to get the JButton for the Reset Button
     public JButton getResetButton()
     {
         return this.reset;
     }
 
+    //Method to get the JButton for the Display Button
     public JButton getDisplayButton()
     {
         return this.displayButton;
     }
 
-    public JList getJList2()
+    //Method to get the JList used for displaying the addresses
+    public JList getAddressList()
     {
-        return this.jList2;
+        return this.addressList;
     }
 
-    public String getPropStat() {
+    //Method to get the user input of the Property Type ["Active", "Rented", "Cancelled", "Suspended"] as a String
+    public String getPropStat() 
+    {
         return propStat.getSelectedItem().toString();
     }
 
+    //Method to get the JTable with headers ["Property ID", "Address", "Quadrant"]
     public JTable getJTable1()
     {
-        return this.DisplayTable1;
+        return this.displayTable1;
     }
 
+    //Method to get the JTable with headers ["Type", "Number of Bedrooms", "Number of Bathrooms", "Furnished"]
     public JTable getJTable2()
     {
-        return this.DisplayTable2;
-    }
-    public JTable getJTable3()
-    {
-        return this.DisplayTable3;
-    }
-    public JTable getJTable4()
-    {
-        return this.DisplayTable4;
+        return this.displayTable2;
     }
 
+    //Method to get the JTable with headers ["Fees", "Fees Paid", "Status"]
+    public JTable getJTable3()
+    {
+        return this.displayTable3;
+    }
+
+    //Method to get the JTable with headers ["Registration Date", "Listing End Date", "Start Rent Date"]
+    public JTable getJTable4()
+    {
+        return this.displayTable4;
+    }
+
+    //Method to get the Table Model with the JTable with headers ["Property ID", "Address", "Quadrant"]
     public DefaultTableModel getJTableModel1()
     {
         return this.displayTable1Model;
     }
 
-    public DefaultTableModel getJTableModel2()
+    //Method to get the Table Model with the JTable with headers ["Type", "Number of Bedrooms", "Number of Bathrooms", "Furnished"]
+    public DefaultTableModel getJTableModel2() 
     {
         return this.displayTable2Model;
     }
+
+    //Method to get the Table Model with the JTable with headers ["Fees", "Fees Paid", "Status"]
     public DefaultTableModel getJTableModel3()
     {
         return this.displayTable3Model;
     }
+
+    //Method to get the Table Model with the JTable with headers ["Registration Date", "Listing End Date", "Start Rent Date"]
     public DefaultTableModel getJTableModel4()
     {
         return this.displayTable4Model;
     }
 
+    //Method to get the JLabel for the Landlord ID label
     public JLabel getLandlordIdLabel()
     {
         return this.LandlordIdLabel;
     }
+
+    //Listerner Method for the back button
     public void addBackButtonListener(ActionListener listenForBackButton){
         backButton.addActionListener(listenForBackButton);  
     }
 
+    //Listerner Method for the reset button
     public void addResetListener(ActionListener listenForReset){
         reset.addActionListener(listenForReset);  
     }
 
+    //Listerner Method for the search button
     public void addSearchListener(ActionListener listenForSearch){
         search.addActionListener(listenForSearch);  
     }
 
+    //Listerner Method for the display button
     public void addDisplayListener(ActionListener listenForDisplay){
         displayButton.addActionListener(listenForDisplay);  
         System.out.println("Added display listener");
     }
 
+    //Listerner Method for the select button
     public void addSelectListener(ListSelectionListener listenForSelection)
     {
-        jList2.addListSelectionListener(listenForSelection);
+        addressList.addListSelectionListener(listenForSelection);
     }
 
+    //Method to make the Renter SearchView frame not visible
     public void destroyFrameRenterGuest()
     {
         setVisible(false);
     }
+
+    //Method to make the Manager SearchView frame not visible
     public void destroyFrameForManager()
     {
         mgrF.setVisible(false);
     }
+
+    //Method to make the Landlord SearchView frame not visible
     public void destroyFrameForLandLord()
     {
         llrdF.setVisible(false);
     }
+
     public static void main(String [] args) {
         SearchView test =  new SearchView();
-        test.turnOn();;
-        test.turnOnForLandlord();
+        test.turnOn();
     }
-    
 }
 
