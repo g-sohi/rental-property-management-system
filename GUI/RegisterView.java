@@ -10,6 +10,7 @@ public class RegisterView extends JFrame {
     private JComboBox type; // change UML; JTextField to JComboBox
     private String types[] = {"Renter", "Landlord", "Manager"}; // add to UML?
     private JButton register;
+    private JButton back;
     private JFrame f; // add to UML?
     int check;
 
@@ -51,11 +52,15 @@ public class RegisterView extends JFrame {
         // creation of JButton of certain size and position
         register = new JButton("Register");
         register.setBounds(200, 300, 100, 40);
+        back = new JButton("Back to Main");
+        back.setBounds(40, 10, 100, 40);
+
 
         // addition of components to JFrame
         f.add(userNLabel); f.add(pwLabel);
         f.add(fNLabel); f.add(lNLabel);
         f.add(typeLabel);
+        f.add(back);
 
         f.add(username);
         f.add(fName);
@@ -85,10 +90,19 @@ public class RegisterView extends JFrame {
     {
         return register;
     }
+    public JButton getBackButton()
+    {
+        return back;
+    }
 
     public void addRegisterListener(ActionListener listenForRegister)
     {
         register.addActionListener(listenForRegister);
+    }
+
+    public void addBackListener(ActionListener listenForRegister)
+    {
+        back.addActionListener(listenForRegister);
     }
 
 
