@@ -14,6 +14,7 @@ public class RegisterController implements ActionListener{
     private ArrayList<Property> listings;
     private Database db;
     private int landLordID;
+    private LandlordView landView;
 
     public RegisterController(Database db) {
         this.setDb(db);
@@ -48,6 +49,7 @@ public class RegisterController implements ActionListener{
             this.add(p);
             createProp.showDialog();
             createProp.destroyFrame();
+            landView.turnOn();
            // createProp.addBackPropertyListener(this);
             }
             else{
@@ -88,8 +90,9 @@ public class RegisterController implements ActionListener{
     }
 
 
-    public void enableView(){
+    public void enableView(LandlordView landlordView){
         createProp = new CreatePropertyView();
+        this.landView = landlordView;
         this.getCreateProp().addRegisterPropertyListener(this);
         this.getCreateProp().addBackPropertyListener(this);
     }

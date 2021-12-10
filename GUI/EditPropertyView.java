@@ -79,7 +79,7 @@ public class EditPropertyView extends JFrame{
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 255));
@@ -283,10 +283,10 @@ public class EditPropertyView extends JFrame{
         this.save.addActionListener(listenForSave);
     }
 
-    public void addRemoveListener(ActionListener listenForRemove){
+    /*public void addRemoveListener(ActionListener listenForRemove){
         System.out.println("DONE");
         this.remove.addActionListener(listenForRemove);
-    }
+    }*/
 
     public String getStatusInput()
     {

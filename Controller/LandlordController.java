@@ -44,7 +44,8 @@ public class LandlordController implements ActionListener{
         if(e.getSource().equals(landlordV.getRegister()))
         {
             System.out.println("Register");
-            regProp.enableView();
+            landlordV.destroyFrame();
+            regProp.enableView(this.landlordV);
             this.regProp.getCreateProp().addBackPropertyListener(this);
         }
 
