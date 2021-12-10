@@ -25,7 +25,7 @@ public class Database {
 
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out.println("Unable to obtain mySQL login credentials. Please restart the program.");
+                System.out.println("Unable to obtain MySQL login credentials. Please restart the program.");
                 System.exit(1);
             }
             
@@ -348,7 +348,7 @@ public class Database {
         public ArrayList<Property> getNewProperties(String lastLogin){
             ArrayList<Property> properties = new ArrayList<Property>();
             try {
-                String query = String.format("SELECT * FROM property WHERE startDate > ? AND Status = 'Available'");
+                String query = String.format("SELECT * FROM property WHERE StartDate > ? AND Status = 'Available'");
                 PreparedStatement stmt = dbConnect.prepareStatement(query);
     
                 stmt.setString(1, lastLogin);
@@ -380,13 +380,13 @@ public class Database {
             try {
                 String query = "";
                 if(type.equalsIgnoreCase("listed")){
-                    query = String.format("SELECT COUNT(StartDate)) AS result_count FROM property WHERE StartDate between '%s' AND '%s'", periodStart, periodEnd);
+                    query = String.format("SELECT COUNT(StartDate)) AS result_count FROM property WHERE StartDate BETWEEN '%s' AND '%s'", periodStart, periodEnd);
                 }
                 else if(type.equalsIgnoreCase("rented")){
-                    query = String.format("SELECT COUNT(RentDate)) AS result_count FROM property WHERE RentDate between '%s' AND '%s'", periodStart, periodEnd);
+                    query = String.format("SELECT COUNT(RentDate)) AS result_count FROM property WHERE RentDate BETWEEN '%s' AND '%s'", periodStart, periodEnd);
                 }
                 else if(type.equalsIgnoreCase("active")){
-                    query = String.format("SELECT COUNT(StartDate)) AS result_count active FROM property WHERE StartDate between '%s' AND '%s' AND Status = 'Active'", periodStart, periodEnd);
+                    query = String.format("SELECT COUNT(StartDate)) AS result_count active FROM property WHERE StartDate BETWEEN '%s' AND '%s' AND Status = 'Active'", periodStart, periodEnd);
 
                 }
                 PreparedStatement stmt = dbConnect.prepareStatement(query);
@@ -398,6 +398,37 @@ public class Database {
                 e.printStackTrace();
             }
             return count;
+        }
+
+        public ArrayList<Property> getRentedProperties(String periodStart, String periodEnd){
+            ArrayList<Property> properties = new ArrayList<Property>();
+            try {
+                String query = String.format("SELECT * FROM property WHERE RentDate BETWEEN '%s' AND '%s'", periodStart, periodEnd);
+                PreparedStatement stmt = dbConnect.prepareStatement(query);
+                line = stmt.executeQuery();
+                while (line.next()) {
+                    int ID = line.getInt("Property_ID");
+                    String address = line.getString("Address");
+                    String quadrant = line.getString("quadrant");
+                    String type = line.getString("Type");
+                    int numOfBedrooms = line.getInt("NoOfBedrooms");
+                    int numOfBathrooms = line.getInt("NoOfBathrooms");
+                    String furnished = line.getString("Furnished");
+                    String status = line.getString("Status");
+                    String startDate = line.getString("StartDate");
+                    String endDate = line.getString("EndDate");
+                    String rentDate = line.getString("RentDate");
+                    Fees fee = new Fees(line.getDouble("Fees"), line.getInt("FeePeriod"), line.getString("FeesPaid"), startDate, endDate);
+                    Property prop = new Property(ID, address,quadrant, type, numOfBedrooms, numOfBathrooms, furnished, fee, status, startDate, endDate, rentDate);
+                    properties.add(prop);
+                }
+                stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Error.Exiting program.");
+                System.exit(1);
+            }
+            return properties;
         }
 
         public void close() {

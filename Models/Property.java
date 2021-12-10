@@ -28,6 +28,9 @@ public class Property {
         this.furnished = furnished;
         this.propertyFees = propertyFees;
         this.propertyStatus = propertyStatus;
+        this.startDate = "";
+        this.endDate = "";
+        this.rentDate = "";
     }
     public Property(int id,String address, String quadrant,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus, String startDate, String endDate, String rentDate)
     {
