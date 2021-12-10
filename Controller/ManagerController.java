@@ -37,9 +37,10 @@ public class ManagerController implements ActionListener {
     if(e.getSource().equals(managerv.getUpdateButton()))
     {
         System.out.println("COMPLETE");
-        //managerv.destroyFrame();
+        managerv.destroyFrame();
         prop.enableView();
         prop.getEditView().turnOn();
+        prop.getEditView().addBackListener(this);
     }
     if(e.getSource().equals(managerv.getReportButton()))
     {
@@ -84,6 +85,15 @@ public class ManagerController implements ActionListener {
         report.destroyFrame();
         managerv.turnOn();
     }
+    }
+
+    if(prop.getEditView() != null)
+    {
+        if(e.getSource().equals(prop.getEditView().getBackButton()))
+        {
+            prop.getEditView().destroyFrame();
+            managerv.turnOn();
+        }
     }
 
     if(this.search.getView() != null)

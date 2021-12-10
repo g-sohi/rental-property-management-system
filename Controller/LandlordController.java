@@ -37,6 +37,7 @@ public class LandlordController implements ActionListener{
         if(e.getSource().equals(landlordV.getSearch()))
         {
             System.out.println("Search");
+            landlordV.destroyFrame();
             search.enableLlrdView();
             search.getView().addBackButtonListener(this);
         }
@@ -52,8 +53,10 @@ public class LandlordController implements ActionListener{
         if(e.getSource().equals(landlordV.getUpdate()))
         {
             System.out.println("Update");
+            landlordV.destroyFrame();
             prop.enableView();
             prop.getEditView().turnOn();
+            prop.getEditView().addBackListener(this);
         }
 
         if(e.getSource().equals(landlordV.getPay()))
@@ -71,6 +74,15 @@ public class LandlordController implements ActionListener{
             regProp.getCreateProp().destroyFrame();
             landlordV.turnOn();
         }
+        }
+
+        if(prop.getEditView() != null)
+        {
+            if(e.getSource().equals(prop.getEditView().getBackButton()))
+            {
+                prop.getEditView().destroyFrame();
+                landlordV.turnOn();
+            }
         }
 
         if(pay.getFeesView() != null)
