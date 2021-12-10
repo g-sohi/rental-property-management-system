@@ -11,6 +11,7 @@ public class SubscribeView extends JFrame {
     private JFrame f;
     private JButton back;
     private JButton submit, clearNotify; //change UML; remove submit?
+    private JList notifs;
 
     public SubscribeView() {
 
@@ -27,9 +28,9 @@ public class SubscribeView extends JFrame {
         subStatLabel.setBounds(50, 350, 150, 40);        
         
         // creation of JTextArea of certain size and position
-        JTextArea notifs = new JTextArea();
+        notifs = new JList<>();
         notifs.setBounds(50, 60, 400, 240);
-        notifs.setEditable(false);
+        
 
         // creation of JComboBox of certain size and position
         subscribe = new JComboBox(subStatus);

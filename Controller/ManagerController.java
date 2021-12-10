@@ -42,6 +42,7 @@ public class ManagerController implements ActionListener, ItemListener {
         prop.enableView();
         prop.getEditView().turnOn();
         prop.getEditView().addBackListener(this);
+        prop.getEditView().addSaveListener(this);
     }
     if(e.getSource().equals(managerv.getReportButton()))
     {
@@ -70,11 +71,17 @@ public class ManagerController implements ActionListener, ItemListener {
         pay.enableView(true);
         pay.getFeesView().turnOnForManager();
         pay.getFeesView().addBackListener(this);
+        pay.getFeesView().addSaveListener(this);
     }
 
     if(pay.getFeesView() != null)
     {
         if(e.getSource().equals(pay.getFeesView().getBackButton()))
+        {
+            pay.getFeesView().destroyFrameForManager();
+            managerv.turnOn();
+        }
+        if(e.getSource().equals(pay.getFeesView().getSaveButton()))
         {
             pay.getFeesView().destroyFrameForManager();
             managerv.turnOn();
@@ -91,7 +98,7 @@ public class ManagerController implements ActionListener, ItemListener {
 
     if(prop.getEditView() != null)
     {
-        if(e.getSource().equals(prop.getEditView().getBackButton()))
+        if(e.getSource().equals(prop.getEditView().getSaveButton()))
         {
             prop.getEditView().destroyFrame();
             managerv.turnOn();
