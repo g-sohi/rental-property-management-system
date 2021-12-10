@@ -1,6 +1,7 @@
 package Models;
 
 public class Property {
+    //Member varables for the class Property
     private int id;
     private int landlordID;
     private String address;
@@ -19,8 +20,10 @@ public class Property {
     /**
      * Constructor for the Property class
      */
-
-     public Property(){
+    //Default constructor for Property
+    public Property()
+    {
+        //Set all the variables to null, -1 or "".
         this.id = -1;
         this.landlordID = -1;
         this.address = "";
@@ -34,8 +37,11 @@ public class Property {
         this.startDate = "";
         this.endDate = "";
         this.rentDate = "";
-     }
-
+    }
+    
+    //Property constructor take in: Landlord ID, Address of property, Quadrant of the City the proerpty is in [NW, NE, SW, SE],
+    //the type of the property [Deattached, Attached, Town House, Apartment], the number of bedrooms, the number of bathrooms, 
+    //whether or not the property is furnished, a Fees object, and the property status [Active, Rented, Cancelled, Suspended]
     public Property(int landlordID, String address, String quadrant,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus)
     {
         this.id = -1;
@@ -53,6 +59,9 @@ public class Property {
         this.rentDate = "";
     }
 
+    //Property constructor take in: Property ID, Landlord ID, Address of property, Quadrant of the City the proerpty is in [NW, NE, SW, SE],
+    //the type of the property [Deattached, Attached, Town House, Apartment], the number of bedrooms, the number of bathrooms, 
+    //whether or not the property is furnished, a Fees object, and the property status [Active, Rented, Cancelled, Suspended],
     public Property(int id, int landlordID, String address, String quadrant,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus)
     {
         this.id = id;
@@ -70,6 +79,10 @@ public class Property {
         this.rentDate = "";
     }
 
+    //Property constructor take in: Property ID, Address of property, Quadrant of the City the proerpty is in [NW, NE, SW, SE],
+    //the type of the property [Deattached, Attached, Town House, Apartment], the number of bedrooms, the number of bathrooms, 
+    //whether or not the property is furnished, a Fees object, and the property status [Active, Rented, Cancelled, Suspended],
+    //the Start date the property became active, end date for property listing, start date for when the property becomes rented
     public Property(int id, String address, String quadrant,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus, String startDate, String endDate, String rentDate)
     {
         this.id = id;
@@ -86,6 +99,10 @@ public class Property {
         this.rentDate = rentDate;
     }
 
+    //Property constructor take in: Property ID, Landlord ID, Address of property, Quadrant of the City the proerpty is in [NW, NE, SW, SE],
+    //the type of the property [Deattached, Attached, Town House, Apartment], the number of bedrooms, the number of bathrooms, 
+    //whether or not the property is furnished, a Fees object, and the property status [Active, Rented, Cancelled, Suspended],
+    //the Start date the property became active, end date for property listing, start date for when the property becomes rented
     public Property(int id, int landlordID, String address, String quadrant,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus, String startDate, String endDate, String rentDate)
     {
         this.id = id;
@@ -242,8 +259,5 @@ public class Property {
     {
         this.rentDate = rentDate;
     }
-
-
-
 }
 
