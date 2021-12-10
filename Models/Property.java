@@ -2,6 +2,7 @@ package Models;
 
 public class Property {
     private int id;
+    private int landlordID;
     private String address;
     private String type;
     private int numOfBedrooms;
@@ -18,8 +19,11 @@ public class Property {
     /**
      * Constructor for the Property class
      */
-    public Property(String address, String quadrant,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus)
+
+    public Property(int landlordID, String address, String quadrant,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus)
     {
+        this.id = 0;
+        this.landlordID = landlordID;
         this.address = address;
         this.quadrant = quadrant;
         this.type = type;
@@ -32,7 +36,25 @@ public class Property {
         this.endDate = "";
         this.rentDate = "";
     }
-    public Property(int id,String address, String quadrant,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus, String startDate, String endDate, String rentDate)
+
+    public Property(int id, int landlordID, String address, String quadrant,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus)
+    {
+        this.id = id;
+        this.landlordID = landlordID;
+        this.address = address;
+        this.quadrant = quadrant;
+        this.type = type;
+        this.numOfBathrooms = numOfBathrooms;
+        this.numOfBedrooms = numOfBedrooms;
+        this.furnished = furnished;
+        this.propertyFees = propertyFees;
+        this.propertyStatus = propertyStatus;
+        this.startDate = "";
+        this.endDate = "";
+        this.rentDate = "";
+    }
+
+    public Property(int id, String address, String quadrant,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus, String startDate, String endDate, String rentDate)
     {
         this.id = id;
         this.address = address;
@@ -47,9 +69,11 @@ public class Property {
         this.endDate = endDate;
         this.rentDate = rentDate;
     }
-    public Property(int id,String address, String quadrant,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus)
+
+    public Property(int id, int landlordID, String address, String quadrant,String type, int numOfBedrooms, int numOfBathrooms, String furnished, Fees propertyFees, String propertyStatus, String startDate, String endDate, String rentDate)
     {
         this.id = id;
+        this.landlordID = landlordID;
         this.address = address;
         this.quadrant = quadrant;
         this.type = type;
@@ -58,9 +82,11 @@ public class Property {
         this.furnished = furnished;
         this.propertyFees = propertyFees;
         this.propertyStatus = propertyStatus;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.rentDate = rentDate;
     }
-
-
+  
     public int getID()                          //getter method for the id    
     {
         return this.id;

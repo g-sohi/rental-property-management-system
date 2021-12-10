@@ -44,7 +44,7 @@ public class RegisterController implements ActionListener{
             {
             System.out.println("Register Property");
             String address = createProp.getStreetNoInput() +", " + createProp.getStreetNameInput() +", " + createProp.getCityInput() + ", " + createProp.getPostalCodeInput();
-            Property p = new Property(address, createProp.getQuadrantInput(), createProp.getTypeInput(), createProp.getNoOfBedInput(), createProp.getNoOfBathInput(), createProp.getFurnishedInput(), null, "Suspended");
+            Property p = new Property(landLordID, address, createProp.getQuadrantInput(), createProp.getTypeInput(), createProp.getNoOfBedInput(), createProp.getNoOfBathInput(), createProp.getFurnishedInput(), null, "Suspended");
             this.add(p);
             createProp.showDialog();
             createProp.destroyFrame();
