@@ -52,6 +52,7 @@ public void actionPerformed(ActionEvent e) {
         mainpage.setOff();
         rView.turnOn();
         this.rView.addRegisterListener(this);
+        this.rView.addBackListener(this);
 
     }
 
@@ -70,7 +71,7 @@ public void actionPerformed(ActionEvent e) {
             {
                 rView.showErrorDialog();
             }
-        }
+    }
     
     
     if(login.getView() != null)
@@ -91,6 +92,15 @@ public void actionPerformed(ActionEvent e) {
         search.getView().destroyFrameRenterGuest();
         mainpage.turnOn();
     }
+    }
+    if(this.rView != null)
+    {
+        if(e.getSource().equals(rView.getBackButton()))   
+        {
+            System.out.print(" vsiisble");
+            rView.destroyFrame();
+            mainpage.turnOn();
+        }
     }
 
 
