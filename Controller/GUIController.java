@@ -63,7 +63,7 @@ public void actionPerformed(ActionEvent e) {
     {
         mainpage.setOff();
         emailV = new EmailView(true);
-        emailV.turnOnForGuest();
+        emailV.turnOn();
         emailV.addBackListener(this);
         emailV.addSendEmailListener(this);
     }
@@ -72,7 +72,21 @@ public void actionPerformed(ActionEvent e) {
     {
         if(e.getSource().equals(emailV.getSendButton()))
         {
-            //
+            if(!emailV.getSub().equals("") && !emailV.getBody().equals("") && !emailV.getFrom().equals("") && !emailV.getPID().equals(""))
+            {
+            emailV.showDialog();
+            emailV.destroyFrame();
+            mainpage.turnOn();
+            }
+            else{
+                emailV.showErrorDialog();
+            }
+
+        }
+        if(e.getSource().equals(emailV.getBackButton()))
+        {
+            emailV.destroyFrame();
+            mainpage.turnOn();
         }
     }
 
@@ -82,7 +96,7 @@ public void actionPerformed(ActionEvent e) {
             if(!rView.getUsername().equals("") && !rView.getPassword().equals("") && !rView.getFName().equals("") && !rView.getLName().equals(""))
             {
                 boolean userNameExists = db.usernameExists(rView.getUsername());
-                if(userNameExists == true)
+                if(userNameExists == false)
                 {
                     System.out.print("not vsiisble");
                     rView.showDialog();
