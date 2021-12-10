@@ -103,6 +103,16 @@ public class Property {
         this.rentDate = rentDate;
     }
   
+    public int getLandlordID()                          //getter method for the id    
+    {
+        return this.landlordID;
+    }
+
+    public void setLandlordID(int id)                   //setter method for the id
+    {
+        this.landlordID = id;
+    }
+
     public int getID()                          //getter method for the id    
     {
         return this.id;
