@@ -49,7 +49,7 @@ public class SummaryReportView extends JFrame {
         frame.add(numListedLabel);
         numListed = new JTextField();
         numListed.setBounds(325, 85, 125, 20);
-        numListed.setEditable(false);
+        numListed.setEditable(true);
         frame.add(numListed);
 
         numRentedLabel = new JLabel("Number of Houses Rented During Period:");
@@ -57,7 +57,7 @@ public class SummaryReportView extends JFrame {
         frame.add(numRentedLabel);
         numRented = new JTextField();
         numRented.setBounds(325, 110, 125, 20);
-        numRented.setEditable(false);
+        numRented.setEditable(true);
         frame.add(numRented);        
 
         numActiveLabel = new JLabel("Number of Active Houses During Period:");
@@ -65,7 +65,7 @@ public class SummaryReportView extends JFrame {
         frame.add(numActiveLabel);
         numActive = new JTextField();
         numActive.setBounds(325, 135, 125, 20);
-        numActive.setEditable(false);
+        numActive.setEditable(true);
         frame.add(numActive);
 
         housesRentedLabel = new JLabel("Houses Rented During Period:");

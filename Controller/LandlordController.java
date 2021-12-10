@@ -203,11 +203,11 @@ public class LandlordController implements ActionListener{
         return this.search;
     }
 
-    public void enableView(ActionListener logoutListener, int id)
+    public void enableView(ActionListener logoutListener, int id, String type)
     {
         this.Id = id;
         landlordV = new LandlordView();
-        prop = new PropertyController(this.db,this.Id);
+        prop = new PropertyController(this.db,this.Id, type);
         this.getLandlordView().addLogoutListener(logoutListener);
         this.getLandlordView().addRegisterPropertyListener(this);
         this.getLandlordView().addUpdatePropertyListener(this);

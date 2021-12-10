@@ -230,9 +230,10 @@ public class ManagerController implements ActionListener {
         return this.search;
     }
 
-    public void enableView(ActionListener logoutListener)
+    public void enableView(ActionListener logoutListener, int id,  String type)
     {
         managerv = new ManagerView();
+        prop = new PropertyController(db, id, type);
         this.managerv.addLogoutListener(logoutListener);
         this.managerv.addSearchListener(this);
         this.managerv.addUpdateListener(this);

@@ -66,7 +66,7 @@ public class LoginController implements ActionListener{
                 ldCtrl.setRegisterControllerId(ldCtrl.getLandlord().getId());
                 ldCtrl.setSearchControllerID(ldCtrl.getLandlord().getId());
                 System.out.println("Landlord Name: " + ldCtrl.getLandlord().getFName() + "\nID: " + ldCtrl.getLandlord().getId() + "\n");
-                ldCtrl.enableView(this, ldCtrl.getLandlord().getId());
+                ldCtrl.enableView(this, ldCtrl.getLandlord().getId(), this.user.getUserType());
                 ldCtrl.getLandlordView().turnOn();
             }
             else if(user.getUserType().equals("Manager"))
@@ -74,7 +74,7 @@ public class LoginController implements ActionListener{
                 Manager tempMngr = new Manager(this.user);
                 mgCtrl.setManager(tempMngr);
                 System.out.println("Manager Name: " + mgCtrl.getManager().getFName() + "\nID: " + mgCtrl.getManager().getId() + "\n");
-                mgCtrl.enableView(this);
+                mgCtrl.enableView(this, this.user.getId(),this.user.getUserType());
                 mgCtrl.getView().turnOn();
             }
             }
