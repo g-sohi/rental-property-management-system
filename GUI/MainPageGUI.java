@@ -78,11 +78,7 @@ public class MainPageGUI extends JFrame implements ActionListener {
 
     public void addSendEmailListener(ActionListener listenForSendEmail){
         sendEmail.addActionListener(listenForSendEmail);
-        /*this.setVisible(false);
-        ManagerView vw = new ManagerView();
-        vw.setVisible(true);
-        actionPerformed();*/
-        
+      
     }
 
     public void addGuestListener(ActionListener listenForGuest)
@@ -112,7 +108,7 @@ public class MainPageGUI extends JFrame implements ActionListener {
 
     public JButton getSendEmailButton()
     {
-        return register;
+        return sendEmail;
     }
 
     public JButton getGuest()

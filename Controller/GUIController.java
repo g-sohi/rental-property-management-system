@@ -19,7 +19,6 @@ public GUIController(Database db) throws IOException
 {
     mainpage = new MainPageGUI();
     this.setDatabase(db);
-    emailV = new EmailView(true);
     login = new LoginController(this.db);
     search = new SearchController(this.db);
     rView = new RegisterView();
@@ -61,10 +60,20 @@ public void actionPerformed(ActionEvent e) {
     else if(e.getSource().equals(mainpage.getSendEmailButton()))
     {
         mainpage.setOff();
-        emailV.turnOn();
+        emailV = new EmailView(true);
+        emailV.turnOnForGuest();
         emailV.addBackListener(this);
         emailV.addSendEmailListener(this);
     }
+
+    if(emailV != null)
+    {
+        if(e.getSource().equals(emailV.getSendButton()))
+        {
+            //
+        }
+    }
+
 
     if(e.getSource().equals(rView.getRegisterButton()))   
         {

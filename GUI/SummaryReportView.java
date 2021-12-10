@@ -143,10 +143,18 @@ public class SummaryReportView extends JFrame {
     }
 
     public void setTableData(String[][] rentedData){
-        housesRented = new JTable(rentedData, columns);
+      hrModel.setRowCount(0);
+      for(int i=0; i<rentedData.length; i++)
+      {
+          hrModel.addRow(rentedData[i]);
+      }
+
+    //housesRented = new JTable(rentedData, columns);
+        housesRented.revalidate();
     }
 
-    public static void main(String[] args) {
+    
+    /*public static void main(String[] args) {
         new SummaryReportView().turnOn();
-    }
+    }*/
 }

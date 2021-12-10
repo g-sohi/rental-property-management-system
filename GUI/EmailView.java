@@ -11,6 +11,7 @@ public class EmailView extends JFrame {
     private JLabel subLabel, pIDLabel, fromLabel;
     private JButton send;
     private JFrame frame;
+    private JFrame gFrame;
     private String id;
     private JButton back;
 
@@ -58,12 +59,11 @@ public class EmailView extends JFrame {
         if(Guest == true)
         {
 
-        this.id = id;
 
         // creation of JFrame of certain size
-        frame = new JFrame("Email Page");
-        frame.setSize(500, 500);
-        frame.setLayout(null); // layout set to null
+        gFrame = new JFrame("Email Page For Guest");
+        gFrame.setSize(500, 500);
+        gFrame.setLayout(null); // layout set to null
 
         //setDefaultCloseOperation(EXIT_ON_CLOSE);        
 
@@ -92,11 +92,13 @@ public class EmailView extends JFrame {
         back.setBounds(50, 410, 100, 40);
 
         // addition of components to JFrame
-        frame.add(subLabel); frame.add(fromLabel); frame.add(pIDLabel);
-        frame.add(subject); frame.add(from);  frame.add(body);
-        frame.add(send);
+        gFrame.add(subLabel); gFrame.add(fromLabel); gFrame.add(pIDLabel);
+        gFrame.add(subject); gFrame.add(from);  gFrame.add(body);
+        gFrame.add(send); 
+        gFrame.add(pID);
+        gFrame.add(back);
 
-        frame.setVisible(false); // JFrame is set to appear
+        gFrame.setVisible(false); // JFrame is set to appear
 
     }
 }
@@ -145,7 +147,17 @@ public class EmailView extends JFrame {
         frame.setVisible(true);
     }
 
+    public void turnOnForGuest()
+    {
+        gFrame.setVisible(true);
+    }
+
     // sets frame to not appear
+    public void destroyFrameForGuest()
+    {
+        gFrame.setVisible(false);
+    }
+
     public void destroyFrame()
     {
         frame.setVisible(false);

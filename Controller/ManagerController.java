@@ -256,7 +256,9 @@ public class ManagerController implements ActionListener, ItemListener {
         public String[][] copyProperties(ArrayList<Property> properties){
             String[][] props = new String[properties.size()][3];
             for(int i = 0; i < properties.size(); i++){
-                props[i][0] = db.getLandlordName(properties.get(i).getID());
+                System.out.println("propID: " +properties.get(i).getID());
+                System.out.println("LandID: " +properties.get(i).getLandlordID());
+                props[i][0] = db.getLandlordName(properties.get(i).getLandlordID());
                 props[i][1] = String.valueOf(properties.get(i).getID());
                 props[i][2] = properties.get(i).getAddress();
             }

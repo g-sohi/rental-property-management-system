@@ -363,7 +363,7 @@ public class Database {
             try {
                 String query = String.format("SELECT user.FName FROM user WHERE ID = %d", landlordID);
                 PreparedStatement stmt = dbConnect.prepareStatement(query);
-                stmt.executeQuery();
+                line = stmt.executeQuery();
                 line.next();
                 name = line.getString("FName");
             } catch (SQLException e) {
