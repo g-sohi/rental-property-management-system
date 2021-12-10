@@ -53,7 +53,7 @@ public class RegisterView extends JFrame {
         register = new JButton("Register");
         register.setBounds(200, 300, 100, 40);
         back = new JButton("Back to Main");
-        back.setBounds(40, 10, 100, 40);
+        back.setBounds(40, 10, 150, 25);
 
 
         // addition of components to JFrame
@@ -70,13 +70,17 @@ public class RegisterView extends JFrame {
         f.add(type);
 
         f.add(register);
-
+        f.setLocationRelativeTo(null);
         f.setVisible(false); // JFrame is set to appear
 
     }
     public void turnOn()
     {
         f.setVisible(true);
+        username.setText("");
+        password.setText("");
+        fName.setText("");
+        lName.setText("");
         check = 1;
     }
 
@@ -129,18 +133,12 @@ public class RegisterView extends JFrame {
 
     // **for testing purposes**
 
-    public static void main(String [] args) {
-        RegisterView test = new RegisterView();
-        test.turnOn();
-    }
-
     public void showDialog()
     {
         //JFrame frame = new JFrame("Registration Done");
             // show a joptionpane dialog using showMessageDialog
             JOptionPane.showMessageDialog(f,"Registeration is successful");
-            f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            System.out.println("working");
+            //f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     

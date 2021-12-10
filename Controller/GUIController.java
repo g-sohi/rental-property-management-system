@@ -129,7 +129,7 @@ public void actionPerformed(ActionEvent e) {
                 }
                 else // User name already exist
                 {
-                    JOptionPane.showMessageDialog(null, "Username is taken, try another username.");
+                    JOptionPane.showMessageDialog(null, "Username is taken.");
                 }
             }
             else

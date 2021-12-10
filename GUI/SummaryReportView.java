@@ -95,7 +95,7 @@ public class SummaryReportView extends JFrame {
         close = new JButton("Close");
         close.setBounds(200, 400, 100, 50);
         frame.add(close);
-
+        frame.setLocationRelativeTo(null);
         frame.setVisible(false);
 
     }

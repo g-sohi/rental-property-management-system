@@ -65,6 +65,7 @@ public class PaymentController implements ActionListener {
         fees = new FeesView(isMgrPlaceholder); 
         fees.addPayFeeListener(this);
         fees.addSaveListener(this);
+        fees.addSelectListener(this);
     }
 
     @Override
@@ -98,6 +99,29 @@ public class PaymentController implements ActionListener {
                 System.out.println("Fee period updated");
                 //fees.destroyFrameForManager();
             }
+        }
+
+        if(e.getSource().equals(fees.getSelectButton()))
+        {
+            fees.setFee(String.valueOf(db.getFees(Integer.valueOf(fees.getPID()))));
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm:ss");
+            LocalDateTime current = LocalDateTime.now();
+            String line = dtf.format(current).toString();
+            String day = line.substring(line.indexOf('-') + 4, line.indexOf('-')+6);
+            String month = line.substring(line.indexOf('-') + 1, line.indexOf('-') + 3);
+            String year = line.substring(0, line.indexOf('-'));
+            fees.setStartD(day);
+            fees.setStartM(month);
+            fees.setStartY(year);
+            System.out.println(line);
+            LocalDateTime end = current.plusMonths(db.getPeriod(Integer.valueOf(fees.getPID())));
+            line = dtf.format(end).toString();
+            day = line.substring(line.indexOf('-') + 4, line.indexOf('-')+6);
+            month = line.substring(line.indexOf('-') + 1, line.indexOf('-') + 3);
+            year = line.substring(0, line.indexOf('-'));
+            fees.setEndD(day);
+            fees.setEndM(month);
+            fees.setEndY(year);
         }
         
         }  
