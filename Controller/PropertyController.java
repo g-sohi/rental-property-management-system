@@ -15,6 +15,7 @@ public class PropertyController implements ActionListener {
     private LandlordController landlord;
     private ManagerController manager;
     private Database db;
+    private int iD;
 
     /*public PropertyController(Database db, int id){
         this.setDb(db);
@@ -24,6 +25,11 @@ public class PropertyController implements ActionListener {
     public PropertyController(Database db){
         this.setDb(db);
     
+    }
+    public PropertyController(Database db, int id) {
+        this.setDb(db);
+        this.iD = id;
+
     }
 
     public void editProperty(Property p)
@@ -92,14 +98,15 @@ public class PropertyController implements ActionListener {
         if(this.edit!= null)
         {
             db.initializeConnection();
+            System.out.println("ID is:" +iD);
+            String rentDate = edit.getRentYearInput() + "-"+edit.getRentMonthInput()+"-"+ edit.getRentDayInput();
             if(e.getSource().equals(edit.getSaveButton()))
             {
-                db.updateProperty(edit.getPropetyIdInput(), edit.getStatusInput(), edit.getRentDateInput());
+                db.updatePropertyLandLord(edit.getPropetyIdInput(), edit.getStatusInput(), rentDate, iD);
                 System.out.println("New Information Saved");
                 edit.destroyFrame();
             }
             }
-          
         }
 
 }

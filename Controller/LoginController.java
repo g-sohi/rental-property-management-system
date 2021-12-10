@@ -66,7 +66,7 @@ public class LoginController implements ActionListener{
                 ldCtrl.setRegisterControllerId(ldCtrl.getLandlord().getId());
                 ldCtrl.setSearchControllerID(ldCtrl.getLandlord().getId());
                 System.out.println("Landlord Name: " + ldCtrl.getLandlord().getFName() + "\nID: " + ldCtrl.getLandlord().getId() + "\n");
-                ldCtrl.enableView(this);
+                ldCtrl.enableView(this, ldCtrl.getLandlord().getId());
                 ldCtrl.getLandlordView().turnOn();
             }
             else if(user.getUserType().equals("Manager"))

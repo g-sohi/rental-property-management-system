@@ -306,6 +306,11 @@ public class EditPropertyView extends JFrame{
         return Integer.valueOf(idProperty.getText());
     }
 
+    public String getPropertyIDStringInput()
+    {
+        return idProperty.getText();
+    }
+
     public int getPropetyId2Input()
     {
         return Integer.valueOf(idProperty2.getText());
@@ -314,6 +319,36 @@ public class EditPropertyView extends JFrame{
     public String getRentDateInput()
     {
         return rentDate.getText();
+    }
+
+    public String getRentDayInput()
+    {
+        return rentDay.getSelectedItem().toString();
+    }
+
+    public String getRentMonthInput()
+    {
+        return rentMonth.getSelectedItem().toString();
+    }
+
+    public String getRentYearInput()
+    {
+        return rentYear.getSelectedItem().toString();
+    }
+
+    public void showDialog()
+    {
+        //JFrame frame = new JFrame("Registration Done");
+            // show a joptionpane dialog using showMessageDialog
+            JOptionPane.showMessageDialog(this,"Property Updated");
+            //frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            //System.out.println("working");
+    }
+
+    public void showErrorDialog()
+    {
+        
+            JOptionPane.showMessageDialog(this,"Fill All Fields");
     }
 
     public static void main(String [] args) {

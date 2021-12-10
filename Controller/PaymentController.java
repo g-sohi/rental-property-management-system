@@ -15,11 +15,12 @@ public class PaymentController implements ActionListener {
     private Database db;
     private LandlordController landlord;
     private ManagerController manager;
-
+  
     public PaymentController(Database db) {
         this.db = db;
 
     }
+
 
     public void updateFees(int fee) {
         

@@ -14,11 +14,14 @@ public class LandlordController implements ActionListener{
     private PropertyController prop;
     private RegisterController regProp;
     private SearchController search;
+    private int Id;
+    private Database db;
 
 
     //Default constructor to create instances of member variables
     LandlordController(Database db){
         //this.landLordID =  landID;
+        this.db = db;
         this.landlord = new Landlord();
         this.pay = new PaymentController(db);
         this.prop = new PropertyController(db);
@@ -57,6 +60,7 @@ public class LandlordController implements ActionListener{
             prop.enableView();
             prop.getEditView().turnOn();
             prop.getEditView().addBackListener(this);
+            prop.getEditView().addSaveListener(this);
         }
 
         if(e.getSource().equals(landlordV.getPay()))
@@ -66,6 +70,7 @@ public class LandlordController implements ActionListener{
             pay.enableView(false);
             pay.getFeesView().turnOnForLandlord();
             pay.getFeesView().addBackListener(this);
+            pay.getFeesView().addPayFeeListener(this);
         }
         if(regProp.getCreateProp() != null)
         {
@@ -80,14 +85,40 @@ public class LandlordController implements ActionListener{
         {
             if(e.getSource().equals(prop.getEditView().getBackButton()))
             {
+                
                 prop.getEditView().destroyFrame();
                 landlordV.turnOn();
+            }
+        }
+
+        if(prop.getEditView() != null)
+        {
+            if(e.getSource().equals(prop.getEditView().getSaveButton()))
+            {
+                if(!prop.getEditView().getPropertyIDStringInput().equals(""))
+                {
+                prop.getEditView().showDialog();
+                prop.getEditView().destroyFrame();
+                landlordV.turnOn();
+                }
+                else{
+                    prop.getEditView().showErrorDialog();
+                }
             }
         }
 
         if(pay.getFeesView() != null)
         {
             if(e.getSource().equals(pay.getFeesView().getBackButton()))
+            {
+                pay.getFeesView().destroyFrameForLandlord();
+                landlordV.turnOn();
+            }
+        }
+
+        if(pay.getFeesView() != null)
+        {
+            if(e.getSource().equals(pay.getFeesView().getPayFeesButton()))
             {
                 pay.getFeesView().destroyFrameForLandlord();
                 landlordV.turnOn();
@@ -172,9 +203,11 @@ public class LandlordController implements ActionListener{
         return this.search;
     }
 
-    public void enableView(ActionListener logoutListener)
+    public void enableView(ActionListener logoutListener, int id)
     {
+        this.Id = id;
         landlordV = new LandlordView();
+        prop = new PropertyController(this.db,this.Id);
         this.getLandlordView().addLogoutListener(logoutListener);
         this.getLandlordView().addRegisterPropertyListener(this);
         this.getLandlordView().addUpdatePropertyListener(this);

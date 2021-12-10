@@ -235,6 +235,22 @@ public class Database {
                 e.printStackTrace();
             }
         }
+        public void updatePropertyLandLord(int id, String status, String rentDate, int landID){
+            try {
+                if(!status.equalsIgnoreCase("rented")){
+                    String query = String.format("UPDATE property SET Status = '%s', RentDate = 'Null' Where Property_ID = %d AND Landlord_ID = %d", status, id, landID);
+                    Statement stmt = dbConnect.createStatement();
+                    stmt.executeUpdate(query);
+                }
+                else{
+                    String query = String.format("UPDATE property SET Status = '%s', RentDate = '%s' Where Property_ID = %d AND Landlord_ID = %d", status, rentDate, id, landID);
+                    Statement stmt = dbConnect.createStatement();
+                    stmt.executeUpdate(query);
+                }
+            } catch (SQLException e) {
+                //e.printStackTrace();
+            }
+        }
 
         public void updateProperty(int id, String status, String rentDate){
             try {
