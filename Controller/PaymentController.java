@@ -72,6 +72,8 @@ public class PaymentController implements ActionListener {
         if(this.fees != null)
         {
             db.initializeConnection();
+        if(!fees.getPID().equals(""))
+        {
         if(e.getSource().equals(fees.getPayFeesButton()))
             {
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm:ss");
@@ -80,19 +82,21 @@ public class PaymentController implements ActionListener {
                 db.updateFeeStatus(Integer.valueOf(fees.getPID()));
 
                 System.out.println("Payment Done");
-                fees.destroyFrameForLandlord();
+                //fees.destroyFrameForLandlord();
             }
+        }
+        if(!fees.getFee().equals("") && !fees.getPID().equals("")) 
+        {
         if(e.getSource().equals(fees.getSaveButton()))
             {
                 String startDate = fees.getStartYearInput() + "-"+fees.getStartMonthInput()+"-"+ fees.getStartDayInput();
                 String endDate = fees.getEndYearInput() + "-"+fees.getEndMonthInput()+"-"+ fees.getEndDayInput();
                 db.updatePeriodStatus(Integer.valueOf(fees.getPID()), Double.valueOf(fees.getFee()), startDate, endDate);
                 System.out.println("Fee period updated");
-                fees.destroyFrameForManager();
+                //fees.destroyFrameForManager();
             }
-        
         }
-
         
+        }  
     }
 }

@@ -269,6 +269,7 @@ public class Database {
                 e.printStackTrace();
             }
         }
+
         public void updatePropertyLandLord(int id, String status, String rentDate, int landID){
             try {
                 if(!status.equalsIgnoreCase("rented")){
@@ -495,7 +496,6 @@ public class Database {
             return renters;
         }
 
-
         public ArrayList<Property> getManagerProperties() {
             ArrayList<Property> properties = new ArrayList<Property>();
             try {
@@ -634,27 +634,5 @@ public class Database {
             read.close();
             System.out.println("Authenticating login credentials...");
             return passwordInput;
-        }
-
-        public static void main(String[] args) throws IOException {
-            Database db = new Database();
-            db.updateLastLogin("2021-09-09 06:59:59", 1);
-            //ViewDataPage v = new ViewDataPage();
-            //v.user(v.copyLandlords(db.getAllLandlords()));
-            
-            /*db.addProperty(2, "333 VansRoad, Calgary", "Townhouse", 2, 1, "No", 101.1, "Available", 4, "21 Aug, 2021", "23 Dec, 2021");
-            db.removeProperty(2);*/
-
-
-            //ArrayList<Property> props = new ArrayList<Property>(db.getSearchProperties(new Property(0,"null", "Detached", 4, -1, "null", new Fees(50.00, 0, "null", "null"), "Available")));
-            GUIController ctrl = new GUIController(db);
-            ctrl.setDatabase(db);
-            //SearchController srh = new SearchController();
-            /*int id = 3;
-            Landlord land = new Landlord("Robin", "Robin", "Sio", id, "ensf480", "Manager", new Email("null", "null", "null", "null"), db.getLandlordProperties(id));
-            */
-            //System.out.println("Address: " + props.get(0).getAddress() + "\nType: " + props.get(0).getType());
-            //db.addUser();
-            
         }
 }

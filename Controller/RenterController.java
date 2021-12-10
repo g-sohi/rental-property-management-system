@@ -61,6 +61,7 @@ public class RenterController implements ActionListener{
             subscribe = new SubscribeView();
             subscribe.turnOn();
             subscribe.addBackListener(this);
+            subscribe.setTableData(copyProperties(db.getNewProperties("2021-12-01 05:03:00")));
         }
         if(subscribe != null)
         {
@@ -230,6 +231,16 @@ public class RenterController implements ActionListener{
 
     public SearchController getSearch(){
         return this.search;
+    }
+    public String[][] copyProperties(ArrayList<Property> properties){
+        String[][] props = new String[properties.size()][2];
+        for(int i = 0; i < properties.size(); i++){
+            System.out.println("propID: " +properties.get(i).getID());
+            System.out.println("LandID: " +properties.get(i).getLandlordID());
+            props[i][0] = String.valueOf(properties.get(i).getID());
+            props[i][1] = properties.get(i).getAddress();
+        }
+        return props;
     }
 
     public void enableView(ActionListener logoutListener)
