@@ -104,7 +104,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
                     //The method will return an arrayList of type Property with properties that are a match
                     ArrayList<Property> input = db.getSearchProperties(requestedPropertyType);
                     //Set the headers for the display table in searchView
-                    String[] columnNames = { "Property ID: #", "Address", "Furnished", "Fees"};
+                    String[] columnNames = { "Property ID: #", "Address", "Furnished", "Type"};
                     //Make a 2D String array for the JTable in the searchView which will contain the data
                     String results[][] = displayProperty(input, columnNames);
 
@@ -180,16 +180,9 @@ public class SearchController implements ActionListener, ListSelectionListener{
                 {
                         displayMessages[i][j] = obj.get(i).getFurnished();
                 }
-                else if(headers[j].equals("Fees"))
+                else if(headers[j].equals("Type"))
                 {
-                    if(obj.get(i).getPropertyFees() == null)
-                    {
-                        displayMessages[i][j] = "N/A Property Fees";
-                    }
-                    else
-                    {
-                        displayMessages[i][j] = String.valueOf(obj.get(i).getPropertyFees().getAmount());
-                    }
+                    displayMessages[i][j] = obj.get(i).getType();
                 }
             }
         }
