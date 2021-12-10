@@ -19,7 +19,7 @@ public class Database {
 
         public Database() {
             String username = "root";
-            String password = "singh123";
+            String password = readPassword();
     
             try {
 
@@ -61,9 +61,29 @@ public class Database {
                 System.out.println(query);
                 Statement stmt = dbConnect.createStatement();
                 stmt.executeUpdate(query);
+                stmt.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+
+        public boolean usernameExists(String username){
+            try {
+                String query = String.format("SELECT user.UserName FROM user WHERE UserName = '%s'", username);
+                PreparedStatement stmt = dbConnect.prepareStatement(query);
+                line = stmt.executeQuery();
+                if(!line.isBeforeFirst()){
+                    stmt.close();
+                    return false;
+                }
+                else{
+                    stmt.close();
+                    return true;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return false;
         }
 
         public void updateLastLogin(String lastLogin, int id){
@@ -71,7 +91,7 @@ public class Database {
                 String query = String.format("UPDATE user SET LastLogin = '%s' WHERE ID = %d", lastLogin, id);
                 Statement stmt = dbConnect.createStatement();
                 stmt.executeUpdate(query);
-
+                stmt.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -158,6 +178,29 @@ public class Database {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+
+        public Property getProperty(int propertyID){
+            Property prop = new Property();
+            try {
+                String query = String.format("SELECT * FROM property WHERE Property_ID = %d", propertyID);
+                PreparedStatement stmt = dbConnect.prepareStatement(query);
+                stmt.executeQuery();
+                line.next();
+                int ID = line.getInt("Property_ID");
+                int landlordID = line.getInt("Landlord_ID");
+                String address = line.getString("Address");
+                String quadrant = line.getString("quadrant");
+                String type = line.getString("Type");
+                int numOfBedrooms = line.getInt("NoOfBedrooms");
+                int numOfBathrooms = line.getInt("NoOfBathrooms");
+                String furnished = line.getString("Furnished");
+                String status = line.getString("Status");
+                prop = new Property(ID, landlordID, address,quadrant, type, numOfBedrooms, numOfBathrooms, furnished, new Fees(0.00, 0, "No", "NULL", "NULL"), status);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return prop;
         }
 
         public void updateFeeStatus(int id)
@@ -286,6 +329,20 @@ public class Database {
                 System.exit(1);
             }
             return properties;
+        }
+
+        public String getLandlordName(int landlordID){
+            String name = "";
+            try {
+                String query = String.format("SELECT user.FName FROM user WHERE ID = %d", landlordID);
+                PreparedStatement stmt = dbConnect.prepareStatement(query);
+                stmt.executeQuery();
+                line.next();
+                name = line.getString("FName");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return name;
         }
 
         public ArrayList<Landlord> getAllLandlords(){
@@ -506,6 +563,15 @@ public class Database {
                 System.out.println("Error closing the Connection and ResultSet objects.");
                 e.printStackTrace();
             }
+        }
+
+        public String readPassword(){
+            System.out.println("Please enter the password to your MySQL Server.");
+            Scanner read = new Scanner(System.in);
+            String passwordInput = read.nextLine();
+            read.close();
+            System.out.println("Authenticating login credentials...");
+            return passwordInput;
         }
 
         public static void main(String[] args) throws IOException {
