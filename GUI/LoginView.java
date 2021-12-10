@@ -19,7 +19,7 @@ public class LoginView extends JFrame {
 
     public LoginView()
     {
-		f=  new JFrame("Manager Page");
+		f=  new JFrame("Login Page");
         f.setSize(500, 500);
 		user_label = new JLabel("UserName: ");
         password_label = new JLabel("Password: ");
