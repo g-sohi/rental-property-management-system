@@ -8,12 +8,13 @@ public class SubscribeView extends JFrame {
     // variable declaration
     private JComboBox subscribe;
     private String subStatus[] = {"Subscribed", "Unsubscribed"};
+    private JFrame f;
     private JButton submit, clearNotify; //change UML; remove submit?
 
     public SubscribeView() {
 
         // creation of JFrame of certain size
-        JFrame f = new JFrame("Notifications Page");
+        f = new JFrame("Notifications Page");
         f.setSize(500, 500);
         f.setDefaultCloseOperation(EXIT_ON_CLOSE);
         f.setLayout(null);
@@ -47,6 +48,17 @@ public class SubscribeView extends JFrame {
 
         f.setVisible(true); // JFrame is set to appear
 
+    }
+
+    public void turnOn()
+    {
+        f.setVisible(true);
+    }
+
+    
+    public void destroyFrame()
+    {
+        f.setVisible(true);
     }
 
     public String getSubStatus() {

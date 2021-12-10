@@ -185,7 +185,7 @@ public class Database {
             try {
                 String query = String.format("SELECT * FROM property WHERE Property_ID = %d", propertyID);
                 PreparedStatement stmt = dbConnect.prepareStatement(query);
-                stmt.executeQuery();
+                line = stmt.executeQuery();
                 line.next();
                 int ID = line.getInt("Property_ID");
                 int landlordID = line.getInt("Landlord_ID");
@@ -407,10 +407,10 @@ public class Database {
             return properties;
         }
 
-        public ArrayList<Manager> getAllManagers(){
-            ArrayList<Manager> managers = new ArrayList<>();
+        public ArrayList<Renter> getAllRenters(){
+            ArrayList<Renter> renters = new ArrayList<>();
             try {
-                String query = String.format("SELECT * FROM user WHERE UserType = '%s'", "Manager");
+                String query = String.format("SELECT * FROM user WHERE UserType = '%s'", "Renter");
                 PreparedStatement stmt = dbConnect.prepareStatement(query);
     
                 line = stmt.executeQuery();
@@ -422,8 +422,8 @@ public class Database {
                     int id = line.getInt("ID");
                     String userType = line.getString("UserType");
                     User use = new User(username, fName, lName, id, password, userType);
-                    Manager temp = new Manager(use);
-                    managers.add(temp);
+                    Renter temp = new Renter(use);
+                    renters.add(temp);
                 }
                 stmt.close();
             } catch (SQLException e) {
@@ -431,7 +431,7 @@ public class Database {
                 System.out.println("Error.Exiting program.");
                 System.exit(1);
             }
-            return managers;
+            return renters;
         }
 
 
