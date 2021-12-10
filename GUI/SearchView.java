@@ -41,6 +41,7 @@ public class SearchView extends JFrame{
 
     //Private members for Landlord/Manager Search View
     private JButton displayButton;
+    private JButton backButton2;
     private JTable DisplayTable1;
     private DefaultTableModel displayTable1Model;
     private JTable DisplayTable2;
@@ -262,6 +263,7 @@ public class SearchView extends JFrame{
         LandlordPropertiesTitle.setText("Manager Properties View");
 
         displayButton.setText("Display Properties");
+        backButton.setText("Back");
 
         LandlordLabel.setText("Manager");
 
@@ -382,6 +384,8 @@ public class SearchView extends JFrame{
                                     .addGroup(mgrFLayout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(displayButton)
+                                        .addGap(125, 125, 125)
+                                        .addComponent(backButton)
                                         .addGap(125, 125, 125))
                                     .addGroup(mgrFLayout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -398,6 +402,7 @@ public class SearchView extends JFrame{
                     .addGroup(mgrFLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(displayButton)
+                        .addComponent(backButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE))
                     .addGroup(mgrFLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -500,6 +505,7 @@ public class SearchView extends JFrame{
         LandlordPropertiesTitle.setText("LandLord Properties View");
 
         displayButton.setText("Display My Properties");
+        backButton.setText("Back");
 
         LandlordLabel.setText("Landlord ID:");
 
@@ -620,6 +626,8 @@ public class SearchView extends JFrame{
                                     .addGroup(llrdFLayout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(displayButton)
+                                        .addGap(125, 125, 125)
+                                        .addComponent(backButton)
                                         .addGap(125, 125, 125))
                                     .addGroup(llrdFLayout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -636,6 +644,7 @@ public class SearchView extends JFrame{
                     .addGroup(llrdFLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(displayButton)
+                        .addComponent(backButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE))
                     .addGroup(llrdFLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -859,7 +868,7 @@ public class SearchView extends JFrame{
     public static void main(String [] args) {
         SearchView test =  new SearchView();
         test.turnOn();;
-        //test.turnOnForManager();
+        test.turnOnForLandlord();
     }
     
 }
