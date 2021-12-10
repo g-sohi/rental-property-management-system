@@ -120,8 +120,18 @@ public class LandlordController implements ActionListener{
         {
             if(e.getSource().equals(pay.getFeesView().getPayFeesButton()))
             {
+                if(!pay.getFeesView().getPID().equals("") && !pay.getFeesView().getFName().equals("") && !pay.getFeesView().getLName().equals("")
+                && !pay.getFeesView().getCountry().equals("") && !pay.getFeesView().getPCode().equals("") && !pay.getFeesView().getCCN().equals("") 
+                && !pay.getFeesView().getMMExp().equals("") && !pay.getFeesView().getYYExp().equals("") && !pay.getFeesView().getCVV().equals(""))
+                {
+                pay.getFeesView().showDialogLandlord();
                 pay.getFeesView().destroyFrameForLandlord();
                 landlordV.turnOn();
+                }
+                else
+                {
+                    pay.getFeesView().showErrorDialogLandlord();
+                }
             }
         }
 

@@ -378,6 +378,35 @@ public class FeesView extends JFrame {
     public String getCVV() {
         return cvv.getText();
     }
+    public void showDialogLandlord()
+    {
+        //JFrame frame = new JFrame("Registration Done");
+            // show a joptionpane dialog using showMessageDialog
+            JOptionPane.showMessageDialog(fLlrd," Fee is paid successfully");
+            //frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            //System.out.println("working");
+    }
+
+    public void showErrorDialogLandlord()
+    {
+        
+            JOptionPane.showMessageDialog(fLlrd,"Fill All fields");
+    }
+
+    public void showDialogManager()
+    {
+        //JFrame frame = new JFrame("Registration Done");
+            // show a joptionpane dialog using showMessageDialog
+            JOptionPane.showMessageDialog(fLlrd," Fee changes applied successfully");
+            //frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            //System.out.println("working");
+    }
+
+    public void showErrorDialogManager()
+    {
+        
+            JOptionPane.showMessageDialog(fLlrd,"Fill All fields");
+    }
     public static void main(String [] args) {
         FeesView test =  new FeesView(false);
         test.turnOnForLandlord();
