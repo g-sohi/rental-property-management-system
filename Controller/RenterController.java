@@ -65,6 +65,19 @@ public class RenterController implements ActionListener{
                 else
                 {
                     id = selectProp.getPropertyID();
+                    Property p = db.getProperty(Integer.valueOf(id));
+                    String allPropertyInfo = "";
+                    allPropertyInfo += "Property ID: " + p.getID() + "\n";
+                    allPropertyInfo += "Address: " + p.getAddress() + "\n";
+                    allPropertyInfo += "Quadrant: " + p.getQuadrant() + "\n";
+                    allPropertyInfo += "Type: " + p.getType() + "\n";
+                    allPropertyInfo += "Number of Bedrooms: " + p.getNumOfBedrooms() + "\n";
+                    allPropertyInfo += "Number of Bathrooms: " + p.getNumOfBathrooms() + "\n";
+                    allPropertyInfo += "Furnished: " + p.getFurnished() + "\n";
+                    allPropertyInfo += "\n";
+                    allPropertyInfo += "Property Fees: " + String.valueOf(p.getPropertyFees().getAmount()) + "\n";
+                    selectProp.getPropertyInfoTextArea().setText(allPropertyInfo);
+
                     System.out.println("ID: " + id);
                 }
             }
