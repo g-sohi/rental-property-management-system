@@ -36,21 +36,21 @@ public class LoginController implements ActionListener{
         //addListener();
         boolean loggedIn = this.verifyLogin();
         //this.verifyLogin();
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd HH-mm-ss");
-        LocalDateTime current = LocalDateTime.now();
-        System.out.println(dtf.format(current));
         db.initializeConnection();
-        this.user = new User(db.getUserInformation(this.user.getUsername()));
-        db.updateLastLogin(dtf.format(current).toString(), this.user.getId());
-        System.out.println("User Name: " + this.user.getFName());
 
         if(e.getSource().equals(view.getButton()))
         {
             if(loggedIn == true)
             {
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd HH-mm-ss");
+                LocalDateTime current = LocalDateTime.now();
+                System.out.println(dtf.format(current));
+                db.updateLastLogin(dtf.format(current).toString(), this.user.getId());
+                this.user = new User(db.getUserInformation(this.user.getUsername()));
+                System.out.println("User Name: " + this.user.getFName());
                 view.destroyFrame();
                 JOptionPane.showMessageDialog(null, "You Have Successfully logged In.");
-            System.out.println("userType in user is: " + user.getUserType());
+                System.out.println("userType in user is: " + user.getUserType());
             if(user.getUserType().equals("Renter"))
             {
                 Renter tempRent = new Renter(this.user);

@@ -21,7 +21,7 @@ import java.awt.event.*;
 import java.beans.BeanDescriptor;
 
 public class SearchController implements ActionListener, ListSelectionListener{
-
+    //Private members for the SearchController class
     private SearchView sView;
     private User users;
     private int landlordID;
@@ -29,18 +29,24 @@ public class SearchController implements ActionListener, ListSelectionListener{
     private Database db;
     private boolean rentSearch, managerSearch, landLordSearch;
 
+    //SearchController constructor takes in an arugment of Database
     public SearchController(Database db) 
     {
+        //Set all the booleans for the searchView for the different users (Renter, Landlord, Manager)
+        //to false
         rentSearch = false;
         managerSearch = false;
         landLordSearch = false;
+        //set private Database member db to the passed in argument Database variable
         this.db = db;
     }
 
+    //actionPerformed function to do something if a components addListener is triggered
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-        db.initializeConnection();
+        db.initializeConnection();  //initialize the private memeber Database db connection
+        //Enter statement below if the display button for the searchView frame is triggered and landlordSearch boolean equals true
         if(e.getSource().equals(sView.getDisplayButton()) && landLordSearch == true)
         {
             System.out.println("Display working");
@@ -56,6 +62,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
             sView.getLandlordIdLabel().setText(String.valueOf(this.landlordID));
             sView.getJList2().setListData(llproperties);
         }
+        //Enter statment below if the display button for the searchView frame is triggered and managerSearch boolean equals true
         if(e.getSource().equals(sView.getDisplayButton()) && managerSearch == true)
         {
             System.out.println("Display working");
@@ -68,9 +75,10 @@ public class SearchController implements ActionListener, ListSelectionListener{
             }
             sView.getJList2().setListData(allProperties);
         }
-
+        //Enter statement below if the reset button for the searchView frame is triggered
         if(e.getSource().equals(sView.getResetButton()))
         {
+            //Reset all the input fields to be blank or empty
             sView.setBedsInput("");
             sView.setBathsInput("");
             sView.getQuadrants().setSelectedIndex(0);
@@ -80,77 +88,78 @@ public class SearchController implements ActionListener, ListSelectionListener{
 
         if(sView.getSearchButton() != null)
         {
+            //Enter if the search button in the searchView frame is not null
             if(e.getSource().equals(sView.getSearchButton()))
             { 
+                //initialize the database connection
                 db.initializeConnection();
-                if(rentSearch){
-                Property requestedPropertyType = new Property(-1, null,sView.getQuadrantInput(), sView.getTypeInput(), sView.getBedsInput(), sView.getBathsInput(), sView.getFurnishedInput(), null, "Active");
-                ArrayList<Property> input = db.getSearchProperties(requestedPropertyType);
-                String[] columnNames = { "Property ID: #", "Address", "Furnished", "Fees"};
-                String results[][] = displayProperty(input, columnNames);
-
-                System.out.println("PRINTING RESULTS: ");
-                for(int i = 0; i < results.length; i++)
+                //Enter if statement below if the rentSearch boolean is set to true
+                if(rentSearch)
                 {
-                    for(int j = 0; j < results[i].length; j++)
+                    //Set and display searchView frame here for the Renter user
+                    //Take the input entries the user put in and use it to initialize a Property object using the constructo
+                    Property requestedPropertyType = new Property(-1, null,sView.getQuadrantInput(), sView.getTypeInput(), sView.getBedsInput(), sView.getBathsInput(), sView.getFurnishedInput(), null, "Active");
+                    //Send the property you made with user specifications to the method getSearchProperties in the Database
+                    //class to search the database for properties with the exact same specification
+                    //The method will return an arrayList of type Property with properties that are a match
+                    ArrayList<Property> input = db.getSearchProperties(requestedPropertyType);
+                    //Set the headers for the display table in searchView
+                    String[] columnNames = { "Property ID: #", "Address", "Furnished", "Fees"};
+                    //Make a 2D String array for the JTable in the searchView which will contain the data
+                    String results[][] = displayProperty(input, columnNames);
+
+                    System.out.println("PRINTING RESULTS: ");
+                    for(int i = 0; i < results.length; i++)
                     {
-                        System.out.print(results[i][j]);
+                        for(int j = 0; j < results[i].length; j++)
+                        {
+                            System.out.print(results[i][j]);
+                        }
+                        System.out.println();
                     }
-                    System.out.println();
-                }
 
-                System.out.println("PRINTING INPUT: ");
-                for(int i = 0; i < input.size(); i++)
+                    System.out.println("PRINTING INPUT: ");
+                    for(int i = 0; i < input.size(); i++)
+                    {
+                        System.out.print(input.get(i).getAddress());
+                    }
+                    //sView.setPropertiesList(input);
+                    // JList<String> test2 = new JList<String>(results);
+                    // test2.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+                    // test2.setLayoutOrientation(JList.VERTICAL_WRAP);
+                    // test2.setVisibleRowCount(1);
+                    // sView.add(test2);
+
+                    JTable test2 = new JTable(results, columnNames);
+                    // test2.getColumnModel().getColumn(0).setPreferredWidth(10);
+                    // test2.getColumnModel().getColumn(1).setPreferredWidth(30);
+                    final TableColumnModel columnModel = test2.getColumnModel();
+                    columnModel.getColumn(0).setPreferredWidth(7);
+                    columnModel.getColumn(1).setPreferredWidth(20);
+                    columnModel.getColumn(2).setPreferredWidth(7);
+                    columnModel.getColumn(3).setPreferredWidth(20);
+                    test2.setRowHeight(25);
+                    test2.getTableHeader().setBackground(Color.LIGHT_GRAY);
+                    JScrollPane scrollPane = new JScrollPane();
+                    scrollPane.setViewportView(test2);
+                    scrollPane.setBounds(30, 325, 440, 115);
+                    //JButton test2 = new JButton("Something happened");
+                    //sView.add(test2);
+                    sView.add(scrollPane);  
+                }
+                else if(landLordSearch)
                 {
-                    System.out.print(input.get(i).getAddress());
+                    System.out.println("Landlord search");
+                    System.out.println("This is the Landlord ID in Search Controller " + this.landlordID);
                 }
-                //sView.setPropertiesList(input);
-                // JList<String> test2 = new JList<String>(results);
-                // test2.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-                // test2.setLayoutOrientation(JList.VERTICAL_WRAP);
-                // test2.setVisibleRowCount(1);
-                // sView.add(test2);
-
-                JTable test2 = new JTable(results, columnNames);
-                // test2.getColumnModel().getColumn(0).setPreferredWidth(10);
-                // test2.getColumnModel().getColumn(1).setPreferredWidth(30);
-                final TableColumnModel columnModel = test2.getColumnModel();
-                columnModel.getColumn(0).setPreferredWidth(7);
-                columnModel.getColumn(1).setPreferredWidth(20);
-                columnModel.getColumn(2).setPreferredWidth(7);
-                columnModel.getColumn(3).setPreferredWidth(20);
-                test2.setRowHeight(25);
-                test2.getTableHeader().setBackground(Color.LIGHT_GRAY);
-                JScrollPane scrollPane = new JScrollPane();
-                scrollPane.setViewportView(test2);
-                scrollPane.setBounds(30, 325, 440, 115);
-                //JButton test2 = new JButton("Something happened");
-                //sView.add(test2);
-                sView.add(scrollPane);
-
-            }
-            else if(landLordSearch){
-                System.out.println("Landlord search");
-                System.out.println("This is the Landlord ID in Search Controller " + this.landlordID);
-            }
-            else if(managerSearch){
-                System.out.println("Manager search");
+                else if(managerSearch)
+                {
+                    System.out.println("Manager search");
+                }   
             }
         }
     }
-    }
-    // public static void main(String [] args)
-    // {
 
-    //     SearchController testView = new SearchController();
-        
-    // }
-
-    // public void makeSearch()
-    // {
-    //     ArrayList<Property> filteredProperties = filterAll();
-    //     displayAll(filteredProperties);
-    // }
     public String[][] displayProperty(ArrayList<Property> obj, String headers[])
     {
         
