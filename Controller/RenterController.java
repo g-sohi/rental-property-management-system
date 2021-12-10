@@ -5,6 +5,9 @@ import GUI.*;
 import Database.*;
 
 import java.util.*;
+
+import javax.swing.JOptionPane;
+
 import java.awt.event.*;
 
 public class RenterController implements ActionListener{
@@ -21,10 +24,12 @@ public class RenterController implements ActionListener{
     public RenterController(Database db)
     {
         search = new SearchController(db);
+        this.db = db;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        db.initializeConnection();
         if(e.getSource().equals(RenterView.getSearch()))
         {
             RenterView.destroyFrame();
@@ -33,7 +38,7 @@ public class RenterController implements ActionListener{
             search.getView().addBackButtonListener(this);
         }
         if(search.getView() != null)
-        {
+        { 
             if(e.getSource().equals(search.getView().getBackButton()))
             {
                 search.getView().destroyFrameRenterGuest();
@@ -51,23 +56,30 @@ public class RenterController implements ActionListener{
         }
         if(selectProp != null)
         {
-        if(e.getSource().equals(selectProp.getSelectButton()))
-        {
-                id = selectProp.getPropertyID();
-                System.out.println("ID: " + id);
-        }
-        if(e.getSource().equals(selectProp.getEmailButton()))
-        {
-            selectProp.destroyFrame();
-            emailv = new EmailView(id);
-            emailv.turnOn();
-            emailv.addSendEmailListener(this);
-        }
-        if(e.getSource().equals(selectProp.getCloseButton()))
-        {
-            selectProp.destroyFrame();
-            RenterView.turnOn();
-        }
+            if(e.getSource().equals(selectProp.getSelectButton()))
+            {
+                if(selectProp.getPropertyID().equals(null) || selectProp.getPropertyID().equals(""))
+                {
+                    JOptionPane.showMessageDialog(null, "You have not entered an ID.");
+                }
+                else
+                {
+                    id = selectProp.getPropertyID();
+                    System.out.println("ID: " + id);
+                }
+            }
+            if(e.getSource().equals(selectProp.getEmailButton()))
+            {
+                selectProp.destroyFrame();
+                emailv = new EmailView(id);
+                emailv.turnOn();
+                emailv.addSendEmailListener(this);
+            }
+            if(e.getSource().equals(selectProp.getCloseButton()))
+            {
+                selectProp.destroyFrame();
+                RenterView.turnOn();
+            }
         }
         if(emailv != null)
         {
