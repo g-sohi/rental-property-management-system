@@ -9,7 +9,7 @@ public class FeesView extends JFrame {
     
     // variable declaration
     private JTextField changeFeeAmount, pID, fName, lName, country, postalCode, ccn, mmExp, yyExp, cvv;
-    private JButton save, payFees, back;
+    private JButton save, payFees, back, select;
     private JLabel pIDLabel, feeLabel, periodLabel, dateLabel, billingTitle, fNLabel, lNLabel, cLabel, pcLabel, creditTitle, ccnLabel, expLabel, expDivideLabel, cvvLabel; 
     private JFrame fMgr, fLlrd;
     private JTextField startDay, startMonth, startYear, endDay, endMonth, endYear;
@@ -74,7 +74,7 @@ public class FeesView extends JFrame {
 
         // creation of JTextFields of certain size and position
         pID = new JTextField();
-        pID.setBounds(145, 35, 310, 20);
+        pID.setBounds(145, 35, 210, 20);
         changeFeeAmount = new JTextField();
         changeFeeAmount.setBounds(145, 60, 310, 20);
         
@@ -125,6 +125,8 @@ public class FeesView extends JFrame {
         payFees.setBounds(175, 410, 150, 40);
         back = new JButton("Back");
         back.setBounds(10, 10, 70, 20);
+        select = new JButton("Select");
+        select.setBounds(380, 35, 75, 20);
 
         // add components to JFrames dependent on User Type
         if(isMgrPlaceholder) {
@@ -149,6 +151,7 @@ public class FeesView extends JFrame {
 
             fMgr.add(save);
             fMgr.add(back);
+            fMgr.add(select);
 
             //fLlrd.setVisible(false);
             //fMgr.setVisible(true);
@@ -187,6 +190,7 @@ public class FeesView extends JFrame {
 
             fLlrd.add(payFees);
             fLlrd.add(back);
+            fLlrd.add(select);
 
             //fMgr.setVisible(false);
             //fLlrd.setVisible(true);
@@ -224,6 +228,10 @@ public class FeesView extends JFrame {
     public JButton getPayFeesButton()
     {
         return payFees;
+    }
+
+    public JButton getSelectButton() {
+        return select;
     }
 
     public String getPeriod() {
@@ -271,6 +279,11 @@ public class FeesView extends JFrame {
     public void addPayFeeListener(ActionListener listenForPayFee){
         System.out.println("DONE1");
         this.payFees.addActionListener(listenForPayFee);
+    }
+
+    public void addSelectListener(ActionListener listenForSelect){
+        System.out.println("DONE1");
+        this.select.addActionListener(listenForSelect);
     }
 
     public void addSaveListener(ActionListener listenForSave){
