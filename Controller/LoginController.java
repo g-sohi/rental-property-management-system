@@ -34,8 +34,8 @@ public class LoginController implements ActionListener{
     public void actionPerformed(ActionEvent e)
     {
         //addListener();
-        //boolean loggedIn = this.verifyLogin();
-        this.verifyLogin();
+        boolean loggedIn = this.verifyLogin();
+        //this.verifyLogin();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd HH-mm-ss");
         LocalDateTime current = LocalDateTime.now();
         System.out.println(dtf.format(current));
@@ -46,7 +46,7 @@ public class LoginController implements ActionListener{
 
         if(e.getSource().equals(view.getButton()))
         {
-            //if(loggedIn == true)
+            if(loggedIn == true)
             {
                 view.destroyFrame();
                 JOptionPane.showMessageDialog(null, "You Have Successfully logged In.");
@@ -78,12 +78,12 @@ public class LoginController implements ActionListener{
                 mgCtrl.getView().turnOn();
             }
             }
-            /*else
+            else
             {
                 JOptionPane.showMessageDialog(null, "Username and/or Password are Incorrect.");
                 // view.destroyFrame();
                 // view = new LoginView();
-            }*/
+            }
         }
         if(rtCtrl.getRenterView() != null)
         {
@@ -121,22 +121,22 @@ public class LoginController implements ActionListener{
     
     
     //Verify user login credentials and return a boolean indicating its status
-    public void verifyLogin(){
+    public boolean verifyLogin(){
         user.setUsername(view.getUsername());
         user.setPassword(view.getPassword());
 
         System.out.println(user.getUsername());
         System.out.println(user.getPassword());
         db.initializeConnection();
-        //boolean loggenIn = db.verifyUser(user.getUsername(), user.getPassword());
-        db.verifyUser(user.getUsername(), user.getPassword());
-        //if(loggenIn == true)
-        //{
+        boolean loggenIn = db.verifyUser(user.getUsername(), user.getPassword());
+        //db.verifyUser(user.getUsername(), user.getPassword());
+        if(loggenIn == true)
+        {
             user.setUserType(db.getUserType(user.getUsername(), user.getPassword()));
-            //return(true);
-        //}
+            return(true);
+        }
         db.close();
-        //return(false);
+        return(false);
     }
 
     //Register new user

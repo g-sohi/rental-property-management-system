@@ -185,7 +185,7 @@ public class Database {
             try {
                 String query = String.format("SELECT * FROM property WHERE Property_ID = %d", propertyID);
                 PreparedStatement stmt = dbConnect.prepareStatement(query);
-                stmt.executeQuery();
+                line = stmt.executeQuery();
                 line.next();
                 int ID = line.getInt("Property_ID");
                 int landlordID = line.getInt("Landlord_ID");

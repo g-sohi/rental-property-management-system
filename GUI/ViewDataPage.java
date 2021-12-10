@@ -46,13 +46,13 @@ public class ViewDataPage extends JFrame {
     public void user() {
         //userData, userColumns propertyData, propertyColumns
         // creation of JTable for data page
-        model = new DefaultTableModel(userData, userColumns) { // sets all cells in table as uneditable
+        model = new DefaultTableModel(data, userColumns) { // sets all cells in table as uneditable
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
-        dataPage = new JTable(userData, userColumns);
+        dataPage = new JTable(data, userColumns);
         dataPage.setModel(model);
         tableScroll = new JScrollPane(dataPage);
         tableScroll.setBounds(25, 50, 1450, 600);

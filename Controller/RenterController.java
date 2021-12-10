@@ -75,7 +75,10 @@ public class RenterController implements ActionListener{
                     allPropertyInfo += "Number of Bathrooms: " + p.getNumOfBathrooms() + "\n";
                     allPropertyInfo += "Furnished: " + p.getFurnished() + "\n";
                     allPropertyInfo += "\n";
+                    if(p.getPropertyFees() != null)
+                    {
                     allPropertyInfo += "Property Fees: " + String.valueOf(p.getPropertyFees().getAmount()) + "\n";
+                    }
                     selectProp.getPropertyInfoTextArea().setText(allPropertyInfo);
 
                     System.out.println("ID: " + id);

@@ -100,11 +100,11 @@ public class EditPropertyView extends JFrame{
 
         rentDate.setText("Rented Date:");
 
-        rentDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        rentDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "","01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
-        rentMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+        rentMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "","01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
 
-        rentYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031" }));
+        rentYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "","2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031" }));
 
         jLabel3.setText("/");
 
