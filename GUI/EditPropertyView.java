@@ -81,7 +81,7 @@ public class EditPropertyView extends JFrame{
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        //setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 255));
@@ -89,7 +89,7 @@ public class EditPropertyView extends JFrame{
         jPanel3.setBackground(new java.awt.Color(204, 204, 255));
 
         id.setText("Property ID:");
-
+        
         stat.setText("Status:");
 
         status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Rented", "Canceled", "Suspended" }));
@@ -97,23 +97,23 @@ public class EditPropertyView extends JFrame{
         save.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         save.setText("Save");
 
-        back.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        back.setText("Back");
-
         EditPropertyTitle.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         EditPropertyTitle.setText("Edit Property");
 
         rentDate.setText("Rented Date:");
 
-        rentDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "","01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        rentDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
-        rentMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "","01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+        rentMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
 
-        rentYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "","2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031" }));
+        rentYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031" }));
 
         jLabel3.setText("/");
 
         jLabel4.setText("/");
+
+        back.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        back.setText("Back");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -135,9 +135,8 @@ public class EditPropertyView extends JFrame{
                                 .addContainerGap()
                                 .addComponent(stat))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(174, 174, 174)
-                                .addComponent(save, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(194, 194, 194)
+                                .addComponent(EditPropertyTitle))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(60, 60, 60)
                                 .addComponent(rentDate)
@@ -145,17 +144,20 @@ public class EditPropertyView extends JFrame{
                                 .addComponent(rentDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rentMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rentYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(194, 194, 194)
-                                .addComponent(EditPropertyTitle)))
+                                .addComponent(rentYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(save, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,9 +181,9 @@ public class EditPropertyView extends JFrame{
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(save)
-                .addGap(19, 19, 19)
-                .addComponent(back)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(save)
+                    .addComponent(back))
                 .addGap(19, 19, 19))
         );
 
@@ -220,7 +222,7 @@ public class EditPropertyView extends JFrame{
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
