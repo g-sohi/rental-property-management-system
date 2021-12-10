@@ -42,7 +42,7 @@ public class LoginController implements ActionListener{
         {
             if(loggedIn == true)
             {
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd HH-mm-ss");
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm:ss");
                 LocalDateTime current = LocalDateTime.now();
                 System.out.println(dtf.format(current));
                 this.user = new User(db.getUserInformation(this.user.getUsername()));

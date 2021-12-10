@@ -74,7 +74,7 @@ public class PaymentController implements ActionListener {
             db.initializeConnection();
         if(e.getSource().equals(fees.getPayFeesButton()))
             {
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd HH-mm-ss");
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm:ss");
                 LocalDateTime current = LocalDateTime.now();
                 db.updatePaidProperty(Integer.valueOf(fees.getPID()), dtf.format(current).toString(), "Null");
                 db.updateFeeStatus(Integer.valueOf(fees.getPID()));
