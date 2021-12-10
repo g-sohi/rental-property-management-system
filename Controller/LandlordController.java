@@ -97,9 +97,9 @@ public class LandlordController implements ActionListener{
             {
                 if(!prop.getEditView().getPropertyIDStringInput().equals(""))
                 {
-                prop.getEditView().showDialog();
-                prop.getEditView().destroyFrame();
-                landlordV.turnOn();
+                    prop.getEditView().showDialog();
+                    prop.getEditView().destroyFrame();
+                    landlordV.turnOn();
                 }
                 else{
                     prop.getEditView().showErrorDialog();
@@ -124,9 +124,10 @@ public class LandlordController implements ActionListener{
                 && !pay.getFeesView().getCountry().equals("") && !pay.getFeesView().getPCode().equals("") && !pay.getFeesView().getCCN().equals("") 
                 && !pay.getFeesView().getMMExp().equals("") && !pay.getFeesView().getYYExp().equals("") && !pay.getFeesView().getCVV().equals(""))
                 {
-                pay.getFeesView().showDialogLandlord();
-                pay.getFeesView().destroyFrameForLandlord();
-                landlordV.turnOn();
+
+                    pay.getFeesView().showDialogLandlord();
+                    pay.getFeesView().destroyFrameForLandlord();
+                    landlordV.turnOn();
                 }
                 else
                 {

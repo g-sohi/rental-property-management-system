@@ -262,7 +262,7 @@ public class Database {
 
         public void updatePaidProperty(int id, String startDate, String endDate){
             try {
-                String query = String.format("UPDATE property SET Status = 'Active', StartDate = '%s' Where Property_ID = %d", startDate, id);
+                String query = String.format("UPDATE property SET Status = 'Active', StartDate = '%s', EndDate = '%s' Where Property_ID = %d", startDate, endDate, id);
                 Statement stmt = dbConnect.createStatement();
                 stmt.executeUpdate(query);
             } catch (SQLException e) {
