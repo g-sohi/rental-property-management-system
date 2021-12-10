@@ -844,11 +844,11 @@ public class SearchView extends JFrame{
     {
         jList2.addListSelectionListener(listenForSelection);
     }
-    public static void main(String [] args) {
-        SearchView test =  new SearchView();
-        test.turnOn();;
-        //test.turnOnForManager();
-    }
+    // public static void main(String [] args) {
+    //     SearchView test =  new SearchView();
+    //     test.turnOn();;
+    //     //test.turnOnForManager();
+    // }
 
     
 }
