@@ -20,6 +20,7 @@ public class RenterController implements ActionListener{
     private RenterView RenterView;
     private SearchController search;
     private String id;
+    private SubscribeView subscribe;
 
     public RenterController(Database db)
     {
@@ -54,6 +55,21 @@ public class RenterController implements ActionListener{
             selectProp.addBackListener(this);
             selectProp.turnOn();
         }
+        if(e.getSource().equals(RenterView.getSubscribeButton()))
+        {
+            RenterView.destroyFrame();
+            subscribe = new SubscribeView();
+            subscribe.turnOn();
+            subscribe.addBackListener(this);
+        }
+        if(subscribe != null)
+        {
+            if(e.getSource().equals(subscribe.getBackButton()))
+            {
+                subscribe.destroyFrame();
+                RenterView.turnOn();
+            }
+        }
         if(selectProp != null)
         {
             if(e.getSource().equals(selectProp.getSelectButton()))
@@ -78,7 +94,6 @@ public class RenterController implements ActionListener{
                         allPropertyInfo += "Number of Bathrooms: " + p.getNumOfBathrooms() + "\n";
                         allPropertyInfo += "Furnished: " + p.getFurnished() + "\n";
                         allPropertyInfo += "\n";
-                        allPropertyInfo += "Property Fees: " + String.valueOf(p.getPropertyFees().getAmount()) + "\n";
                         selectProp.getPropertyInfoTextArea().setText(allPropertyInfo);
                         selectProp.getPropertyInfoTextArea().setFont(selectProp.getPropertyInfoTextArea().getFont().deriveFont(12f)); 
                         System.out.println("ID: " + id);
@@ -223,6 +238,7 @@ public class RenterController implements ActionListener{
         RenterView.addLogoutListener(logoutListener);
         RenterView.addSearchListener(this);
         RenterView.addSelectListener(this);
+        RenterView.addSubscribeListener(this);
     }
 
     

@@ -45,8 +45,8 @@ public class LoginController implements ActionListener{
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd HH-mm-ss");
                 LocalDateTime current = LocalDateTime.now();
                 System.out.println(dtf.format(current));
-                db.updateLastLogin(dtf.format(current).toString(), this.user.getId());
                 this.user = new User(db.getUserInformation(this.user.getUsername()));
+                db.updateLastLogin(dtf.format(current).toString(), this.user.getId());
                 System.out.println("User Name: " + this.user.getFName());
                 view.destroyFrame();
                 JOptionPane.showMessageDialog(null, "You Have Successfully logged In.");

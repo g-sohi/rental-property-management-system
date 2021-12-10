@@ -9,7 +9,7 @@ public class FeesView extends JFrame {
     
     // variable declaration
     private JTextField changeFeeAmount, pID, fName, lName, country, postalCode, ccn, mmExp, yyExp, cvv;
-    private JButton save, payFees;
+    private JButton save, payFees, back;
     private JLabel pIDLabel, feeLabel, periodLabel, dateLabel, billingTitle, fNLabel, lNLabel, cLabel, pcLabel, creditTitle, ccnLabel, expLabel, expDivideLabel, cvvLabel; 
     private JFrame fMgr, fLlrd;
     private JComboBox startDay;
@@ -121,6 +121,8 @@ public class FeesView extends JFrame {
         save.setBounds(175, 410, 150, 40);
         payFees = new JButton("Confirm Payment");
         payFees.setBounds(175, 410, 150, 40);
+        back = new JButton("Back");
+        back.setBounds(10, 10, 70, 20);
 
         // add components to JFrames dependent on User Type
         if(isMgrPlaceholder) {
@@ -143,6 +145,7 @@ public class FeesView extends JFrame {
             fMgr.add(dateLabel);
 
             fMgr.add(save);
+            fMgr.add(back);
 
             //fLlrd.setVisible(false);
             //fMgr.setVisible(true);
@@ -180,6 +183,7 @@ public class FeesView extends JFrame {
             fLlrd.add(cvvLabel);
 
             fLlrd.add(payFees);
+            fLlrd.add(back);
 
             //fMgr.setVisible(false);
             //fLlrd.setVisible(true);
@@ -210,7 +214,10 @@ public class FeesView extends JFrame {
     {
         fMgr.setVisible(true);
     }  
-
+    public JButton getBackButton()
+    {
+        return back;
+    }
     public JButton getPayFeesButton()
     {
         return payFees;
@@ -226,6 +233,10 @@ public class FeesView extends JFrame {
         return save;
     }
 
+    public void addBackListener(ActionListener listenForBack){
+        System.out.println("DONE1");
+        this.back.addActionListener(listenForBack);
+    }
     public void addPayFeeListener(ActionListener listenForPayFee){
         System.out.println("DONE1");
         this.payFees.addActionListener(listenForPayFee);

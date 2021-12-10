@@ -85,6 +85,11 @@ public class RenterView extends JFrame {
         return select;
     }
 
+    public JButton getSubscribeButton()
+    {
+        return subscribe;
+    }
+
     // **for testing purposes**
 
      

@@ -38,7 +38,7 @@ public class LandlordController implements ActionListener{
         {
             System.out.println("Search");
             search.enableLlrdView();
-            //search.getView().turnOnForLandlord();
+            search.getView().addBackButtonListener(this);
         }
 
         if(e.getSource().equals(landlordV.getRegister()))
@@ -59,8 +59,10 @@ public class LandlordController implements ActionListener{
         if(e.getSource().equals(landlordV.getPay()))
         {
             System.out.println("Pay");
+            landlordV.destroyFrame();
             pay.enableView(false);
             pay.getFeesView().turnOnForLandlord();
+            pay.getFeesView().addBackListener(this);
         }
         if(regProp.getCreateProp() != null)
         {
@@ -69,7 +71,25 @@ public class LandlordController implements ActionListener{
             regProp.getCreateProp().destroyFrame();
             landlordV.turnOn();
         }
-    }
+        }
+
+        if(pay.getFeesView() != null)
+        {
+            if(e.getSource().equals(pay.getFeesView().getBackButton()))
+            {
+                pay.getFeesView().destroyFrameForLandlord();
+                landlordV.turnOn();
+            }
+        }
+
+        if(search.getView() != null)
+        {
+            if(e.getSource().equals(search.getView().getBackButton()))
+            {
+                search.getView().destroyFrameForLandLord();
+                landlordV.turnOn();
+            }
+        }
     }
     public void setRegisterControllerId(int id)
     {

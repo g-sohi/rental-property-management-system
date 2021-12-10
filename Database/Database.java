@@ -184,7 +184,7 @@ public class Database {
         public Property getProperty(int propertyID){
             Property prop = new Property();
             try {
-                String query = String.format("SELECT * FROM property WHERE Property_ID = %d", propertyID);
+                String query = String.format("SELECT * FROM property WHERE Property_ID = %d AND Status = 'Active'", propertyID);
                 PreparedStatement stmt = dbConnect.prepareStatement(query);
                 line = stmt.executeQuery();
                 line.next();
@@ -199,7 +199,7 @@ public class Database {
                 String status = line.getString("Status");
                 prop = new Property(ID, landlordID, address,quadrant, type, numOfBedrooms, numOfBathrooms, furnished, new Fees(0.00, 0, "No", "NULL", "NULL"), status);
             } catch (SQLException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
             }
             return prop;
         }

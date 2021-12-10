@@ -175,7 +175,7 @@ public class SearchView extends JFrame{
 
         search.setBounds(370, 260, 80, 30);
         reset.setBounds(300, 260, 80, 30);
-        backButton.setBounds(5, 5, 60, 20);
+        backButton.setBounds(5, 5, 100, 20);
 
         search.setBackground(new Color(99, 182, 255));
 
@@ -855,6 +855,14 @@ public class SearchView extends JFrame{
     public void destroyFrameRenterGuest()
     {
         setVisible(false);
+    }
+    public void destroyFrameForManager()
+    {
+        mgrF.setVisible(false);
+    }
+    public void destroyFrameForLandLord()
+    {
+        llrdF.setVisible(false);
     }
     public static void main(String [] args) {
         SearchView test =  new SearchView();

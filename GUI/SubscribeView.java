@@ -9,6 +9,7 @@ public class SubscribeView extends JFrame {
     private JComboBox subscribe;
     private String subStatus[] = {"Subscribed", "Unsubscribed"};
     private JFrame f;
+    private JButton back;
     private JButton submit, clearNotify; //change UML; remove submit?
 
     public SubscribeView() {
@@ -35,7 +36,7 @@ public class SubscribeView extends JFrame {
         subscribe.setBounds(175, 360, 275, 20);
 
         // creation of JButtons of certain size and position
-        JButton back = new JButton("Back");
+        back = new JButton("Back");
         back.setBounds(275, 410, 150, 40);
         clearNotify = new JButton("Clear Notifications");
         clearNotify.setBounds(75, 410, 150, 40);
@@ -46,7 +47,7 @@ public class SubscribeView extends JFrame {
         f.add(back);
         f.add(clearNotify);
 
-        f.setVisible(true); // JFrame is set to appear
+        f.setVisible(false); // JFrame is set to appear
 
     }
 
@@ -58,11 +59,21 @@ public class SubscribeView extends JFrame {
     
     public void destroyFrame()
     {
-        f.setVisible(true);
+        f.setVisible(false);
     }
 
+    public JButton getBackButton()
+    {
+            return back;
+    }
+    
     public String getSubStatus() {
         return subscribe.getSelectedItem().toString();
+    }
+
+    public void addBackListener(ActionListener listenForBack){
+        System.out.println("DONE");
+        this.back.addActionListener(listenForBack);
     }
 
     // **for testing purposes**
