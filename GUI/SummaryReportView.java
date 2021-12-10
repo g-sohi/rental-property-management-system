@@ -130,6 +130,14 @@ public class SummaryReportView extends JFrame {
         frame.setVisible(false);
     }
 
+    public void addItemListener(ItemListener listenForItem){
+        periodSelect.addItemListener(listenForItem);
+    }
+
+    public JComboBox getPeriodSelect(){
+        return this.periodSelect;
+    }
+
     public static void main(String[] args) {
         new SummaryReportView().turnOn();
     }

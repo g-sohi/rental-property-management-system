@@ -3,8 +3,9 @@ import Models.*;
 import GUI.*;
 import Database.*;
 import java.awt.event.*;
+import java.time.LocalDate;
 
-public class ManagerController implements ActionListener {
+public class ManagerController implements ActionListener, ItemListener {
     private Manager manager;
     private ManagerView managerv;
     private SummaryReportView report;
@@ -46,7 +47,8 @@ public class ManagerController implements ActionListener {
     {
         System.out.println("COMPLETE");
         managerv.destroyFrame();
-        report= new SummaryReportView();
+        report = new SummaryReportView();
+        report.addItemListener(this);
         report.turnOn();
         report.addCloseListener(this);
     }
@@ -241,6 +243,29 @@ public class ManagerController implements ActionListener {
         this.managerv.addFeesListener(this);
         this.managerv.addViewListener(this);
         }
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+        if(e.getStateChange() == ItemEvent.SELECTED){
+            if(e.getSource().equals(report.getPeriodSelect())){
+                String line = report.getPeriodSelect().getSelectedItem().toString();
+                String month = line.substring(0, line.indexOf('/'));
+                String year = line.substring(line.indexOf('/') + 1);
+                LocalDate date = LocalDate.of(Integer.valueOf(year), Integer.valueOf(month), 01);
+                int days = date.lengthOfMonth();
+                System.out.println("Days" + days);
+                String start = "20" + year + "-" + month + "-" + "01";
+                String end = "20" + year + "-" + month + "-" + String.valueOf(days);
+                System.out.println("Start Date: " + start + " End Date: " + end);
+                db.initializeConnection();
+                System.out.println("Listed : " + db.countListings("Listed", start, end));
+                System.out.println("Rented Listings: " + db.countListings("Rented", start, end));
+                System.out.println("Active Listings: " + db.countListings("Active", start, end));
+                
+            }
+        }
+        
+    }
 
    
 }

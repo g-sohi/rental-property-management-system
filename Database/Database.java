@@ -531,15 +531,16 @@ public class Database {
             try {
                 String query = "";
                 if(type.equalsIgnoreCase("listed")){
-                    query = String.format("SELECT COUNT(StartDate)) AS result_count FROM property WHERE StartDate BETWEEN '%s' AND '%s'", periodStart, periodEnd);
+                    query = String.format("SELECT COUNT(StartDate) AS result_count FROM property WHERE StartDate BETWEEN '%s' AND '%s'", periodStart, periodEnd);
                 }
                 else if(type.equalsIgnoreCase("rented")){
-                    query = String.format("SELECT COUNT(RentDate)) AS result_count FROM property WHERE RentDate BETWEEN '%s' AND '%s'", periodStart, periodEnd);
+                    query = String.format("SELECT COUNT(RentDate) AS result_count FROM property WHERE RentDate BETWEEN '%s' AND '%s'", periodStart, periodEnd);
                 }
                 else if(type.equalsIgnoreCase("active")){
-                    query = String.format("SELECT COUNT(StartDate)) AS result_count active FROM property WHERE StartDate BETWEEN '%s' AND '%s' AND Status = 'Active'", periodStart, periodEnd);
+                    query = String.format("SELECT COUNT(StartDate) AS result_count FROM property WHERE StartDate BETWEEN '%s' AND '%s' AND Status = 'Active'", periodStart, periodEnd);
 
                 }
+                System.out.println(query);
                 PreparedStatement stmt = dbConnect.prepareStatement(query);
                 line = stmt.executeQuery();
                 if(line.next()){
