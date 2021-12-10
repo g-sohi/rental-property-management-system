@@ -7,6 +7,8 @@ import Models.*;
 import java.awt.event.*;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 public class GUIController implements ActionListener {
 
 private MainPageGUI mainpage;
@@ -60,12 +62,20 @@ public void actionPerformed(ActionEvent e) {
         {
             if(!rView.getUsername().equals("") && !rView.getPassword().equals("") && !rView.getFName().equals("") && !rView.getLName().equals(""))
             {
-            System.out.print("not vsiisble");
-            rView.showDialog();
-            rView.destroyFrame();
-            mainpage.turnOn();
-            db.initializeConnection();
-            db.addUser(rView.getUsername(), rView.getFName(), rView.getLName(), rView.getPassword(), rView.getUserType());
+                boolean userNameExists = db.usernameExists(rView.getUsername());
+                if(userNameExists == true)
+                {
+                    System.out.print("not vsiisble");
+                    rView.showDialog();
+                    rView.destroyFrame();
+                    mainpage.turnOn();
+                    db.initializeConnection();
+                    db.addUser(rView.getUsername(), rView.getFName(), rView.getLName(), rView.getPassword(), rView.getUserType());    
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Username is taken, try another username.");
+                }
             }
             else
             {

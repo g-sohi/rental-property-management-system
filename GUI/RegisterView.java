@@ -126,11 +126,13 @@ public class RegisterView extends JFrame {
         return type.getSelectedItem().toString();
     }
 
+
     // **for testing purposes**
 
-    /*public static void main(String [] args) {
-        new RegisterView();
-    }*/
+    public static void main(String [] args) {
+        RegisterView test = new RegisterView();
+        test.turnOn();
+    }
 
     public void showDialog()
     {
