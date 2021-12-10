@@ -5,6 +5,8 @@ import GUI.*;
 import Database.Database;
 
 import java.awt.event.*;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 //Landlord Controller
 public class LandlordController implements ActionListener{
@@ -68,6 +70,24 @@ public class LandlordController implements ActionListener{
             System.out.println("Pay");
             landlordV.destroyFrame();
             pay.enableView(false);
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm:ss");
+                LocalDateTime current = LocalDateTime.now();
+                String line = dtf.format(current).toString();
+                String day = line.substring(line.indexOf('-') + 4, line.indexOf('-')+6);
+                String month = line.substring(line.indexOf('-') + 1, line.indexOf('-') + 3);
+                String year = line.substring(0, line.indexOf('-'));
+                pay.getFeesView().setStartD(day);
+                pay.getFeesView().setStartM(month);
+                pay.getFeesView().setStartY(year);
+                System.out.println(line);
+                LocalDateTime end = current.plusMonths(db.getPeriod(Integer.valueOf(pay.getFeesView().getPID())));
+                line = dtf.format(end).toString();
+                day = line.substring(line.indexOf('-') + 4, line.indexOf('-')+6);
+                month = line.substring(line.indexOf('-') + 1, line.indexOf('-') + 3);
+                year = line.substring(0, line.indexOf('-'));
+                pay.getFeesView().setEndD(day);
+                pay.getFeesView().setEndM(month);
+                pay.getFeesView().setEndY(year);
             pay.getFeesView().turnOnForLandlord();
             pay.getFeesView().addBackListener(this);
             pay.getFeesView().addPayFeeListener(this);
@@ -97,9 +117,9 @@ public class LandlordController implements ActionListener{
             {
                 if(!prop.getEditView().getPropertyIDStringInput().equals(""))
                 {
-                prop.getEditView().showDialog();
-                prop.getEditView().destroyFrame();
-                landlordV.turnOn();
+                    prop.getEditView().showDialog();
+                    prop.getEditView().destroyFrame();
+                    landlordV.turnOn();
                 }
                 else{
                     prop.getEditView().showErrorDialog();
@@ -120,13 +140,14 @@ public class LandlordController implements ActionListener{
         {
             if(e.getSource().equals(pay.getFeesView().getPayFeesButton()))
             {
+                
                 if(!pay.getFeesView().getPID().equals("") && !pay.getFeesView().getFName().equals("") && !pay.getFeesView().getLName().equals("")
                 && !pay.getFeesView().getCountry().equals("") && !pay.getFeesView().getPCode().equals("") && !pay.getFeesView().getCCN().equals("") 
                 && !pay.getFeesView().getMMExp().equals("") && !pay.getFeesView().getYYExp().equals("") && !pay.getFeesView().getCVV().equals(""))
                 {
-                pay.getFeesView().showDialogLandlord();
-                pay.getFeesView().destroyFrameForLandlord();
-                landlordV.turnOn();
+                    pay.getFeesView().showDialogLandlord();
+                    pay.getFeesView().destroyFrameForLandlord();
+                    landlordV.turnOn();
                 }
                 else
                 {

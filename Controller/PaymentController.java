@@ -78,7 +78,8 @@ public class PaymentController implements ActionListener {
             {
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm:ss");
                 LocalDateTime current = LocalDateTime.now();
-                db.updatePaidProperty(Integer.valueOf(fees.getPID()), dtf.format(current).toString(), "Null");
+                LocalDateTime end = current.plusMonths(db.getPeriod(Integer.valueOf(fees.getPID())));
+                db.updatePaidProperty(Integer.valueOf(fees.getPID()), dtf.format(current).toString(), dtf.format(end).toString());
                 db.updateFeeStatus(Integer.valueOf(fees.getPID()));
 
                 System.out.println("Payment Done");
@@ -89,9 +90,11 @@ public class PaymentController implements ActionListener {
         {
         if(e.getSource().equals(fees.getSaveButton()))
             {
-                String startDate = fees.getStartYearInput() + "-"+fees.getStartMonthInput()+"-"+ fees.getStartDayInput();
-                String endDate = fees.getEndYearInput() + "-"+fees.getEndMonthInput()+"-"+ fees.getEndDayInput();
-                db.updatePeriodStatus(Integer.valueOf(fees.getPID()), Double.valueOf(fees.getFee()), startDate, endDate);
+                //String startDate = fees.getStartYearInput() + "-"+fees.getStartMonthInput()+"-"+ fees.getStartDayInput();
+                //String endDate = fees.getEndYearInput() + "-"+fees.getEndMonthInput()+"-"+ fees.getEndDayInput();
+                String periodString = fees.getPeriod().substring(0, fees.getPeriod().indexOf(' '));
+                int period = Integer.valueOf(periodString);
+                db.updatePeriodStatus(Integer.valueOf(fees.getPID()), Double.valueOf(fees.getFee()), period);
                 System.out.println("Fee period updated");
                 //fees.destroyFrameForManager();
             }
