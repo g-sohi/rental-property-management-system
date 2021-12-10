@@ -45,6 +45,7 @@ public class LandlordController implements ActionListener{
         {
             System.out.println("Register");
             regProp.enableView();
+            this.regProp.getCreateProp().addBackPropertyListener(this);
         }
 
         if(e.getSource().equals(landlordV.getUpdate()))
@@ -60,6 +61,14 @@ public class LandlordController implements ActionListener{
             pay.enableView(false);
             pay.getFeesView().turnOnForLandlord();
         }
+        if(regProp.getCreateProp() != null)
+        {
+        if(e.getSource().equals(regProp.getCreateProp().getBack()))
+        {
+            regProp.getCreateProp().destroyFrame();
+            landlordV.turnOn();
+        }
+    }
     }
     public void setRegisterControllerId(int id)
     {

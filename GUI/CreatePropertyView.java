@@ -24,6 +24,7 @@ public class CreatePropertyView extends JFrame{
     private JButton register;
     private Container ctr;
     private JLabel title;
+    private JButton back;
 
     public CreatePropertyView()
     {
@@ -134,6 +135,12 @@ public class CreatePropertyView extends JFrame{
 		register.setSize(200, 60);
         register.setLocation(400, 600);
 		ctr.add(register);
+        back = new JButton("Back");
+		back.setFont(new Font("Arial", Font.PLAIN, 15));
+		back.setSize(100, 60);
+        back.setLocation(40, 40);
+		ctr.add(back);
+        
 		setVisible(true);
     }
 
@@ -141,10 +148,17 @@ public class CreatePropertyView extends JFrame{
         return this.register;
     }
 
+    public JButton getBack(){
+        return this.back;
+    }
+
     public void addRegisterPropertyListener(ActionListener listenForRegister){
         this.register.addActionListener(listenForRegister);
     }
 
+    public void addBackPropertyListener(ActionListener listenForRegister){
+        this.back.addActionListener(listenForRegister);
+    }
     public String getTypeInput()
     {
         return type.getSelectedItem().toString();
@@ -163,9 +177,9 @@ public class CreatePropertyView extends JFrame{
     {
         return Integer.valueOf(noBaths.getSelectedItem().toString());
     }
-    public int getStreetNoInput()
+    public String getStreetNoInput()
     {
-        return Integer.valueOf(streetNo.getText());
+        return streetNo.getText();
     }
 
     public String getStreetNameInput()
@@ -191,6 +205,22 @@ public class CreatePropertyView extends JFrame{
     public int getLandlordInput()
     {
         return Integer.valueOf(landlordName.getText());
+    }
+
+    public void showErrorDialog()
+    {
+        
+            JOptionPane.showMessageDialog(this, "Fill All fields");
+    }
+
+    public void showDialog()
+    {
+        
+            JOptionPane.showMessageDialog(this, "Registration form is completed");
+    }
+    public void destroyFrame()
+    {
+        setVisible(false);
     }
 
 }

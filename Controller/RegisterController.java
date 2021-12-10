@@ -38,13 +38,24 @@ public class RegisterController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        if(e.getSource().equals(createProp.getRegister())){
+        if(e.getSource().equals(createProp.getRegister()))
+        {
+            if(!createProp.getStreetNoInput().equals("") && !createProp.getStreetNameInput().equals("") && !createProp.getCityInput().equals("") && !createProp.getPostalCodeInput().equals(""))
+            {
             System.out.println("Register Property");
             String address = createProp.getStreetNoInput() +", " + createProp.getStreetNameInput() +", " + createProp.getCityInput() + ", " + createProp.getPostalCodeInput();
             Property p = new Property(address, createProp.getQuadrantInput(), createProp.getTypeInput(), createProp.getNoOfBedInput(), createProp.getNoOfBathInput(), createProp.getFurnishedInput(), null, "Suspended");
             this.add(p);
+            createProp.showDialog();
+            createProp.destroyFrame();
+           // createProp.addBackPropertyListener(this);
+            }
+            else{
+            createProp.showErrorDialog();
+            }
         }
-    }
+
+}
 
     public CreatePropertyView getCreateProp() {
         return createProp;
@@ -80,5 +91,6 @@ public class RegisterController implements ActionListener{
     public void enableView(){
         createProp = new CreatePropertyView();
         this.getCreateProp().addRegisterPropertyListener(this);
+        this.getCreateProp().addBackPropertyListener(this);
     }
 }
