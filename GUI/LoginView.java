@@ -148,9 +148,5 @@ public class LoginView extends JFrame {
         inputPassword.setText("");
     }    
 
-    public static void main(String [] args) {
-        LoginView test =  new LoginView();
-        test.turnOn();
-    }
 
 }
