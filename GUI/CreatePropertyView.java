@@ -140,7 +140,7 @@ public class CreatePropertyView extends JFrame{
 		back.setSize(100, 60);
         back.setLocation(40, 40);
 		ctr.add(back);
-        
+        setLocationRelativeTo(null);
 		setVisible(true);
     }
 

@@ -68,7 +68,7 @@ public class MainPageGUI extends JFrame implements ActionListener {
 
         add(panel1);
         add(panel2);
-
+        setLocationRelativeTo(null);
         setVisible(true); // JFrame is set to appear
 
     }

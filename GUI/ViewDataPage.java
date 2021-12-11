@@ -51,6 +51,7 @@ public class ViewDataPage extends JFrame {
         landlordInfo.setBounds(900,10,150,30);
         back.setBounds(40, 10, 80, 30);
         //area.setBounds(5,50,680,600);
+        setLocationRelativeTo(null);
 
         setVisible(false);
     }

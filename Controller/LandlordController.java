@@ -70,24 +70,7 @@ public class LandlordController implements ActionListener{
             System.out.println("Pay");
             landlordV.destroyFrame();
             pay.enableView(false);
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm:ss");
-                LocalDateTime current = LocalDateTime.now();
-                String line = dtf.format(current).toString();
-                String day = line.substring(line.indexOf('-') + 4, line.indexOf('-')+6);
-                String month = line.substring(line.indexOf('-') + 1, line.indexOf('-') + 3);
-                String year = line.substring(0, line.indexOf('-'));
-                pay.getFeesView().setStartD(day);
-                pay.getFeesView().setStartM(month);
-                pay.getFeesView().setStartY(year);
-                System.out.println(line);
-                LocalDateTime end = current.plusMonths(db.getPeriod(Integer.valueOf(pay.getFeesView().getPID())));
-                line = dtf.format(end).toString();
-                day = line.substring(line.indexOf('-') + 4, line.indexOf('-')+6);
-                month = line.substring(line.indexOf('-') + 1, line.indexOf('-') + 3);
-                year = line.substring(0, line.indexOf('-'));
-                pay.getFeesView().setEndD(day);
-                pay.getFeesView().setEndM(month);
-                pay.getFeesView().setEndY(year);
+            
             pay.getFeesView().turnOnForLandlord();
             pay.getFeesView().addBackListener(this);
             pay.getFeesView().addPayFeeListener(this);

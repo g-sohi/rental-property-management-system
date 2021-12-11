@@ -51,6 +51,8 @@ public class EmailView extends JFrame {
         frame.add(subject); frame.add(from);  frame.add(body);
         frame.add(send);
 
+        frame.setLocationRelativeTo(null);
+
         frame.setVisible(false); // JFrame is set to appear
 
     }
@@ -97,7 +99,8 @@ public class EmailView extends JFrame {
         frame.add(send); 
         frame.add(pID);
         frame.add(back);
-
+            
+        frame.setLocationRelativeTo(null);
         frame.setVisible(false); // JFrame is set to appear
 
     }

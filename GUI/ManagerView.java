@@ -32,6 +32,7 @@ public class ManagerView extends JFrame{
         logout.setBounds(180, 300, 150, 30);
 
         f.setLayout(null);
+        f.setLocationRelativeTo(null);
         f.setVisible(false);
     }
 

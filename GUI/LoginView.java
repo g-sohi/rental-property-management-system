@@ -61,6 +61,7 @@ public class LoginView extends JFrame {
 
         //Set the Layout to null and make the frame not visible
         setLayout(null);
+        setLocationRelativeTo(null);
         setVisible(false);
     }
 

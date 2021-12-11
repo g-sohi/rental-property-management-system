@@ -239,7 +239,7 @@ public class Database {
                 PreparedStatement stmt = dbConnect.prepareStatement(query);
                 line = stmt.executeQuery();
                 line.next();
-                amount = line.getInt("FeePeriod");
+                amount = line.getInt("Fees");
             } catch (SQLException e) {
                 //e.printStackTrace();
             }

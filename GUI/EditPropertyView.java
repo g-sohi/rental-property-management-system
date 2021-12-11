@@ -265,6 +265,7 @@ public class EditPropertyView extends JFrame{
         );
 
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
 
     }
