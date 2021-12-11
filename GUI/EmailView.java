@@ -1,5 +1,20 @@
 package GUI;
 
+/**
+ * @author Curtis Silva <a href="mailto:curtis.silva@ucalgary.ca">
+ *         curtis.silva@ucalgary.ca</a>
+ * 
+ * @author Gurpartap Sohi <a href="mailto:gurpartap.sohi@ucalgary.ca">
+ *         gurpartap.sohi@ucalgary.ca</a>
+ * 
+ * @author Ivan Suyat<a href="mailto:ivan.suyat@ucalgary.ca">
+ *         ivan.suyat@ucalgary.ca/a>
+ * 
+ * @author Manpreet Singh<a href="mailto:manpreet.singh2@ucalgary.ca">
+ *         manpreet.singh2@ucalgary.ca</a>
+ * 
+ */
+
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -106,12 +121,10 @@ public class EmailView extends JFrame {
     }
 }
     public void addSendEmailListener(ActionListener listenForSendEmail){
-        System.out.println("DONE1");
         this.send.addActionListener(listenForSendEmail);
     }
 
     public void addBackListener(ActionListener listenForBack){
-        System.out.println("DONE1");
         this.back.addActionListener(listenForBack);
     }
 
@@ -164,8 +177,6 @@ public class EmailView extends JFrame {
         //JFrame frame = new JFrame("Registration Done");
             // show a joptionpane dialog using showMessageDialog
             JOptionPane.showMessageDialog(frame,"Email is sent successfully");
-            //frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            //System.out.println("working");
     }
 
     public void showErrorDialog()

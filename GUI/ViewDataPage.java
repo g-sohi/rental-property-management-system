@@ -121,21 +121,17 @@ public class ViewDataPage extends JFrame {
 
     // methods that check for button presses
     public void addBackListener(ActionListener listenForBack){
-        System.out.println("DONE1");
         this.back.addActionListener(listenForBack);
     }
 
     public void addRenterInfoListener(ActionListener listenForRenterInfo){
-        System.out.println("DONE1");
         this.renterInfo.addActionListener(listenForRenterInfo);
     }
 
     public void addLandlordInfoListener(ActionListener listenForRenterInfo){
-        System.out.println("DONE1");
         this.landlordInfo.addActionListener(listenForRenterInfo);
     }
     public void addPropertyInfoListener(ActionListener listenForRenterInfo){
-        System.out.println("DONE1");
         this.propertyInfo.addActionListener(listenForRenterInfo);
     }
 

@@ -710,7 +710,6 @@ public class SearchView extends JFrame{
     //Method to get the users selection between "Yes" and "No" for Furnished RadioButtons
     public String getFurnishedInput()
     {
-        //System.out.println("button choice selected is: " + group.getSelection().getActionCommand());
         if(group.getSelection() != null)
         {
         if(group.getSelection().getActionCommand() != null)
@@ -868,7 +867,6 @@ public class SearchView extends JFrame{
     //Listerner Method for the display button
     public void addDisplayListener(ActionListener listenForDisplay){
         displayButton.addActionListener(listenForDisplay);  
-        System.out.println("Added display listener");
     }
 
     //Listerner Method for the select button

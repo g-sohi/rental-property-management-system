@@ -68,38 +68,32 @@ public class ManagerView extends JFrame{
 
     //Listener Method to listen for the logout button
     public void addLogoutListener(ActionListener listenForLogout){
-        //System.out.println("DONE1");
         this.logout.addActionListener(listenForLogout);
     }
 
     //Listener Method to listen for the Search button
     public void addSearchListener(ActionListener listenForSearch){
-        //System.out.println("DONE");
         //Listener Method to listen for the logout button
         this.search.addActionListener(listenForSearch);
     }
 
     //Listener Method to listen for the Update button
     public void addUpdateListener(ActionListener listenForUpdate){
-        //System.out.println("DONE");
         this.updateProperty.addActionListener(listenForUpdate);
     }
 
     //Listener Method to listen for the Report button
     public void addReportListener(ActionListener listenForReport){
-        //System.out.println("DONE");
         this.generateReport.addActionListener(listenForReport);
     }
 
     //Listener Method to listen for the Edit Fees button
     public void addFeesListener(ActionListener listenForReport){
-        //System.out.println("DONE");
         this.editFees.addActionListener(listenForReport);
     }
 
     //Listener Method to listen for the View button
     public void addViewListener(ActionListener listenForView){
-        //System.out.println("DONE");
         this.viewInformation.addActionListener(listenForView);
     }
 
