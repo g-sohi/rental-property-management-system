@@ -40,6 +40,10 @@ public class CreatePropertyView extends JFrame{
     private Container ctr;
     private JLabel title;
     private JButton back;
+    /**
+     * Constructor for the CreatePropertyView 
+     * creates a GUI Window to create a property 
+     */
 
     public CreatePropertyView()
     {
@@ -148,81 +152,135 @@ public class CreatePropertyView extends JFrame{
         setLocationRelativeTo(null);
 		setVisible(true);
     }
-
+    /**
+     * Getter for register Button
+     */
     public JButton getRegister(){
         return this.register;
     }
-
+    /**
+     * Getter for back Button
+     */
     public JButton getBack(){
         return this.back;
     }
 
+    /**
+     * listener for register button
+     */
     public void addRegisterPropertyListener(ActionListener listenForRegister){
         this.register.addActionListener(listenForRegister);
     }
 
+    /**
+     * listener for back button
+     */
     public void addBackPropertyListener(ActionListener listenForRegister){
         this.back.addActionListener(listenForRegister);
     }
+
+    /**
+     * getter for type input
+     */
     public String getTypeInput()
     {
         return type.getSelectedItem().toString();
     }
+
+    /**
+     * getter for Quadrant input
+     */
 
     public String getQuadrantInput()
     {
         return quadrant.getSelectedItem().toString();
     }
 
+    /**
+     * getter for NoOfBed input
+     */
     public int getNoOfBedInput()
     {
         return Integer.valueOf(noBeds.getSelectedItem().toString());
     }
+
+    /**
+     * getter for NoOfBath input
+     */
     public int getNoOfBathInput()
     {
         return Integer.valueOf(noBaths.getSelectedItem().toString());
     }
+
+    /**
+     * getter for StreetNo input
+     */
     public String getStreetNoInput()
     {
         return streetNo.getText();
     }
 
+    /**
+     * getter for streetName input
+     */
     public String getStreetNameInput()
     {
         return streetName.getText();
     }
 
+    /**
+     * getter for city input
+     */
     public String getCityInput()
     {
         return city.getText();
     }
 
+     /**
+     * getter for postalCode input
+     */
     public String getPostalCodeInput()
     {
         return postalCode.getText();
     }
 
+     /**
+     * getter for furnished input
+     */
     public String getFurnishedInput()
     {
         return furnished.getSelectedItem().toString();
     }
 
+     /**
+     * getter for LandlordName input
+     */
     public int getLandlordInput()
     {
         return Integer.valueOf(landlordName.getText());
     }
 
+     /**
+     * show dialog box of error
+     */
     public void showErrorDialog()
     {
         
             JOptionPane.showMessageDialog(this, "Fill All fields");
     }
 
+     /**
+     * show dialog box of success
+     */
     public void showDialog()
     {
         
             JOptionPane.showMessageDialog(this, "Registration form is completed");
     }
+
+    /*
+    turns off GUI Frame
+    */
     public void destroyFrame()
     {
         setVisible(false);
