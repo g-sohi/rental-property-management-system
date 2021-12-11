@@ -168,10 +168,6 @@ public class EmailView extends JFrame {
         frame.setVisible(false);
     }
 
-    // **for testing purposes**
-    // public static void main(String [] args) {
-    //     new EmailView().turnOn();
-    // }
     public void showDialog()
     {
         //JFrame frame = new JFrame("Registration Done");

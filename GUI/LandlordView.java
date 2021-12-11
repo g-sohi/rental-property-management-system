@@ -135,9 +135,5 @@ public class LandlordView extends JFrame{
         search.addActionListener(listenForSearch);
     }
 
-    // public static void main(String [] args) {
-    //     LandlordView test =  new LandlordView();
-    //     test.turnOn();
-    // }
 }
 

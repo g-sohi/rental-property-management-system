@@ -215,13 +215,6 @@ public class FeesView extends JFrame {
         }
     }
 
-    // public static void main(String [] args)
-    // {
-
-    //     new FeesView(false).turnOnForLanLord();
-        
-    // }
-
     // sets frame for landlord user type to appear
     public void turnOnForLandlord()
     {
@@ -428,10 +421,5 @@ public class FeesView extends JFrame {
     {
         
             JOptionPane.showMessageDialog(fLlrd,"Fill All fields");
-    }
-    public static void main(String [] args) {
-        FeesView test =  new FeesView(false);
-        test.turnOnForLandlord();
-        //test.turnOnForManager();
     }
 }

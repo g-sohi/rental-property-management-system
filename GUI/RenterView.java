@@ -126,10 +126,4 @@ public class RenterView extends JFrame {
         return subscribe;
     }
 
-    // **for testing purposes**
-
-    // public static void main(String [] args) {
-    //     RenterView test =  new RenterView();
-    //     test.turnOn();
-    // }
 }
