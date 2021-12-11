@@ -141,6 +141,11 @@ public class ManagerController implements ActionListener, ItemListener {
             prop.getEditView().destroyFrame();
             managerv.turnOn();
         }
+        if(e.getSource().equals(prop.getEditView().getBackButton()))
+        {
+            prop.getEditView().destroyFrame();
+            managerv.turnOn();
+        }
     }
 
     if(this.search.getView() != null)
