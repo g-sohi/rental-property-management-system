@@ -307,7 +307,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
 
         Vector<String> tableInputs3 = new Vector<String>();
         tableInputs3.add(String.valueOf(p.getPropertyFees().getAmount()));
-        tableInputs3.add("YES");
+        tableInputs3.add(p.getPropertyFees().getFeesPaid());
         tableInputs3.add(p.getPropertyStatus());
         this.sView.getJTableModel3().setRowCount(0);
         this.sView.getJTableModel3().addRow(tableInputs3);
