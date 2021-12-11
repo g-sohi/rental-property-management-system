@@ -11,7 +11,9 @@ import java.time.format.DateTimeFormatter;
 import javax.sound.midi.MidiSystem;
 import javax.swing.JOptionPane;
  
-//Login Controller
+/**
+ * LoginController class controls the functionality for the login page
+ */
 public class LoginController implements ActionListener{
     private LoginView view;
     private Database db;

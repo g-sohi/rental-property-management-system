@@ -7,6 +7,9 @@ import java.util.*;
 import java.awt.event.*;
 import java.time.LocalDate;
 
+/**
+ * ManagerController class controls the functionality for the manager main page
+ */
 public class ManagerController implements ActionListener, ItemListener {
     private Manager manager;
     private ManagerView managerv;

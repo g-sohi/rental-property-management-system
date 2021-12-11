@@ -10,6 +10,9 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.*;
 
+/**
+ * RenterController class controls the functionality for the renter main page 
+ */
 public class RenterController implements ActionListener, ItemListener{
     private SelectPropertyView selectProp;
     private ArrayList<Property> listings;

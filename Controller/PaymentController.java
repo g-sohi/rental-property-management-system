@@ -8,6 +8,9 @@ import java.awt.event.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * PaymentController class controls the functionality for the fees view pages
+ */
 public class PaymentController implements ActionListener {
     
     private FeesView fees;

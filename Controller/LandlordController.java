@@ -8,7 +8,9 @@ import java.awt.event.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
-//Landlord Controller
+/**
+ * LandlordController class controls the functionality for the landlord's main page
+ */
 public class LandlordController implements ActionListener{
     private Landlord landlord;
     private LandlordView landlordV;

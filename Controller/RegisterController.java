@@ -8,6 +8,9 @@ import java.util.*;
 import java.awt.event.*;
 
 
+/**
+ * RegisterController class controls the functionality registering new properties 
+ */
 public class RegisterController implements ActionListener{
     
     private CreatePropertyView createProp;

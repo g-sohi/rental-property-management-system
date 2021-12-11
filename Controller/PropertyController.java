@@ -8,6 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
 
+/**
+ * PropertyController class controls the functionality for editing properties
+ */
 public class PropertyController implements ActionListener {
     //Member variables for class PropertyController
     private EditPropertyView edit;

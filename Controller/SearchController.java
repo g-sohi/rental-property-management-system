@@ -20,6 +20,9 @@ import java.awt.*;
 import java.awt.event.*;
 import java.beans.BeanDescriptor;
 
+/**
+ * SearchController class controls the functionality for searching properties
+ */
 public class SearchController implements ActionListener, ListSelectionListener{
     //Private members for the SearchController class
     private SearchView sView;
