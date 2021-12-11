@@ -16,79 +16,87 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 
 public class ViewDataPage extends JFrame {
+    
+    // variable declaration
     private JButton renterInfo, propertyInfo, landlordInfo, back;
-    //private JTextArea area;
-
     private JTable dataPage;
     private String data[][];
-    private String userData[][] = {{"mouss man", "Moussavi", "Moussavi", "7711230", "Manager"},
-    {"mouss man", "Moussavi", "Moussavi", "7711230", "Manager", "2021-12-09 18-21-23"}};
     private String userColumns[] = {"Username", "First Name", "Last Name", "ID", "User Type"};
-    private String propertyData[][] = {{"1", "1055 Kensington Place", "NE", "Townhouse", "1", "1", "No", "100", "Yes", "Active", "1", "2021-12-08", "2021-12-09", "1 Day", "2021-12-09"}};
     private String propertyColumns[] = {"Property ID", "Address", "Quadrant", "Type", "#ofBeds", "#ofBaths", "Furnished", "Fees", "Fees Paid", "Status", "Landlord ID", "Start Date", "End Date", "Fee Period", "Rent Date"};
     private DefaultTableModel model;
     private JScrollPane tableScroll;
 
-
+    // constructor - sets up GUI components
     public ViewDataPage()
     {
+        // configures JFrame
         setSize(1500, 700);
         setLayout(null);
         setTitle("View Information");
+
+        // creates JButtons with particular text
         renterInfo = new JButton("Renter Info");
         propertyInfo = new JButton("Property Info");
         landlordInfo = new JButton("LandLord Info");
         back = new JButton("Back");
-        //area = new JTextArea();
+
+        // adds JButtons to JFrame
         add(renterInfo);
         add(propertyInfo);
         add(landlordInfo);
         add(back);
-        //add(area);
-     
+        
+        // sets size and position of JButtons
         renterInfo.setBounds(450,10,150,30);
         propertyInfo.setBounds(675,10,150,30);
         landlordInfo.setBounds(900,10,150,30);
         back.setBounds(40, 10, 80, 30);
-        //area.setBounds(5,50,680,600);
 
-        setVisible(false);
+        setVisible(false); // ensures JFrame is not visible for proper function of other methods
     }
 
+    // sets up JTable with columns particularly for users (i.e., renter, landlord)
     public void user(String[][] users) {
-        //userData, userColumns propertyData, propertyColumns
-        // creation of JTable for data page
-        model = new DefaultTableModel(users, userColumns) { // sets all cells in table as uneditable
+        
+        // model to be used for table - sets all cells in table as uneditable
+        model = new DefaultTableModel(users, userColumns) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
+
+        // creates a table using given data and appropriate column headers
         dataPage = new JTable(users, userColumns);
         dataPage.setModel(model);
-        tableScroll = new JScrollPane(dataPage);
-        tableScroll.setBounds(25, 50, 1450, 600);
+        tableScroll = new JScrollPane(dataPage); // for scroll feature to accomodate for more rows
+        tableScroll.setBounds(25, 50, 1450, 600); // size and position configuration
         add(tableScroll);
-        turnOn();
+        turnOn(); // sets the particular view for users to appear
     }
 
+    // sets up JTable with columns particularly for properties
     public void prop(String[][] properties) {
-        //userData, userColumns propertyData, propertyColumns
-        // creation of JTable for data page
+
+        // model to be used for table - sets all cells in table as uneditable
         model = new DefaultTableModel(properties, propertyColumns) { // sets all cells in table as uneditable
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
+
+        // creates a table using given data and appropriate column headers
         dataPage = new JTable(properties, propertyColumns);
         dataPage.setModel(model);
-        dataPage.getColumnModel().getColumn(1).setPreferredWidth(150);
-        tableScroll = new JScrollPane(dataPage);
-        tableScroll.setBounds(25, 50, 1450, 600);
+        dataPage.getColumnModel().getColumn(1).setPreferredWidth(150); // accomodates for length of Address strings
+        tableScroll = new JScrollPane(dataPage); // for scroll feature to accomodate for more rows
+        tableScroll.setBounds(25, 50, 1450, 600); // size and position configuration
         add(tableScroll);
-        turnOn();
+        turnOn(); // sets the particular view for properties to appear
     }
+
+    // methods for getting button components
     public JButton getRenterInfoButton()
     {
         return renterInfo;
@@ -109,6 +117,7 @@ public class ViewDataPage extends JFrame {
         return back;
     }
 
+    // methods that check for button presses
     public void addBackListener(ActionListener listenForBack){
         System.out.println("DONE1");
         this.back.addActionListener(listenForBack);
@@ -128,17 +137,22 @@ public class ViewDataPage extends JFrame {
         this.propertyInfo.addActionListener(listenForRenterInfo);
     }
 
-
+    // sets current component/frame to appear
     public void turnOn()
     {
         setVisible(true);
     }
 
+    // sets current component/frame to disappear
     public void destroyFrame()
     {
         setVisible(false);
     }
 
+
+    // methods to populate table with appropriate data for each row and column
+
+    // data organization for properties 
     public String[][] copyProperties(ArrayList<Property> properties){
         String[][] props = new String[properties.size()][15];
         for(int i = 0; i < properties.size(); i++){
@@ -161,6 +175,7 @@ public class ViewDataPage extends JFrame {
         return props;
     }
 
+    // data organization for renters
     public String[][] copyRenters(ArrayList<Renter> rents){
         String[][] renters = new String[rents.size()][15];
         for(int i = 0; i < rents.size(); i++){
@@ -173,6 +188,7 @@ public class ViewDataPage extends JFrame {
         return renters;
     }
 
+    // data organization for landlords
     public String[][] copyLandlords(ArrayList<Landlord> lands){
         String[][] landlords = new String[lands.size()][15];
         for(int i = 0; i < lands.size(); i++){
@@ -184,9 +200,5 @@ public class ViewDataPage extends JFrame {
         }
         return landlords;
     }
-
-    /*public static void main(String[] args) {
-        //new ViewDataPage().prop();
-    }*/
 
 }
