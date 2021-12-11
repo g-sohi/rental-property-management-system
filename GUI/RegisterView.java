@@ -137,17 +137,16 @@ public class RegisterView extends JFrame {
     public void showDialog()
     {
         //JFrame frame = new JFrame("Registration Done");
-            // show a joptionpane dialog using showMessageDialog
-            JOptionPane.showMessageDialog(f,"Registeration is successful");
-            f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            System.out.println("working");
+        // show a joptionpane dialog using showMessageDialog
+        JOptionPane.showMessageDialog(f,"Registeration is successful");
+        f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        System.out.println("working");
     }
 
     
     public void showErrorDialog()
     {
-        
-            JOptionPane.showMessageDialog(f,"Fill All Fields");
+        JOptionPane.showMessageDialog(f,"Fill All Fields");
     }
 
 }
