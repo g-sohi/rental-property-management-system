@@ -32,6 +32,7 @@ public class LandlordView extends JFrame{
         logout.setBounds(250, 300, 100, 30);
 
         f.setLayout(null);
+        f.setLocationRelativeTo(null);
         f.setVisible(true);
     }
 

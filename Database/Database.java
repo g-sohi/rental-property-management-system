@@ -218,6 +218,20 @@ public class Database {
             return period;
         }
 
+        public double getFees(int id){
+            double amount = 0.0;
+            try{
+                String query = String.format("SELECT * FROM property WHERE Property_ID = %d", id);
+                PreparedStatement stmt = dbConnect.prepareStatement(query);
+                line = stmt.executeQuery();
+                line.next();
+                amount = line.getInt("Fees");
+            } catch (SQLException e) {
+                //e.printStackTrace();
+            }
+            return amount;
+        }
+
         public void updateFeeStatus(int id)
         {
             try {

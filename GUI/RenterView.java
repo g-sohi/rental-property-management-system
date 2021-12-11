@@ -33,8 +33,9 @@ public class RenterView extends JFrame {
         frame.add(select);
         frame.add(subscribe);
         frame.add(logout);
-
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true); // JFrame is set to appear
+        
 
     }
 
