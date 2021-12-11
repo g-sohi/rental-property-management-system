@@ -18,7 +18,7 @@ public class ManagerView extends JFrame{
         //JPanels for Background
         JPanel panel1 = new JPanel();  
         JPanel panel2 = new JPanel();  
-        //Header that Displays Landlord Homepage
+        //Header that Displays Manager Homepage
         JLabel header = new JLabel("Manager Homepage");
         //Edit the Font and Size of the Header text
         header.setFont(new Font("Lucida Grande", Font.BOLD, 36));
@@ -139,13 +139,13 @@ public class ManagerView extends JFrame{
         return this;
     }
 
-    //Method to set the frame of class LandlordView to not be visible
+    //Method to set the frame of class ManagerView to not be visible
     public void destroyFrame()
     {   
         setVisible(false);
     }
 
-    //Method to set the frame of class LandlordView to be visible
+    //Method to set the frame of class ManagerView to be visible
     public void turnOn()
     {
         setVisible(true);
