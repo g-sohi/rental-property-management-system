@@ -1,5 +1,6 @@
 ## rental-property-management-system
- Authors: Curtis Silva, Gurpartap Sohi, Ivan Suyat, Manpreet Singh (Group 18)
+ENSF 480 Final Project </br>
+Authors: Curtis Silva, Gurpartap Sohi, Ivan Suyat, Manpreet Singh (Group 18)
 
 ## Setting Up the MySQL Database
 1. Log in to the MySQL server through the command prompt using the credentials for the "root" user.
@@ -25,4 +26,9 @@ javac -cp ".;./lib/mysql-connector-java-8.0.23.jar" MainClass.java
 3. Run using:
 ```
 java -cp ".;./lib/mysql-connector-java-8.0.23.jar" MainClass
+```
+4. Enter password through the command line once prompted to connect to the MySQL Server as shown below:
+```
+Please enter the password to your MySQL Server.
+<Insert Password Here>
 ```
