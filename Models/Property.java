@@ -32,7 +32,7 @@ public class Property {
         this.numOfBathrooms = -1;
         this.numOfBedrooms = -1;
         this.furnished = "";
-        this.propertyFees = null;
+        this.propertyFees = new Fees();
         this.propertyStatus = "Suspended";
         this.startDate = "";
         this.endDate = "";

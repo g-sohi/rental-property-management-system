@@ -9,6 +9,13 @@ public class Email {
     /**
      * Constructor for the Email class
      */
+    public Email(){
+        this.subject = "";
+        this.message = "";
+        this.recip = "";
+        this.date = "";
+    }
+
     public Email(String subject, String message, String recip, String date) 
     {
         this.subject = subject;
