@@ -148,8 +148,4 @@ public class LoginView extends JFrame {
         inputPassword.setText("");
     }    
 
-<<<<<<< HEAD
-
-=======
->>>>>>> b68b3713d57a9537b79e3be67ff4c8069f2a001a
 }
