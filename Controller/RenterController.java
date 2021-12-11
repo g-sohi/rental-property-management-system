@@ -62,7 +62,8 @@ public class RenterController implements ActionListener, ItemListener{
             subscribe.addItemListener(this);
             subscribe.turnOn();
             subscribe.addBackListener(this);
-            subscribe.setTableData(copyProperties(db.getNewProperties("2021-12-01 05:03:00")));
+            subscribe.addClearListener(this);
+            subscribe.setTableData(copyProperties(db.getNewProperties(db.getLastLogin(this.renter.getId()))));
         }
         if(subscribe != null)
         {
@@ -70,6 +71,10 @@ public class RenterController implements ActionListener, ItemListener{
             {
                 subscribe.destroyFrame();
                 RenterView.turnOn();
+            }
+            if(e.getSource().equals(subscribe.getClearNotify()))
+            {
+                subscribe.setTableData();
             }
         }
         if(selectProp != null)

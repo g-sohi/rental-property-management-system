@@ -87,6 +87,20 @@ public class Database {
             return false;
         }
 
+        public String getLastLogin(int id){
+            String lastLogin = "";
+            try {
+                String query = String.format("SELECT * FROM user WHERE ID = %d", id);
+                PreparedStatement stmt = dbConnect.prepareStatement(query);
+                line = stmt.executeQuery();
+                line.next();
+                lastLogin = line.getString("LastLogin");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return lastLogin;
+        }
+
         public void updateLastLogin(String lastLogin, int id){
             try {
                 String query = String.format("UPDATE user SET LastLogin = '%s' WHERE ID = %d", lastLogin, id);
