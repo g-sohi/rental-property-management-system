@@ -329,7 +329,7 @@ public class Database {
                 line.next();
                 amount = line.getInt("Fees");
             } catch (SQLException e) {
-                //e.printStackTrace();
+                e.printStackTrace();
             }
             return amount;
         }
@@ -365,26 +365,6 @@ public class Database {
                 e.printStackTrace();
             }
         }
-
-        /*public void updateStartDate(int id, String startDate){
-            try {
-                String query = String.format("UPDATE property SET StartDate = '%s' WHERE Property_ID = %d", startDate, id);
-                Statement stmt = dbConnect.createStatement();
-                stmt.executeUpdate(query);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-        public void updateEndDate(int id, String endDate){
-            try {
-                String query = String.format("UPDATE property SET EndDate = '%s' WHERE Property_ID = %d", endDate, id);
-                Statement stmt = dbConnect.createStatement();
-                stmt.executeUpdate(query);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }*/
 
         /**
          * Update the listed property's info in the database after fees has been paid
