@@ -66,7 +66,7 @@ public class SubscribeView extends JFrame {
         f.add(subStatLabel); f.add(subscribe);
         f.add(back);
         f.add(clearNotify);
-
+        f.setLocationRelativeTo(null);
         f.setVisible(false); // JFrame is set to appear
 
     }
@@ -126,6 +126,12 @@ public class SubscribeView extends JFrame {
     public void addItemListener(ItemListener listenForItem){
         subscribe.addItemListener(listenForItem);
     }
+
+    public void setTableData(){
+        notifModel.setRowCount(0);
+        this.notifs.revalidate();
+      }
+   
 
     // **for testing purposes**
     // public static void main(String [] args) {

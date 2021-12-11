@@ -2,19 +2,19 @@ package Models;
 
 public class Property {
     //Member varables for the class Property
-    private int id;
-    private int landlordID;
-    private String address;
-    private String type;
-    private int numOfBedrooms;
-    private int numOfBathrooms;
-    private String furnished;
-    private Fees propertyFees;
-    private String propertyStatus;
-    private String quadrant;
-    private String rentDate;
-    private String startDate;
-    private String endDate;
+    private int id;                     //Property ID
+    private int landlordID;             //Landlord ID        
+    private String address;             //Property Address
+    private String type;                //Property type [Detattached, Attached, Town House, Apartment]
+    private int numOfBedrooms;          //Number of Bedrooms
+    private int numOfBathrooms;         //Number of Bathrooms
+    private String furnished;           //Furnished: Yes or No
+    private Fees propertyFees;          //Object of Fees for Property fees
+    private String propertyStatus;      //Property Status [Active, Rented, Cancelled, Suspeneded]
+    private String quadrant;            //Property Quadrant [NW, NE, SW, SE]
+    private String rentDate;            //Property Start Rent Date
+    private String startDate;           //Property Start Date when it becomes Active
+    private String endDate;             //Property End Date when property is removed from the application
 
     
     /**

@@ -52,6 +52,7 @@ public class SelectPropertyView extends JFrame {
         frame.add(back);
         frame.add(pID);
         frame.add(pDetails);
+        frame.setLocationRelativeTo(null);
 
  // JFrame is set to appear
 

@@ -152,6 +152,7 @@ public class FeesView extends JFrame {
             fMgr.add(save);
             fMgr.add(back);
             fMgr.add(select);
+            fMgr.setLocationRelativeTo(null);
 
             //fLlrd.setVisible(false);
             //fMgr.setVisible(true);
@@ -191,6 +192,7 @@ public class FeesView extends JFrame {
             fLlrd.add(payFees);
             fLlrd.add(back);
             fLlrd.add(select);
+            fLlrd.setLocationRelativeTo(null);
 
             //fMgr.setVisible(false);
             //fLlrd.setVisible(true);

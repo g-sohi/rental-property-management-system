@@ -51,6 +51,8 @@ public class ViewDataPage extends JFrame {
         propertyInfo.setBounds(675,10,150,30);
         landlordInfo.setBounds(900,10,150,30);
         back.setBounds(40, 10, 80, 30);
+        
+        setLocationRelativeTo(null);
 
         setVisible(false); // ensures JFrame is not visible for proper function of other methods
     }

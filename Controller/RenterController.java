@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.*;
 
-public class RenterController implements ActionListener{
+public class RenterController implements ActionListener, ItemListener{
     private SelectPropertyView selectProp;
     private ArrayList<Property> listings;
     private Renter renter;
@@ -59,9 +59,11 @@ public class RenterController implements ActionListener{
         {
             RenterView.destroyFrame();
             subscribe = new SubscribeView();
+            subscribe.addItemListener(this);
             subscribe.turnOn();
             subscribe.addBackListener(this);
-            subscribe.setTableData(copyProperties(db.getNewProperties("2021-12-01 05:03:00")));
+            subscribe.addClearListener(this);
+            subscribe.setTableData(copyProperties(db.getNewProperties(db.getLastLogin(this.renter.getId()))));
         }
         if(subscribe != null)
         {
@@ -69,6 +71,10 @@ public class RenterController implements ActionListener{
             {
                 subscribe.destroyFrame();
                 RenterView.turnOn();
+            }
+            if(e.getSource().equals(subscribe.getClearNotify()))
+            {
+                subscribe.setTableData();
             }
         }
         if(selectProp != null)
@@ -251,6 +257,17 @@ public class RenterController implements ActionListener{
         RenterView.addSelectListener(this);
         RenterView.addSubscribeListener(this);
     }
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+        if(e.getStateChange() == ItemEvent.SELECTED){
+            if(e.getSource().equals(subscribe.getSubStatBox()))
+            {
+                subscribe.setTableData();
+            }
+        
+    }
+}
 
     
 }

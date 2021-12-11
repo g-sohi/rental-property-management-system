@@ -87,6 +87,20 @@ public class Database {
             return false;
         }
 
+        public String getLastLogin(int id){
+            String lastLogin = "";
+            try {
+                String query = String.format("SELECT * FROM user WHERE ID = %d", id);
+                PreparedStatement stmt = dbConnect.prepareStatement(query);
+                line = stmt.executeQuery();
+                line.next();
+                lastLogin = line.getString("LastLogin");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return lastLogin;
+        }
+
         public void updateLastLogin(String lastLogin, int id){
             try {
                 String query = String.format("UPDATE user SET LastLogin = '%s' WHERE ID = %d", lastLogin, id);
@@ -216,6 +230,20 @@ public class Database {
                 //e.printStackTrace();
             }
             return period;
+        }
+
+        public double getFees(int id){
+            double amount = 0.0;
+            try{
+                String query = String.format("SELECT * FROM property WHERE Property_ID = %d", id);
+                PreparedStatement stmt = dbConnect.prepareStatement(query);
+                line = stmt.executeQuery();
+                line.next();
+                amount = line.getInt("Fees");
+            } catch (SQLException e) {
+                //e.printStackTrace();
+            }
+            return amount;
         }
 
         public void updateFeeStatus(int id)

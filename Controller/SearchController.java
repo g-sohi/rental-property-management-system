@@ -50,8 +50,13 @@ public class SearchController implements ActionListener, ListSelectionListener{
         if(e.getSource().equals(sView.getDisplayButton()) && landLordSearch == true)
         {
             System.out.println("Display working");
+            //Call function getLandLordProperties in the Database class and pass in the member variable landlord ID
+            //getLandlordProperties returns an ArrayList of type Properties, that returns all the Properties in the database
+            //with the ladnlord ID that was passed in as an argument
             ArrayList<Property> landlordProperties = db.getLandlordProperties(landlordID);
+            //set the memeber variable listings to landlordProperties
             setListings(landlordProperties);
+            //Make a string array the same size as ArrayList landlordProperties size.
             String llproperties[] = new String[landlordProperties.size()];
             int IDs[] = new int[landlordProperties.size()];
             for(int i = 0; i < landlordProperties.size(); i++)
