@@ -15,11 +15,11 @@ public class User {
     public User()
     {
         this.username = "";
-        this.fName = "arr";
-        this.lName = "ss";
-        this.id = -1222;
+        this.fName = "";
+        this.lName = "";
+        this.id = -1;
         this.password = "";
-        this.userType = "none";
+        this.userType = "";
     }
     public User(String username,String fName, String lName, int id, String password, String userType ){
         this.username = username;

@@ -11,6 +11,15 @@ public class Address {
     /**
      * Constructor for the Address class
      */
+    public Address(){
+        this.streetNo = 0;
+        this.streetName = "";
+        this.city = "";
+        this.postalCode = "";
+        this.quadrant = "";
+        this.aptNo = 0;
+    }
+
     public Address(int streetNo, String streetName, String city, String postalCode, String quadrant,int aptNo )
     {
         this.streetNo = streetNo;
