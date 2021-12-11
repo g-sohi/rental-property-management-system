@@ -8,16 +8,23 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * Database class communicates with the MySQL Server to read
+ * and write data to the database
+ */
 public class Database {
 
         private final String DBUSER;
         private final String DBPASS;
         private final String DBURL = "jdbc:mysql://localhost/rpms";
     
-        private Connection dbConnect; // connection between database and program
+        private Connection dbConnect; 
 
         private ResultSet line;
 
+        /**
+         * Database Constructor reads user password and establishes connection to database
+         */
         public Database() {
             String username = "root";
             String password = readPassword();
@@ -38,10 +45,7 @@ public class Database {
         }
     
         /**
-         * initializeConnection() is a helper method called by the constructor. The
-         * connection to the mySQL database is attempted using the user inputs. If the
-         * login fails, an SQLException is caught and the program exits. 
-         * No arguments taken, no return value.
+         * initializeConnection() establishes a connection between the program and the database
          */
         public void initializeConnection() {
             try {
@@ -54,6 +58,14 @@ public class Database {
             }
         }
 
+        /**
+         * Adds a user into the user table in the database
+         * @param username
+         * @param FName
+         * @param LName
+         * @param Password
+         * @param UserType
+         */
         public void addUser(String username, String FName, String LName, String Password, String UserType) {
             try {
                 String query = "INSERT INTO user(UserName, FName,LName, Password, UserType) ";
@@ -68,6 +80,11 @@ public class Database {
             }
         }
 
+       /**
+        * Checks if a username is already taken in the user table in the database
+        * @param username
+        * @return true if username is exists, otherwise false
+        */ 
         public boolean usernameExists(String username){
             try {
                 String query = String.format("SELECT user.UserName FROM user WHERE UserName = '%s'", username);
@@ -87,6 +104,11 @@ public class Database {
             return false;
         }
 
+        /**
+         * Retrieves the user's last login information
+         * @param id
+         * @return String containing the user's last login info
+         */
         public String getLastLogin(int id){
             String lastLogin = "";
             try {
@@ -101,6 +123,11 @@ public class Database {
             return lastLogin;
         }
 
+        /**
+         * Updates the user's last login information in the user table
+         * @param lastLogin
+         * @param id
+         */
         public void updateLastLogin(String lastLogin, int id){
             try {
                 String query = String.format("UPDATE user SET LastLogin = '%s' WHERE ID = %d", lastLogin, id);
@@ -112,6 +139,11 @@ public class Database {
             }
         }
 
+        /**
+         * Retrieves the user's information from the user table in the database
+         * @param username
+         * @return User object containing user information from the databse
+         */
         public User getUserInformation(String username){
             User use = new User();
             try {
@@ -132,6 +164,12 @@ public class Database {
             return use;
         }
 
+        /**
+         * Retrieves the user's type after they log in
+         * @param username
+         * @param password
+         * @return String containing the user's type
+         */
         public String getUserType(String username, String password)
         {
             String userTypeVal = "";
@@ -150,6 +188,12 @@ public class Database {
             return userTypeVal;
         }
 
+        /**
+         * Verifies that the user's login information exists in the database
+         * @param username
+         * @param password
+         * @return true if the user's login information exists, false otherwise
+         */
         public boolean verifyUser(String username, String password){
             boolean authenticate = false;
             try {
@@ -172,6 +216,20 @@ public class Database {
             return authenticate;
         }
 
+        /**
+         * Adds a property into the property table in the database
+         * @param address
+         * @param quadrant
+         * @param type
+         * @param numBedrooms
+         * @param numBathrooms
+         * @param furnished
+         * @param fees
+         * @param status
+         * @param landID
+         * @param startD
+         * @param endD
+         */
         public void addProperty(String address,String quadrant, String type, int numBedrooms, int numBathrooms, String furnished, double fees, String status, int landID, String startD, String endD){
             try {
                 String query = "INSERT INTO property(Address, quadrant, Type, NoOfBedrooms, NoOfBathrooms, Furnished, Fees, FeesPaid, Status, Landlord_ID, StartDate, EndDate) ";
@@ -185,6 +243,10 @@ public class Database {
             }
         }
 
+        /**
+         * Removes a property from the property table in the database
+         * @param id
+         */
         public void removeProperty(int id){
             try {
                 String query = String.format("DELETE FROM property WHERE Property_ID = %d", id);
@@ -195,6 +257,11 @@ public class Database {
             }
         }
 
+        /**
+         * Retrieves property information for a specific property from the database
+         * @param propertyID
+         * @return Property object containing the requested property's information
+         */
         public Property getProperty(int propertyID){
             Property prop = new Property();
             try {
@@ -218,6 +285,11 @@ public class Database {
             return prop;
         }
 
+        /**
+         * Retrieves the requested property's maximum listing period from the database
+         * @param id
+         * @return listing period set by manager
+         */
         public int getPeriod(int id){
             int period = 0;
             try{
@@ -232,6 +304,11 @@ public class Database {
             return period;
         }
 
+        /**
+         * Retrieve the fees amount required for the requested property to be listed 
+         * @param id
+         * @return fees amount
+         */
         public double getFees(int id){
             double amount = 0.0;
             try{
@@ -246,6 +323,10 @@ public class Database {
             return amount;
         }
 
+        /**
+         * Update property status in the property table in the database
+         * @param id
+         */  
         public void updateFeeStatus(int id)
         {
             try {
@@ -257,6 +338,12 @@ public class Database {
             }
         }
 
+        /**
+         * Update requested property's period and fees in the database
+         * @param id
+         * @param amount
+         * @param period
+         */
         public void updatePeriodStatus(int id, double amount, int period)
         {
             try {
@@ -268,7 +355,7 @@ public class Database {
             }
         }
 
-        public void updateStartDate(int id, String startDate){
+        /*public void updateStartDate(int id, String startDate){
             try {
                 String query = String.format("UPDATE property SET StartDate = '%s' WHERE Property_ID = %d", startDate, id);
                 Statement stmt = dbConnect.createStatement();
@@ -286,8 +373,14 @@ public class Database {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
 
+        /**
+         * Update the listed property's info in the database after fees has been paid
+         * @param id
+         * @param startDate
+         * @param endDate
+         */
         public void updatePaidProperty(int id, String startDate, String endDate){
             try {
                 String query = String.format("UPDATE property SET Status = 'Active', StartDate = '%s', EndDate = '%s' Where Property_ID = %d", startDate, endDate, id);
@@ -298,6 +391,13 @@ public class Database {
             }
         }
 
+        /**
+         * Allow the landlord to update the status of an owned property in the database
+         * @param id
+         * @param status
+         * @param rentDate
+         * @param landID
+         */
         public void updatePropertyLandLord(int id, String status, String rentDate, int landID){
             try {
                 if(!status.equalsIgnoreCase("rented")){
@@ -311,10 +411,16 @@ public class Database {
                     stmt.executeUpdate(query);
                 }
             } catch (SQLException e) {
-                //e.printStackTrace();
+                e.printStackTrace();
             }
         }
 
+        /**
+         * 
+         * @param id
+         * @param status
+         * @param rentDate
+         */
         public void updateProperty(int id, String status, String rentDate){
             try {
                 if(!status.equalsIgnoreCase("rented")){
@@ -332,6 +438,11 @@ public class Database {
             }
         }
 
+        /**
+         * Retrieve list of searched properties from the database
+         * @param p
+         * @return ArrayList of Properties
+         */
         public ArrayList<Property> getSearchProperties(Property p) {
             ArrayList<Property> properties = new ArrayList<Property>();
             List<String> inputs = new ArrayList<String>();
@@ -421,6 +532,11 @@ public class Database {
             return properties;
         }
 
+        /**
+         * Retrieve landlord name from the database based on the ID
+         * @param landlordID
+         * @return landlord name
+         */
         public String getLandlordName(int landlordID){
             String name = "";
             try {
@@ -435,6 +551,10 @@ public class Database {
             return name;
         }
 
+        /**
+         * Retrieve list of all landlords within the database
+         * @return ArrayList containing Landlords
+         */
         public ArrayList<Landlord> getAllLandlords(){
             ArrayList<Landlord> landlords = new ArrayList<>();
             try {
@@ -462,6 +582,11 @@ public class Database {
             return landlords;
         }
 
+        /**
+         * Retrieve the list of all properties owned by a landlord
+         * @param landLordID
+         * @return ArrayList of properties that are under the requested landlord
+         */
         public ArrayList<Property> getLandlordProperties(int landLordID) {
             ArrayList<Property> properties = new ArrayList<Property>();
             try {
@@ -497,6 +622,10 @@ public class Database {
             return properties;
         }
 
+        /**
+         * Retrieve a list of all the renters within the database
+         * @return ArrayList containing all renters
+         */
         public ArrayList<Renter> getAllRenters(){
             ArrayList<Renter> renters = new ArrayList<>();
             try {
@@ -524,6 +653,10 @@ public class Database {
             return renters;
         }
 
+        /**
+         * Retrieve a list of all of the properties within the database
+         * @return ArrayList of all properties 
+         */
         public ArrayList<Property> getManagerProperties() {
             ArrayList<Property> properties = new ArrayList<Property>();
             try {
@@ -557,6 +690,11 @@ public class Database {
             return properties;
         }
 
+        /**
+         * Retrieve a list of all of the properties that were added after the user last logged in
+         * @param lastLogin
+         * @return ArrayList containing new properties
+         */
         public ArrayList<Property> getNewProperties(String lastLogin){
             ArrayList<Property> properties = new ArrayList<Property>();
             try {
@@ -588,6 +726,13 @@ public class Database {
             return properties;
         }
 
+        /**
+         * Count the number of properties based on different input queries
+         * @param type
+         * @param periodStart
+         * @param periodEnd
+         * @return total number of properties that satisfy a certain input query
+         */
         public int countListings(String type, String periodStart, String periodEnd){
             int count = 0;
             try {
@@ -614,6 +759,12 @@ public class Database {
             return count;
         }
 
+        /**
+         * Retrieve a list of all of the properties that were rented after a certain date
+         * @param periodStart
+         * @param periodEnd
+         * @return ArrayList containing all rented properties after a certain date
+         */
         public ArrayList<Property> getRentedProperties(String periodStart, String periodEnd){
             ArrayList<Property> properties = new ArrayList<Property>();
             try {
@@ -646,6 +797,9 @@ public class Database {
             return properties;
         }
 
+        /**
+         * Close connection to the database
+         */
         public void close() {
             try {
                 this.dbConnect.close();
@@ -655,6 +809,10 @@ public class Database {
             }
         }
 
+        /**
+         * Read the user's password info to log into the MySQL Server
+         * @return user's MySQL server password
+         */
         public String readPassword(){
             System.out.println("Please enter the password to your MySQL Server.");
             Scanner read = new Scanner(System.in);
