@@ -1,7 +1,5 @@
 ## rental-property-management-system
- Rental Property Management System for ENSF 480
- Group: 18
- Authors: Curtis Silva, Curtis Silva, Gurpartap Sohi, Ivan Suyat, Manpreet Singh
+ Authors: Curtis Silva, Curtis Silva, Gurpartap Sohi, Ivan Suyat, Manpreet Singh (Group 18)
 
 ## Setting Up the MySQL Database
 1. Log in to the MySQL server through the command prompt using the credentials for the "root" user.
