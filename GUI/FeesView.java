@@ -1,5 +1,20 @@
 package GUI;
 
+/**
+ * @author Curtis Silva <a href="mailto:curtis.silva@ucalgary.ca">
+ *         curtis.silva@ucalgary.ca</a>
+ * 
+ * @author Gurpartap Sohi <a href="mailto:gurpartap.sohi@ucalgary.ca">
+ *         gurpartap.sohi@ucalgary.ca</a>
+ * 
+ * @author Ivan Suyat<a href="mailto:ivan.suyat@ucalgary.ca">
+ *         ivan.suyat@ucalgary.ca/a>
+ * 
+ * @author Manpreet Singh<a href="mailto:manpreet.singh2@ucalgary.ca">
+ *         manpreet.singh2@ucalgary.ca</a>
+ * 
+ */
+
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -275,21 +290,17 @@ public class FeesView extends JFrame {
     }
 
     public void addBackListener(ActionListener listenForBack){
-        System.out.println("DONE1");
         this.back.addActionListener(listenForBack);
     }
     public void addPayFeeListener(ActionListener listenForPayFee){
-        System.out.println("DONE1");
         this.payFees.addActionListener(listenForPayFee);
     }
 
     public void addSelectListener(ActionListener listenForSelect){
-        System.out.println("DONE1");
         this.select.addActionListener(listenForSelect);
     }
 
     public void addSaveListener(ActionListener listenForSave){
-        System.out.println("DONE1");
         this.save.addActionListener(listenForSave);
     }
 
@@ -398,8 +409,6 @@ public class FeesView extends JFrame {
         //JFrame frame = new JFrame("Registration Done");
             // show a joptionpane dialog using showMessageDialog
             JOptionPane.showMessageDialog(fLlrd," Fee is paid successfully");
-            //frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            //System.out.println("working");
     }
 
     public void showErrorDialogLandlord()
@@ -413,8 +422,6 @@ public class FeesView extends JFrame {
         //JFrame frame = new JFrame("Registration Done");
             // show a joptionpane dialog using showMessageDialog
             JOptionPane.showMessageDialog(fLlrd," Fee changes applied successfully");
-            //frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            //System.out.println("working");
     }
 
     public void showErrorDialogManager()

@@ -1,5 +1,20 @@
 package Controller;
 
+/**
+ * @author Curtis Silva <a href="mailto:curtis.silva@ucalgary.ca">
+ *         curtis.silva@ucalgary.ca</a>
+ * 
+ * @author Gurpartap Sohi <a href="mailto:gurpartap.sohi@ucalgary.ca">
+ *         gurpartap.sohi@ucalgary.ca</a>
+ * 
+ * @author Ivan Suyat<a href="mailto:ivan.suyat@ucalgary.ca">
+ *         ivan.suyat@ucalgary.ca/a>
+ * 
+ * @author Manpreet Singh<a href="mailto:manpreet.singh2@ucalgary.ca">
+ *         manpreet.singh2@ucalgary.ca</a>
+ * 
+ */
+
 import Models.*;
 import GUI.*;
 import Database.*;
@@ -117,7 +132,6 @@ public class RenterController implements ActionListener, ItemListener{
                         allPropertyInfo += "\n";
                         selectProp.getPropertyInfoTextArea().setText(allPropertyInfo);
                         selectProp.getPropertyInfoTextArea().setFont(selectProp.getPropertyInfoTextArea().getFont().deriveFont(12f)); 
-                        System.out.println("ID: " + id);
                     }
                     else
                     {
@@ -143,8 +157,6 @@ public class RenterController implements ActionListener, ItemListener{
         {
             if(e.getSource().equals(emailv.getSendButton())) //renter sends email
             {
-                System.out.println(emailv.getBody());
-                System.out.println(emailv.getFrom());
                 if(!emailv.getBody().equals("") && !emailv.getFrom().equals("") && !emailv.getSub().equals(""))
                 {
                 emailv.showDialog(); 
@@ -154,7 +166,6 @@ public class RenterController implements ActionListener, ItemListener{
                 }
                 else
                 {
-                    System.out.println("Error");
                     emailv.showErrorDialog();
                 }
             }
@@ -249,8 +260,6 @@ public class RenterController implements ActionListener, ItemListener{
     public String[][] copyProperties(ArrayList<Property> properties){
         String[][] props = new String[properties.size()][2];
         for(int i = 0; i < properties.size(); i++){
-            System.out.println("propID: " +properties.get(i).getID());
-            System.out.println("LandID: " +properties.get(i).getLandlordID());
             props[i][0] = String.valueOf(properties.get(i).getID());
             props[i][1] = properties.get(i).getAddress();
         }

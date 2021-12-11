@@ -123,12 +123,10 @@ public class SubscribeView extends JFrame {
 
     // methods that act to check for button presses or interactions with the combo box
     public void addBackListener(ActionListener listenForBack){
-        System.out.println("DONE");
         this.back.addActionListener(listenForBack);
     }
 
     public void addClearListener(ActionListener listenForReport){
-        System.out.println("CLEAR");
         this.clearNotify.addActionListener(listenForReport);
     }
 

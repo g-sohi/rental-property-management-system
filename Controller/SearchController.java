@@ -1,5 +1,20 @@
 package Controller;
 
+/**
+ * @author Curtis Silva <a href="mailto:curtis.silva@ucalgary.ca">
+ *         curtis.silva@ucalgary.ca</a>
+ * 
+ * @author Gurpartap Sohi <a href="mailto:gurpartap.sohi@ucalgary.ca">
+ *         gurpartap.sohi@ucalgary.ca</a>
+ * 
+ * @author Ivan Suyat<a href="mailto:ivan.suyat@ucalgary.ca">
+ *         ivan.suyat@ucalgary.ca/a>
+ * 
+ * @author Manpreet Singh<a href="mailto:manpreet.singh2@ucalgary.ca">
+ *         manpreet.singh2@ucalgary.ca</a>
+ * 
+ */
+
 import Models.*;
 import GUI.*;
 import Database.*;
@@ -60,7 +75,6 @@ public class SearchController implements ActionListener, ListSelectionListener{
         //Enter statement below if the display button for the searchView frame is triggered and landlordSearch boolean equals true
         if(e.getSource().equals(sView.getDisplayButton()) && landLordSearch == true)
         {
-            System.out.println("Display working");
             //Call function getLandLordProperties in the Database class and pass in the member variable landlord ID
             //getLandlordProperties returns an ArrayList of type Properties, that returns all the Properties in the database
             //with the ladnlord ID that was passed in as an argument
@@ -81,7 +95,6 @@ public class SearchController implements ActionListener, ListSelectionListener{
         //Enter statment below if the display button for the searchView frame is triggered and managerSearch boolean equals true
         if(e.getSource().equals(sView.getDisplayButton()) && managerSearch == true)
         {
-            System.out.println("Display working");
             ArrayList<Property> managerProperties = db.getManagerProperties();
             setListings(managerProperties);
             String allProperties[] = new String[managerProperties.size()];
@@ -124,31 +137,8 @@ public class SearchController implements ActionListener, ListSelectionListener{
                     //Make a 2D String array for the JTable in the searchView which will contain the data
                     String results[][] = displayProperty(input, columnNames);
 
-                    System.out.println("PRINTING RESULTS: ");
-                    for(int i = 0; i < results.length; i++)
-                    {
-                        for(int j = 0; j < results[i].length; j++)
-                        {
-                            System.out.print(results[i][j]);
-                        }
-                        System.out.println();
-                    }
-
-                    System.out.println("PRINTING INPUT: ");
-                    for(int i = 0; i < input.size(); i++)
-                    {
-                        System.out.print(input.get(i).getAddress());
-                    }
-                    //sView.setPropertiesList(input);
-                    // JList<String> test2 = new JList<String>(results);
-                    // test2.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-                    // test2.setLayoutOrientation(JList.VERTICAL_WRAP);
-                    // test2.setVisibleRowCount(1);
-                    // sView.add(test2);
-
                     JTable test2 = new JTable(results, columnNames);
-                    // test2.getColumnModel().getColumn(0).setPreferredWidth(10);
-                    // test2.getColumnModel().getColumn(1).setPreferredWidth(30);
+
                     final TableColumnModel columnModel = test2.getColumnModel();
                     columnModel.getColumn(0).setPreferredWidth(7);
                     columnModel.getColumn(1).setPreferredWidth(20);
@@ -159,18 +149,16 @@ public class SearchController implements ActionListener, ListSelectionListener{
                     JScrollPane scrollPane = new JScrollPane();
                     scrollPane.setViewportView(test2);
                     scrollPane.setBounds(30, 325, 440, 115);
-                    //JButton test2 = new JButton("Something happened");
-                    //sView.add(test2);
+
                     sView.add(scrollPane);  
                 }
                 else if(landLordSearch)
                 {
-                    System.out.println("Landlord search");
-                    System.out.println("This is the Landlord ID in Search Controller " + this.landlordID);
+
                 }
                 else if(managerSearch)
                 {
-                    System.out.println("Manager search");
+
                 }   
             }
         }
@@ -259,7 +247,6 @@ public class SearchController implements ActionListener, ListSelectionListener{
         rentSearch = false;
         managerSearch = false;
         landLordSearch = false;
-        System.out.println("Search reset");
     }
 
     //enable search view for manager
@@ -268,10 +255,8 @@ public class SearchController implements ActionListener, ListSelectionListener{
         managerSearch = true;
         sView = new SearchView(); 
         this.sView.addDisplayListener(this);
-        System.out.println(managerSearch);
         sView.turnOnForManager();
         this.sView.addSelectListener(this);
-        //sView.mgr();
     }
 
     //enable landlord search view
@@ -281,8 +266,6 @@ public class SearchController implements ActionListener, ListSelectionListener{
         this.sView.addDisplayListener(this);
         sView.turnOnForLandlord();
         this.sView.addSelectListener(this);
-        System.out.println("This is the Landlord ID in Search Controller " + this.landlordID);
-        //sView.llrd();
     }
 
     //display properties 

@@ -1,5 +1,20 @@
 package GUI;
 
+/**
+ * @author Curtis Silva <a href="mailto:curtis.silva@ucalgary.ca">
+ *         curtis.silva@ucalgary.ca</a>
+ * 
+ * @author Gurpartap Sohi <a href="mailto:gurpartap.sohi@ucalgary.ca">
+ *         gurpartap.sohi@ucalgary.ca</a>
+ * 
+ * @author Ivan Suyat<a href="mailto:ivan.suyat@ucalgary.ca">
+ *         ivan.suyat@ucalgary.ca/a>
+ * 
+ * @author Manpreet Singh<a href="mailto:manpreet.singh2@ucalgary.ca">
+ *         manpreet.singh2@ucalgary.ca</a>
+ * 
+ */
+
 import javax.swing.*;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -120,16 +135,6 @@ public class CreatePropertyView extends JFrame{
 		furnished.setSize(150, 40);
         furnished.setLocation(480, 480);
 		ctr.add(furnished); 
-		/*JLabel lName = new JLabel("Landlord ID: ");
-		lName.setFont(new Font("Arial", Font.PLAIN, 15));
-		lName.setSize(200, 40);
-        lName.setLocation(300, 530);
-		ctr.add(lName);*/
-        /*landlordName = new JTextField();
-		landlordName.setFont(new Font("Arial", Font.PLAIN, 15));
-		landlordName.setSize(150, 40);
-        landlordName.setLocation(480, 530);
-		ctr.add(landlordName);*/
         register = new JButton("Submit");
 		register.setFont(new Font("Arial", Font.PLAIN, 15));
 		register.setSize(200, 60);

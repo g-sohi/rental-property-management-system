@@ -1,5 +1,20 @@
 package Database;
 
+/**
+ * @author Curtis Silva <a href="mailto:curtis.silva@ucalgary.ca">
+ *         curtis.silva@ucalgary.ca</a>
+ * 
+ * @author Gurpartap Sohi <a href="mailto:gurpartap.sohi@ucalgary.ca">
+ *         gurpartap.sohi@ucalgary.ca</a>
+ * 
+ * @author Ivan Suyat<a href="mailto:ivan.suyat@ucalgary.ca">
+ *         ivan.suyat@ucalgary.ca/a>
+ * 
+ * @author Manpreet Singh<a href="mailto:manpreet.singh2@ucalgary.ca">
+ *         manpreet.singh2@ucalgary.ca</a>
+ * 
+ */
+
 import Controller.*;
 import Models.*;
 import GUI.*;
@@ -41,7 +56,6 @@ public class Database {
             this.DBPASS = password;
     
             this.initializeConnection();
-            System.out.println("test");
         }
     
         /**
@@ -71,7 +85,6 @@ public class Database {
                 String query = "INSERT INTO user(UserName, FName,LName, Password, UserType) ";
                 query += "VALUES ('%s', '%s', '%s','%s', '%s')";
                 query = String.format(query, username, FName,LName, Password, UserType);
-                System.out.println(query);
                 Statement stmt = dbConnect.createStatement();
                 stmt.executeUpdate(query);
                 stmt.close();
@@ -181,7 +194,6 @@ public class Database {
                 line = stmt.executeQuery();
                 line.next();
                 userTypeVal = line.getString("UserType");
-                System.out.println(userTypeVal);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -235,7 +247,6 @@ public class Database {
                 String query = "INSERT INTO property(Address, quadrant, Type, NoOfBedrooms, NoOfBathrooms, Furnished, Fees, FeesPaid, Status, Landlord_ID, StartDate, EndDate) ";
                 query += "VALUES ('%s', '%s','%s', %d, %d, '%s', %f, 'No', '%s', %d, '%s', '%s')";
                 query = String.format(query,address,quadrant, type, numBedrooms, numBathrooms, furnished, fees, status, landID, startD, endD);
-                System.out.println(query);
                 Statement stmt = dbConnect.createStatement();
                 stmt.executeUpdate(query);
             } catch (SQLException e) {
@@ -493,21 +504,17 @@ public class Database {
 
                 unformattedQuery += "Status = ?";
                 inputs.add("Active");
-                System.out.println(unformattedQuery);
 
                 String query = String.format(unformattedQuery);
                 PreparedStatement stmt = dbConnect.prepareStatement(query);
                 for(int i = 0; i < inputs.size(); i++){
                     if(Character.isDigit(inputs.get(i).charAt(0))){
-                        System.out.println(Integer.parseInt(inputs.get(i)));
                         stmt.setInt(i+1, Integer.parseInt(inputs.get(i)));
                     }
                     else{
-                        System.out.println(inputs.get(i));
                         stmt.setString(i+1, inputs.get(i));
                     }
                 }
-                System.out.println(stmt.toString());
                 line = stmt.executeQuery();
                 while (line.next()) {
                     int ID = line.getInt("Property_ID");
@@ -747,7 +754,6 @@ public class Database {
                     query = String.format("SELECT COUNT(StartDate) AS result_count FROM property WHERE StartDate BETWEEN '%s' AND '%s' AND Status = 'Active'", periodStart, periodEnd);
 
                 }
-                System.out.println(query);
                 PreparedStatement stmt = dbConnect.prepareStatement(query);
                 line = stmt.executeQuery();
                 if(line.next()){

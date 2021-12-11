@@ -1,5 +1,20 @@
 package GUI;
 
+/**
+ * @author Curtis Silva <a href="mailto:curtis.silva@ucalgary.ca">
+ *         curtis.silva@ucalgary.ca</a>
+ * 
+ * @author Gurpartap Sohi <a href="mailto:gurpartap.sohi@ucalgary.ca">
+ *         gurpartap.sohi@ucalgary.ca</a>
+ * 
+ * @author Ivan Suyat<a href="mailto:ivan.suyat@ucalgary.ca">
+ *         ivan.suyat@ucalgary.ca/a>
+ * 
+ * @author Manpreet Singh<a href="mailto:manpreet.singh2@ucalgary.ca">
+ *         manpreet.singh2@ucalgary.ca</a>
+ * 
+ */
+
 
 import javax.swing.*;
 import javax.swing.JButton;
@@ -314,13 +329,11 @@ public class EditPropertyView extends JFrame{
 
     //Listener for the Save button which hecks if "Subscribe" button is triggered
     public void addSaveListener(ActionListener listenForSave){
-        System.out.println("DONE");
         this.save.addActionListener(listenForSave);
     }
 
     //Listener for the Back button which hecks if "Subscribe" button is triggered
     public void addBackListener(ActionListener listenForBack){
-        System.out.println("DONE");
         this.back.addActionListener(listenForBack);
     }
 

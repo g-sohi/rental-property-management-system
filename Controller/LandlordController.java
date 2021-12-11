@@ -1,5 +1,20 @@
 package Controller;
 
+/**
+ * @author Curtis Silva <a href="mailto:curtis.silva@ucalgary.ca">
+ *         curtis.silva@ucalgary.ca</a>
+ * 
+ * @author Gurpartap Sohi <a href="mailto:gurpartap.sohi@ucalgary.ca">
+ *         gurpartap.sohi@ucalgary.ca</a>
+ * 
+ * @author Ivan Suyat<a href="mailto:ivan.suyat@ucalgary.ca">
+ *         ivan.suyat@ucalgary.ca/a>
+ * 
+ * @author Manpreet Singh<a href="mailto:manpreet.singh2@ucalgary.ca">
+ *         manpreet.singh2@ucalgary.ca</a>
+ * 
+ */
+
 import Models.*;
 import GUI.*;
 import Database.Database;
@@ -50,7 +65,6 @@ public class LandlordController implements ActionListener{
     {
         if(e.getSource().equals(landlordV.getSearch())) //landlord clicks search button
         {
-            System.out.println("Search");
             landlordV.destroyFrame();
             search.enableLlrdView();
             search.getView().addBackButtonListener(this);
@@ -58,7 +72,6 @@ public class LandlordController implements ActionListener{
 
         if(e.getSource().equals(landlordV.getRegister())) //landlord clicks register button
         {
-            System.out.println("Register");
             landlordV.destroyFrame();
             regProp.enableView(this.landlordV);
             this.regProp.getCreateProp().addBackPropertyListener(this);
@@ -66,7 +79,6 @@ public class LandlordController implements ActionListener{
 
         if(e.getSource().equals(landlordV.getUpdate())) //landlord clicks update button
         {
-            System.out.println("Update");
             landlordV.destroyFrame();
             prop.enableView();
             prop.getEditView().turnOn();
@@ -76,7 +88,6 @@ public class LandlordController implements ActionListener{
 
         if(e.getSource().equals(landlordV.getPay())) //landlord clicks pay fees button
         {
-            System.out.println("Pay");
             landlordV.destroyFrame();
             pay.enableView(false);
             

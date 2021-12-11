@@ -1,4 +1,20 @@
 package Controller;
+
+/**
+ * @author Curtis Silva <a href="mailto:curtis.silva@ucalgary.ca">
+ *         curtis.silva@ucalgary.ca</a>
+ * 
+ * @author Gurpartap Sohi <a href="mailto:gurpartap.sohi@ucalgary.ca">
+ *         gurpartap.sohi@ucalgary.ca</a>
+ * 
+ * @author Ivan Suyat<a href="mailto:ivan.suyat@ucalgary.ca">
+ *         ivan.suyat@ucalgary.ca/a>
+ * 
+ * @author Manpreet Singh<a href="mailto:manpreet.singh2@ucalgary.ca">
+ *         manpreet.singh2@ucalgary.ca</a>
+ * 
+ */
+
 import GUI.*;
 import Database.*;
 import Models.*;
@@ -133,7 +149,6 @@ public class GUIController implements ActionListener {
                 boolean userNameExists = db.usernameExists(rView.getUsername());
                 if(userNameExists == false) //if user name is unique and doesnt exist in database
                 {
-                    System.out.print("not vsiisble");
                     rView.showDialog();
                     rView.destroyFrame();
                     mainpage.turnOn();
@@ -159,7 +174,6 @@ public class GUIController implements ActionListener {
             */
         if(e.getSource().equals(login.getView().getGoBackButton()))   
         {
-            System.out.print(" vsiisble");
             login.getView().destroyFrame();
             mainpage.turnOn();
         }
@@ -172,7 +186,6 @@ public class GUIController implements ActionListener {
             */
         if(e.getSource().equals(search.getView().getBackButton()))   
         {
-            System.out.print(" vsiisble");
             search.getView().destroyFrameRenterGuest();
             mainpage.turnOn();
         }
@@ -184,7 +197,6 @@ public class GUIController implements ActionListener {
             */
             if(e.getSource().equals(rView.getBackButton()))   
             {
-                System.out.print(" vsiisble");
                 rView.destroyFrame();
                 mainpage.turnOn();
             }

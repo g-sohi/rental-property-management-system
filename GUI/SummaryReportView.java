@@ -1,5 +1,20 @@
 package GUI;
 
+/**
+ * @author Curtis Silva <a href="mailto:curtis.silva@ucalgary.ca">
+ *         curtis.silva@ucalgary.ca</a>
+ * 
+ * @author Gurpartap Sohi <a href="mailto:gurpartap.sohi@ucalgary.ca">
+ *         gurpartap.sohi@ucalgary.ca</a>
+ * 
+ * @author Ivan Suyat<a href="mailto:ivan.suyat@ucalgary.ca">
+ *         ivan.suyat@ucalgary.ca/a>
+ * 
+ * @author Manpreet Singh<a href="mailto:manpreet.singh2@ucalgary.ca">
+ *         manpreet.singh2@ucalgary.ca</a>
+ * 
+ */
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -10,6 +25,7 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 
 import java.awt.event.*;
+
 
 public class SummaryReportView extends JFrame {
     
@@ -110,7 +126,6 @@ public class SummaryReportView extends JFrame {
 
     // checks if the "Close" button is pressed
     public void addCloseListener(ActionListener listenForReport){
-        System.out.println("DONE");
         this.close.addActionListener(listenForReport);
     }
 
