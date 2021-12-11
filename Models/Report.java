@@ -13,15 +13,23 @@ public class Report {
     /**
      * Constructor for the Report class
      */
+    public Report(){
+        this.totalHouseListed = 0;
+        this.totalHouseRented = 0;
+        this.totalActiveListing  = 0;
+        this.startDate = "";
+        this.endDate = "";
+        this.rented = new ArrayList<Property>();
+    }
+
     public Report(int totalHouseListed, int totalHouseRented, int totalActiveListing , String startDate, String endDate, ArrayList<Property> rented){
         this.totalHouseListed = totalHouseRented;
         this.totalHouseRented = totalHouseRented;
         this.totalActiveListing  = totalActiveListing;
         this.startDate = startDate;
         this.endDate = endDate;
-        rented = new ArrayList<Property>();
-        rented.forEach(x->this.rented.add(x));
-
+        this.rented = new ArrayList<Property>();
+        this.rented.forEach(x->this.rented.add(x));
     }
 
     public int getTotalHouseListed()             //getter method for the totalHouseListed 

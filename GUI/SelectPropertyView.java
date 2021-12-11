@@ -5,22 +5,22 @@ import java.awt.event.*;
 
 public class SelectPropertyView extends JFrame {
     
-    // variable declaration (MAJOR UML CHANGE, LOOK THROUGH CONSTRUCTOR)
-    private JFrame frame; //change UML; fram to frame
-    private String type, streetName, city, quadrant;
-    private int streetNo, noBeds, noBaths; //change UML; noOfBedroon to noBeds; noOfBathroom to noBaths
-    private boolean furnished; //change UML; Furnished to furnished
+    // variable declaration
+    private JFrame frame;
     private JButton select, email, back;
     private JTextArea pDetails;
-
     private JTextField pID;
 
+    private String type, streetName, city, quadrant;
+    private int streetNo, noBeds, noBaths;
+    private boolean furnished;
+
+    // constructor - sets up GUI components
     public SelectPropertyView() {
 
         // creation of JFrame of certain size
         this.frame = new JFrame("Selection Page");
         frame.setSize(500, 500);
-        //setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setLayout(null); // layout set to null
 
         // creation of JLabels of certain size and position
@@ -52,12 +52,13 @@ public class SelectPropertyView extends JFrame {
         frame.add(back);
         frame.add(pID);
         frame.add(pDetails);
-        frame.setLocationRelativeTo(null);
 
- // JFrame is set to appear
+        // pertains to postion of frame on screen
+        frame.setLocationRelativeTo(null);
 
     }
 
+    // methods for getting components or their values
     public String getPropertyID() {
         return pID.getText();
     }
@@ -71,6 +72,7 @@ public class SelectPropertyView extends JFrame {
         return pID;
     }
 
+    // methods for setting frame visibility
     public void turnOn()
     {
         frame.setVisible(true);
@@ -81,6 +83,7 @@ public class SelectPropertyView extends JFrame {
         frame.setVisible(false);
     }
 
+    // more methods for getting components and their values
     public JButton getEmailButton()
     {
         return email;
@@ -101,7 +104,7 @@ public class SelectPropertyView extends JFrame {
        return pDetails.getText();
     }
 
-    
+    // methods that allow for the checking of button presses    
     public void addSelectListener(ActionListener listenForLogout){
         select.addActionListener(listenForLogout);
     }
@@ -112,14 +115,6 @@ public class SelectPropertyView extends JFrame {
 
     public void addEmailListener(ActionListener listenForLogout){
         email.addActionListener(listenForLogout);
-    }
-
-
-    // **for testing purposes**
-    public static void main(String [] args) {
-        SelectPropertyView test =  new SelectPropertyView();
-        test.turnOn();
-        //test.turnOnForManager();
     }
 
 }

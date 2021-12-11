@@ -6,6 +6,11 @@ public class Manager extends User{
     /**
      * Constructor for the Manager class
      */
+    public Manager(){
+        super();
+        this.managerCode = -1;
+    }
+
     public Manager(String username,String fName, String lName, int id, String password, String userType ,int managerCode){
         super(username, fName, lName, id, password, userType);
         this.managerCode = managerCode;
@@ -26,13 +31,5 @@ public class Manager extends User{
     public void setManagerCode(int managerCode) //setter method for the ManagerCode
     {
         this.managerCode = managerCode;
-    }
-
-    public void access(String query){
-
-    }
-
-    public void createManager(){
-
     }
 }

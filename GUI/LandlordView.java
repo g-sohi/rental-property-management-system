@@ -24,7 +24,7 @@ public class LandlordView extends JFrame{
         //Edit the Font and Size of the Header text
         header.setFont(new Font("Lucida Grande", Font.BOLD, 36));
 
-        //Create the GUI components
+        //Create the GUI components needed for the frame
         registerProperty = new JButton("Register Property");
         updateProperty = new JButton("Update Property");
         payFee = new JButton("Pay Fee");

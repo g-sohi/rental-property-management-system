@@ -10,6 +10,14 @@ public class Fees {
     /**
      * Constructor for the Fees class
      */
+    public Fees(){
+        this.amount = 0.0;
+        this.feePeriod = 0;
+        this.feesPaid = "No";
+        this.feeStartDate = "";
+        this.feeEndDate = "";
+    }
+
     public Fees(double amount, int feePeriod, String feesPaid, String feeStartDate,String feeEndDate)
     {
         this.amount = amount;

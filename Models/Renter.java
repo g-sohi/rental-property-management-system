@@ -11,10 +11,16 @@ public class Renter extends User{
   /**
      * Constructor for the Renter class
      */
+    public Renter(){
+        super();
+        this.favouriteProperties = new ArrayList<Property>();
+        this.preferredProperty = new Property();
+
+    }
 
     public Renter(String username,String fName, String lName, int id, String password, String userType ,boolean isRegistered, Property preferredProperty, Email email){
         super(username, fName, lName, id, password, userType);
-        favouriteProperties = new ArrayList<Property>();
+        this.favouriteProperties = new ArrayList<Property>();
         this.isRegistered = isRegistered;
         this.preferredProperty = preferredProperty;
         this.email = email;
@@ -24,9 +30,8 @@ public class Renter extends User{
         super(u);
         favouriteProperties = new ArrayList<Property>();
         this.isRegistered = true;
-        this.preferredProperty = null;
-        this.email = null;
-        
+        this.preferredProperty = new Property();
+        this.email = new Email();
     }
 
     public boolean getIsRegistered()            //getter method for the isRegistered  
