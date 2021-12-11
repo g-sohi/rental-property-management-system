@@ -29,14 +29,22 @@ public class SearchController implements ActionListener, ListSelectionListener{
     private Database db;
     private boolean rentSearch, managerSearch, landLordSearch;
 
+    public SearchController(){
+        this.users = new User();
+        this.landlordID = -1;
+        this.listings = new ArrayList<Property>();
+        this.rentSearch = false;
+        this.managerSearch = false;
+        this.landLordSearch = false;
+    }
     //SearchController constructor takes in an arugment of Database
     public SearchController(Database db) 
     {
         //Set all the booleans for the searchView for the different users (Renter, Landlord, Manager)
         //to false
-        rentSearch = false;
-        managerSearch = false;
-        landLordSearch = false;
+        this.rentSearch = false;
+        this.managerSearch = false;
+        this.landLordSearch = false;
         //set private Database member db to the passed in argument Database variable
         this.db = db;
     }
@@ -165,6 +173,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
         }
     }
 
+    //Display properties in table
     public String[][] displayProperty(ArrayList<Property> obj, String headers[])
     {
         
@@ -194,21 +203,8 @@ public class SearchController implements ActionListener, ListSelectionListener{
         
         return (displayMessages);
     }
-    public void displayAll(ArrayList<Property> listings) 
-    {
-        
-    }
 
-    public void filterAll() 
-    {
-
-    }
-
-    public void update(ArrayList<Property> listings) 
-    {
-        
-    }
-
+    //getters and setters
     public void setLandlordID(int id){
         this.landlordID = id;
     }
@@ -246,6 +242,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
         this.db = db;
     }
 
+    //enable renter search view
     public void enableView() {
         rentSearch = true;
         sView = new SearchView(); 
@@ -254,6 +251,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
         sView.turnOn();
     }
 
+    //reset user type for search view
     public void resetSearchType(){
         rentSearch = false;
         managerSearch = false;
@@ -261,6 +259,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
         System.out.println("Search reset");
     }
 
+    //enable search view for manager
     public void enableMGrView()
     {
         managerSearch = true;
@@ -272,6 +271,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
         //sView.mgr();
     }
 
+    //enable landlord search view
     public void enableLlrdView(){
         landLordSearch = true;
         sView = new SearchView();
@@ -282,6 +282,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
         //sView.llrd();
     }
 
+    //display properties 
     public void displayPropertyInfo(Property p)
     {
         Vector<String> tableInputs = new Vector<String>();
@@ -318,6 +319,7 @@ public class SearchController implements ActionListener, ListSelectionListener{
         this.sView.getJTable4().revalidate();
     }
 
+    //listen for property selection
     @Override
     public void valueChanged(ListSelectionEvent e) {
         if(e.getSource().equals(this.sView.getAddressList()))

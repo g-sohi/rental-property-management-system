@@ -18,46 +18,54 @@ public class ManagerController implements ActionListener, ItemListener {
     private Database db;
     private SearchController search;
 
+    //Default ManagerController constructor
+    public ManagerController(){
+        this.manager = new Manager();
+        this.prop = new PropertyController();
+        this.pay = new PaymentController();
+        this.reportR = new Report();
+        this.search = new SearchController();
+    }
+
+    //ManagerController connection with database
     public ManagerController(Database db){
         this.db = db;
-
-        prop = new PropertyController(db);
-        search = new SearchController(db);
-        pay = new PaymentController(db);
+        this.prop = new PropertyController(db);
+        this.search = new SearchController(db);
+        this.pay = new PaymentController(db);
 
     }
 
+    //Handle events for manager main page 
     @Override
     public void actionPerformed(ActionEvent e) {
-    if(e.getSource().equals(managerv.getSearch()))
+    if(e.getSource().equals(managerv.getSearch())) //manager clicks search button
     {
-        System.out.println("COMPLETE");
         managerv.destroyFrame();
         search.enableMGrView();
         search.getView().addBackButtonListener(this);
-        //search.getView().turnOnForManager();
     }
-    if(e.getSource().equals(managerv.getUpdateButton()))
+
+    if(e.getSource().equals(managerv.getUpdateButton())) //manager clicks update button
     {
-        System.out.println("COMPLETE");
         managerv.destroyFrame();
         prop.enableView();
         prop.getEditView().turnOn();
         prop.getEditView().addBackListener(this);
         prop.getEditView().addSaveListener(this);
     }
-    if(e.getSource().equals(managerv.getReportButton()))
+
+    if(e.getSource().equals(managerv.getReportButton())) //manager clicks get report button
     {
-        System.out.println("COMPLETE");
         managerv.destroyFrame();
         report = new SummaryReportView();
         report.addItemListener(this);
         report.turnOn();
         report.addCloseListener(this);
     }
-    if(e.getSource().equals(managerv.getViewDataButton()))
+
+    if(e.getSource().equals(managerv.getViewDataButton())) //manager clicks view data button
     {
-        System.out.println("COMPLETE");
         managerv.destroyFrame();
         viewInfo = new ViewDataPage();
         viewInfo.turnOn();
@@ -67,7 +75,8 @@ public class ManagerController implements ActionListener, ItemListener {
         viewInfo.addBackListener(this);
 
     }
-    if(e.getSource().equals(managerv.getEditFeeButton()))
+
+    if(e.getSource().equals(managerv.getEditFeeButton())) //manager clicks edit fee button
     {
         managerv.destroyFrame();
         pay.enableView(true);
@@ -78,14 +87,14 @@ public class ManagerController implements ActionListener, ItemListener {
 
     if(pay.getFeesView() != null)
     {
-        if(e.getSource().equals(pay.getFeesView().getBackButton()))
+        if(e.getSource().equals(pay.getFeesView().getBackButton())) //manager clicks back button in edit fees view
         {
             pay.getFeesView().destroyFrameForManager();
             managerv.turnOn();
         }
-        if(e.getSource().equals(pay.getFeesView().getSaveButton()))
+        if(e.getSource().equals(pay.getFeesView().getSaveButton())) //manager clicks save in edit fees view
         {
-            if(!pay.getFeesView().getPID().equals("") && !pay.getFeesView().getFee().equals(""))
+            if(!pay.getFeesView().getPID().equals("") && !pay.getFeesView().getFee().equals("")) //empty field
             {
                  pay.getFeesView().showDialogManager();
                 pay.getFeesView().destroyFrameForManager();
@@ -99,7 +108,7 @@ public class ManagerController implements ActionListener, ItemListener {
     }
     if(this.report != null)
     {
-    if(e.getSource().equals(report.getCloseButton()))
+    if(e.getSource().equals(report.getCloseButton())) //manager clicks close 
     {
         report.destroyFrame();
         managerv.turnOn();
@@ -108,7 +117,7 @@ public class ManagerController implements ActionListener, ItemListener {
 
     if(prop.getEditView() != null)
     {
-        if(e.getSource().equals(prop.getEditView().getSaveButton()))
+        if(e.getSource().equals(prop.getEditView().getSaveButton())) //manager clicks save in edit property view
         {
             prop.getEditView().destroyFrame();
             managerv.turnOn();
@@ -117,7 +126,7 @@ public class ManagerController implements ActionListener, ItemListener {
 
     if(this.search.getView() != null)
     {
-        if(e.getSource().equals(search.getView().getBackButton()))
+        if(e.getSource().equals(search.getView().getBackButton())) //manager clicks back in search view 
         {
             search.getView().destroyFrameForManager();
             managerv.turnOn();
@@ -126,19 +135,19 @@ public class ManagerController implements ActionListener, ItemListener {
 
     if(this.viewInfo != null)
     {
-        if(e.getSource().equals(viewInfo.getRenterInfoButton()))
+        if(e.getSource().equals(viewInfo.getRenterInfoButton())) //manager requests renter info
         {
             viewInfo.user(viewInfo.copyRenters(db.getAllRenters()));
         }
-        else if(e.getSource().equals(viewInfo.getLandlordInfoButton()))
+        else if(e.getSource().equals(viewInfo.getLandlordInfoButton())) //manager requests landlord info
         {
             viewInfo.user(viewInfo.copyLandlords(db.getAllLandlords()));
         }
-        else if(e.getSource().equals(viewInfo.getPropertyInfoButton()))
+        else if(e.getSource().equals(viewInfo.getPropertyInfoButton())) //manager requests property info
         {
-            viewInfo.prop(viewInfo.copyProperties(db.getManagerProperties()));
+            viewInfo.prop(viewInfo.copyProperties(db.getManagerProperties())); 
         }
-        else if(e.getSource().equals(viewInfo.getBackButton()))
+        else if(e.getSource().equals(viewInfo.getBackButton())) //manager goes back
         {
             viewInfo.destroyFrame();
             managerv.turnOn();
@@ -146,36 +155,11 @@ public class ManagerController implements ActionListener, ItemListener {
     }
         
     }
-
-    public void update()
-    {
-
-    }
-
-    public void retrieveReport()
-    {
-
-    }
-
-    public void retrieveRenter()
-    {
-
-    }
-
-    public void retrieveLandlord()
-    {
-
-    }
-
-    public void retrieveProperties()
-    {
-
-    }
     
+    //getters and setters
     public Manager getManager() {
         return manager;
     }
-
 
     public void setManager(Manager manager) {
         this.manager = manager;
@@ -249,6 +233,7 @@ public class ManagerController implements ActionListener, ItemListener {
         return this.search;
     }
 
+    //enable mananger main page
     public void enableView(ActionListener logoutListener, int id,  String type)
     {
         managerv = new ManagerView();
@@ -259,20 +244,23 @@ public class ManagerController implements ActionListener, ItemListener {
         this.managerv.addReportListener(this);
         this.managerv.addFeesListener(this);
         this.managerv.addViewListener(this);
-        }
+    }
 
-        public String[][] copyProperties(ArrayList<Property> properties){
-            String[][] props = new String[properties.size()][3];
-            for(int i = 0; i < properties.size(); i++){
-                System.out.println("propID: " +properties.get(i).getID());
-                System.out.println("LandID: " +properties.get(i).getLandlordID());
-                props[i][0] = db.getLandlordName(properties.get(i).getLandlordID());
-                props[i][1] = String.valueOf(properties.get(i).getID());
-                props[i][2] = properties.get(i).getAddress();
-            }
-            return props;
-        }
 
+    //Copy properties from array list to 2d array to be displayed in table
+    public String[][] copyProperties(ArrayList<Property> properties){
+        String[][] props = new String[properties.size()][3];
+        for(int i = 0; i < properties.size(); i++){
+        System.out.println("propID: " +properties.get(i).getID());
+        System.out.println("LandID: " +properties.get(i).getLandlordID());
+        props[i][0] = db.getLandlordName(properties.get(i).getLandlordID());
+        props[i][1] = String.valueOf(properties.get(i).getID());
+        props[i][2] = properties.get(i).getAddress();
+        }
+        return props;
+    }
+
+    //Period is selected in summary report view
     @Override
     public void itemStateChanged(ItemEvent e) {
         if(e.getStateChange() == ItemEvent.SELECTED){
@@ -282,18 +270,13 @@ public class ManagerController implements ActionListener, ItemListener {
                 String year = line.substring(line.indexOf('/') + 1);
                 LocalDate date = LocalDate.of(Integer.valueOf(year), Integer.valueOf(month), 01);
                 int days = date.lengthOfMonth();
-                System.out.println("Days" + days);
                 String start = "20" + year + "-" + month + "-" + "01";
                 String end = "20" + year + "-" + month + "-" + String.valueOf(days);
-                System.out.println("Start Date: " + start + " End Date: " + end);
                 db.initializeConnection();
                 report.setNumListed(String.valueOf(db.countListings("Listed", start, end)));
                 report.setNumActive(String.valueOf(db.countListings("Active", start, end)));
                 report.setNumRented(String.valueOf(db.countListings("Rented", start, end)));
                 report.setTableData(copyProperties(db.getRentedProperties(start, end)));
-                System.out.println("Listed : " + db.countListings("Listed", start, end));
-                System.out.println("Rented Listings: " + db.countListings("Rented", start, end));
-                System.out.println("Active Listings: " + db.countListings("Active", start, end));
                 
             }
         }

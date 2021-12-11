@@ -19,10 +19,19 @@ public class LandlordController implements ActionListener{
     private int Id;
     private Database db;
 
-
     //Default constructor to create instances of member variables
-    LandlordController(Database db){
-        //this.landLordID =  landID;
+    public LandlordController()
+    {
+        this.landlord = new Landlord();
+        this.pay = new PaymentController();
+        this.prop = new PropertyController();
+        this.regProp = new RegisterController();
+        this.search = new SearchController();
+        this.Id = -1;
+    }
+
+    //Landlord constructor to initialize database connection
+    public LandlordController(Database db){
         this.db = db;
         this.landlord = new Landlord();
         this.pay = new PaymentController(db);
@@ -31,15 +40,13 @@ public class LandlordController implements ActionListener{
         this.search = new SearchController(db);
     }
 
-    LandlordController()
-    {
-
-    }
-
+    /**
+     * Handle events on the landlord main page
+     */
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        if(e.getSource().equals(landlordV.getSearch()))
+        if(e.getSource().equals(landlordV.getSearch())) //landlord clicks search button
         {
             System.out.println("Search");
             landlordV.destroyFrame();
@@ -47,7 +54,7 @@ public class LandlordController implements ActionListener{
             search.getView().addBackButtonListener(this);
         }
 
-        if(e.getSource().equals(landlordV.getRegister()))
+        if(e.getSource().equals(landlordV.getRegister())) //landlord clicks register button
         {
             System.out.println("Register");
             landlordV.destroyFrame();
@@ -55,7 +62,7 @@ public class LandlordController implements ActionListener{
             this.regProp.getCreateProp().addBackPropertyListener(this);
         }
 
-        if(e.getSource().equals(landlordV.getUpdate()))
+        if(e.getSource().equals(landlordV.getUpdate())) //landlord clicks update button
         {
             System.out.println("Update");
             landlordV.destroyFrame();
@@ -65,7 +72,7 @@ public class LandlordController implements ActionListener{
             prop.getEditView().addSaveListener(this);
         }
 
-        if(e.getSource().equals(landlordV.getPay()))
+        if(e.getSource().equals(landlordV.getPay())) //landlord clicks pay fees button
         {
             System.out.println("Pay");
             landlordV.destroyFrame();
@@ -75,16 +82,16 @@ public class LandlordController implements ActionListener{
             pay.getFeesView().addBackListener(this);
             pay.getFeesView().addPayFeeListener(this);
         }
-        if(regProp.getCreateProp() != null)
+        if(regProp.getCreateProp() != null) //landlord clicks the back button on create property view
         {
-        if(e.getSource().equals(regProp.getCreateProp().getBack()))
-        {
-            regProp.getCreateProp().destroyFrame();
-            landlordV.turnOn();
-        }
+            if(e.getSource().equals(regProp.getCreateProp().getBack()))
+            {
+                regProp.getCreateProp().destroyFrame();
+                landlordV.turnOn();
+            }
         }
 
-        if(prop.getEditView() != null)
+        if(prop.getEditView() != null) //landlord clicks the back button on the edit property view
         {
             if(e.getSource().equals(prop.getEditView().getBackButton()))
             {
@@ -94,11 +101,11 @@ public class LandlordController implements ActionListener{
             }
         }
 
-        if(prop.getEditView() != null)
+        if(prop.getEditView() != null) //landlord clicks save on the edit property view
         {
             if(e.getSource().equals(prop.getEditView().getSaveButton()))
             {
-                if(!prop.getEditView().getPropertyIDStringInput().equals(""))
+                if(!prop.getEditView().getPropertyIDStringInput().equals("")) //there are no empty fields
                 {
                     prop.getEditView().showDialog();
                     prop.getEditView().destroyFrame();
@@ -110,7 +117,7 @@ public class LandlordController implements ActionListener{
             }
         }
 
-        if(pay.getFeesView() != null)
+        if(pay.getFeesView() != null) //landlord clicks the back button on the pay fees view
         {
             if(e.getSource().equals(pay.getFeesView().getBackButton()))
             {
@@ -119,11 +126,11 @@ public class LandlordController implements ActionListener{
             }
         }
 
-        if(pay.getFeesView() != null)
+        if(pay.getFeesView() != null) 
         {
-            if(e.getSource().equals(pay.getFeesView().getPayFeesButton()))
+            if(e.getSource().equals(pay.getFeesView().getPayFeesButton())) //landlord clicks the pay fees button on the pay fees view
             {
-                
+                //landlord enters pay information
                 if(!pay.getFeesView().getPID().equals("") && !pay.getFeesView().getFName().equals("") && !pay.getFeesView().getLName().equals("")
                 && !pay.getFeesView().getCountry().equals("") && !pay.getFeesView().getPCode().equals("") && !pay.getFeesView().getCCN().equals("") 
                 && !pay.getFeesView().getMMExp().equals("") && !pay.getFeesView().getYYExp().equals("") && !pay.getFeesView().getCVV().equals(""))
@@ -139,7 +146,7 @@ public class LandlordController implements ActionListener{
             }
         }
 
-        if(search.getView() != null)
+        if(search.getView() != null) //landlord clicks the back button on the search view
         {
             if(e.getSource().equals(search.getView().getBackButton()))
             {
@@ -148,21 +155,19 @@ public class LandlordController implements ActionListener{
             }
         }
     }
+
+    //setter for landlord id within register controller
     public void setRegisterControllerId(int id)
     {
         this.regProp.setLandlordID(id);
     }
 
+     //setter for landlord id within search controller
     public void setSearchControllerID(int id)
     {
         this.search.setLandlordID(id);
     }
     
-    //update 
-    public void update(){
-
-    }
-
     //getter for landlord
     public Landlord getLandlord(){
         return this.landlord;

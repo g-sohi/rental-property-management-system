@@ -18,6 +18,12 @@ private Database db;
 private RegisterView rView;
 private EmailView emailV;
 
+//Default Constructor
+public GUIController(){
+    this.login = new LoginController();
+    this.search = new SearchController();
+}
+
 /**
  * Constructor for the GUI Controller
  * Initializes mainage Object,login object, search object
@@ -48,6 +54,9 @@ public void setDatabase(Database db)
     this.db = db;
 }
 
+/**
+ * Handle events on the main GUI view
+ */
 @Override
 public void actionPerformed(ActionEvent e) {
     if(e.getSource().equals(mainpage.getLog()))  //Login button is pressed, mainpage GUI turns off and login window turns on

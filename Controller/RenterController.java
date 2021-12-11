@@ -15,23 +15,34 @@ public class RenterController implements ActionListener, ItemListener{
     private ArrayList<Property> listings;
     private Renter renter;
     private Database db;
-    private Email Email;
+    private Email email;
     private EmailView emailv;
     private RenterView RenterView;
     private SearchController search;
     private String id;
     private SubscribeView subscribe;
 
+    //Default constructor
+    public RenterController(){
+        this.listings = new ArrayList<Property>();
+        this.renter = new Renter();
+        this.email = new Email();
+        this.id = "";
+        this.search = new SearchController();
+    }
+
+    //Constructor with database connection
     public RenterController(Database db)
     {
-        search = new SearchController(db);
+        this.search = new SearchController(db);
         this.db = db;
     }
 
+    //Handle renter actions
     @Override
     public void actionPerformed(ActionEvent e) {
         db.initializeConnection();
-        if(e.getSource().equals(RenterView.getSearch()))
+        if(e.getSource().equals(RenterView.getSearch())) //renter chooses to search
         {
             RenterView.destroyFrame();
             search.enableView();
@@ -40,13 +51,13 @@ public class RenterController implements ActionListener, ItemListener{
         }
         if(search.getView() != null)
         { 
-            if(e.getSource().equals(search.getView().getBackButton()))
+            if(e.getSource().equals(search.getView().getBackButton())) 
             {
                 search.getView().destroyFrameRenterGuest();
                 RenterView.turnOn();
             }
         }
-        if(e.getSource().equals(RenterView.getSelect()))
+        if(e.getSource().equals(RenterView.getSelect())) //renters choose to select property
         {
             RenterView.destroyFrame();
             selectProp = new SelectPropertyView();
@@ -55,7 +66,7 @@ public class RenterController implements ActionListener, ItemListener{
             selectProp.addBackListener(this);
             selectProp.turnOn();
         }
-        if(e.getSource().equals(RenterView.getSubscribeButton()))
+        if(e.getSource().equals(RenterView.getSubscribeButton())) //renter chooses to view new properties
         {
             RenterView.destroyFrame();
             subscribe = new SubscribeView();
@@ -79,7 +90,7 @@ public class RenterController implements ActionListener, ItemListener{
         }
         if(selectProp != null)
         {
-            if(e.getSource().equals(selectProp.getSelectButton()))
+            if(e.getSource().equals(selectProp.getSelectButton())) //renters selects property
             {
                 if(selectProp.getPropertyID().equals(null) || selectProp.getPropertyID().equals(""))
                 {
@@ -112,7 +123,7 @@ public class RenterController implements ActionListener, ItemListener{
                     }
                 }
             }
-            if(e.getSource().equals(selectProp.getEmailButton()))
+            if(e.getSource().equals(selectProp.getEmailButton())) //renter chooses to send email
             {
                 selectProp.destroyFrame();
                 emailv = new EmailView(id);
@@ -127,7 +138,7 @@ public class RenterController implements ActionListener, ItemListener{
         }
         if(emailv != null)
         {
-            if(e.getSource().equals(emailv.getSendButton()))
+            if(e.getSource().equals(emailv.getSendButton())) //renter sends email
             {
                 System.out.println(emailv.getBody());
                 System.out.println(emailv.getFrom());
@@ -147,6 +158,7 @@ public class RenterController implements ActionListener, ItemListener{
         }
     }
 
+    //set listings
     public void SelectProperty(ArrayList<Property> listings)
     {
         this.listings = listings;
@@ -169,16 +181,7 @@ public class RenterController implements ActionListener, ItemListener{
         }
     }
 
-    public void sendEmail()
-    {
-
-    }
-
-    public void createEmail()
-    {
-
-    }
-
+    //getters and setters
     public SelectPropertyView getSelectProp() {
         return selectProp;
     }
@@ -212,11 +215,11 @@ public class RenterController implements ActionListener, ItemListener{
     }
 
     public Email getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(Email email) {
-        this.Email = email;
+        this.email = email;
     }
 
     public EmailView getEmailv() {
@@ -238,6 +241,8 @@ public class RenterController implements ActionListener, ItemListener{
     public SearchController getSearch(){
         return this.search;
     }
+
+    //copy arraylist of properties into 2d array
     public String[][] copyProperties(ArrayList<Property> properties){
         String[][] props = new String[properties.size()][2];
         for(int i = 0; i < properties.size(); i++){
@@ -249,6 +254,7 @@ public class RenterController implements ActionListener, ItemListener{
         return props;
     }
 
+    //enable renter homepage
     public void enableView(ActionListener logoutListener)
     {
         RenterView = new RenterView();
@@ -258,6 +264,7 @@ public class RenterController implements ActionListener, ItemListener{
         RenterView.addSubscribeListener(this);
     }
 
+    //Listen for subscription select
     @Override
     public void itemStateChanged(ItemEvent e) {
         if(e.getStateChange() == ItemEvent.SELECTED){
