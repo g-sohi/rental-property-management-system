@@ -147,7 +147,10 @@ public class MainPageGUI extends JFrame implements ActionListener {
     {
         setVisible(true);
     }
+<<<<<<< HEAD
     // **for testing purposes**
+=======
+>>>>>>> b68b3713d57a9537b79e3be67ff4c8069f2a001a
 
     @Override
     public void actionPerformed(ActionEvent e) {

@@ -159,9 +159,4 @@ public class ManagerView extends JFrame{
     {
         setVisible(true);
     }    
-
-    // public static void main(String [] args) {
-    //     ManagerView test =  new ManagerView();
-    //     test.turnOn();
-    // }
 }

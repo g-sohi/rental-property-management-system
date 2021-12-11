@@ -396,10 +396,6 @@ public class EditPropertyView extends JFrame{
     {
         JOptionPane.showMessageDialog(this,"Fill All Fields");
     }
-
-    // public static void main(String [] args) {
-    //     new EditPropertyView();
-    // }
 }
 
 //*****IMPORTANT: Correct Class Name from EditPropetyView to EditPropertyView*****
