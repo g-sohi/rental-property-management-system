@@ -32,3 +32,15 @@ java -cp ".;./lib/mysql-connector-java-8.0.23.jar" MainClass
 Please enter the password to your MySQL Server.
 <Insert Password Here>
 ```
+## Demonstration
+### Login Page
+![](Login.gif)
+
+### Manager View
+![](Manager.gif)
+
+### Landlord View
+![](Landlord.gif)
+
+### Renter View
+![](Renter.gif)
