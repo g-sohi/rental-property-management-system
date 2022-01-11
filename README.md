@@ -1,6 +1,5 @@
 ## rental-property-management-system
-ENSF 480 Final Project </br>
-Authors: Curtis Silva, Gurpartap Sohi, Ivan Suyat, Manpreet Singh (Group 18)
+A rental property management system that allows users to add/remove, search, or manage properties depending on their permission level. It supports functionality for 3 different user types: Manager, Landlord, and Renter.
 
 ## Setting Up the MySQL Database
 1. Log in to the MySQL server through the command prompt using the credentials for the "root" user.
@@ -17,7 +16,7 @@ mysql> SOURCE <PathOfSQLFile>;
 git clone https://github.com/g-sohi/rental-property-management-system.git
 ```
 
-## Usage
+## How to Run:
 1. Navigate to the root directory of the local repository.
 2. Compile using: 
 ```
@@ -32,15 +31,35 @@ java -cp ".;./lib/mysql-connector-java-8.0.23.jar" MainClass
 Please enter the password to your MySQL Server.
 <Insert Password Here>
 ```
+
+## Login
+The user can log in as a Manager using:
+```
+Username: Robin
+Password: ensf480
+```
+
+The user can log in as a Landlord using:
+```
+Username: David
+Password: ensf480
+```
+
+The user can log in as a Renter using:
+```
+Username: Sam
+Password: ensf480
+```
+
 ## Demonstration
 ### Login Page
-![](Login.gif)
+![LoginView](Login.gif)
 
 ### Manager View
-![](Manager.gif)
+![ManagerView](Manager.gif)
 
 ### Landlord View
-![](Landlord.gif)
+![LandlordView](Landlord.gif)
 
 ### Renter View
-![](Renter.gif)
+![RenterView](Renter.gif)
